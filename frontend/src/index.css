@@ -1,111 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   ROOT VARIABLES & BASE STYLES
+   ============================================ */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --gold: #D4AF37;
+  --gold-light: #E8CC6F;
+  --gold-dark: #A8891A;
+  --dark-brown: #3B2F2F;
+  --cream: #FFFDF8;
+  --rose-gold: #B76E79;
+  --text-primary: #222222;
+  --scrollbar-thumb: #D4AF37;
+  --scrollbar-track: #FFFDF8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FFFDF8;
+  color: #222222;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* Dark mode base */
+.dark body {
+  background-color: #1A1414;
+  color: #F5E8C8;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+/* ============================================
+   COMPONENTS LAYER
+   ============================================ */
+@layer components {
+
+  /* BUTTONS */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           font-poppins font-semibold text-dark-brown text-sm tracking-wide
+           bg-gold-gradient rounded-full shadow-gold
+           hover:shadow-gold-lg hover:scale-105
+           transition-all duration-300 ease-luxury
+           active:scale-95 cursor-pointer;
+  }
+
+  .btn-gold-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           font-poppins font-semibold text-gold text-sm tracking-wide
+           border-2 border-gold rounded-full
+           hover:bg-gold hover:text-dark-brown hover:shadow-gold
+           transition-all duration-300 ease-luxury
+           active:scale-95 cursor-pointer;
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           font-poppins font-semibold text-cream text-sm tracking-wide
+           bg-dark-brown rounded-full shadow-luxury
+           hover:bg-dark-brown-light hover:shadow-lg hover:scale-105
+           transition-all duration-300 ease-luxury
+           active:scale-95 cursor-pointer;
+  }
+
+  .btn-rose {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           font-poppins font-semibold text-white text-sm tracking-wide
+           bg-rose-gradient rounded-full shadow-rose-gold
+           hover:shadow-lg hover:scale-105
+           transition-all duration-300 ease-luxury
+           active:scale-95 cursor-pointer;
+  }
+
+  /* CARDS */
+  .card-luxury {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover
+           transition-all duration-500 ease-luxury
+           hover:-translate-y-1 overflow-hidden;
+  }
+
+  .card-glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20
+           rounded-2xl shadow-glass;
+  }
+
+  .card-gold-border {
+    @apply border border-gold/30 rounded-2xl bg-white
+           hover:border-gold hover:shadow-gold
+           transition-all duration-300 ease-luxury;
+  }
+
+  /* SECTION TITLES */
+  .section-title {
+    @apply font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-dark-brown;
+  }
+
+  .section-subtitle {
+    @apply font-poppins text-sm font-semibold tracking-[0.2em] uppercase text-gold;
+  }
+
+  .section-description {
+    @apply font-poppins text-gray-500 text-base leading-relaxed max-w-2xl;
+  }
+
+  /* GOLD DIVIDER */
+  .gold-divider {
+    @apply w-24 h-1 bg-gold-gradient rounded-full mx-auto;
+  }
+
+  .gold-divider-left {
+    @apply w-24 h-1 bg-gold-gradient rounded-full;
+  }
+
+  /* BADGES */
+  .badge-gold {
+    @apply inline-flex items-center gap-1 px-3 py-1 
+           bg-gold/10 text-gold border border-gold/30 
+           rounded-full text-xs font-poppins font-semibold tracking-wide;
+  }
+
+  .badge-new {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5
+           bg-emerald-100 text-emerald-700 border border-emerald-200
+           rounded-full text-xs font-poppins font-semibold;
+  }
+
+  .badge-sale {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5
+           bg-red-100 text-red-600 border border-red-200
+           rounded-full text-xs font-poppins font-semibold;
+  }
+
+  .badge-rental {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5
+           bg-rose-gold/10 text-rose-gold border border-rose-gold/30
+           rounded-full text-xs font-poppins font-semibold;
+  }
+
+  /* INPUT STYLES */
+  .input-luxury {
+    @apply w-full px-4 py-3 rounded-xl border border-gold/20 
+           bg-white font-poppins text-sm text-dark-brown
+           focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold
+           placeholder:text-gray-400
+           transition-all duration-300;
+  }
+
+  /* GLASS PANEL */
+  .glass-panel {
+    @apply backdrop-blur-xl bg-white/80 border border-white/50
+           rounded-3xl shadow-glass;
+  }
+
+  /* PRODUCT CARD */
+  .product-card {
+    @apply group relative bg-white rounded-2xl overflow-hidden
+           shadow-card hover:shadow-gold
+           transition-all duration-500 ease-luxury hover:-translate-y-2
+           border border-transparent hover:border-gold/20;
+  }
+
+  /* PAGE WRAPPER */
+  .page-wrapper {
+    @apply min-h-screen bg-cream;
+  }
+
+  /* CONTAINER */
+  .container-luxury {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* NAV LINK */
+  .nav-link {
+    @apply font-poppins text-sm font-medium text-dark-brown
+           hover:text-gold transition-colors duration-200
+           relative after:absolute after:bottom-0 after:left-0
+           after:w-0 after:h-0.5 after:bg-gold
+           hover:after:w-full after:transition-all after:duration-300;
+  }
+
+  /* FOOTER LINK */
+  .footer-link {
+    @apply font-poppins text-sm text-gray-400 hover:text-gold
+           transition-colors duration-200;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+/* ============================================
+   UTILITY LAYER
+   ============================================ */
+@layer utilities {
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #F5E090 50%, #A8891A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .glassmorphism {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .text-shadow-luxury {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .gold-text-shadow {
+    text-shadow: 0 2px 15px rgba(212, 175, 55, 0.5);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* Hide scrollbar but allow scroll */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Aspect ratios */
+  .aspect-product {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-hero {
+    aspect-ratio: 16 / 7;
   }
 }
-p {
-  margin: 0;
+
+/* ============================================
+   SWIPER / SLIDER OVERRIDES
+   ============================================ */
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(212, 175, 55, 0.4) !important;
+  opacity: 1 !important;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.swiper-pagination-bullet-active {
+  width: 28px !important;
+  height: 8px !important;
+  border-radius: 100px !important;
+  background: #D4AF37 !important;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.swiper-button-next,
+.swiper-button-prev {
+  color: #D4AF37 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 50% !important;
+  width: 46px !important;
+  height: 46px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 14px !important;
+  font-weight: 900 !important;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-marquee { animation: marquee 25s linear infinite; }
+.animate-gold-pulse { animation: goldPulse 2s ease-in-out infinite; }
+
+/* ============================================
+   REACT DATE PICKER OVERRIDES
+   ============================================ */
+.react-datepicker {
+  font-family: 'Poppins', sans-serif !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12) !important;
+  overflow: hidden !important;
+}
+
+.react-datepicker__header {
+  background: linear-gradient(135deg, #3B2F2F, #5C4B4B) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: #D4AF37 !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #D4AF37 !important;
+  color: #3B2F2F !important;
+  font-weight: 700 !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(212, 175, 55, 0.2) !important;
+  color: #D4AF37 !important;
+}
+
+/* ============================================
+   PRINT STYLES (for invoice)
+   ============================================ */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; }
 }

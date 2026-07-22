@@ -1,0 +1,131 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        gold: {
+          DEFAULT: "#D4AF37",
+          light: "#E8CC6F",
+          dark: "#A8891A",
+          50: "#FDF8E7",
+          100: "#FAF0C8",
+          200: "#F5E090",
+          300: "#EFD058",
+          400: "#E8CC6F",
+          500: "#D4AF37",
+          600: "#A8891A",
+          700: "#7D6613",
+          800: "#52440D",
+          900: "#272206",
+        },
+        "dark-brown": {
+          DEFAULT: "#3B2F2F",
+          light: "#5C4B4B",
+          dark: "#1A1414",
+        },
+        cream: {
+          DEFAULT: "#FFFDF8",
+          100: "#FFFDF8",
+          200: "#FFF8ED",
+          300: "#FFF1DC",
+        },
+        "rose-gold": {
+          DEFAULT: "#B76E79",
+          light: "#D4949D",
+          dark: "#8B4F58",
+          50: "#FDF2F3",
+          100: "#FAE4E7",
+          200: "#F4C8CD",
+          300: "#EAA8B0",
+          400: "#D4949D",
+          500: "#B76E79",
+          600: "#8B4F58",
+          700: "#6B3B42",
+          800: "#4B282E",
+          900: "#2B1419",
+        },
+        jewel: {
+          primary: "#D4AF37",
+          secondary: "#3B2F2F",
+          accent: "#B76E79",
+          bg: "#FFFDF8",
+          text: "#222222",
+        },
+      },
+      fontFamily: {
+        playfair: ['"Playfair Display"', "Georgia", "serif"],
+        poppins: ["Poppins", "sans-serif"],
+        sans: ["Poppins", "sans-serif"],
+        serif: ['"Playfair Display"', "serif"],
+      },
+      backgroundImage: {
+        "gold-gradient": "linear-gradient(135deg, #D4AF37 0%, #F5E090 50%, #A8891A 100%)",
+        "gold-gradient-h": "linear-gradient(90deg, #D4AF37 0%, #F5E090 50%, #A8891A 100%)",
+        "dark-gradient": "linear-gradient(135deg, #3B2F2F 0%, #5C4B4B 100%)",
+        "hero-gradient": "linear-gradient(135deg, rgba(59,47,47,0.85) 0%, rgba(59,47,47,0.4) 100%)",
+        "glass-gradient": "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
+        "rose-gradient": "linear-gradient(135deg, #B76E79 0%, #D4949D 100%)",
+        "luxury-gradient": "linear-gradient(135deg, #3B2F2F 0%, #D4AF37 50%, #B76E79 100%)",
+      },
+      boxShadow: {
+        gold: "0 4px 24px rgba(212, 175, 55, 0.35)",
+        "gold-lg": "0 8px 40px rgba(212, 175, 55, 0.45)",
+        "gold-glow": "0 0 20px rgba(212, 175, 55, 0.6)",
+        glass: "0 8px 32px rgba(0, 0, 0, 0.12)",
+        luxury: "0 20px 60px rgba(59, 47, 47, 0.15)",
+        "rose-gold": "0 4px 24px rgba(183, 110, 121, 0.35)",
+        card: "0 2px 20px rgba(0,0,0,0.08)",
+        "card-hover": "0 8px 40px rgba(0,0,0,0.15)",
+      },
+      animation: {
+        "spin-slow": "spin 8s linear infinite",
+        shimmer: "shimmer 2s linear infinite",
+        "float": "float 3s ease-in-out infinite",
+        "pulse-gold": "pulseGold 2s ease-in-out infinite",
+        "slide-up": "slideUp 0.5s ease-out",
+        "fade-in": "fadeIn 0.5s ease-out",
+        marquee: "marquee 25s linear infinite",
+      },
+      keyframes: {
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        pulseGold: {
+          "0%, 100%": { boxShadow: "0 0 10px rgba(212, 175, 55, 0.4)" },
+          "50%": { boxShadow: "0 0 30px rgba(212, 175, 55, 0.8)" },
+        },
+        slideUp: {
+          "0%": { transform: "translateY(20px)", opacity: 0 },
+          "100%": { transform: "translateY(0)", opacity: 1 },
+        },
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      transitionTimingFunction: {
+        luxury: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      },
+      borderRadius: {
+        "4xl": "2rem",
+        "5xl": "2.5rem",
+      },
+      screens: {
+        xs: "475px",
+        "3xl": "1920px",
+      },
+    },
+  },
+  plugins: [],
+};
