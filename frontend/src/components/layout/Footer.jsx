@@ -53,7 +53,13 @@ export default function Footer() {
 
       {/* Newsletter Section */}
       <div className="border-b border-white/10">
-        <div className="container-luxury py-10">
+        <motion.div 
+          className="container-luxury py-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-playfair text-2xl font-bold text-cream">
@@ -77,15 +83,21 @@ export default function Footer() {
               </button>
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Main Footer Content */}
       <div className="container-luxury py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
 
           {/* Brand Column */}
-          <div className="space-y-6">
+          <motion.div variants={fadeInUp} className="space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-gold/30">
                 <img src="/logo.png" alt="Mayleki" className="w-full h-full object-cover"
@@ -158,10 +170,10 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Collections */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <h4 className="font-playfair text-lg font-bold text-cream mb-6 relative inline-block">
               Collections
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
@@ -179,10 +191,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <h4 className="font-playfair text-lg font-bold text-cream mb-6 relative inline-block">
               Quick Links
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
@@ -200,10 +212,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Policies + Badges */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <h4 className="font-playfair text-lg font-bold text-cream mb-6 relative inline-block">
               Policies
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
@@ -235,8 +247,8 @@ export default function Footer() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Bottom Bar */}
