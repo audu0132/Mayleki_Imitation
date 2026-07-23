@@ -19,7 +19,7 @@ export default function FeaturedBridal() {
   });
 
   return (
-    <section className="py-20 bg-white dark:bg-dark-brown-dark">
+    <section className="py-20 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
