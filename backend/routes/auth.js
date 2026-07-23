@@ -2,6 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { protect } from "../middleware/auth.js";
+import { sendOTP } from "../utils/sms.js";
 
 const router = express.Router();
 
@@ -114,10 +115,14 @@ router.post("/forgot-password", async (req, res, next) => {
     user.otpExpiry = Date.now() + 10 * 60 * 1000; // 10 minutes
     await user.save();
 
-    // TODO: Send OTP via email/SMS
-    // await sendEmail(email, "Password Reset OTP", `Your OTP is: ${otp}`);
+    // Send OTP via MSG91
+    const smsSent = await sendOTP(user.phone, otp);
+    
+    if (!smsSent) {
+      console.log("SMS sending failed, but OTP was generated.");
+    }
 
-    res.json({ success: true, message: "OTP sent to your email/phone" });
+    res.json({ success: true, message: "OTP sent to your registered phone number" });
   } catch (err) {
     next(err);
   }
