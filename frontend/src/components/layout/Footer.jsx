@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import {
   FiInstagram, FiPhone, FiMail, FiMapPin,
   FiArrowRight, FiHeart, FiClock,
 } from "react-icons/fi";
 import { FaWhatsapp, FaFacebook, FaYoutube } from "react-icons/fa";
-import { CATEGORIES } from "../../data/mockData";
 
 const FOOTER_LINKS = {
   collections: [
