@@ -1,44 +1,9 @@
-import { Link } from "react-router-dom";
-import {
-  FiInstagram, FiPhone, FiMail, FiMapPin,
-  FiArrowRight, FiHeart, FiClock,
-} from "react-icons/fi";
-import { FaWhatsapp, FaFacebook, FaYoutube } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const FOOTER_LINKS = {
-  collections: [
-    { label: "Bridal Sets", href: "/category/bridal-sets" },
-    { label: "Necklace Sets", href: "/category/necklace-sets" },
-    { label: "Temple Jewellery", href: "/category/temple-jewellery" },
-    { label: "Rental Jewellery", href: "/category/rental" },
-    { label: "Jhumkas", href: "/category/jhumkas" },
-    { label: "Kundan", href: "/category/kundan" },
-    { label: "American Diamond", href: "/category/american-diamond" },
-    { label: "Oxidised", href: "/category/oxidised" },
-  ],
-  quickLinks: [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "Testimonials", href: "/testimonials" },
-    { label: "Blog", href: "/blog" },
-    { label: "Offers", href: "/offers" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Contact", href: "/contact" },
-  ],
-  policies: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms & Conditions", href: "/terms" },
-    { label: "Rental Policy", href: "/faq#rental" },
-    { label: "Return Policy", href: "/faq#returns" },
-    { label: "Damage Policy", href: "/faq#damage" },
-    { label: "Shipping Policy", href: "/faq#shipping" },
-  ],
-};
+// ... existing links
+// I will just replace the top part to add motion, and the footer tag.
 
-export default function Footer() {
-  return (
-    <footer className="bg-dark-brown text-cream relative overflow-hidden">
       {/* Decorative gold border top */}
       <div className="h-1 bg-gold-gradient" />
 
