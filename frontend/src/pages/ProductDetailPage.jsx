@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
   FiHeart, FiShoppingCart, FiShare2, FiZoomIn,
-  FiTruck, FiRotateCcw, FiShield, FiPhone,
-  FiCalendar, FiPackage, FiStar, FiChevronRight,
+  FiTruck, FiRotateCcw, FiShield,
+  FiCalendar, FiStar, FiChevronRight,
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { useCart } from "../context/AppContext";
@@ -36,7 +36,7 @@ export default function ProductDetailPage() {
     setSelectedImage(0);
     setQty(1);
     window.scrollTo(0, 0);
-  }, [product.id]);
+  }, [product, addRecentlyViewed]);
 
   const handleAddToCart = () => {
     addToCart(product, qty, activeTab);
