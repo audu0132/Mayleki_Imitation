@@ -1,11 +1,55 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import {
+  FiInstagram, FiPhone, FiMail, FiMapPin,
+  FiArrowRight, FiHeart, FiClock,
+} from "react-icons/fi";
+import { FaWhatsapp, FaFacebook, FaYoutube } from "react-icons/fa";
 
 const FOOTER_LINKS = {
-// ... existing links
-// I will just replace the top part to add motion, and the footer tag.
+  collections: [
+    { label: "Bridal Sets", href: "/category/bridal-sets" },
+    { label: "Necklace Sets", href: "/category/necklace-sets" },
+    { label: "Temple Jewellery", href: "/category/temple-jewellery" },
+    { label: "Rental Jewellery", href: "/category/rental" },
+    { label: "Jhumkas", href: "/category/jhumkas" },
+    { label: "Kundan", href: "/category/kundan" },
+    { label: "American Diamond", href: "/category/american-diamond" },
+    { label: "Oxidised", href: "/category/oxidised" },
+  ],
+  quickLinks: [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Blog", href: "/blog" },
+    { label: "Offers", href: "/offers" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact" },
+  ],
+  policies: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" },
+    { label: "Rental Policy", href: "/faq#rental" },
+    { label: "Return Policy", href: "/faq#returns" },
+    { label: "Damage Policy", href: "/faq#damage" },
+    { label: "Shipping Policy", href: "/faq#shipping" },
+  ],
+};
 
-      {/* Decorative gold border top */}
-      <div className="h-1 bg-gold-gradient" />
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+export default function Footer() {
+  return (
+    <footer className="bg-dark-brown text-cream relative overflow-hidden">
 
       {/* Newsletter Section */}
       <div className="border-b border-white/10">
