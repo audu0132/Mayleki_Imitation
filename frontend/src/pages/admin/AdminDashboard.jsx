@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
   FiShoppingCart, FiPackage, FiUsers, FiCalendar,
-  FiTrendingUp, FiDollarSign, FiAlertCircle, FiCheck,
+  FiTrendingUp, FiDollarSign,
   FiClock, FiArrowUp, FiArrowDown,
 } from "react-icons/fi";
 import { ADMIN_STATS } from "../../data/mockData";
 import {
-  BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid,
-  Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid,
+  Tooltip, ResponsiveContainer, PieChart, Pie, Cell,
 } from "recharts";
 
 const STAT_CARDS = [
