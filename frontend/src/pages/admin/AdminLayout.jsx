@@ -5,8 +5,8 @@ import {
   FiGrid, FiPackage, FiShoppingCart, FiUsers, FiCalendar,
   FiImage, FiMessageSquare, FiStar, FiTag, FiFileText,
   FiSettings, FiBarChart2, FiHelpCircle, FiChevronLeft,
-  FiChevronRight, FiBell, FiSearch, FiMenu, FiX, FiLogOut,
-  FiShoppingBag, FiHome,
+  FiChevronRight, FiBell, FiSearch, FiMenu, FiLogOut,
+  FiHome,
 } from "react-icons/fi";
 import { useAuth } from "../../context/AppContext";
 
