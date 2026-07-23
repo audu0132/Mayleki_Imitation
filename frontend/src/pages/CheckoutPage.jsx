@@ -124,11 +124,18 @@ export default function CheckoutPage() {
               <h2 className="font-playfair text-xl font-bold mb-4">Order Summary</h2>
               <div className="space-y-4 mb-6 max-h-64 overflow-y-auto">
                 {cart.map(item => (
-                  <div key={item.id} className="flex gap-4 items-center">
-                    <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg object-cover" />
+                  <div key={`${item.id}-${item.type}`} className="flex gap-4 items-center">
+                    <img src={item.images && item.images.length > 0 ? item.images[0] : ""} alt={item.title} className="w-16 h-16 rounded-lg object-cover" />
                     <div>
-                      <p className="font-poppins text-sm font-semibold">{item.title}</p>
-                      <p className="font-poppins text-xs text-gray-500">Qty: {item.quantity}</p>
+                      <p className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream">{item.title}</p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <p className="font-poppins text-xs text-gray-500">Qty: {item.qty}</p>
+                        <span className={`text-[10px] font-poppins font-semibold px-2 py-0.5 rounded-full ${
+                          item.type === "rental" ? "bg-rose-gold/10 text-rose-gold" : "bg-gold/10 text-gold"
+                        }`}>
+                          {item.type === "rental" ? "Rental" : "Purchase"}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}
