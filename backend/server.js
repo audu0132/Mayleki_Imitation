@@ -15,6 +15,7 @@ import uploadRoutes from "./routes/upload.js";
 import testimonialRoutes from "./routes/testimonials.js";
 import couponRoutes from "./routes/coupons.js";
 import contactRoutes from "./routes/contact.js";
+import paymentRoutes from "./routes/payment.js";
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.use("/api/upload", uploadRoutes);
 app.use("/api/testimonials", testimonialRoutes);
 app.use("/api/coupons", couponRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/payment", paymentRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {
@@ -53,7 +55,7 @@ app.get("/api/health", (req, res) => {
 });
 
 // 404 handler
-app.use("*", (req, res) => {
+app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
 
