@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { FiFilter, FiGrid, FiList, FiX, FiChevronDown, FiSliders } from "react-icons/fi";
+import { FiGrid, FiList, FiX, FiChevronDown, FiSliders } from "react-icons/fi";
 import ProductCard from "../components/products/ProductCard";
 import { PRODUCTS, CATEGORIES } from "../data/mockData";
 
