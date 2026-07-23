@@ -54,6 +54,7 @@ export function CartProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCart = () => {
   const ctx = useContext(CartContext);
   if (!ctx) throw new Error("useCart must be used within CartProvider");
@@ -91,6 +92,7 @@ export function WishlistProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useWishlist = () => {
   const ctx = useContext(WishlistContext);
   if (!ctx) throw new Error("useWishlist must be used within WishlistProvider");
@@ -129,6 +131,7 @@ export function AuthProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error("useAuth must be used within AuthProvider");
@@ -163,6 +166,7 @@ export function DarkModeProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useDarkMode = () => {
   const ctx = useContext(DarkModeContext);
   if (!ctx) throw new Error("useDarkMode must be used within DarkModeProvider");
@@ -196,6 +200,7 @@ export function RecentlyViewedProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useRecentlyViewed = () => {
   const ctx = useContext(RecentlyViewedContext);
   if (!ctx) throw new Error("useRecentlyViewed must be used within RecentlyViewedProvider");
