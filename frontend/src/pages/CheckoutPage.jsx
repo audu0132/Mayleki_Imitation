@@ -105,29 +105,44 @@ export default function CheckoutPage() {
           </div>
         </div>
         
-        <div className="container-luxury py-10">
-          <div className="grid lg:grid-cols-3 gap-10">
+        <div className="container-luxury py-10 md:py-12">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Delivery Form */}
-            <div className="lg:col-span-2">
-              <h2 className="font-playfair text-2xl font-bold mb-6">Delivery Details</h2>
-              <form id="checkout-form" onSubmit={handlePayment} className="grid sm:grid-cols-2 gap-4">
-                <input required type="text" placeholder="Full Name" value={address.name} onChange={(e)=>setAddress({...address, name: e.target.value})} className="input-luxury" />
-                <input required type="tel" placeholder="Phone Number" value={address.phone} onChange={(e)=>setAddress({...address, phone: e.target.value})} className="input-luxury" />
-                <input required type="text" placeholder="Address Line 1" value={address.addressLine1} onChange={(e)=>setAddress({...address, addressLine1: e.target.value})} className="input-luxury sm:col-span-2" />
-                <input required type="text" placeholder="City" value={address.city} onChange={(e)=>setAddress({...address, city: e.target.value})} className="input-luxury" />
-                <input required type="text" placeholder="PIN Code" value={address.pincode} onChange={(e)=>setAddress({...address, pincode: e.target.value})} className="input-luxury" />
+            <div className="lg:col-span-2 bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 border border-gold/10 shadow-card">
+              <h2 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-6">Delivery Details</h2>
+              <form id="checkout-form" onSubmit={handlePayment} className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Full Name *</label>
+                  <input required type="text" placeholder="e.g. Priya Sharma" value={address.name} onChange={(e)=>setAddress({...address, name: e.target.value})} className="input-luxury" />
+                </div>
+                <div>
+                  <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Phone Number *</label>
+                  <input required type="tel" placeholder="e.g. 9876543210" value={address.phone} onChange={(e)=>setAddress({...address, phone: e.target.value})} className="input-luxury" />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Address Line 1 *</label>
+                  <input required type="text" placeholder="Street, House/Flat No, Landmark" value={address.addressLine1} onChange={(e)=>setAddress({...address, addressLine1: e.target.value})} className="input-luxury" />
+                </div>
+                <div>
+                  <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">City *</label>
+                  <input required type="text" placeholder="e.g. Rahuri" value={address.city} onChange={(e)=>setAddress({...address, city: e.target.value})} className="input-luxury" />
+                </div>
+                <div>
+                  <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">PIN Code *</label>
+                  <input required type="text" placeholder="e.g. 413706" value={address.pincode} onChange={(e)=>setAddress({...address, pincode: e.target.value})} className="input-luxury" />
+                </div>
               </form>
             </div>
 
             {/* Order Summary */}
-            <div className="bg-gray-50 dark:bg-dark-brown-light p-6 rounded-2xl h-fit border border-gold/20">
-              <h2 className="font-playfair text-xl font-bold mb-4">Order Summary</h2>
+            <div className="bg-white dark:bg-dark-brown-light p-6 sm:p-8 rounded-2xl h-fit border border-gold/20 shadow-card">
+              <h2 className="font-playfair text-xl font-bold text-dark-brown dark:text-cream mb-4">Order Summary</h2>
               <div className="space-y-4 mb-6 max-h-64 overflow-y-auto">
                 {cart.map(item => (
                   <div key={`${item.id}-${item.type}`} className="flex gap-4 items-center">
-                    <img src={item.images && item.images.length > 0 ? item.images[0] : ""} alt={item.title} className="w-16 h-16 rounded-lg object-cover" />
+                    <img src={item.images && item.images.length > 0 ? item.images[0] : ""} alt={item.title} className="w-16 h-16 rounded-xl object-cover border border-gold/10" />
                     <div>
-                      <p className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream">{item.title}</p>
+                      <p className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream line-clamp-1">{item.title}</p>
                       <div className="flex items-center gap-2 mt-1">
                         <p className="font-poppins text-xs text-gray-500">Qty: {item.qty}</p>
                         <span className={`text-[10px] font-poppins font-semibold px-2 py-0.5 rounded-full ${
@@ -140,7 +155,7 @@ export default function CheckoutPage() {
                   </div>
                 ))}
               </div>
-              <div className="pt-4 border-t border-gold/20 flex justify-between font-bold">
+              <div className="pt-4 border-t border-gold/20 flex justify-between font-bold text-dark-brown dark:text-cream">
                 <span>Total Amount</span>
                 <span>₹{getCartTotal().toLocaleString("en-IN")}</span>
               </div>
@@ -154,3 +169,4 @@ export default function CheckoutPage() {
     </>
   );
 }
+
