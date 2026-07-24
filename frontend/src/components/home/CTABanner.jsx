@@ -5,7 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 export default function CTABanner() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-24 md:py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <img
@@ -33,11 +33,11 @@ export default function CTABanner() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <p className="section-subtitle mb-4">Book Your Bridal Look</p>
-            <h2 className="font-playfair text-5xl md:text-6xl font-bold text-cream mb-6 leading-tight">
+            <p className="section-subtitle">Book Your Bridal Look</p>
+            <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-cream mb-6 leading-tight">
               Make Your <span className="text-gold-gradient">Wedding Day</span> Unforgettable
             </h2>
-            <p className="font-poppins text-base text-cream/80 leading-relaxed mb-10 max-w-xl mx-auto">
+            <p className="font-poppins text-sm md:text-base text-cream/80 leading-relaxed mb-8 md:mb-10 max-w-xl mx-auto">
               From traditional Maharashtrian jewellery to modern bridal sets,
               we have everything to make you shine on your special day.
               Rental and purchase options available.
@@ -59,7 +59,7 @@ export default function CTABanner() {
             </div>
 
             {/* Contact strip */}
-            <div className="flex items-center justify-center gap-8 mt-10">
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mt-10">
               <a
                 href="https://wa.me/919876543210"
                 target="_blank"
@@ -69,7 +69,7 @@ export default function CTABanner() {
                 <FaWhatsapp className="w-4 h-4" />
                 +91 98765 43210
               </a>
-              <div className="w-px h-4 bg-white/30" />
+              <div className="hidden sm:block w-px h-4 bg-white/30" />
               <a
                 href="tel:+919876543210"
                 className="flex items-center gap-2 text-cream/70 hover:text-gold transition-colors font-poppins text-sm"
@@ -77,7 +77,7 @@ export default function CTABanner() {
                 <FiPhone className="w-4 h-4" />
                 Call Us
               </a>
-              <div className="w-px h-4 bg-white/30" />
+              <div className="hidden sm:block w-px h-4 bg-white/30" />
               <span className="font-poppins text-sm text-cream/70">
                 📍 Rahuri, Maharashtra
               </span>
@@ -88,3 +88,4 @@ export default function CTABanner() {
     </section>
   );
 }
+
