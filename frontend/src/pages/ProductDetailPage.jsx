@@ -89,7 +89,7 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-10">
+        <div className="container-luxury py-24">
           <div className="grid lg:grid-cols-2 gap-10 xl:gap-16">
 
             {/* ===== LEFT: Image Gallery ===== */}
@@ -373,20 +373,21 @@ export default function ProductDetailPage() {
 
           {/* Related Products */}
           {related.length > 0 && (
-            <div className="mt-20">
-              <div className="text-center mb-10">
-                <p className="section-subtitle mb-2">You May Also Like</p>
-                <h2 className="font-playfair text-3xl font-bold text-dark-brown dark:text-cream">
+            <div className="mt-16 md:mt-20">
+              <div className="text-center mb-12">
+                <p className="section-subtitle">You May Also Like</p>
+                <h2 className="font-playfair text-3xl md:text-4xl font-bold text-dark-brown dark:text-cream">
                   Related <span className="text-gold-gradient">Products</span>
                 </h2>
-                <div className="gold-divider mt-3" />
+                <div className="gold-divider" />
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 {related.map((p) => <ProductCard key={p.id} product={p} />)}
               </div>
             </div>
           )}
         </div>
+
 
         {/* Zoom Modal */}
         <AnimatePresence>
