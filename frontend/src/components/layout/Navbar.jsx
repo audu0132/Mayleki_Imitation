@@ -102,7 +102,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <div className="container-luxury">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 md:h-24">
 
             {/* LOGO */}
             <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
@@ -130,8 +130,9 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-1">
+            {/* DESKTOP NAV (gap-8) */}
+            <nav className="hidden lg:flex items-center gap-8">
+
               {NAV_LINKS.map((link) =>
                 link.hasDropdown ? (
                   <div
