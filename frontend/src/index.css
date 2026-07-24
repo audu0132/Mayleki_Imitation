@@ -80,140 +80,142 @@ h5, h6 {
    ============================================ */
 @layer components {
 
-  /* BUTTONS */
+  /* BUTTONS (12px top/bottom x 24px left/right = px-6 py-3, 44px min height) */
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
            font-poppins font-semibold text-dark-brown text-sm tracking-wide
            bg-gold-gradient rounded-full shadow-gold
-           hover:shadow-gold-lg hover:scale-105
+           hover:shadow-gold-lg hover:scale-[1.02]
            transition-all duration-300 ease-luxury
-           active:scale-95 cursor-pointer;
+           active:scale-95 cursor-pointer select-none;
   }
 
   .btn-gold-outline {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
            font-poppins font-semibold text-gold text-sm tracking-wide
            border-2 border-gold rounded-full
            hover:bg-gold hover:text-dark-brown hover:shadow-gold
            transition-all duration-300 ease-luxury
-           active:scale-95 cursor-pointer;
+           active:scale-95 cursor-pointer select-none;
   }
 
   .btn-dark {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
            font-poppins font-semibold text-cream text-sm tracking-wide
            bg-dark-brown rounded-full shadow-luxury
-           hover:bg-dark-brown-light hover:shadow-lg hover:scale-105
+           hover:bg-dark-brown-light hover:shadow-lg hover:scale-[1.02]
            transition-all duration-300 ease-luxury
-           active:scale-95 cursor-pointer;
+           active:scale-95 cursor-pointer select-none;
   }
 
   .btn-rose {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
            font-poppins font-semibold text-white text-sm tracking-wide
            bg-rose-gradient rounded-full shadow-rose-gold
-           hover:shadow-lg hover:scale-105
+           hover:shadow-lg hover:scale-[1.02]
            transition-all duration-300 ease-luxury
-           active:scale-95 cursor-pointer;
+           active:scale-95 cursor-pointer select-none;
   }
 
-  /* CARDS */
+  /* CARDS (24px - 32px padding = p-6 sm:p-8, rounded-2xl = 16px) */
   .card-luxury {
-    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover
+    @apply bg-white dark:bg-dark-brown-light rounded-2xl shadow-card hover:shadow-card-hover
+           p-6 sm:p-8 border border-gold/10
            transition-all duration-500 ease-luxury
            hover:-translate-y-1 overflow-hidden;
   }
 
   .card-glass {
     @apply backdrop-blur-md bg-white/10 border border-white/20
-           rounded-2xl shadow-glass;
+           rounded-2xl shadow-glass p-6 sm:p-8;
   }
 
   .card-gold-border {
-    @apply border border-gold/30 rounded-2xl bg-white
-           hover:border-gold hover:shadow-gold
+    @apply border border-gold/30 rounded-2xl bg-white dark:bg-dark-brown-light
+           p-6 sm:p-8 hover:border-gold hover:shadow-gold
            transition-all duration-300 ease-luxury;
   }
 
-  /* SECTION TITLES */
+  /* SECTION TITLES & TYPOGRAPHY SPACING */
   .section-title {
-    @apply font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-dark-brown;
+    @apply font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-dark-brown dark:text-cream leading-tight mb-3 md:mb-4;
   }
 
   .section-subtitle {
-    @apply font-poppins text-sm font-semibold tracking-[0.2em] uppercase text-gold;
+    @apply font-poppins text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-gold mb-2 md:mb-3 block;
   }
 
   .section-description {
-    @apply font-poppins text-gray-500 text-base leading-relaxed max-w-2xl;
+    @apply font-poppins text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-12 md:mb-16;
   }
 
   /* GOLD DIVIDER */
   .gold-divider {
-    @apply w-24 h-1 bg-gold-gradient rounded-full mx-auto;
+    @apply w-24 h-1 bg-gold-gradient rounded-full mx-auto my-4;
   }
 
   .gold-divider-left {
-    @apply w-24 h-1 bg-gold-gradient rounded-full;
+    @apply w-24 h-1 bg-gold-gradient rounded-full my-4;
   }
 
   /* BADGES */
   .badge-gold {
-    @apply inline-flex items-center gap-1 px-3 py-1 
+    @apply inline-flex items-center gap-1.5 px-3 py-1 
            bg-gold/10 text-gold border border-gold/30 
            rounded-full text-xs font-poppins font-semibold tracking-wide;
   }
 
   .badge-new {
-    @apply inline-flex items-center gap-1 px-2.5 py-0.5
-           bg-emerald-100 text-emerald-700 border border-emerald-200
+    @apply inline-flex items-center gap-1.5 px-3 py-1
+           bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800
            rounded-full text-xs font-poppins font-semibold;
   }
 
   .badge-sale {
-    @apply inline-flex items-center gap-1 px-2.5 py-0.5
-           bg-red-100 text-red-600 border border-red-200
+    @apply inline-flex items-center gap-1.5 px-3 py-1
+           bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-300 border border-red-200 dark:border-red-800
            rounded-full text-xs font-poppins font-semibold;
   }
 
   .badge-rental {
-    @apply inline-flex items-center gap-1 px-2.5 py-0.5
+    @apply inline-flex items-center gap-1.5 px-3 py-1
            bg-rose-gold/10 text-rose-gold border border-rose-gold/30
            rounded-full text-xs font-poppins font-semibold;
   }
 
-  /* INPUT STYLES */
+  /* INPUT STYLES (12px top/bottom x 16px left/right = px-4 py-3 min-h-[44px], rounded-xl = 12px) */
   .input-luxury {
-    @apply w-full px-4 py-3 rounded-xl border border-gold/20 
-           bg-white font-poppins text-sm text-dark-brown
+    @apply w-full px-4 py-3 min-h-[44px] rounded-xl border border-gold/20 
+           bg-white dark:bg-white/5 font-poppins text-sm text-dark-brown dark:text-cream
            focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold
-           placeholder:text-gray-400
+           placeholder:text-gray-400 dark:placeholder:text-gray-500
            transition-all duration-300;
   }
 
   /* GLASS PANEL */
   .glass-panel {
-    @apply backdrop-blur-xl bg-white/80 border border-white/50
-           rounded-3xl shadow-glass;
+    @apply backdrop-blur-xl bg-white/80 dark:bg-dark-brown/80 border border-white/50 dark:border-gold/10
+           rounded-2xl shadow-glass p-6 sm:p-8;
   }
 
-  /* PRODUCT CARD */
+  /* PRODUCT CARD (rounded-2xl = 16px) */
   .product-card {
-    @apply relative bg-white rounded-2xl overflow-hidden
+    @apply relative bg-white dark:bg-dark-brown-light rounded-2xl overflow-hidden
            shadow-card hover:shadow-gold
-           transition-all duration-500 ease-luxury hover:-translate-y-2
-           border border-transparent hover:border-gold/20;
+           transition-all duration-500 ease-luxury hover:-translate-y-1.5
+           border border-gold/10 hover:border-gold/30;
   }
 
   /* PAGE WRAPPER */
   .page-wrapper {
-    @apply min-h-screen bg-cream;
+    @apply min-h-screen bg-cream dark:bg-dark-brown;
   }
 
-  /* CONTAINER */
+  /* CONTAINER (Max-width 1280px = max-w-7xl, equal side padding px-4 sm:px-6 lg:px-8) */
   .container-luxury {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
 
   /* NAV LINK */
   .nav-link {
