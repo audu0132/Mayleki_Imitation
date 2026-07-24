@@ -66,7 +66,7 @@ export default function RegisterPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-md"
+            className="w-full max-w-md bg-white dark:bg-dark-brown-light p-8 sm:p-10 rounded-2xl shadow-card border border-gold/10"
           >
             <div className="text-center mb-8">
               <h1 className="font-playfair text-3xl font-bold text-dark-brown dark:text-cream">
@@ -78,9 +78,10 @@ export default function RegisterPage() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div>
-                <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Full Name</label>
+                <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Full Name *</label>
+
                 <div className="relative">
                   <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -93,7 +94,7 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Email Address</label>
+                <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Email Address</label>
                 <div className="relative">
                   <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -110,7 +111,7 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Phone Number</label>
+                <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Phone Number</label>
                 <div className="relative">
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-1">
                     <span className="font-poppins text-sm text-gray-500">+91</span>
@@ -130,7 +131,7 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Password</label>
+                <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Password</label>
                 <div className="relative">
                   <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -151,7 +152,7 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Confirm Password</label>
+                <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Confirm Password</label>
                 <div className="relative">
                   <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
