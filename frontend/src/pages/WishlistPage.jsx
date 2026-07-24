@@ -41,7 +41,7 @@ export default function WishlistPage() {
 
   return (
     <>
-      <Helmet><title>My Wishlist ({wishlist.length}) | Mayleki Jewellery</title></Helmet>
+      <Helmet><title>{`My Wishlist (${wishlist.length}) | Mayleki Jewellery`}</title></Helmet>
       <div className="page-wrapper">
         <div className="bg-dark-brown py-12 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
@@ -51,7 +51,10 @@ export default function WishlistPage() {
               <p className="font-poppins text-sm text-gray-400 mt-1">{wishlist.length} saved item{wishlist.length !== 1 ? "s" : ""}</p>
             </div>
             <button
-              onClick={() => { wishlist.forEach((p) => toggleWishlist(p)); }}
+              onClick={() => { 
+                const items = [...wishlist];
+                items.forEach((p) => toggleWishlist(p)); 
+              }}
               className="flex items-center gap-2 text-sm font-poppins text-red-400 hover:text-red-300 transition-colors"
             >
               <FiTrash2 className="w-4 h-4" /> Clear all
@@ -59,27 +62,28 @@ export default function WishlistPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-10">
+        <div className="container-luxury py-10 md:py-12">
           {/* Add all to cart */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-8">
             <p className="font-poppins text-sm text-gray-500">{wishlist.length} items saved</p>
             <button
               onClick={() => {
                 wishlist.forEach((p) => addToCart(p, 1, "purchase"));
                 toast.success("All items added to cart!", { icon: "🛒" });
               }}
-              className="btn-gold px-5 py-2.5 text-sm"
+              className="btn-gold px-6 py-3 text-sm"
             >
               <FiShoppingCart className="w-4 h-4" /> Add All to Cart
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
             {wishlist.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
+
       </div>
     </>
   );
