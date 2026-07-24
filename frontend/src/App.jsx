@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "react-hot-toast";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 
 import {
   CartProvider,
@@ -35,6 +35,7 @@ const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
 const RentalBookingPage = lazy(() => import("./pages/RentalBookingPage"));
 const OrderSuccessPage = lazy(() => import("./pages/OrderSuccessPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 // Admin
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
@@ -76,6 +77,12 @@ function MainLayout({ children }) {
   );
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, [pathname]);
+  return null;
+}
+
 export default function App() {
   return (
     <HelmetProvider>
@@ -98,6 +105,7 @@ export default function App() {
                       }}
                     />
                     <Suspense fallback={<LoadingSpinner />}>
+                      <ScrollToTop />
                       <Routes>
                         {/* Admin Routes (no Navbar/Footer) */}
                         <Route path="/admin" element={<AdminLayout />}>
@@ -197,6 +205,13 @@ export default function App() {
                         {/* Auth Routes (no Navbar/Footer) */}
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/register" element={<RegisterPage />} />
+
+                        {/* 404 Catch-all */}
+                        <Route path="*" element={
+                          <MainLayout>
+                            <NotFoundPage />
+                          </MainLayout>
+                        } />
                       </Routes>
                     </Suspense>
                   </BrowserRouter>
