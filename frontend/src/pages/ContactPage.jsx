@@ -51,8 +51,8 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16">
-          <div className="grid lg:grid-cols-2 gap-12">
+        <div className="container-luxury py-16 md:py-20">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12">
             {/* Left: Info */}
             <div>
               <motion.div
@@ -99,9 +99,9 @@ export default function ContactPage() {
                     href="https://wa.me/919876543210?text=Hi! I have an inquiry about Mayleki Jewellery."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-poppins font-semibold text-sm transition-colors"
+                    className="flex items-center gap-2 px-5 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-poppins font-semibold text-sm transition-colors shadow-sm"
                   >
-                    <FaWhatsapp className="w-4 h-4" /> WhatsApp Now
+                    <FaWhatsapp className="w-4 h-4" /> WhatsApp Us
                   </a>
                   <a
                     href="tel:+919876543210"
@@ -112,7 +112,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Google Maps embed */}
-                <div className="mt-8 rounded-3xl overflow-hidden shadow-luxury">
+                <div className="mt-8 rounded-2xl overflow-hidden shadow-luxury border border-gold/10">
                   <iframe
                     title="Mayleki Location"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15115.56388427!2d74.6497!3d19.3926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdc7e0b2f6b3a0f%3A0x5a4a3b2a1c8d9e7f!2sRahuri%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890123"
@@ -133,7 +133,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="bg-white dark:bg-dark-brown-light rounded-3xl p-8 shadow-luxury border border-gold/10">
+              <div className="bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 shadow-card border border-gold/10">
                 <h3 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-6">
                   Send us a Message
                 </h3>
