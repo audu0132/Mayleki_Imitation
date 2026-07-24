@@ -21,7 +21,7 @@ const FOOTER_LINKS = {
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Testimonials", href: "/testimonials" },
+    { label: "Testimonials", href: "/#testimonials" },
     { label: "Blog", href: "/blog" },
     { label: "Offers", href: "/offers" },
     { label: "FAQ", href: "/faq" },
@@ -49,36 +49,36 @@ const staggerContainer = {
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-brown text-cream relative overflow-hidden">
+    <footer className="bg-dark-brown text-cream relative overflow-hidden mt-16 md:mt-24">
 
       {/* Newsletter Section */}
       <div className="border-b border-white/10">
         <motion.div 
-          className="container-luxury py-10"
+          className="container-luxury py-12 md:py-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-playfair text-2xl font-bold text-cream">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div className="text-center md:text-left">
+              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-cream">
                 Stay Updated with <span className="text-gold-gradient">New Collections</span>
               </h3>
-              <p className="font-poppins text-sm text-gray-400 mt-1">
+              <p className="font-poppins text-sm text-gray-400 mt-1.5 max-w-lg">
                 Subscribe for exclusive offers, new arrivals, and bridal styling tips.
               </p>
             </div>
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex gap-3 w-full md:w-auto"
+              className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto"
             >
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="flex-1 md:w-72 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
+                placeholder="Enter your email address"
+                className="w-full sm:w-72 px-4 py-3 h-[44px] rounded-xl bg-white/10 border border-white/20 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
               />
-              <button type="submit" className="btn-gold whitespace-nowrap">
+              <button type="submit" className="btn-gold h-[44px] whitespace-nowrap w-full sm:w-auto">
                 Subscribe <FiArrowRight className="w-4 h-4" />
               </button>
             </form>
@@ -87,9 +87,9 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container-luxury py-16">
+      <div className="container-luxury pt-20 md:pt-24 pb-12 md:pb-16">
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -99,13 +99,13 @@ export default function Footer() {
           {/* Brand Column */}
           <motion.div variants={fadeInUp} className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-gold/30">
+              <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-gold/30 flex-shrink-0">
                 <img src="/logo.png" alt="Mayleki" className="w-full h-full object-cover"
                   onError={(e) => { e.target.style.display="none"; }} />
               </div>
               <div>
                 <h2 className="font-playfair text-2xl font-bold text-cream">Mayleki</h2>
-                <p className="font-poppins text-xs tracking-widest text-gold uppercase">
+                <p className="font-poppins text-xs tracking-widest text-gold uppercase font-semibold">
                   Imitation Jewellery
                 </p>
               </div>
@@ -117,21 +117,21 @@ export default function Footer() {
             </p>
 
             {/* Contact Info */}
-            <div className="space-y-3">
+            <div className="space-y-3.5">
               <a href="https://wa.me/919876543210" className="flex items-center gap-3 text-sm font-poppins text-gray-400 hover:text-gold transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20">
+                <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 flex-shrink-0">
                   <FaWhatsapp className="w-4 h-4 text-green-400" />
                 </div>
                 +91 98765 43210
               </a>
               <a href="tel:+919876543210" className="flex items-center gap-3 text-sm font-poppins text-gray-400 hover:text-gold transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20">
+                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 flex-shrink-0">
                   <FiPhone className="w-4 h-4 text-gold" />
                 </div>
                 +91 98765 43210
               </a>
               <a href="mailto:hello@mayleki.com" className="flex items-center gap-3 text-sm font-poppins text-gray-400 hover:text-gold transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20">
+                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 flex-shrink-0">
                   <FiMail className="w-4 h-4 text-gold" />
                 </div>
                 hello@mayleki.com
@@ -151,7 +151,7 @@ export default function Footer() {
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 pt-2">
               {[
                 { icon: FaWhatsapp, href: "https://wa.me/919876543210", bg: "bg-green-500", label: "WhatsApp" },
                 { icon: FiInstagram, href: "#", bg: "bg-gradient-to-br from-purple-500 to-rose-500", label: "Instagram" },
@@ -164,7 +164,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`w-9 h-9 rounded-full ${bg} flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200`}
+                  className={`w-10 h-10 rounded-full ${bg} flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200`}
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -178,14 +178,14 @@ export default function Footer() {
               Collections
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {FOOTER_LINKS.collections.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
                     className="font-poppins text-sm text-gray-400 hover:text-gold transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -199,14 +199,14 @@ export default function Footer() {
               Quick Links
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {FOOTER_LINKS.quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
                     className="font-poppins text-sm text-gray-400 hover:text-gold transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -220,14 +220,14 @@ export default function Footer() {
               Policies
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
             </h4>
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3.5 mb-8">
               {FOOTER_LINKS.policies.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
                     className="font-poppins text-sm text-gray-400 hover:text-gold transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -253,16 +253,16 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container-luxury py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-poppins text-xs text-gray-500 text-center">
-            © {new Date().getFullYear()} Mayleki Imitation Jewellery. All rights reserved.
-            Rahuri, Maharashtra.
+        <div className="container-luxury py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-poppins text-xs text-gray-500 text-center sm:text-left">
+            © {new Date().getFullYear()} Mayleki Imitation Jewellery. All rights reserved. Rahuri, Maharashtra.
           </p>
           <p className="font-poppins text-xs text-gray-500 flex items-center gap-1">
-            Made with <FiHeart className="w-3 h-3 text-rose-gold" /> for beautiful brides
+            Made with <FiHeart className="w-3.5 h-3.5 text-rose-gold" /> for beautiful brides
           </p>
         </div>
       </div>
+
     </footer>
   );
 }
