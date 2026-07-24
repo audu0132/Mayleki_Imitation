@@ -4,33 +4,33 @@ import { INSTAGRAM_POSTS } from "../../data/mockData";
 
 export default function InstagramGallery() {
   return (
-    <section className="py-20 bg-white dark:bg-dark-brown-dark">
+    <section className="py-24 md:py-32 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 md:mb-16"
         >
-          <p className="section-subtitle mb-3">Follow Us</p>
-          <h2 className="section-title mb-2">
+          <p className="section-subtitle">Follow Us</p>
+          <h2 className="section-title">
             <span className="text-gold-gradient">@mayleki.jewellery</span>
           </h2>
-          <div className="gold-divider mb-4" />
+          <div className="gold-divider" />
           <a
             href="https://www.instagram.com/mayleki.jewellery"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-poppins text-sm text-gray-500 hover:text-rose-gold transition-colors"
+            className="inline-flex items-center gap-2 font-poppins text-sm text-gray-500 hover:text-rose-gold transition-colors mt-2"
           >
             <FiInstagram className="w-4 h-4" />
             Follow us on Instagram for daily inspiration
           </a>
         </motion.div>
 
-        {/* Instagram Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 max-w-4xl mx-auto">
+        {/* Instagram Grid (gap-4 sm:gap-6 = 16px - 24px) */}
+        <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
           {INSTAGRAM_POSTS.map((post, i) => (
             <motion.a
               key={post.id}
@@ -42,7 +42,7 @@ export default function InstagramGallery() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.4 }}
               whileHover={{ scale: 1.03 }}
-              className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-100 block"
+              className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-100 dark:bg-white/5 block border border-gold/10"
             >
               <img
                 src={post.image}
@@ -69,7 +69,7 @@ export default function InstagramGallery() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-10"
+          className="text-center mt-12 md:mt-16"
         >
           <a
             href="https://www.instagram.com/mayleki.jewellery"
@@ -87,3 +87,4 @@ export default function InstagramGallery() {
     </section>
   );
 }
+
