@@ -62,9 +62,9 @@ export default function CartPage() {
 
   return (
     <>
-      <Helmet><title>Cart ({cart.length}) | Mayleki Jewellery</title></Helmet>
+      <Helmet><title>{`Cart (${cart.length}) | Mayleki Jewellery`}</title></Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-10 relative overflow-hidden">
+        <div className="bg-dark-brown py-12 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative">
             <h1 className="font-playfair text-4xl font-bold text-cream">Shopping Cart</h1>
@@ -72,8 +72,8 @@ export default function CartPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-8">
-          <div className="grid lg:grid-cols-3 gap-8">
+        <div className="container-luxury py-10 md:py-12">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
               <Link to="/products" className="flex items-center gap-2 text-sm font-poppins text-gold hover:underline mb-4 inline-flex">
@@ -90,8 +90,9 @@ export default function CartPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
-                    className="bg-white dark:bg-dark-brown-light rounded-2xl p-4 flex gap-4 border border-gold/10 hover:border-gold/30 transition-colors shadow-card"
+                    className="bg-white dark:bg-dark-brown-light rounded-2xl p-6 flex gap-4 border border-gold/10 hover:border-gold/30 transition-colors shadow-card"
                   >
+
                     <Link to={`/products/${item.slug}`} className="flex-shrink-0">
                       <img
                         src={item.images[0]}
