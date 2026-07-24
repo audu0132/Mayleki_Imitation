@@ -46,7 +46,7 @@ export default function ProductCard({ product, onQuickView }) {
   };
 
   return (
-    <Link to={`/products/${product.slug}`} className="product-card block group">
+    <Link to={`/products/${product.slug}`} className="product-card h-full flex flex-col justify-between block group">
       {/* Image Container */}
       <div className="relative overflow-hidden aspect-product bg-cream">
         <img
@@ -137,8 +137,8 @@ export default function ProductCard({ product, onQuickView }) {
         )}
       </div>
 
-      {/* Content */}
-      <div className="p-4">
+      {/* Content (p-6 sm:p-8 = 24px - 32px) */}
+      <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
         {/* Category */}
         <p className="font-poppins text-xs text-gold font-semibold tracking-wider uppercase mb-1">
           {product.category.replace(/-/g, " ")}
@@ -162,20 +162,20 @@ export default function ProductCard({ product, onQuickView }) {
         </div>
 
         {/* Price Row */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-playfair text-xl font-bold text-dark-brown dark:text-cream">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-playfair text-lg sm:text-xl font-bold text-dark-brown dark:text-cream">
                 {formatPrice(discountedPrice)}
               </span>
               {product.discount > 0 && (
-                <span className="font-poppins text-sm text-gray-400 line-through">
+                <span className="font-poppins text-xs sm:text-sm text-gray-400 line-through">
                   {formatPrice(product.sellingPrice)}
                 </span>
               )}
             </div>
             {product.isRentalAvailable && product.rentalPrice > 0 && (
-              <p className="font-poppins text-xs text-rose-gold font-medium">
+              <p className="font-poppins text-xs text-rose-gold font-medium mt-0.5">
                 Rent from {formatPrice(product.rentalPrice)}/day
               </p>
             )}
@@ -186,7 +186,7 @@ export default function ProductCard({ product, onQuickView }) {
             whileTap={{ scale: 0.95 }}
             onClick={handleAddToCart}
             disabled={product.availableQty === 0}
-            className="w-9 h-9 rounded-full bg-gold text-dark-brown hover:bg-gold-dark hover:shadow-gold flex items-center justify-center transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-10 h-10 rounded-full bg-gold text-dark-brown hover:bg-gold-dark hover:shadow-gold flex items-center justify-center transition-all duration-200 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed"
             title="Add to Cart"
           >
             <FiShoppingCart className="w-4 h-4" />
@@ -196,3 +196,4 @@ export default function ProductCard({ product, onQuickView }) {
     </Link>
   );
 }
+
