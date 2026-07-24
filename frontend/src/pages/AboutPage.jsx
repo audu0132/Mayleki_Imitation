@@ -34,21 +34,21 @@ export default function AboutPage() {
         </div>
 
         {/* Values */}
-        <section className="py-20 bg-cream dark:bg-dark-brown">
+        <section className="py-20 md:py-24 bg-cream dark:bg-dark-brown">
           <div className="container-luxury">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-              <p className="section-subtitle mb-3">What Drives Us</p>
-              <h2 className="section-title mb-4">Our <span className="text-gold-gradient">Mission & Values</span></h2>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
+              <p className="section-subtitle">What Drives Us</p>
+              <h2 className="section-title">Our <span className="text-gold-gradient">Mission & Values</span></h2>
               <div className="gold-divider" />
             </motion.div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
               {[
                 { icon: "👑", title: "Premium Quality", desc: "Every piece is crafted with meticulous attention to detail, using the finest materials to ensure long-lasting beauty." },
                 { icon: "💰", title: "Affordable Luxury", desc: "We believe luxury jewellery should be accessible to every bride. Our prices make premium jewellery available to all." },
                 { icon: "🤝", title: "Customer First", desc: "Your satisfaction is our priority. From browsing to wearing your jewellery, we ensure a seamless, joyful experience." },
               ].map((v, i) => (
                 <motion.div key={v.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="card-luxury p-8 text-center">
+                  className="card-luxury text-center">
                   <span className="text-5xl mb-4 block">{v.icon}</span>
                   <h3 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-3">{v.title}</h3>
                   <p className="font-poppins text-sm text-gray-500 leading-relaxed">{v.desc}</p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats */}
-        <section className="py-16 bg-dark-brown">
+        <section className="py-20 md:py-24 bg-dark-brown">
           <div className="container-luxury">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
@@ -79,7 +79,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-cream dark:bg-dark-brown text-center">
+        <section className="py-20 md:py-24 bg-cream dark:bg-dark-brown text-center">
           <div className="container-luxury">
             <h2 className="font-playfair text-4xl font-bold text-dark-brown dark:text-cream mb-4">
               Visit Us in <span className="text-gold-gradient">Rahuri</span>
@@ -94,6 +94,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
       </div>
     </>
   );
