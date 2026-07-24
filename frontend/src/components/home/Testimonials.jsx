@@ -32,7 +32,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="py-20 bg-cream dark:bg-dark-brown overflow-hidden"
+      className="py-24 md:py-32 bg-cream dark:bg-dark-brown overflow-hidden"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
@@ -42,13 +42,13 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <p className="section-subtitle mb-3">Happy Brides</p>
-          <h2 className="section-title mb-4">
+          <p className="section-subtitle">Happy Brides</p>
+          <h2 className="section-title">
             What Our <span className="text-gold-gradient">Customers Say</span>
           </h2>
-          <div className="gold-divider mb-4" />
+          <div className="gold-divider" />
         </motion.div>
 
         {/* Carousel */}
@@ -86,11 +86,11 @@ export default function Testimonials() {
                     onClick={!isCenter ? (isLeft ? prev : next) : undefined}
                     style={{ cursor: !isCenter ? "pointer" : "default" }}
                   >
-                    <div className={`bg-white dark:bg-dark-brown-light rounded-3xl p-8 shadow-card ${
-                      isCenter ? "border border-gold/30 shadow-gold-lg" : "border border-gray-100"
+                    <div className={`bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 shadow-card ${
+                      isCenter ? "border border-gold/30 shadow-gold-lg" : "border border-gold/10"
                     }`}>
                       {/* Quote icon */}
-                      <div className="text-gold text-5xl font-playfair leading-none mb-4 opacity-40">"</div>
+                      <div className="text-gold text-5xl font-playfair leading-none mb-3 opacity-40">"</div>
 
                       {/* Review */}
                       <p className={`font-poppins text-dark-brown dark:text-cream leading-relaxed mb-6 ${
@@ -163,3 +163,4 @@ export default function Testimonials() {
     </section>
   );
 }
+
