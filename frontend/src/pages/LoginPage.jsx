@@ -37,32 +37,32 @@ export default function LoginPage() {
       <Helmet><title>Login | Mayleki Jewellery</title></Helmet>
       <div className="min-h-screen bg-cream dark:bg-dark-brown flex">
         {/* Left: Image */}
-        <div className="hidden lg:block lg:w-1/2 relative">
+        <div className="hidden lg:block lg:w-[40%] relative">
           <img
             src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=900"
             alt="Jewellery"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/80 to-dark-brown/40" />
-          <div className="absolute bottom-16 left-12 right-12">
-            <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-gold/30 mb-4">
+          <div className="absolute bottom-24 left-12 right-12 lg:left-16 lg:right-16">
+            <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-gold/30 mb-6">
               <img src="/logo.png" alt="Mayleki" className="w-full h-full object-cover" onError={(e) => e.target.style.display = "none"} />
             </div>
-            <h2 className="font-playfair text-4xl font-bold text-cream mb-3">
-              Welcome back to <span className="text-gold-gradient">Mayleki</span>
+            <h2 className="font-playfair text-4xl lg:text-5xl font-bold text-cream mb-6">
+              Welcome back to <br/><span className="text-gold-gradient">Mayleki</span>
             </h2>
-            <p className="font-poppins text-sm text-cream/70 leading-relaxed">
+            <p className="font-poppins text-base text-cream/70 leading-relaxed pb-12">
               Login to access your orders, wishlist, rental history and exclusive offers.
             </p>
           </div>
         </div>
 
         {/* Right: Form */}
-        <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
+        <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12 lg:py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-md"
+            className="w-full max-w-[500px] bg-white dark:bg-dark-brown-light p-10 sm:p-12 rounded-2xl shadow-card border border-gold/10"
           >
             <div className="text-center mb-8">
               <h1 className="font-playfair text-3xl font-bold text-dark-brown dark:text-cream">
@@ -76,18 +76,19 @@ export default function LoginPage() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Email */}
               <div>
-                <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">
-                  Email Address
+                <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">
+                  Email Address *
                 </label>
+
                 <div className="relative">
                   <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
                     type="email"
                     placeholder="you@example.com"
-                    className={`input-luxury pl-11 ${errors.email ? "border-red-400 focus:ring-red-200" : ""}`}
+                    className={`input-luxury h-[56px] pl-11 ${errors.email ? "border-red-400 focus:ring-red-200" : ""}`}
                     {...register("email", {
                       required: "Email is required",
                       pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
@@ -99,7 +100,7 @@ export default function LoginPage() {
 
               {/* Password */}
               <div>
-                <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">
+                <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">
                   Password
                 </label>
                 <div className="relative">
@@ -107,7 +108,7 @@ export default function LoginPage() {
                   <input
                     type={showPass ? "text" : "password"}
                     placeholder="••••••••"
-                    className={`input-luxury pl-11 pr-12 ${errors.password ? "border-red-400 focus:ring-red-200" : ""}`}
+                    className={`input-luxury h-[56px] pl-11 pr-12 ${errors.password ? "border-red-400 focus:ring-red-200" : ""}`}
                     {...register("password", {
                       required: "Password is required",
                       minLength: { value: 6, message: "Minimum 6 characters" },
@@ -125,7 +126,7 @@ export default function LoginPage() {
               </div>
 
               <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 cursor-pointer">
+                <label className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" className="w-4 h-4 accent-gold rounded" />
                   <span className="font-poppins text-sm text-gray-500">Remember me</span>
                 </label>
@@ -137,7 +138,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="btn-gold w-full py-4 text-base disabled:opacity-60"
+                className="btn-gold w-full h-[56px] text-base font-semibold disabled:opacity-60 flex justify-center items-center"
               >
                 {isLoading ? (
                   <span className="flex items-center gap-2">
@@ -149,23 +150,31 @@ export default function LoginPage() {
             </form>
 
             {/* Demo accounts */}
-            <div className="mt-6 p-4 rounded-2xl bg-gold/5 border border-gold/20">
-              <p className="font-poppins text-xs font-semibold text-gold mb-2">Demo Accounts:</p>
-              <div className="space-y-1">
-                <p className="font-poppins text-xs text-gray-500">Admin: admin@mayleki.com / admin123</p>
-                <p className="font-poppins text-xs text-gray-500">Customer: any@email.com / any password</p>
+            <div className="mt-8 p-6 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
+              <p className="font-poppins text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">Demo Accounts</p>
+              <div className="space-y-2">
+                <p className="font-poppins text-sm text-gray-600 dark:text-gray-300">
+                  Admin: <span className="font-medium text-dark-brown dark:text-cream">admin@mayleki.com</span> / admin123
+                </p>
+                <p className="font-poppins text-sm text-gray-600 dark:text-gray-300">
+                  Customer: <span className="font-medium text-dark-brown dark:text-cream">any@email.com</span> / any password
+                </p>
               </div>
             </div>
 
-            <div className="mt-6 text-center">
-              <p className="font-poppins text-sm text-gray-400 mb-4">Or contact us directly</p>
+            <div className="mt-8">
+              <div className="relative flex items-center mb-6">
+                <div className="flex-grow border-t border-gray-200 dark:border-gray-800"></div>
+                <span className="flex-shrink-0 mx-4 font-poppins text-xs text-gray-400 uppercase tracking-wider">Or contact us</span>
+                <div className="flex-grow border-t border-gray-200 dark:border-gray-800"></div>
+              </div>
               <a
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-500 text-white font-poppins font-semibold text-sm hover:bg-green-600 transition-colors"
+                className="flex items-center justify-center gap-3 w-full h-[56px] rounded-xl border border-green-500/30 bg-green-50/50 dark:bg-green-500/5 text-green-600 dark:text-green-500 font-poppins font-semibold text-sm hover:bg-green-50 dark:hover:bg-green-500/10 transition-colors"
               >
-                <FaWhatsapp className="w-4 h-4" /> Login via WhatsApp
+                <FaWhatsapp className="w-5 h-5" /> Login via WhatsApp
               </a>
             </div>
           </motion.div>
