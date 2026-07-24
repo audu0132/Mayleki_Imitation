@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { FiGrid, FiList, FiX, FiChevronDown, FiSliders } from "react-icons/fi";
@@ -92,7 +92,7 @@ export default function ProductListingPage() {
 
       <div className="page-wrapper">
         {/* Page Header */}
-        <div className="bg-dark-brown py-12 relative overflow-hidden">
+        <div className="bg-dark-brown py-24 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative text-center">
             {category ? (
@@ -130,7 +130,7 @@ export default function ProductListingPage() {
         <div className="bg-white dark:bg-dark-brown-light border-b border-gold/10">
           <div className="container-luxury py-3">
             <nav className="flex items-center gap-2 font-poppins text-sm text-gray-400">
-              <a href="/" className="hover:text-gold transition-colors">Home</a>
+              <Link to="/" className="hover:text-gold transition-colors">Home</Link>
               <span>/</span>
               {category ? (
                 <span className="text-dark-brown dark:text-cream font-medium">{category.name}</span>
@@ -141,9 +141,8 @@ export default function ProductListingPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-8">
-          {/* Toolbar */}
-          <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
+        <div className="container-luxury py-10 md:py-12">
+          <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setFiltersOpen(!filtersOpen)}
@@ -177,7 +176,6 @@ export default function ProductListingPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              {/* Sort */}
               <div className="relative">
                 <select
                   value={sortBy}
@@ -191,7 +189,6 @@ export default function ProductListingPage() {
                 <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
               </div>
 
-              {/* View toggle */}
               <div className="flex items-center border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden">
                 <button
                   onClick={() => setViewMode("grid")}
@@ -209,51 +206,87 @@ export default function ProductListingPage() {
             </div>
           </div>
 
-          <div className="flex gap-6">
-            {/* Sidebar Filters */}
+          <div className="flex gap-8 lg:gap-10">
             <AnimatePresence>
               {filtersOpen && (
                 <motion.aside
                   initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 260, opacity: 1 }}
+                  animate={{ width: 280, opacity: 1 }}
                   exit={{ width: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="flex-shrink-0 overflow-hidden"
+                  className="overflow-hidden flex-shrink-0"
                 >
-                  <div className="w-[260px] bg-white dark:bg-dark-brown-light rounded-2xl border border-gold/10 p-5 space-y-6">
+                  <div className="w-[280px] bg-white dark:bg-dark-brown-light rounded-2xl p-6 border border-gold/10 space-y-6">
+                    <div className="flex items-center justify-between border-b border-gold/10 pb-4">
+                      <h3 className="font-playfair font-bold text-lg text-dark-brown dark:text-cream">Filters</h3>
+                      <button onClick={() => setFiltersOpen(false)} className="text-gray-400 hover:text-gold">
+                        <FiX className="w-5 h-5" />
+                      </button>
+                    </div>
 
-                    {/* Price Range */}
                     <div>
-                      <h4 className="font-poppins font-semibold text-sm text-dark-brown dark:text-cream mb-3">Price Range (₹)</h4>
-                      <div className="flex gap-2">
+                      <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Occasion</h4>
+                      <div className="space-y-2">
+                        {OCCASIONS.map((occ) => (
+                          <label key={occ} className="flex items-center gap-2.5 cursor-pointer group">
+                            <input
+                              type="checkbox"
+                              checked={filters.occasion.includes(occ)}
+                              onChange={() => toggleFilter("occasion", occ)}
+                              className="rounded text-gold focus:ring-gold"
+                            />
+                            <span className="font-poppins text-sm text-dark-brown dark:text-cream group-hover:text-gold transition-colors">{occ}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Color / Polish</h4>
+                      <div className="space-y-2">
+                        {COLORS.map((col) => (
+                          <label key={col} className="flex items-center gap-2.5 cursor-pointer group">
+                            <input
+                              type="checkbox"
+                              checked={filters.color.includes(col)}
+                              onChange={() => toggleFilter("color", col)}
+                              className="rounded text-gold focus:ring-gold"
+                            />
+                            <span className="font-poppins text-sm text-dark-brown dark:text-cream group-hover:text-gold transition-colors">{col}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Price Range</h4>
+                      <div className="grid grid-cols-2 gap-2">
                         <input
                           type="number"
-                          placeholder="Min"
+                          placeholder="Min ₹"
                           value={filters.priceMin}
                           onChange={(e) => setFilters(p => ({ ...p, priceMin: e.target.value }))}
-                          className="input-luxury text-xs py-2"
+                          className="input-luxury text-xs py-2 px-3"
                         />
                         <input
                           type="number"
-                          placeholder="Max"
+                          placeholder="Max ₹"
                           value={filters.priceMax}
                           onChange={(e) => setFilters(p => ({ ...p, priceMax: e.target.value }))}
-                          className="input-luxury text-xs py-2"
+                          className="input-luxury text-xs py-2 px-3"
                         />
                       </div>
                     </div>
 
-                    {/* Availability */}
                     <div>
-                      <h4 className="font-poppins font-semibold text-sm text-dark-brown dark:text-cream mb-3">Availability</h4>
+                      <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Availability</h4>
                       <div className="space-y-2">
-                        {[{ value: "all", label: "All Items" }, { value: "instock", label: "In Stock" }, { value: "rental", label: "Rental Available" }].map((opt) => (
-                          <label key={opt.value} className="flex items-center gap-2 cursor-pointer group">
-                            <div className={`w-4 h-4 rounded border-2 transition-all flex items-center justify-center ${
-                              filters.availability === opt.value ? "border-gold bg-gold" : "border-gray-300 group-hover:border-gold"
-                            }`}>
-                              {filters.availability === opt.value && <span className="text-dark-brown text-[8px]">✓</span>}
-                            </div>
+                        {[
+                          { label: "All Items", value: "all" },
+                          { label: "In Stock Only", value: "inStock" },
+                          { label: "Available for Rent", value: "rental" },
+                        ].map((opt) => (
+                          <label key={opt.value} className="flex items-center gap-2.5 cursor-pointer group">
                             <input
                               type="radio"
                               className="hidden"
@@ -331,8 +364,8 @@ export default function ProductListingPage() {
                   layout
                   className={
                     viewMode === "grid"
-                      ? "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4"
-                      : "flex flex-col gap-4"
+                      ? "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8"
+                      : "flex flex-col gap-6"
                   }
                 >
                   {filteredProducts.map((product, i) => (
@@ -343,7 +376,54 @@ export default function ProductListingPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.04 }}
                     >
-                      <ProductCard product={product} />
+                      {viewMode === "list" ? (
+                        <Link
+                          to={`/products/${product.slug}`}
+                          className="flex gap-4 bg-white dark:bg-dark-brown-light rounded-2xl border border-gold/10 hover:border-gold/30 hover:shadow-gold overflow-hidden transition-all duration-300 group"
+                        >
+                          <div className="w-28 h-28 sm:w-36 sm:h-36 flex-shrink-0 overflow-hidden bg-cream">
+                            <img
+                              src={product.images[0]}
+                              alt={product.title}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0 p-4 flex flex-col justify-between">
+                            <div>
+                              <p className="font-poppins text-xs text-gold font-semibold tracking-wider uppercase mb-1">
+                                {product.category.replace(/-/g, " ")}
+                              </p>
+                              <h3 className="font-playfair text-base font-bold text-dark-brown dark:text-cream group-hover:text-gold transition-colors line-clamp-1">
+                                {product.title}
+                              </h3>
+                              <p className="font-poppins text-xs text-gray-400 line-clamp-2 mt-1">
+                                {product.description}
+                              </p>
+                            </div>
+                            <div className="flex items-center justify-between mt-3">
+                              <div>
+                                <span className="font-playfair text-lg font-bold text-dark-brown dark:text-cream">
+                                  ₹{product.sellingPrice.toLocaleString("en-IN")}
+                                </span>
+                                {product.isRentalAvailable && (
+                                  <p className="font-poppins text-xs text-rose-gold">
+                                    Rent ₹{product.rentalPrice}/day
+                                  </p>
+                                )}
+                              </div>
+                              <div className="flex items-center gap-1">
+                                {Array.from({ length: 5 }).map((_, j) => (
+                                  <span key={j} className={`text-xs ${j < Math.floor(product.rating) ? "text-gold" : "text-gray-300"}`}>★</span>
+                                ))}
+                                <span className="font-poppins text-xs text-gray-400 ml-1">({product.reviews})</span>
+                              </div>
+                            </div>
+                          </div>
+                        </Link>
+                      ) : (
+                        <ProductCard product={product} />
+                      )}
                     </motion.div>
                   ))}
                 </motion.div>
