@@ -23,7 +23,7 @@ export default function FeaturedBridal() {
   const hasMore = allFiltered.length > 8 && !showAll;
 
   return (
-    <section className="py-24 md:py-32 bg-white dark:bg-[#1A1414]">
+    <section className="py-16 md:py-24 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
