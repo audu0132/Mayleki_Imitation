@@ -13,20 +13,20 @@ export default function AdminProducts() {
   return (
     <>
       <Helmet><title>Products | Mayleki Admin</title></Helmet>
-      <div className="p-6">
+      <div className="p-6 sm:p-8 space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
-            <h1 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream">Products</h1>
-            <p className="font-poppins text-sm text-gray-400">Manage your jewellery inventory</p>
+            <h1 className="font-playfair text-3xl font-bold text-dark-brown dark:text-cream">Products</h1>
+            <p className="font-poppins text-sm text-gray-400 mt-1">{PRODUCTS.length} total products in catalog</p>
           </div>
-          <button className="btn-gold px-5 py-2.5 text-sm">
-            <FiPlus className="w-4 h-4" /> Add Product
+          <button className="btn-gold text-sm px-5 py-2.5 flex items-center gap-2">
+            <FiPlus className="w-4 h-4" /> Add New Product
           </button>
         </div>
 
-        {/* Search & Filters */}
-        <div className="flex gap-3 mb-6">
+        {/* Toolbar */}
+        <div className="flex items-center gap-4 flex-wrap">
           <div className="relative flex-1 max-w-sm">
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
@@ -42,13 +42,13 @@ export default function AdminProducts() {
         </div>
 
         {/* Table */}
-        <div className="bg-white dark:bg-dark-brown-light rounded-2xl border border-gold/10 overflow-hidden">
+        <div className="bg-white dark:bg-dark-brown-light rounded-2xl border border-gold/10 overflow-hidden shadow-card">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50 dark:bg-white/5 border-b border-gold/10">
                 <tr>
                   {["Product", "SKU", "Category", "Price", "Rental", "Stock", "Status", "Actions"].map((h) => (
-                    <th key={h} className="px-4 py-3 text-left font-poppins text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    <th key={h} className="px-6 py-4 text-left font-poppins text-xs font-semibold text-gray-400 uppercase tracking-wider">
                       {h}
                     </th>
                   ))}
@@ -62,7 +62,7 @@ export default function AdminProducts() {
                     animate={{ opacity: 1 }}
                     className="hover:bg-gold/5 transition-colors"
                   >
-                    <td className="px-4 py-3">
+                    <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <img src={product.images[0]} alt={product.title} className="w-10 h-10 rounded-lg object-cover" />
                         <div>
@@ -75,7 +75,7 @@ export default function AdminProducts() {
                     <td className="px-4 py-3 font-poppins text-xs text-gray-500 capitalize">{product.category.replace(/-/g, " ")}</td>
                     <td className="px-4 py-3 font-poppins text-sm font-semibold text-dark-brown dark:text-cream">₹{product.sellingPrice.toLocaleString("en-IN")}</td>
                     <td className="px-4 py-3 font-poppins text-xs text-rose-gold">{product.isRentalAvailable ? `₹${product.rentalPrice}/day` : "—"}</td>
-                    <td className="px-4 py-3 font-poppins text-sm text-dark-brown dark:text-cream">{product.stock}</td>
+                    <td className="px-4 py-3 font-poppins text-sm text-dark-brown dark:text-cream">{product.availableQty}</td>
                     <td className="px-4 py-3">
                       <span className={`text-[10px] font-poppins font-semibold px-2.5 py-1 rounded-full ${
                         product.availableQty > 0 ? "bg-green-100 text-green-600" : "bg-red-100 text-red-500"
