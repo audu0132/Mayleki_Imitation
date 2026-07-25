@@ -68,7 +68,7 @@ export default function AdminDashboard() {
   return (
     <>
       <Helmet><title>Dashboard | Mayleki Admin</title></Helmet>
-      <div className="p-6 space-y-6">
+      <div className="p-6 sm:p-8 space-y-6 lg:space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -85,19 +85,20 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Stat Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+        {/* Stat Cards (gap-6 = 24px) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
           {STAT_CARDS.map((card, i) => (
             <motion.div
               key={card.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.07 }}
-              className="bg-white dark:bg-dark-brown-light rounded-2xl p-5 border border-gold/10 hover:border-gold/30 hover:shadow-card transition-all duration-300"
+              className="bg-white dark:bg-dark-brown-light rounded-2xl p-6 border border-gold/10 hover:border-gold/30 hover:shadow-card transition-all duration-300"
             >
-              <div className={`w-10 h-10 rounded-xl ${card.color} flex items-center justify-center mb-3`}>
-                <card.icon className="w-5 h-5" />
+              <div className={`w-12 h-12 rounded-xl ${card.color} flex items-center justify-center mb-3`}>
+                <card.icon className="w-6 h-6" />
               </div>
+
               <p className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream">{card.value}</p>
               <p className="font-poppins text-xs text-gray-400 mt-0.5">{card.label}</p>
               <div className={`flex items-center gap-1 mt-2 font-poppins text-xs font-semibold ${card.up ? "text-green-500" : "text-red-400"}`}>
