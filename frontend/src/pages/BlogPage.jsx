@@ -11,7 +11,7 @@ export default function BlogPage() {
         <meta name="description" content="Bridal jewellery tips, styling guides, jewellery care and fashion trends from Mayleki." />
       </Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-16 relative overflow-hidden">
+        <div className="bg-dark-brown py-16 md:py-24 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative text-center">
             <p className="section-subtitle mb-3">Our Stories</p>
@@ -21,7 +21,7 @@ export default function BlogPage() {
             <div className="gold-divider mt-4" />
           </div>
         </div>
-        <div className="container-luxury py-16">
+        <div className="container-luxury py-16 md:py-24">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {BLOG_POSTS.map((post, i) => (
               <motion.article
