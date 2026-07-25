@@ -14,7 +14,7 @@ export default function OffersPage() {
     <>
       <Helmet><title>Offers & Deals | Mayleki Jewellery</title></Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-16 text-center relative overflow-hidden">
+        <div className="bg-dark-brown py-16 md:py-24 text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="relative">
             <p className="section-subtitle mb-3">Save More</p>
@@ -24,7 +24,7 @@ export default function OffersPage() {
             <div className="gold-divider mt-4 mx-auto" />
           </div>
         </div>
-        <div className="container-luxury py-16">
+        <div className="container-luxury py-16 md:py-24">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {OFFERS.map((offer, i) => (
               <motion.div
