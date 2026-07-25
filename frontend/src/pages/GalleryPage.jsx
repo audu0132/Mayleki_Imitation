@@ -30,7 +30,7 @@ export default function GalleryPage() {
             <div className="gold-divider mt-4 mx-auto" />
           </div>
         </div>
-        <div className="container-luxury py-12">
+        <div className="container-luxury py-16 md:py-24">
           <div className="columns-2 sm:columns-3 md:columns-4 gap-4 space-y-4">
             {allImages.map((img, i) => (
               <motion.div
