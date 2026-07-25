@@ -105,7 +105,7 @@ export default function CheckoutPage() {
           </div>
         </div>
         
-        <div className="container-luxury py-10 md:py-12">
+        <div className="container-luxury py-16 md:py-24">
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Delivery Form */}
             <div className="lg:col-span-2 bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 border border-gold/10 shadow-card">
@@ -159,7 +159,7 @@ export default function CheckoutPage() {
                 <span>Total Amount</span>
                 <span>₹{getCartTotal().toLocaleString("en-IN")}</span>
               </div>
-              <button form="checkout-form" type="submit" disabled={loading} className="btn-gold w-full mt-6 py-4 text-sm uppercase tracking-widest">
+              <button form="checkout-form" type="submit" disabled={loading} className="btn-gold w-full mt-6 text-sm uppercase tracking-widest">
                 {loading ? "Processing..." : `Pay ₹${getCartTotal().toLocaleString("en-IN")}`}
               </button>
             </div>
