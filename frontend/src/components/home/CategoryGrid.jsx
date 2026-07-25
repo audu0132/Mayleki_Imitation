@@ -17,7 +17,7 @@ const itemVariants = {
 
 export default function CategoryGrid() {
   return (
-    <section className="py-24 md:py-32 bg-cream dark:bg-dark-brown">
+    <section className="py-16 md:py-24 bg-cream dark:bg-dark-brown">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
