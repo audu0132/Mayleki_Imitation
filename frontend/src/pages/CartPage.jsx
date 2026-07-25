@@ -51,7 +51,7 @@ export default function CartPage() {
             <p className="font-poppins text-gray-500 mb-8">
               Discover our stunning jewellery collection and add your favorites!
             </p>
-            <Link to="/products" className="btn-gold text-base px-8 py-4">
+            <Link to="/products" className="btn-gold text-base px-8">
               <FiShoppingBag className="w-5 h-5" /> Explore Collections
             </Link>
           </div>
@@ -72,7 +72,7 @@ export default function CartPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-10 md:py-12">
+        <div className="container-luxury py-16 md:py-24">
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
@@ -220,7 +220,7 @@ export default function CartPage() {
 
                 <button
                   onClick={() => navigate("/checkout")}
-                  className="btn-gold w-full py-4 text-base"
+                  className="btn-gold w-full text-base"
                 >
                   Proceed to Checkout →
                 </button>
