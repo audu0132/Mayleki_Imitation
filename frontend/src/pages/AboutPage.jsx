@@ -34,7 +34,7 @@ export default function AboutPage() {
         </div>
 
         {/* Values */}
-        <section className="py-20 md:py-24 bg-cream dark:bg-dark-brown">
+        <section className="py-16 md:py-24 bg-cream dark:bg-dark-brown">
           <div className="container-luxury">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12 md:mb-16">
               <p className="section-subtitle">What Drives Us</p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats */}
-        <section className="py-20 md:py-24 bg-dark-brown">
+        <section className="py-16 md:py-24 bg-dark-brown">
           <div className="container-luxury">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
@@ -79,7 +79,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 md:py-24 bg-cream dark:bg-dark-brown text-center">
+        <section className="py-16 md:py-24 bg-cream dark:bg-dark-brown text-center">
           <div className="container-luxury">
             <h2 className="font-playfair text-4xl font-bold text-dark-brown dark:text-cream mb-4">
               Visit Us in <span className="text-gold-gradient">Rahuri</span>
