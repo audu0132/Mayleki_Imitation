@@ -88,7 +88,7 @@ export default function LoginPage() {
                   <input
                     type="email"
                     placeholder="you@example.com"
-                    className={`input-luxury h-[56px] pl-11 ${errors.email ? "border-red-400 focus:ring-red-200" : ""}`}
+                    className={`input-luxury pl-11 ${errors.email ? "border-red-400 focus:ring-red-200" : ""}`}
                     {...register("email", {
                       required: "Email is required",
                       pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
@@ -108,7 +108,7 @@ export default function LoginPage() {
                   <input
                     type={showPass ? "text" : "password"}
                     placeholder="••••••••"
-                    className={`input-luxury h-[56px] pl-11 pr-12 ${errors.password ? "border-red-400 focus:ring-red-200" : ""}`}
+                    className={`input-luxury pl-11 pr-12 ${errors.password ? "border-red-400 focus:ring-red-200" : ""}`}
                     {...register("password", {
                       required: "Password is required",
                       minLength: { value: 6, message: "Minimum 6 characters" },
@@ -138,7 +138,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="btn-gold w-full h-[56px] text-base font-semibold disabled:opacity-60 flex justify-center items-center"
+                className="btn-gold w-full text-base font-semibold disabled:opacity-60 flex justify-center items-center"
               >
                 {isLoading ? (
                   <span className="flex items-center gap-2">
@@ -172,7 +172,7 @@ export default function LoginPage() {
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full h-[56px] rounded-xl border border-green-500/30 bg-green-50/50 dark:bg-green-500/5 text-green-600 dark:text-green-500 font-poppins font-semibold text-sm hover:bg-green-50 dark:hover:bg-green-500/10 transition-colors"
+                className="flex items-center justify-center gap-3 w-full rounded-xl border border-green-500/30 bg-green-50/50 dark:bg-green-500/5 text-green-600 dark:text-green-500 font-poppins font-semibold text-sm hover:bg-green-50 dark:hover:bg-green-500/10 transition-colors py-3"
               >
                 <FaWhatsapp className="w-5 h-5" /> Login via WhatsApp
               </a>
