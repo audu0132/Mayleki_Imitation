@@ -51,7 +51,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16 md:py-20">
+        <div className="container-luxury py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12">
             {/* Left: Info */}
             <div>
