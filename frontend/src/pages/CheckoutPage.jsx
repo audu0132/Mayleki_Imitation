@@ -88,7 +88,7 @@ export default function CheckoutPage() {
 
   if (cart.length === 0) {
     return (
-      <div className="page-wrapper py-20 text-center">
+      <div className="page-wrapper py-16 md:py-24 text-center">
         <h2 className="font-playfair text-2xl mb-4">Your cart is empty</h2>
         <Link to="/products" className="btn-gold-outline">Continue Shopping</Link>
       </div>
