@@ -14,7 +14,7 @@ export default function FAQ() {
   );
 
   return (
-    <section className="py-24 md:py-32 bg-cream dark:bg-dark-brown">
+    <section className="py-16 md:py-24 bg-cream dark:bg-dark-brown">
       <div className="container-luxury max-w-4xl">
         {/* Header */}
         <motion.div
