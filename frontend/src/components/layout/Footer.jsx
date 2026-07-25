@@ -76,9 +76,9 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="w-full sm:w-72 px-4 py-3 h-[44px] rounded-xl bg-white/10 border border-white/20 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
+                className="w-full sm:w-72 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
               />
-              <button type="submit" className="btn-gold h-[44px] whitespace-nowrap w-full sm:w-auto">
+              <button type="submit" className="btn-gold whitespace-nowrap w-full sm:w-auto">
                 Subscribe <FiArrowRight className="w-4 h-4" />
               </button>
             </form>
