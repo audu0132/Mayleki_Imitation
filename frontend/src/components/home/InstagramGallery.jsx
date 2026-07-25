@@ -4,7 +4,7 @@ import { INSTAGRAM_POSTS } from "../../data/mockData";
 
 export default function InstagramGallery() {
   return (
-    <section className="py-24 md:py-32 bg-white dark:bg-[#1A1414]">
+    <section className="py-16 md:py-24 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
