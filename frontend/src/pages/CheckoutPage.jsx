@@ -89,8 +89,10 @@ export default function CheckoutPage() {
   if (cart.length === 0) {
     return (
       <div className="page-wrapper py-16 md:py-24 text-center">
-        <h2 className="font-playfair text-2xl mb-4">Your cart is empty</h2>
-        <Link to="/products" className="btn-gold-outline">Continue Shopping</Link>
+        <div className="container-luxury">
+          <h2 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-4">Your cart is empty</h2>
+          <Link to="/products" className="btn-gold-outline">Continue Shopping</Link>
+        </div>
       </div>
     );
   }
@@ -99,8 +101,9 @@ export default function CheckoutPage() {
     <>
       <Helmet><title>Checkout | Mayleki Jewellery</title></Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-12">
-          <div className="container-luxury">
+        <div className="page-header">
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
+          <div className="container-luxury relative">
             <h1 className="font-playfair text-4xl font-bold text-cream">Checkout</h1>
           </div>
         </div>
