@@ -14,9 +14,9 @@ export default function OffersPage() {
     <>
       <Helmet><title>Offers & Deals | Mayleki Jewellery</title></Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-16 md:py-24 text-center relative overflow-hidden">
+        <div className="page-header text-center">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
-          <div className="relative">
+          <div className="container-luxury relative">
             <p className="section-subtitle mb-3">Save More</p>
             <h1 className="font-playfair text-5xl font-bold text-cream">
               Exclusive <span className="text-gold-gradient">Offers</span>
