@@ -40,7 +40,7 @@ export default function ContactPage() {
 
       <div className="page-wrapper">
         {/* Hero */}
-        <div className="bg-dark-brown py-16 relative overflow-hidden">
+        <div className="page-header">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative text-center">
             <p className="section-subtitle mb-3">Get in Touch</p>
