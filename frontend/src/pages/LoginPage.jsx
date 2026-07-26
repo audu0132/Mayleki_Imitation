@@ -62,7 +62,7 @@ export default function LoginPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-[500px] bg-white dark:bg-dark-brown-light p-10 sm:p-12 rounded-2xl shadow-card border border-gold/10"
+            className="w-full max-w-lg bg-white dark:bg-dark-brown-light p-8 sm:p-10 rounded-2xl shadow-card border border-gold/10"
           >
             <div className="text-center mb-8">
               <h1 className="font-playfair text-3xl font-bold text-dark-brown dark:text-cream">
