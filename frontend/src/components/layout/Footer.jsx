@@ -49,36 +49,36 @@ const staggerContainer = {
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-brown text-cream relative overflow-hidden mt-16 md:mt-24">
+    <footer className="bg-dark-brown text-cream relative overflow-hidden">
 
       {/* Newsletter Section */}
       <div className="border-b border-white/10">
         <motion.div 
-          className="container-luxury py-12 md:py-16"
+          className="container-luxury py-10 md:py-14"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-            <div className="text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10">
+            <div className="text-center md:text-left md:max-w-sm">
               <h3 className="font-playfair text-2xl md:text-3xl font-bold text-cream">
                 Stay Updated with <span className="text-gold-gradient">New Collections</span>
               </h3>
-              <p className="font-poppins text-sm text-gray-400 mt-1.5 max-w-lg">
+              <p className="font-poppins text-sm text-gray-400 mt-2">
                 Subscribe for exclusive offers, new arrivals, and bridal styling tips.
               </p>
             </div>
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto"
+              className="flex flex-col sm:flex-row items-stretch gap-3 w-full md:w-auto"
             >
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="w-full sm:w-72 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
+                className="flex-1 sm:w-64 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
               />
-              <button type="submit" className="btn-gold whitespace-nowrap w-full sm:w-auto">
+              <button type="submit" className="btn-gold whitespace-nowrap">
                 Subscribe <FiArrowRight className="w-4 h-4" />
               </button>
             </form>
@@ -87,7 +87,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container-luxury pt-20 md:pt-24 pb-12 md:pb-16">
+      <div className="container-luxury pt-12 md:pt-16 pb-10 md:pb-14">
         <motion.div 
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
           initial="hidden"
@@ -253,7 +253,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container-luxury py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="container-luxury py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-poppins text-xs text-gray-500 text-center sm:text-left">
             © {new Date().getFullYear()} Mayleki Imitation Jewellery. All rights reserved. Rahuri, Maharashtra.
           </p>
