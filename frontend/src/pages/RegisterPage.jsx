@@ -186,7 +186,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="btn-gold w-full py-4 text-base disabled:opacity-60"
+                className="btn-gold w-full text-base disabled:opacity-60"
               >
                 {isLoading ? (
                   <span className="flex items-center gap-2 justify-center">
