@@ -12,7 +12,7 @@ export default function ProfilePage() {
     <>
       <Helmet><title>My Profile | Mayleki Jewellery</title></Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-12">
+        <div className="page-header">
           <div className="container-luxury flex items-center gap-5">
             <div className="w-16 h-16 rounded-full bg-gold-gradient flex items-center justify-center text-dark-brown font-playfair font-bold text-2xl">
               {user?.name?.[0]}
@@ -24,7 +24,7 @@ export default function ProfilePage() {
             </div>
           </div>
         </div>
-        <div className="container-luxury py-10">
+        <div className="container-luxury py-16 md:py-24">
           <div className="grid md:grid-cols-4 gap-4 mb-10">
             {[
               { icon: FiPackage, label: "My Orders", value: "5", link: "/profile/orders" },
