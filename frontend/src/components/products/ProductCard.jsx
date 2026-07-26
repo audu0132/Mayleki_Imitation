@@ -137,8 +137,8 @@ export default function ProductCard({ product, onQuickView }) {
         )}
       </div>
 
-      {/* Content (p-6 sm:p-8 = 24px - 32px) */}
-      <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+      {/* Content (p-4 sm:p-5 = balanced proportional padding) */}
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
         {/* Category */}
         <p className="font-poppins text-xs text-gold font-semibold tracking-wider uppercase mb-1">
           {product.category.replace(/-/g, " ")}
