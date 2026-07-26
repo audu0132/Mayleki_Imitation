@@ -15,7 +15,8 @@ export default function FAQ() {
 
   return (
     <section className="py-16 md:py-24 bg-cream dark:bg-dark-brown">
-      <div className="container-luxury max-w-4xl">
+      <div className="container-luxury">
+        <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -116,12 +117,13 @@ export default function FAQ() {
           ))}
         </div>
 
+        </div>
         {/* Contact CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-24 p-8 sm:p-10 rounded-2xl bg-white dark:bg-dark-brown-light border border-gold/20 shadow-card"
+          className="text-center mt-16 p-8 sm:p-10 rounded-2xl bg-white dark:bg-dark-brown-light border border-gold/20 shadow-card max-w-4xl mx-auto"
         >
           <p className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-2">
             Still have questions?
