@@ -48,7 +48,7 @@ export default function AdminProducts() {
               <thead className="bg-gray-50 dark:bg-white/5 border-b border-gold/10">
                 <tr>
                   {["Product", "SKU", "Category", "Price", "Rental", "Stock", "Status", "Actions"].map((h) => (
-                    <th key={h} className="px-6 py-4 text-left font-poppins text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    <th key={h} className="px-5 py-3.5 text-left font-poppins text-xs font-semibold text-gray-400 uppercase tracking-wider">
                       {h}
                     </th>
                   ))}
@@ -62,7 +62,7 @@ export default function AdminProducts() {
                     animate={{ opacity: 1 }}
                     className="hover:bg-gold/5 transition-colors"
                   >
-                    <td className="px-6 py-4">
+                    <td className="px-5 py-3.5">
                       <div className="flex items-center gap-3">
                         <img src={product.images[0]} alt={product.title} className="w-10 h-10 rounded-lg object-cover" />
                         <div>
@@ -71,19 +71,19 @@ export default function AdminProducts() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3 font-poppins text-xs text-gray-500">{product.sku}</td>
-                    <td className="px-4 py-3 font-poppins text-xs text-gray-500 capitalize">{product.category.replace(/-/g, " ")}</td>
-                    <td className="px-4 py-3 font-poppins text-sm font-semibold text-dark-brown dark:text-cream">₹{product.sellingPrice.toLocaleString("en-IN")}</td>
-                    <td className="px-4 py-3 font-poppins text-xs text-rose-gold">{product.isRentalAvailable ? `₹${product.rentalPrice}/day` : "—"}</td>
-                    <td className="px-4 py-3 font-poppins text-sm text-dark-brown dark:text-cream">{product.availableQty}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-5 py-3.5 font-poppins text-xs text-gray-500">{product.sku}</td>
+                    <td className="px-5 py-3.5 font-poppins text-xs text-gray-500 capitalize">{product.category.replace(/-/g, " ")}</td>
+                    <td className="px-5 py-3.5 font-poppins text-sm font-semibold text-dark-brown dark:text-cream">₹{product.sellingPrice.toLocaleString("en-IN")}</td>
+                    <td className="px-5 py-3.5 font-poppins text-xs text-rose-gold">{product.isRentalAvailable ? `₹${product.rentalPrice}/day` : "—"}</td>
+                    <td className="px-5 py-3.5 font-poppins text-sm text-dark-brown dark:text-cream">{product.availableQty}</td>
+                    <td className="px-5 py-3.5">
                       <span className={`text-[10px] font-poppins font-semibold px-2.5 py-1 rounded-full ${
                         product.availableQty > 0 ? "bg-green-100 text-green-600" : "bg-red-100 text-red-500"
                       }`}>
                         {product.availableQty > 0 ? "Active" : "Out of Stock"}
                       </span>
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-5 py-3.5">
                       <div className="flex items-center gap-2">
                         <button className="p-1.5 rounded-lg hover:bg-gold/10 text-gold transition-colors">
                           <FiEdit className="w-3.5 h-3.5" />

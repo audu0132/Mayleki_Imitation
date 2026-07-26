@@ -85,8 +85,8 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Stat Cards (gap-6 = 24px) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
+        {/* Stat Cards (gap-5 = 20px) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 gap-5">
           {STAT_CARDS.map((card, i) => (
             <motion.div
               key={card.label}
