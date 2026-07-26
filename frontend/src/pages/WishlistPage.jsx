@@ -30,7 +30,7 @@ export default function WishlistPage() {
             <p className="font-poppins text-gray-500 mb-8">
               Save your favorite pieces and come back to them anytime!
             </p>
-            <Link to="/products" className="btn-gold text-base px-8 py-4">
+            <Link to="/products" className="btn-gold text-base px-8">
               <FiHeart className="w-5 h-5" /> Explore Collections
             </Link>
           </div>
@@ -43,7 +43,7 @@ export default function WishlistPage() {
     <>
       <Helmet><title>{`My Wishlist (${wishlist.length}) | Mayleki Jewellery`}</title></Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-12 relative overflow-hidden">
+        <div className="page-header">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative flex items-center justify-between">
             <div>
@@ -62,7 +62,7 @@ export default function WishlistPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-10 md:py-12">
+        <div className="container-luxury py-16 md:py-24">
           {/* Add all to cart */}
           <div className="flex items-center justify-between mb-8">
             <p className="font-poppins text-sm text-gray-500">{wishlist.length} items saved</p>
@@ -77,7 +77,7 @@ export default function WishlistPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {wishlist.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
