@@ -64,7 +64,7 @@ export default function CartPage() {
     <>
       <Helmet><title>{`Cart (${cart.length}) | Mayleki Jewellery`}</title></Helmet>
       <div className="page-wrapper">
-        <div className="bg-dark-brown py-12 relative overflow-hidden">
+        <div className="page-header">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative">
             <h1 className="font-playfair text-4xl font-bold text-cream">Shopping Cart</h1>
