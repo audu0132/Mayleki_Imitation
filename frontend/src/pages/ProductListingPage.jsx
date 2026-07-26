@@ -216,7 +216,7 @@ export default function ProductListingPage() {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden flex-shrink-0"
                 >
-                  <div className="w-[280px] bg-white dark:bg-dark-brown-light rounded-2xl p-6 border border-gold/10 space-y-6">
+                  <div className="w-64 bg-white dark:bg-dark-brown-light rounded-2xl p-6 border border-gold/10 space-y-6">
                     <div className="flex items-center justify-between border-b border-gold/10 pb-4">
                       <h3 className="font-playfair font-bold text-lg text-dark-brown dark:text-cream">Filters</h3>
                       <button onClick={() => setFiltersOpen(false)} className="text-gray-400 hover:text-gold">
@@ -224,40 +224,7 @@ export default function ProductListingPage() {
                       </button>
                     </div>
 
-                    <div>
-                      <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Occasion</h4>
-                      <div className="space-y-2">
-                        {OCCASIONS.map((occ) => (
-                          <label key={occ} className="flex items-center gap-2.5 cursor-pointer group">
-                            <input
-                              type="checkbox"
-                              checked={filters.occasion.includes(occ)}
-                              onChange={() => toggleFilter("occasion", occ)}
-                              className="rounded text-gold focus:ring-gold"
-                            />
-                            <span className="font-poppins text-sm text-dark-brown dark:text-cream group-hover:text-gold transition-colors">{occ}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Color / Polish</h4>
-                      <div className="space-y-2">
-                        {COLORS.map((col) => (
-                          <label key={col} className="flex items-center gap-2.5 cursor-pointer group">
-                            <input
-                              type="checkbox"
-                              checked={filters.color.includes(col)}
-                              onChange={() => toggleFilter("color", col)}
-                              className="rounded text-gold focus:ring-gold"
-                            />
-                            <span className="font-poppins text-sm text-dark-brown dark:text-cream group-hover:text-gold transition-colors">{col}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-
+                    {/* Price Range */}
                     <div>
                       <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Price Range</h4>
                       <div className="grid grid-cols-2 gap-2">
@@ -278,6 +245,7 @@ export default function ProductListingPage() {
                       </div>
                     </div>
 
+                    {/* Availability */}
                     <div>
                       <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Availability</h4>
                       <div className="space-y-2">
@@ -294,6 +262,9 @@ export default function ProductListingPage() {
                               checked={filters.availability === opt.value}
                               onChange={() => setFilters(p => ({ ...p, availability: opt.value }))}
                             />
+                            <span className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${
+                              filters.availability === opt.value ? "border-gold bg-gold" : "border-gray-300"
+                            }`} />
                             <span className="font-poppins text-sm text-dark-brown dark:text-cream">{opt.label}</span>
                           </label>
                         ))}
@@ -302,7 +273,7 @@ export default function ProductListingPage() {
 
                     {/* Occasion */}
                     <div>
-                      <h4 className="font-poppins font-semibold text-sm text-dark-brown dark:text-cream mb-3">Occasion</h4>
+                      <h4 className="font-poppins font-semibold text-xs text-gold tracking-wider uppercase mb-3">Occasion</h4>
                       <div className="flex flex-wrap gap-2">
                         {OCCASIONS.map((occ) => (
                           <button
@@ -322,7 +293,7 @@ export default function ProductListingPage() {
 
                     {/* Color */}
                     <div>
-                      <h4 className="font-poppins font-semibold text-sm text-dark-brown dark:text-cream mb-3">Color</h4>
+                      <h4 className="font-poppins font-semibold text-xs text-gold tracking-wider uppercase mb-3">Color</h4>
                       <div className="flex flex-wrap gap-2">
                         {COLORS.map((color) => (
                           <button
@@ -364,7 +335,7 @@ export default function ProductListingPage() {
                   layout
                   className={
                     viewMode === "grid"
-                      ? "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8"
+                      ? "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
                       : "flex flex-col gap-6"
                   }
                 >
