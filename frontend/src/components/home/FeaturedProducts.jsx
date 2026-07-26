@@ -64,7 +64,7 @@ export default function FeaturedBridal() {
         {/* Products Grid (gap-6 lg:gap-8 = 24px - 32px) */}
         <motion.div
           layout
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
           {filteredProducts.map((product) => (
             <motion.div
