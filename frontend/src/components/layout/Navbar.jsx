@@ -347,7 +347,7 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               className="lg:hidden overflow-hidden bg-white dark:bg-dark-brown border-t border-gold/10"
             >
-              <div className="container-luxury py-4 space-y-1">
+              <div className="container-luxury py-6 space-y-1">
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.label}
