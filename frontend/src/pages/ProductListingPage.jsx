@@ -92,7 +92,7 @@ export default function ProductListingPage() {
 
       <div className="page-wrapper">
         {/* Page Header */}
-        <div className="bg-dark-brown py-16 md:py-24 relative overflow-hidden">
+        <div className="bg-dark-brown py-20 sm:py-24 lg:py-28 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative text-center">
             {category ? (
@@ -141,7 +141,7 @@ export default function ProductListingPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16 md:py-24">
+        <div className="container-luxury py-20 sm:py-24 lg:py-28">
           <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
             <div className="flex items-center gap-3">
               <button
