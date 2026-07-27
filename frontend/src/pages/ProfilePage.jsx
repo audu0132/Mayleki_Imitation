@@ -24,7 +24,7 @@ export default function ProfilePage() {
             </div>
           </div>
         </div>
-        <div className="container-luxury py-16 md:py-24">
+        <div className="container-luxury py-20 sm:py-24 lg:py-28">
           <div className="grid md:grid-cols-4 gap-4 mb-10">
             {[
               { icon: FiPackage, label: "My Orders", value: "5", link: "/profile/orders" },
