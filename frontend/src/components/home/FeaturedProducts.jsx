@@ -23,27 +23,27 @@ export default function FeaturedBridal() {
   const hasMore = allFiltered.length > 8 && !showAll;
 
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-[#1A1414]">
+    <section className="py-20 sm:py-24 lg:py-28 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
         >
-          <p className="section-subtitle">Handpicked For You</p>
-          <h2 className="section-title">
+          <p className="section-subtitle mb-2.5">Handpicked For You</p>
+          <h2 className="section-title mb-4">
             Featured <span className="text-gold-gradient">Jewellery</span>
           </h2>
-          <div className="gold-divider" />
-          <p className="section-description">
+          <div className="gold-divider my-4 mx-auto" />
+          <p className="section-description max-w-2xl mx-auto mt-4 mb-0 text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
             Explore our most loved and trending jewellery pieces, perfect for every occasion.
           </p>
         </motion.div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center justify-center gap-3 flex-wrap mb-10">
+        <div className="flex items-center justify-center gap-3 flex-wrap mb-10 lg:mb-12">
           {filters.map((filter) => (
             <motion.button
               key={filter}
@@ -61,10 +61,10 @@ export default function FeaturedBridal() {
           ))}
         </div>
 
-        {/* Products Grid (gap-6 lg:gap-8 = 24px - 32px) */}
+        {/* Products Grid (consistent 24px-32px gaps) */}
         <motion.div
           layout
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 justify-items-center items-stretch"
         >
           {filteredProducts.map((product) => (
             <motion.div
@@ -74,6 +74,7 @@ export default function FeaturedBridal() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
+              className="w-full h-full"
             >
               <ProductCard product={product} />
             </motion.div>
@@ -85,19 +86,19 @@ export default function FeaturedBridal() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="text-center mt-12 sm:mt-14 lg:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           {hasMore && (
             <button
               onClick={() => setShowAll(true)}
-              className="btn-gold-outline text-base px-8 py-4 inline-flex items-center gap-2"
+              className="btn-gold-outline text-sm sm:text-base px-8 py-3.5 sm:py-4 inline-flex items-center gap-2"
             >
               Show More ({allFiltered.length - 8} more)
             </button>
           )}
           <Link
             to="/products"
-            className="btn-gold text-base px-10 py-4 inline-flex items-center gap-2"
+            className="btn-gold text-sm sm:text-base px-10 py-3.5 sm:py-4 inline-flex items-center gap-2"
           >
             View All Products <FiArrowRight className="w-5 h-5" />
           </Link>
