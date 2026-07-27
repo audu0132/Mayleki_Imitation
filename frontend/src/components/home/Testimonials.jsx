@@ -32,7 +32,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="py-16 md:py-24 bg-cream dark:bg-dark-brown overflow-hidden"
+      className="py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown overflow-hidden"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
@@ -42,13 +42,13 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
         >
-          <p className="section-subtitle">Happy Brides</p>
-          <h2 className="section-title">
+          <p className="section-subtitle mb-2.5">Happy Brides</p>
+          <h2 className="section-title mb-4">
             What Our <span className="text-gold-gradient">Customers Say</span>
           </h2>
-          <div className="gold-divider" />
+          <div className="gold-divider my-4 mx-auto" />
         </motion.div>
 
         {/* Carousel */}
