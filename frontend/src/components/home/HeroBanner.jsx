@@ -205,7 +205,7 @@ export default function HeroBanner() {
       {/* Bottom decorative divider */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 40" className="w-full" preserveAspectRatio="none">
-          <path d="M0,40 C360,0 1080,0 1440,40 L1440,40 L0,40 Z" fill="#FFFDF8" />
+          <path d="M0,40 C360,0 1080,0 1440,40 L1440,40 L0,40 Z" className="fill-cream dark:fill-dark-brown" />
         </svg>
       </div>
     </section>
