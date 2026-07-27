@@ -18,7 +18,7 @@ const itemVariants = {
 export default function CategoryGrid() {
   return (
     <section className="w-full relative py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown scroll-mt-24 overflow-hidden" id="collections">
-      <div className="container-luxury w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header - Centered Horizontally & Vertically */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ export default function CategoryGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8 justify-center items-stretch"
+          className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8 justify-items-center justify-center items-stretch"
         >
           {CATEGORIES.map((category) => (
             <motion.div key={category.id} variants={itemVariants} className="w-full h-full flex justify-center">
