@@ -72,7 +72,7 @@ export default function CartPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16 md:py-24">
+        <div className="container-luxury py-20 sm:py-24 lg:py-28">
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
