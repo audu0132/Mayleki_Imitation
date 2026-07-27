@@ -17,15 +17,18 @@ const itemVariants = {
 
 export default function CategoryGrid() {
   return (
-    <section className="w-full relative py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown scroll-mt-24 overflow-hidden" id="collections">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Header - Centered Horizontally & Vertically */}
+    <section
+      className="w-full relative bg-cream dark:bg-dark-brown pt-24 sm:pt-28 lg:pt-32 pb-24 sm:pb-28 lg:pb-32 scroll-mt-24 overflow-hidden"
+      id="collections"
+    >
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        {/* Header - Centered Horizontally & Vertically with 48px-64px margin below */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="w-full flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20"
+          className="w-full flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
         >
           <p className="section-subtitle text-center mb-2.5">Browse By</p>
           <h2 className="section-title text-center mb-4">
@@ -38,7 +41,7 @@ export default function CategoryGrid() {
           </p>
         </motion.div>
 
-        {/* Collection Grid (Centered & Evenly Distributed) */}
+        {/* Collection Grid (Centered & Evenly Distributed with 24px-32px gaps) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -74,11 +77,11 @@ export default function CategoryGrid() {
                   </div>
 
                   {/* Content Overlay at bottom with consistent bottom padding */}
-                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 text-center z-10 pointer-events-none flex flex-col justify-end min-h-[4.5rem]">
-                    <h3 className="font-poppins font-semibold text-cream text-sm sm:text-base leading-tight mb-1 drop-shadow-sm truncate">
+                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 text-center z-10 pointer-events-none flex flex-col items-center justify-end min-h-[4.5rem]">
+                    <h3 className="font-poppins font-semibold text-cream text-sm sm:text-base leading-tight mb-1 drop-shadow-sm truncate text-center w-full">
                       {category.name}
                     </h3>
-                    <p className="font-poppins text-xs font-medium text-gold/90 group-hover:text-gold transition-colors tracking-wide uppercase">
+                    <p className="font-poppins text-xs font-medium text-gold/90 group-hover:text-gold transition-colors tracking-wide uppercase text-center w-full">
                       {category.count} designs
                     </p>
                   </div>
@@ -97,7 +100,7 @@ export default function CategoryGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-full flex justify-center items-center text-center mt-12 sm:mt-16 lg:mt-20"
+          className="w-full flex justify-center items-center text-center mt-12 sm:mt-14 lg:mt-16"
         >
           <Link
             to="/products"
