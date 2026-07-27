@@ -54,7 +54,7 @@ export default function Footer() {
       {/* Newsletter Section */}
       <div className="border-b border-white/10">
         <motion.div 
-          className="container-luxury py-10 md:py-14"
+          className="container-luxury py-12 sm:py-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -87,7 +87,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container-luxury pt-12 md:pt-16 pb-10 md:pb-14">
+      <div className="container-luxury pt-16 sm:pt-20 pb-12 sm:pb-16">
         <motion.div 
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
           initial="hidden"
