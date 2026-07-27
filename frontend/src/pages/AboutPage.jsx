@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div className="relative overflow-hidden min-h-[60vh] flex items-center">
           <img src="https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?w=1920" alt="About" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/95 via-dark-brown/70 to-dark-brown/30" />
-          <div className="relative container-luxury py-16 md:py-24">
+          <div className="relative container-luxury py-20 sm:py-24 lg:py-28">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
               <p className="section-subtitle mb-4">Our Story</p>
               <h1 className="font-playfair text-5xl md:text-6xl font-bold text-cream leading-tight mb-6">
