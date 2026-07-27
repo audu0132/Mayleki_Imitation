@@ -14,7 +14,7 @@ export default function FAQ() {
   );
 
   return (
-    <section className="py-16 md:py-24 bg-cream dark:bg-dark-brown">
+    <section className="py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown">
       <div className="container-luxury">
         <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -22,14 +22,14 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
         >
-          <p className="section-subtitle">Got Questions?</p>
-          <h2 className="section-title">
+          <p className="section-subtitle mb-2.5">Got Questions?</p>
+          <h2 className="section-title mb-4">
             Frequently Asked <span className="text-gold-gradient">Questions</span>
           </h2>
-          <div className="gold-divider" />
-          <p className="section-description">
+          <div className="gold-divider my-4 mx-auto" />
+          <p className="section-description max-w-2xl mx-auto mt-4 mb-0 text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
             Everything you need to know about our jewellery, rental process, and services.
           </p>
         </motion.div>
