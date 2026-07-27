@@ -89,7 +89,7 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16 md:py-24">
+        <div className="container-luxury py-20 sm:py-24 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-10 xl:gap-16">
 
             {/* ===== LEFT: Image Gallery ===== */}
