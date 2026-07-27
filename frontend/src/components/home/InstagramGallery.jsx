@@ -4,20 +4,20 @@ import { INSTAGRAM_POSTS } from "../../data/mockData";
 
 export default function InstagramGallery() {
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-[#1A1414]">
+    <section className="py-20 sm:py-24 lg:py-28 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
         >
-          <p className="section-subtitle">Follow Us</p>
-          <h2 className="section-title">
+          <p className="section-subtitle mb-2.5">Follow Us</p>
+          <h2 className="section-title mb-4">
             <span className="text-gold-gradient">@mayleki.jewellery</span>
           </h2>
-          <div className="gold-divider" />
+          <div className="gold-divider my-4 mx-auto" />
           <a
             href="https://www.instagram.com/mayleki.jewellery"
             target="_blank"
@@ -69,7 +69,7 @@ export default function InstagramGallery() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-12 md:mt-16"
+          className="text-center mt-12 sm:mt-14 lg:mt-16"
         >
           <a
             href="https://www.instagram.com/mayleki.jewellery"
