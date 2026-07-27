@@ -12,7 +12,7 @@ const cardVariants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 md:py-24 bg-dark-brown relative overflow-hidden">
+    <section className="py-20 sm:py-24 lg:py-28 bg-dark-brown relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-gold/5 rounded-full -translate-x-32 -translate-y-32 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose-gold/5 rounded-full translate-x-48 translate-y-48 blur-3xl pointer-events-none" />
@@ -24,21 +24,21 @@ export default function WhyChooseUs() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
         >
-          <p className="section-subtitle">Our Promise</p>
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-cream mb-3">
+          <p className="section-subtitle mb-2.5">Our Promise</p>
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-cream mb-4">
             Why Choose <span className="text-gold-gradient">Mayleki?</span>
           </h2>
-          <div className="gold-divider" />
-          <p className="font-poppins text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+          <div className="gold-divider my-4 mx-auto" />
+          <p className="font-poppins text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mt-4 mb-0">
             We are passionate about making every woman feel like royalty on her special day.
             Here's why thousands of brides trust us.
           </p>
         </motion.div>
 
         {/* Features Grid (gap-6 lg:gap-8 = 24px - 32px) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {WHY_CHOOSE_US.map((item, i) => (
             <motion.div
               key={item.title}
@@ -79,7 +79,7 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="mt-12 sm:mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8"
         >
           {[
             { value: "5000+", label: "Happy Customers", icon: "😊" },
