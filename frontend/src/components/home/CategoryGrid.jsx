@@ -17,42 +17,42 @@ const itemVariants = {
 
 export default function CategoryGrid() {
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown scroll-mt-20" id="collections">
-      <div className="container-luxury">
-        {/* Header */}
+    <section className="w-full relative py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown scroll-mt-24 overflow-hidden" id="collections">
+      <div className="container-luxury w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header - Centered Horizontally & Vertically */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20"
+          className="w-full flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20"
         >
-          <p className="section-subtitle mb-2.5">Browse By</p>
-          <h2 className="section-title mb-4">
+          <p className="section-subtitle text-center mb-2.5">Browse By</p>
+          <h2 className="section-title text-center mb-4">
             Our <span className="text-gold-gradient">Collections</span>
           </h2>
           <div className="gold-divider my-4 mx-auto" />
-          <p className="section-description max-w-2xl mx-auto mt-4 text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+          <p className="section-description text-center max-w-2xl mx-auto mt-4 mb-0 text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
             From traditional Maharashtrian jewellery to modern American Diamond sets,
             explore our wide range of premium imitation jewellery.
           </p>
         </motion.div>
 
-        {/* Collection Grid (consistent 24-32px gaps) */}
+        {/* Collection Grid (Centered & Evenly Distributed) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8 items-stretch"
+          className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8 justify-center items-stretch"
         >
           {CATEGORIES.map((category) => (
-            <motion.div key={category.id} variants={itemVariants} className="h-full">
+            <motion.div key={category.id} variants={itemVariants} className="w-full h-full flex justify-center">
               <Link
                 to={`/category/${category.slug}`}
-                className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 rounded-2xl"
+                className="group block w-full h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 rounded-2xl"
               >
-                <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-dark-brown-light shadow-card hover:shadow-gold border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-1.5 h-full flex flex-col">
+                <div className="relative w-full h-full overflow-hidden rounded-2xl bg-white dark:bg-dark-brown-light shadow-card hover:shadow-gold border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between">
                   {/* Image Container with fixed 1:1 Aspect Ratio */}
                   <div className="relative w-full aspect-square overflow-hidden bg-gray-100 dark:bg-dark-brown">
                     <img
@@ -91,13 +91,13 @@ export default function CategoryGrid() {
           ))}
         </motion.div>
 
-        {/* View All CTA */}
+        {/* View All CTA - Centered */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center mt-12 sm:mt-16 lg:mt-20"
+          className="w-full flex justify-center items-center text-center mt-12 sm:mt-16 lg:mt-20"
         >
           <Link
             to="/products"
