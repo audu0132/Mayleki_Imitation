@@ -24,7 +24,7 @@ export default function OffersPage() {
             <div className="gold-divider mt-4 mx-auto" />
           </div>
         </div>
-        <div className="container-luxury py-16 md:py-24">
+        <div className="container-luxury py-20 sm:py-24 lg:py-28">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {OFFERS.map((offer, i) => (
               <motion.div
