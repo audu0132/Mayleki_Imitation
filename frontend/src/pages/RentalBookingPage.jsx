@@ -10,7 +10,7 @@ export default function RentalBookingPage() {
             <h1 className="font-playfair text-4xl font-bold text-cream">Rental Booking</h1>
           </div>
         </div>
-        <div className="container-luxury py-16 md:py-24">
+        <div className="container-luxury py-20 sm:py-24 lg:py-28">
           <div className="max-w-2xl mx-auto bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 border border-gold/10 shadow-card text-center">
             <span className="text-6xl mb-4 block">🎁</span>
             <h2 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-3">
