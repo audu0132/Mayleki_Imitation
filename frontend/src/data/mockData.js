@@ -19,7 +19,7 @@ export const CATEGORIES = [
   { id: 16, name: "Haldi Collection", slug: "haldi", icon: "🌼", image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400", count: 16 },
   { id: 17, name: "Mehendi Collection", slug: "mehendi", icon: "🌿", image: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?w=400", count: 21 },
   { id: 18, name: "Kids Jewellery", slug: "kids", icon: "🎀", image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", count: 29 },
-  { id: 19, name: "Men Accessories", slug: "men", icon: "⚡", image: "https://images.unsplash.com/photo-1573408301185-9519f94a5950?w=400", count: 14 },
+  { id: 19, name: "Men Accessories", slug: "men", icon: "⚡", image: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=400", count: 14 },
   { id: 20, name: "Bracelets", slug: "bracelets", icon: "📎", image: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?w=400", count: 33 },
 ];
 
