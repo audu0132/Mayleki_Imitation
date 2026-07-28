@@ -423,13 +423,13 @@ export const WHY_CHOOSE_US = [
 
 export const INSTAGRAM_POSTS = [
   { id: 1, image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400", likes: 234, link: "#" },
-  { id: 2, image: "https://images.unsplash.com/photo-1599459182681-c938b7f65353?w=400", likes: 189, link: "#" },
+  { id: 2, image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400", likes: 189, link: "#" },
   { id: 3, image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400", likes: 312, link: "#" },
   { id: 4, image: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?w=400", likes: 156, link: "#" },
   { id: 5, image: "https://images.unsplash.com/photo-1561828995-aa79a2db86dd?w=400", likes: 278, link: "#" },
-  { id: 6, image: "https://images.unsplash.com/photo-1573408301185-9519f94a5950?w=400", likes: 198, link: "#" },
-  { id: 7, image: "https://images.unsplash.com/photo-1603217040830-deac31d79e41?w=400", likes: 145, link: "#" },
-  { id: 8, image: "https://images.unsplash.com/photo-1576022162879-74f7e2b58f38?w=400", likes: 267, link: "#" },
+  { id: 6, image: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=400", likes: 198, link: "#" },
+  { id: 7, image: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400", likes: 145, link: "#" },
+  { id: 8, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", likes: 267, link: "#" },
   { id: 9, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", likes: 223, link: "#" },
 ];
 
@@ -450,7 +450,7 @@ export const BLOG_POSTS = [
     title: "How to Care for Your Imitation Jewellery",
     slug: "imitation-jewellery-care-tips",
     excerpt: "Simple tips to keep your imitation jewellery sparkling for years. Proper storage, cleaning methods and more.",
-    image: "https://images.unsplash.com/photo-1599459183675-d4f8fe1c2c50?w=600",
+    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600",
     category: "Jewellery Care",
     date: "May 28, 2025",
     readTime: "5 min",
