@@ -63,6 +63,10 @@ export default function CategoryGrid() {
                       alt={category.name}
                       className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                       loading="lazy"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400";
+                      }}
                     />
                     {/* Gradient Overlay for high text contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/90 via-dark-brown/30 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-300 pointer-events-none" />
