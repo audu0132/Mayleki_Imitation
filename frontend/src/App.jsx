@@ -66,7 +66,7 @@ function LoadingSpinner() {
 
 function MainLayout({ children }) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-full flex-1">
       <Navbar />
       <main className="flex-1 min-w-0">
         <PageTransition>{children}</PageTransition>
