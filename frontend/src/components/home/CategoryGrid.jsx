@@ -6,116 +6,172 @@ import { CATEGORIES } from "../../data/mockData";
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.05 },
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.96,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 };
 
 export default function CategoryGrid() {
   return (
     <section
-      className="w-full relative bg-cream dark:bg-dark-brown pt-24 sm:pt-28 lg:pt-32 pb-24 sm:pb-28 lg:pb-32 scroll-mt-24 overflow-hidden"
       id="collections"
+      className="relative overflow-hidden bg-cream dark:bg-dark-brown py-24 sm:py-28 lg:py-32 scroll-mt-24"
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Header - Centered Horizontally & Vertically with 48px-64px margin below */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* Heading */}
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="w-full flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
+          transition={{ duration: .6 }}
+          className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <p className="section-subtitle text-center mb-2.5">Browse By</p>
-          <h2 className="section-title text-center mb-4">
+          <p className="section-subtitle mb-3">
+            Browse By
+          </p>
+
+          <h2 className="section-title">
             Our <span className="text-gold-gradient">Collections</span>
           </h2>
-          <div className="gold-divider my-4 mx-auto" />
-          <p className="section-description text-center max-w-2xl mx-auto mt-4 mb-0 text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
-            From traditional Maharashtrian jewellery to modern American Diamond sets,
-            explore our wide range of premium imitation jewellery.
+
+          <div className="gold-divider mx-auto my-5" />
+
+          <p className="section-description text-gray-600 dark:text-gray-400">
+            Discover premium imitation jewellery crafted for every occasion,
+            from traditional Maharashtrian bridal sets to elegant American
+            Diamond collections.
           </p>
         </motion.div>
 
-        {/* Collection Grid (Centered & Evenly Distributed with 24px-32px gaps) */}
+        {/* Grid */}
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8 justify-items-center justify-center items-stretch"
+          viewport={{
+            once: true,
+            amount: 0.15,
+          }}
+          className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5"
         >
           {CATEGORIES.map((category) => (
-            <motion.div key={category.id} variants={itemVariants} className="w-full h-full flex justify-center">
+            <motion.div
+              key={category.id}
+              variants={itemVariants}
+              className="h-full"
+            >
               <Link
                 to={`/category/${category.slug}`}
-                className="group block w-full h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 rounded-2xl"
+                className="group block h-full rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >
-                <div className="relative w-full h-full overflow-hidden rounded-2xl bg-white dark:bg-dark-brown-light shadow-card hover:shadow-gold border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between">
-                  {/* Image Container with fixed 1:1 Aspect Ratio */}
-                  <div className="relative w-full aspect-square overflow-hidden bg-gray-100 dark:bg-dark-brown">
+                <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-gold/10 bg-white shadow-card transition-all duration-500 hover:-translate-y-2 hover:border-gold/30 hover:shadow-gold dark:bg-dark-brown-light">
+
+                  {/* Image */}
+
+                  <div className="relative aspect-square overflow-hidden">
+
                     <img
                       src={category.image}
                       alt={category.name}
-                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                       loading="lazy"
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                       onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400";
+                        e.currentTarget.src =
+                          "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600";
                       }}
                     />
-                    {/* Gradient Overlay for high text contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/90 via-dark-brown/30 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-300 pointer-events-none" />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
                   </div>
 
-                  {/* Top-Right Icon Badge (equal 14px top and right insets) */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute top-3.5 right-3.5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gold/90 text-dark-brown font-semibold flex items-center justify-center text-sm sm:text-base shadow-gold z-10 pointer-events-none transition-transform duration-300 group-hover:scale-110"
+                  {/* Badge */}
+
+                  <motion.div
+                    whileHover={{
+                      scale: 1.15,
+                      rotate: 10,
+                    }}
+                    className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-gold text-dark-brown shadow-lg"
                   >
                     {category.icon}
-                  </div>
+                  </motion.div>
 
-                  {/* Content Overlay at bottom with consistent bottom padding */}
-                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 text-center z-10 pointer-events-none flex flex-col items-center justify-end min-h-[4.5rem]">
-                    <h3 className="font-poppins font-semibold text-cream text-sm sm:text-base leading-tight mb-1 drop-shadow-sm truncate text-center w-full">
+                  {/* Content */}
+
+                  <div className="absolute bottom-0 w-full p-5 text-center">
+
+                    <h3 className="mb-1 truncate font-poppins text-base font-semibold text-white">
                       {category.name}
                     </h3>
-                    <p className="font-poppins text-xs font-medium text-gold/90 group-hover:text-gold transition-colors tracking-wide uppercase text-center w-full">
-                      {category.count} designs
+
+                    <p className="text-xs uppercase tracking-widest text-gold transition-colors duration-300 group-hover:text-yellow-300">
+                      {category.count} Designs
                     </p>
+
                   </div>
 
-                  {/* Subtle Gold Shimmer on hover */}
-                  <div className="absolute inset-0 bg-gold-gradient opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none rounded-2xl" />
+                  {/* Hover Shine */}
+
+                  <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
+
+                    <div className="absolute -left-40 top-0 h-full w-20 rotate-12 bg-white/20 blur-xl transition-all duration-700 group-hover:left-[120%]" />
+
+                  </div>
+
                 </div>
               </Link>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* View All CTA - Centered */}
+        {/* Button */}
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-full flex justify-center items-center text-center mt-12 sm:mt-14 lg:mt-16"
+          transition={{
+            delay: .2,
+            duration: .6,
+          }}
+          className="mt-16 flex justify-center"
         >
           <Link
             to="/products"
-            className="btn-gold-outline text-sm sm:text-base px-8 sm:px-10 py-3.5 sm:py-4 inline-flex items-center gap-2.5 transition-all duration-300 hover:shadow-gold group"
+            className="btn-gold-outline group inline-flex items-center gap-3 px-8 py-4"
           >
-            View All Collections <FiArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            View All Collections
+
+            <FiArrowRight
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
           </Link>
         </motion.div>
+
       </div>
     </section>
   );
 }
-
-
