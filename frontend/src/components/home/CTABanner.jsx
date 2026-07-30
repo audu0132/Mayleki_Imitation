@@ -3,89 +3,136 @@ import { motion } from "framer-motion";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 export default function CTABanner() {
   return (
-    <section className="py-20 sm:py-24 lg:py-28 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1920&q=80"
-          alt="CTA Background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/95 via-dark-brown/80 to-dark-brown/60" />
-      </div>
+    <section className="relative overflow-hidden py-24 lg:py-32">
 
-      {/* Gold pattern */}
+      {/* Background */}
+
+      <motion.img
+        initial={{ scale: 1 }}
+        whileInView={{ scale: 1.08 }}
+        transition={{ duration: 12 }}
+        viewport={{ once: true }}
+        src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=2000&q=80"
+        alt="Luxury Jewellery"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60" />
+
+      {/* Gold Pattern */}
+
       <div
-        className="absolute inset-0 opacity-5 pointer-events-none"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`,
+          backgroundImage:
+            "radial-gradient(circle,#D4AF37 1px,transparent 1px)",
           backgroundSize: "30px 30px",
         }}
       />
 
-      <div className="relative container-luxury">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="section-subtitle">Book Your Bridal Look</p>
-            <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-cream mb-6 leading-tight">
-              Make Your <span className="text-gold-gradient">Wedding Day</span> Unforgettable
-            </h2>
-            <p className="font-poppins text-sm md:text-base text-cream/80 leading-relaxed mb-8 md:mb-10 max-w-xl mx-auto">
-              From traditional Maharashtrian jewellery to modern bridal sets,
-              we have everything to make you shine on your special day.
-              Rental and purchase options available.
-            </p>
+      {/* Decorative Blur */}
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/category/bridal-sets"
-                className="btn-gold text-base px-10 py-4 w-full sm:w-auto"
-              >
-                Explore Bridal Collection <FiArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                to="/rental-booking"
-                className="flex items-center justify-center gap-2 px-10 py-4 rounded-full border-2 border-white/30 text-cream font-poppins font-semibold text-base hover:border-gold/60 hover:bg-white/5 transition-all duration-300 w-full sm:w-auto"
-              >
-                Book Rental
-              </Link>
+      <div className="absolute -top-32 left-0 h-72 w-72 rounded-full bg-gold/20 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-gold/10 blur-[120px]" />
+
+      <div className="relative mx-auto max-w-6xl px-6">
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mx-auto max-w-4xl rounded-[32px] border border-white/10 bg-white/5 p-10 backdrop-blur-xl lg:p-16 text-center shadow-[0_30px_80px_rgba(0,0,0,.35)]"
+        >
+
+          <p className="section-subtitle mb-4">
+            Book Your Bridal Look
+          </p>
+
+          <h2 className="font-playfair text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+            Make Your{" "}
+            <span className="text-gold-gradient">
+              Wedding Day
+            </span>{" "}
+            Unforgettable
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/75">
+            Discover elegant bridal jewellery crafted to make your special
+            moments unforgettable. Choose from premium rental collections
+            or purchase timeless designs for every celebration.
+          </p>
+
+          {/* Buttons */}
+
+          <div className="mt-10 flex flex-col justify-center gap-5 sm:flex-row">
+
+            <Link
+              to="/category/bridal-sets"
+              className="group btn-gold px-10 py-4 text-base"
+            >
+              Explore Collection
+
+              <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-2" />
+            </Link>
+
+            <Link
+              to="/rental-booking"
+              className="rounded-full border border-white/20 bg-white/5 px-10 py-4 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-white/10 hover:shadow-lg"
+            >
+              Book Rental
+            </Link>
+
+          </div>
+
+          {/* Contact */}
+
+          <div className="mt-12 flex flex-wrap justify-center gap-8 border-t border-white/10 pt-8">
+
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-white/70 transition hover:text-green-400"
+            >
+              <FaWhatsapp size={20} />
+              WhatsApp
+            </a>
+
+            <a
+              href="tel:+919876543210"
+              className="flex items-center gap-2 text-white/70 transition hover:text-gold"
+            >
+              <FiPhone size={20} />
+              Call Now
+            </a>
+
+            <div className="flex items-center gap-2 text-white/70">
+              📍 Rahuri, Maharashtra
             </div>
 
-            {/* Contact strip */}
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mt-10">
-              <a
-                href="https://wa.me/919876543210"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-cream/70 hover:text-green-400 transition-colors font-poppins text-sm"
-              >
-                <FaWhatsapp className="w-4 h-4" />
-                +91 98765 43210
-              </a>
-              <div className="hidden sm:block w-px h-4 bg-white/30" />
-              <a
-                href="tel:+919876543210"
-                className="flex items-center gap-2 text-cream/70 hover:text-gold transition-colors font-poppins text-sm"
-              >
-                <FiPhone className="w-4 h-4" />
-                Call Us
-              </a>
-              <div className="hidden sm:block w-px h-4 bg-white/30" />
-              <span className="font-poppins text-sm text-cream/70">
-                📍 Rahuri, Maharashtra
-              </span>
-            </div>
-          </motion.div>
-        </div>
+          </div>
+
+        </motion.div>
+
       </div>
     </section>
   );
 }
-
