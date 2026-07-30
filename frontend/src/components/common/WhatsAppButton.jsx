@@ -88,12 +88,22 @@ export default function WhatsAppButton() {
 
       {/* Floating Button */}
       <motion.button
-        onClick={() => setOpen(!open)}
-        onHoverStart={() => setShowTooltip(true)}
-        onHoverEnd={() => setShowTooltip(false)}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="relative w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-colors duration-200 animate-gold-pulse"
+  onClick={() => setOpen(!open)}
+  onHoverStart={() => setShowTooltip(true)}
+  onHoverEnd={() => setShowTooltip(false)}
+  whileHover={{
+    scale: 1.08,
+    rotate: 5,
+  }}
+  whileTap={{
+    scale: 0.92,
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 400,
+    damping: 15,
+  }}
+  className="relative w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 shadow-2xl flex items-center justify-center overflow-hidden"
         style={{ animation: "none", boxShadow: "0 0 0 0 rgba(34, 197, 94, 0.4)" }}
       >
         <AnimatePresence mode="wait">
