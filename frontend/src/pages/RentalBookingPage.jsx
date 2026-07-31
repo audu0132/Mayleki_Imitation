@@ -10,8 +10,8 @@ export default function RentalBookingPage() {
             <h1 className="font-playfair text-4xl font-bold text-cream">Rental Booking</h1>
           </div>
         </div>
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
-          <div className="max-w-2xl mx-auto bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 border border-gold/10 shadow-card text-center">
+        <div className="container-luxury py-16 lg:py-24">
+          <div className="max-w-2xl mx-auto card-luxury text-center">
             <span className="text-6xl mb-4 block">🎁</span>
             <h2 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-3">
               Bridal Rental Booking
@@ -23,7 +23,7 @@ export default function RentalBookingPage() {
               href="https://wa.me/919876543210?text=Hi! I want to book rental jewellery. Please help me."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold inline-flex items-center gap-2 px-8 py-4 text-base"
+              className="btn-gold inline-flex justify-center items-center gap-2 px-8 h-12 text-base"
             >
               Book via WhatsApp
             </a>
