@@ -60,8 +60,8 @@ export default function Footer() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10">
-            <div className="text-center md:text-left md:max-w-sm">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
+            <div className="text-center md:text-left md:max-w-md">
               <h3 className="font-playfair text-2xl md:text-3xl font-bold text-cream">
                 Stay Updated with <span className="text-gold-gradient">New Collections</span>
               </h3>
@@ -76,9 +76,9 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 sm:w-64 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
+                className="flex-1 sm:w-72 px-5 h-12 rounded-full bg-white/5 border border-white/10 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
               />
-              <button type="submit" className="btn-gold whitespace-nowrap">
+              <button type="submit" className="btn-gold whitespace-nowrap h-12 rounded-full">
                 Subscribe <FiArrowRight className="w-4 h-4" />
               </button>
             </form>
@@ -89,7 +89,7 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="container-luxury pt-16 sm:pt-20 pb-12 sm:pb-16">
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
