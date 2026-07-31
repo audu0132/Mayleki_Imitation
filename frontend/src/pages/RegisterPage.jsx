@@ -66,7 +66,7 @@ export default function RegisterPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-md bg-white dark:bg-dark-brown-light p-8 sm:p-10 rounded-2xl shadow-card border border-gold/10"
+            className="w-full max-w-md card-luxury"
           >
             <div className="text-center mb-8">
               <h1 className="font-playfair text-3xl font-bold text-dark-brown dark:text-cream">
@@ -78,7 +78,7 @@ export default function RegisterPage() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-2 block uppercase tracking-wider">Full Name *</label>
 
@@ -186,7 +186,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="btn-gold w-full text-base disabled:opacity-60"
+                className="btn-gold w-full text-base disabled:opacity-60 h-12"
               >
                 {isLoading ? (
                   <span className="flex items-center gap-2 justify-center">
