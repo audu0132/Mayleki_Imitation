@@ -17,8 +17,8 @@ export default function OrderSuccessPage() {
           <p className="font-poppins text-gray-500 mb-2">Thank you for your order. We'll confirm it shortly!</p>
           <p className="font-poppins text-sm font-semibold text-gold mb-8">Order Number: {orderNum}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/profile" className="btn-gold-outline px-6 py-3 inline-flex items-center gap-2"><FiPackage className="w-4 h-4" /> Track Order</Link>
-            <Link to="/" className="btn-gold px-6 py-3 inline-flex items-center gap-2"><FiHome className="w-4 h-4" /> Back to Home</Link>
+            <Link to="/profile" className="btn-gold-outline px-6 h-12 inline-flex justify-center items-center gap-2"><FiPackage className="w-4 h-4" /> Track Order</Link>
+            <Link to="/" className="btn-gold px-6 h-12 inline-flex justify-center items-center gap-2"><FiHome className="w-4 h-4" /> Back to Home</Link>
           </div>
         </motion.div>
       </div>
