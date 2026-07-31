@@ -24,7 +24,7 @@ export default function ProfilePage() {
             </div>
           </div>
         </div>
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
+        <div className="container-luxury py-16 lg:py-24">
           <div className="grid md:grid-cols-4 gap-4 mb-10">
             {[
               { icon: FiPackage, label: "My Orders", value: "5", link: "/profile/orders" },
@@ -39,7 +39,7 @@ export default function ProfilePage() {
               </a>
             ))}
           </div>
-          <div className="bg-white dark:bg-dark-brown-light rounded-2xl p-6 border border-gold/10">
+          <div className="card-luxury">
             <h2 className="font-playfair text-xl font-bold text-dark-brown dark:text-cream mb-4">Account Details</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {[{ label: "Full Name", value: user?.name }, { label: "Email", value: user?.email }, { label: "Phone", value: user?.phone || "+91 ----" }, { label: "Location", value: "Rahuri, Maharashtra" }].map(({ label, value }) => (
