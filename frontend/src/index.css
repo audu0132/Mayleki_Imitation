@@ -87,9 +87,9 @@ h5, h6 {
    ============================================ */
 @layer components {
 
-  /* BUTTONS (12px top/bottom x 24px left/right = px-6 py-3, 44px min height) */
+  /* BUTTONS (12px top/bottom x 32px left/right = px-8 py-3.5, 48px min height) */
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
            font-poppins font-semibold text-dark-brown text-sm tracking-wide
            bg-gold-gradient rounded-full shadow-gold
            hover:shadow-gold-lg hover:scale-[1.02]
@@ -98,7 +98,7 @@ h5, h6 {
   }
 
   .btn-gold-outline {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
            font-poppins font-semibold text-gold text-sm tracking-wide
            border-2 border-gold rounded-full
            hover:bg-gold hover:text-dark-brown hover:shadow-gold
@@ -107,16 +107,16 @@ h5, h6 {
   }
 
   .btn-dark {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
            font-poppins font-semibold text-cream text-sm tracking-wide
-           bg-dark-brown rounded-full shadow-luxury
+           bg-dark-brown rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)]
            hover:bg-dark-brown-light hover:shadow-lg hover:scale-[1.02]
            transition-all duration-300 ease-luxury
            active:scale-95 cursor-pointer select-none;
   }
 
   .btn-rose {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px]
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
            font-poppins font-semibold text-white text-sm tracking-wide
            bg-rose-gradient rounded-full shadow-rose-gold
            hover:shadow-lg hover:scale-[1.02]
@@ -124,22 +124,22 @@ h5, h6 {
            active:scale-95 cursor-pointer select-none;
   }
 
-  /* CARDS (20px - 24px padding = p-5 sm:p-6, rounded-2xl = 16px) */
+  /* CARDS (p-6 lg:p-8, rounded-2xl = 16px) */
   .card-luxury {
-    @apply bg-white dark:bg-dark-brown-light rounded-2xl shadow-card hover:shadow-card-hover
-           p-5 sm:p-6 border border-gold/10
+    @apply bg-white dark:bg-dark-brown-light rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)]
+           p-6 lg:p-8 border border-gold/10
            transition-all duration-500 ease-luxury
            hover:-translate-y-1 overflow-hidden;
   }
 
   .card-glass {
     @apply backdrop-blur-md bg-white/10 border border-white/20
-           rounded-2xl shadow-glass p-6 sm:p-8;
+           rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6 lg:p-8;
   }
 
   .card-gold-border {
     @apply border border-gold/30 rounded-2xl bg-white dark:bg-dark-brown-light
-           p-6 sm:p-8 hover:border-gold hover:shadow-gold
+           p-6 lg:p-8 hover:border-gold hover:shadow-gold
            transition-all duration-300 ease-luxury;
   }
 
@@ -190,9 +190,9 @@ h5, h6 {
            rounded-full text-xs font-poppins font-semibold;
   }
 
-  /* INPUT STYLES (12px top/bottom x 16px left/right = px-4 py-3 min-h-[44px], rounded-xl = 12px) */
+  /* INPUT STYLES (48px min-h-[48px], rounded-xl = 12px) */
   .input-luxury {
-    @apply w-full px-4 py-3 min-h-[44px] rounded-xl border border-gold/20 
+    @apply w-full px-4 h-12 rounded-xl border border-gold/20 
            bg-white dark:bg-white/5 font-poppins text-sm text-dark-brown dark:text-cream
            focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold
            placeholder:text-gray-400 dark:placeholder:text-gray-500
@@ -230,7 +230,7 @@ h5, h6 {
 
   /* SECTION BODY — standardized white/cream content area below page header */
   .section-body {
-    @apply py-16 md:py-24;
+    @apply py-16 lg:py-24;
   }
 
 
