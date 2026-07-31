@@ -72,8 +72,8 @@ export default function CartPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="container-luxury py-16 lg:py-24">
+          <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
               <Link to="/products" className="flex items-center gap-2 text-sm font-poppins text-gold hover:underline mb-4 inline-flex">
@@ -90,7 +90,7 @@ export default function CartPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
-                    className="bg-white dark:bg-dark-brown-light rounded-2xl p-6 flex gap-4 border border-gold/10 hover:border-gold/30 transition-colors shadow-card"
+                    className="card-luxury p-5 flex gap-4 hover:border-gold/30"
                   >
 
                     <Link to={`/products/${item.slug}`} className="flex-shrink-0">
@@ -162,7 +162,7 @@ export default function CartPage() {
 
             {/* Order Summary */}
             <div>
-              <div className="bg-white dark:bg-dark-brown-light rounded-3xl border border-gold/10 p-6 sticky top-24">
+              <div className="card-luxury p-6 lg:p-8 sticky top-24">
                 <h3 className="font-playfair text-xl font-bold text-dark-brown dark:text-cream mb-6">
                   Order Summary
                 </h3>
@@ -184,8 +184,7 @@ export default function CartPage() {
                     <button
                       onClick={applyCoupon}
                       disabled={couponApplied}
-                      className="btn-gold px-4 py-2 text-sm disabled:opacity-50"
-                    >
+                      className="btn-gold px-6 disabled:opacity-50"
                       Apply
                     </button>
                   </div>
@@ -220,8 +219,7 @@ export default function CartPage() {
 
                 <button
                   onClick={() => navigate("/checkout")}
-                  className="btn-gold w-full text-base"
-                >
+                  className="btn-gold w-full text-base h-12"
                   Proceed to Checkout →
                 </button>
 
