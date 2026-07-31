@@ -92,7 +92,7 @@ export default function ProductListingPage() {
 
       <div className="page-wrapper">
         {/* Page Header */}
-        <div className="bg-dark-brown py-20 sm:py-24 lg:py-28 relative overflow-hidden">
+        <div className="bg-dark-brown py-16 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative text-center">
             {category ? (
@@ -141,12 +141,12 @@ export default function ProductListingPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
+        <div className="container-luxury py-16 lg:py-24">
           <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setFiltersOpen(!filtersOpen)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border font-poppins text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 h-12 rounded-xl border font-poppins text-sm font-medium transition-all duration-200 ${
                   filtersOpen || hasActiveFilters
                     ? "border-gold bg-gold/10 text-gold"
                     : "border-gray-200 text-dark-brown hover:border-gold hover:text-gold"
@@ -180,7 +180,7 @@ export default function ProductListingPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none pl-4 pr-10 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-dark-brown-light font-poppins text-sm text-dark-brown dark:text-cream focus:outline-none focus:border-gold cursor-pointer"
+                  className="appearance-none pl-4 pr-10 h-12 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-dark-brown-light font-poppins text-sm text-dark-brown dark:text-cream focus:outline-none focus:border-gold cursor-pointer"
                 >
                   {SORT_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -233,14 +233,14 @@ export default function ProductListingPage() {
                           placeholder="Min ₹"
                           value={filters.priceMin}
                           onChange={(e) => setFilters(p => ({ ...p, priceMin: e.target.value }))}
-                          className="input-luxury text-xs py-2 px-3"
+                          className="input-luxury text-xs"
                         />
                         <input
                           type="number"
                           placeholder="Max ₹"
                           value={filters.priceMax}
                           onChange={(e) => setFilters(p => ({ ...p, priceMax: e.target.value }))}
-                          className="input-luxury text-xs py-2 px-3"
+                          className="input-luxury text-xs"
                         />
                       </div>
                     </div>
@@ -326,7 +326,7 @@ export default function ProductListingPage() {
                   <p className="font-poppins text-sm text-gray-400 mb-6">
                     Try adjusting your filters or search query.
                   </p>
-                  <button onClick={clearFilters} className="btn-gold">
+                  <button onClick={clearFilters} className="btn-gold h-12">
                     Clear Filters
                   </button>
                 </div>
