@@ -89,8 +89,8 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
-          <div className="grid lg:grid-cols-2 gap-10 xl:gap-16">
+        <div className="container-luxury py-16 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
 
             {/* ===== LEFT: Image Gallery ===== */}
             <div className="space-y-4">
@@ -319,17 +319,17 @@ export default function ProductDetailPage() {
                 <button
                   onClick={handleAddToCart}
                   disabled={product.availableQty === 0}
-                  className="btn-gold py-4 text-base disabled:opacity-50"
+                  className="btn-gold disabled:opacity-50 h-12 w-full"
                 >
                   <FiShoppingCart className="w-5 h-5" />
                   {activeTab === "rental" ? "Add to Rental Cart" : "Add to Cart"}
                 </button>
                 {activeTab === "rental" ? (
-                  <Link to={`/rental-booking?product=${product.id}`} className="btn-rose py-4 text-base flex items-center justify-center gap-2">
+                  <Link to={`/rental-booking?product=${product.id}`} className="btn-rose flex items-center justify-center gap-2 h-12 w-full">
                     <FiCalendar className="w-5 h-5" /> Book Now
                   </Link>
                 ) : (
-                  <Link to="/checkout" className="btn-dark py-4 text-base flex items-center justify-center gap-2">
+                  <Link to="/checkout" className="btn-dark flex items-center justify-center gap-2 h-12 w-full">
                     Buy Now
                   </Link>
                 )}
@@ -337,7 +337,7 @@ export default function ProductDetailPage() {
 
               <button
                 onClick={() => { toggleWishlist(product); toast(isWishlisted(product.id) ? "Removed from wishlist" : "Added to wishlist!", { icon: "❤️" }); }}
-                className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl border-2 font-poppins font-semibold text-sm transition-all duration-300 ${
+                className={`w-full flex items-center justify-center gap-2 h-12 rounded-xl border-2 font-poppins font-semibold text-sm transition-all duration-300 ${
                   wishlisted ? "border-rose-gold bg-rose-gold/10 text-rose-gold" : "border-gray-200 hover:border-rose-gold text-gray-500 hover:text-rose-gold"
                 }`}
               >
@@ -348,7 +348,7 @@ export default function ProductDetailPage() {
               {/* WhatsApp Button */}
               <button
                 onClick={handleWhatsApp}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white font-poppins font-semibold text-sm transition-colors"
+                className="w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-green-500 hover:bg-green-600 text-white font-poppins font-semibold text-sm transition-colors"
               >
                 <FaWhatsapp className="w-5 h-5" />
                 Inquire on WhatsApp
