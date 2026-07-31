@@ -14,7 +14,7 @@ export default function FAQ() {
   );
 
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown">
+    <section className="py-16 lg:py-24 bg-cream dark:bg-dark-brown">
       <div className="container-luxury">
         <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -136,11 +136,11 @@ export default function FAQ() {
               href="https://wa.me/919876543210?text=Hi! I have a question about Mayleki jewellery."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold px-8 py-3.5 text-sm"
+              className="btn-gold"
             >
               WhatsApp Us
             </a>
-            <a href="/contact" className="btn-gold-outline px-8 py-3.5 text-sm">
+            <a href="/contact" className="btn-gold-outline">
               Contact Page
             </a>
           </div>
