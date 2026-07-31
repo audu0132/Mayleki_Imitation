@@ -21,7 +21,7 @@ export default function BlogPage() {
             <div className="gold-divider mt-4" />
           </div>
         </div>
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
+        <div className="container-luxury py-16 lg:py-24">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {BLOG_POSTS.map((post, i) => (
               <motion.article
@@ -30,7 +30,7 @@ export default function BlogPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white dark:bg-dark-brown-light rounded-3xl overflow-hidden shadow-card hover:shadow-gold border border-transparent hover:border-gold/20 transition-all duration-500 hover:-translate-y-2 group"
+                className="bg-white dark:bg-dark-brown-light rounded-2xl overflow-hidden shadow-card hover:shadow-gold border border-transparent hover:border-gold/20 transition-all duration-500 hover:-translate-y-2 group"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
