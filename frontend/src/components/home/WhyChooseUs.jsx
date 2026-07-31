@@ -12,7 +12,7 @@ const cardVariants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-dark-brown relative overflow-hidden">
+    <section className="py-16 lg:py-24 bg-dark-brown relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-gold/5 rounded-full -translate-x-32 -translate-y-32 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose-gold/5 rounded-full translate-x-48 translate-y-48 blur-3xl pointer-events-none" />
