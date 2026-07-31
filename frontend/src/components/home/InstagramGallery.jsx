@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { FiInstagram, FiHeart, FiExternalLink } from "react-icons/fi";
 import { INSTAGRAM_POSTS } from "../../data/mockData";
 
-export default function InstagramGallery() {
+export default function InstagramGallery()  {
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-white dark:bg-[#1A1414]">
+    <section className="py-16 lg:py-24 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
@@ -71,20 +71,21 @@ export default function InstagramGallery() {
           viewport={{ once: true }}
           className="text-center mt-12 sm:mt-14 lg:mt-16"
         >
-          <a
+          <motion.a
             href="https://www.instagram.com/mayleki.jewellery"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-poppins font-semibold text-sm text-white transition-all duration-300 hover:scale-105 hover:shadow-rose-gold"
-            style={{ background: "linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)" }}
+            className="btn-rose group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <FiInstagram className="w-5 h-5" />
+            <FiInstagram className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
             Follow @mayleki.jewellery
             <FiExternalLink className="w-4 h-4" />
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>
   );
-}
 
+}
