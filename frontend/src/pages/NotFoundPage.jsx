@@ -42,10 +42,10 @@ export default function NotFoundPage() {
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/" className="btn-gold px-8 py-3.5 inline-flex items-center gap-2">
+            <Link to="/" className="btn-gold px-8 h-12 inline-flex justify-center items-center gap-2">
               <FiHome className="w-4 h-4" /> Go to Homepage
             </Link>
-            <Link to="/products" className="btn-gold-outline px-8 py-3.5 inline-flex items-center gap-2">
+            <Link to="/products" className="btn-gold-outline px-8 h-12 inline-flex justify-center items-center gap-2">
               <FiSearch className="w-4 h-4" /> Browse Collections
             </Link>
           </div>
