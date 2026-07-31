@@ -71,7 +71,7 @@ export default function Navbar() {
   return (
     <>
       {/* TOP ANNOUNCEMENT BAR */}
-      <div className="bg-dark-brown text-cream py-2 text-center text-xs font-poppins tracking-wider overflow-hidden">
+      <div className="bg-dark-brown text-cream py-2.5 text-center text-xs font-poppins tracking-widest uppercase overflow-hidden border-b border-white/5">
         <div className="animate-marquee inline-flex gap-16 whitespace-nowrap">
           {[
             "✨ Free Delivery on Orders Above ₹999",
@@ -94,7 +94,7 @@ export default function Navbar() {
       <motion.header
         className={`sticky top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/95 dark:bg-dark-brown/95 backdrop-blur-xl shadow-luxury border-b border-gold/10"
+            ? "bg-white/95 dark:bg-dark-brown/95 backdrop-blur-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border-b border-gold/10"
             : "bg-cream dark:bg-dark-brown"
         }`}
         initial={{ y: -100 }}
@@ -105,8 +105,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20 md:h-24">
 
             {/* LOGO */}
-            <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-gold/30 group-hover:ring-gold transition-all duration-300 shadow-gold">
+            <Link to="/" className="flex items-center gap-4 group flex-shrink-0">
+              <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/20 group-hover:border-gold transition-all duration-500">
                 <img
                   src="/logo.png"
                   alt="Mayleki"
@@ -155,17 +155,17 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[640px] bg-white dark:bg-dark-brown-light rounded-2xl shadow-luxury border border-gold/10 p-6 z-50"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white dark:bg-dark-brown-light rounded-2xl shadow-[0_8px_40px_rgb(0,0,0,0.08)] border border-gold/10 p-8 z-50"
                         >
-                          <div className="grid grid-cols-4 gap-3">
+                          <div className="grid grid-cols-3 gap-4">
                             {CATEGORIES.slice(0, 16).map((cat) => (
                               <Link
                                 key={cat.id}
                                 to={`/category/${cat.slug}`}
                                 className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gold/5 hover:text-gold transition-all duration-200 group"
                               >
-                                <span className="text-base">{cat.icon}</span>
-                                <span className="font-poppins text-xs font-medium text-dark-brown dark:text-cream group-hover:text-gold truncate">
+                                <span className="text-xl">{cat.icon}</span>
+                                <span className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream group-hover:text-gold tracking-wide uppercase truncate">
                                   {cat.name}
                                 </span>
                               </Link>
@@ -177,9 +177,9 @@ export default function Navbar() {
                             </span>
                             <Link
                               to="/products"
-                              className="btn-gold text-xs px-4 py-2"
+                              className="font-poppins text-xs font-semibold text-gold tracking-widest uppercase hover:text-gold-dark transition-colors"
                             >
-                              View All Collections
+                              View All Collections →
                             </Link>
                           </div>
                         </motion.div>
@@ -207,7 +207,7 @@ export default function Navbar() {
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-2.5 rounded-xl text-dark-brown dark:text-cream hover:bg-gold/10 hover:text-gold transition-all duration-200"
+                className="p-3 rounded-full text-dark-brown dark:text-cream hover:bg-gold/5 hover:text-gold transition-all duration-300"
                 aria-label="Search"
               >
                 <FiSearch className="w-5 h-5" />
@@ -216,7 +216,7 @@ export default function Navbar() {
               {/* Dark Mode */}
               <button
                 onClick={toggleDark}
-                className="p-2.5 rounded-xl text-dark-brown dark:text-cream hover:bg-gold/10 hover:text-gold transition-all duration-200"
+                className="p-3 rounded-full text-dark-brown dark:text-cream hover:bg-gold/5 hover:text-gold transition-all duration-300"
                 aria-label="Toggle dark mode"
               >
                 {isDark ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
@@ -225,7 +225,7 @@ export default function Navbar() {
               {/* Wishlist */}
               <Link
                 to="/wishlist"
-                className="relative p-2.5 rounded-xl text-dark-brown dark:text-cream hover:bg-gold/10 hover:text-gold transition-all duration-200"
+                className="relative p-3 rounded-full text-dark-brown dark:text-cream hover:bg-gold/5 hover:text-gold transition-all duration-300"
                 aria-label="Wishlist"
               >
                 <FiHeart className="w-5 h-5" />
@@ -239,7 +239,7 @@ export default function Navbar() {
               {/* Cart */}
               <Link
                 to="/cart"
-                className="relative p-2.5 rounded-xl text-dark-brown dark:text-cream hover:bg-gold/10 hover:text-gold transition-all duration-200"
+                className="relative p-3 rounded-full text-dark-brown dark:text-cream hover:bg-gold/5 hover:text-gold transition-all duration-300"
                 aria-label="Cart"
               >
                 <FiShoppingCart className="w-5 h-5" />
@@ -259,7 +259,7 @@ export default function Navbar() {
               <div className="relative hidden sm:block">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 p-2 rounded-xl text-dark-brown dark:text-cream hover:bg-gold/10 hover:text-gold transition-all duration-200"
+                  className="flex items-center gap-2 p-2 rounded-full text-dark-brown dark:text-cream hover:bg-gold/5 hover:text-gold transition-all duration-300"
                 >
                   <div className="w-8 h-8 rounded-full bg-gold-gradient flex items-center justify-center">
                     {user ? (
@@ -279,7 +279,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 top-full mt-2 w-52 bg-white dark:bg-dark-brown-light rounded-2xl shadow-luxury border border-gold/10 py-2 z-50"
+                      className="absolute right-0 top-full mt-4 w-56 bg-white dark:bg-dark-brown-light rounded-2xl shadow-[0_8px_40px_rgb(0,0,0,0.08)] border border-gold/10 py-3 z-50"
                       onMouseLeave={() => setUserMenuOpen(false)}
                     >
                       {user ? (
