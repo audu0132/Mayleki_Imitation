@@ -23,7 +23,7 @@ export default function FeaturedBridal() {
   const hasMore = allFiltered.length > 8 && !showAll;
 
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-white dark:bg-[#1A1414]">
+    <section className="py-16 lg:py-24 bg-white dark:bg-[#1A1414]">
       <div className="container-luxury">
         {/* Header */}
         <motion.div
@@ -96,10 +96,7 @@ export default function FeaturedBridal() {
               Show More ({allFiltered.length - 8} more)
             </button>
           )}
-          <Link
-            to="/products"
-            className="btn-gold text-sm sm:text-base px-10 py-3.5 sm:py-4 inline-flex items-center gap-2"
-          >
+          <Link to="/products" className="btn-gold text-sm sm:text-base px-8 py-3.5 sm:py-4 inline-flex items-center gap-2">
             View All Products <FiArrowRight className="w-5 h-5" />
           </Link>
         </motion.div>
