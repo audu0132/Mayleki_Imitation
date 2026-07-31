@@ -51,8 +51,8 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12">
+        <div className="container-luxury py-16 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Left: Info */}
             <div>
               <motion.div
@@ -99,13 +99,13 @@ export default function ContactPage() {
                     href="https://wa.me/919876543210?text=Hi! I have an inquiry about Mayleki Jewellery."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-poppins font-semibold text-sm transition-colors shadow-sm"
+                    className="flex items-center gap-2 px-6 h-12 bg-green-500 hover:bg-green-600 text-white rounded-xl font-poppins font-semibold text-sm transition-colors shadow-sm"
                   >
                     <FaWhatsapp className="w-4 h-4" /> WhatsApp Us
                   </a>
                   <a
                     href="tel:+919876543210"
-                    className="flex items-center gap-2 px-5 py-3 bg-gold text-dark-brown hover:bg-gold-dark rounded-xl font-poppins font-semibold text-sm transition-colors shadow-gold"
+                    className="flex items-center gap-2 px-6 h-12 bg-gold text-dark-brown hover:bg-gold-dark rounded-xl font-poppins font-semibold text-sm transition-colors shadow-gold"
                   >
                     <FiPhone className="w-4 h-4" /> Call Now
                   </a>
@@ -133,12 +133,12 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 shadow-card border border-gold/10">
+              <div className="card-luxury">
                 <h3 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-6">
                   Send us a Message
                 </h3>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Name *</label>
@@ -196,7 +196,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-gold w-full py-4 text-base"
+                    className="btn-gold w-full h-12 text-base"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2 justify-center">
