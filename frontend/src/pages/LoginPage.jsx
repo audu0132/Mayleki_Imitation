@@ -99,7 +99,7 @@ export default function LoginPage() {
         </div>
 
         {/* Right: Form Side */}
-        <div className="flex-1 flex flex-col items-center justify-center p-6 sm:p-10 lg:p-16 relative z-10">
+        <div className="flex-1 flex flex-col items-center justify-center p-8 sm:p-12 lg:p-20 relative z-10">
           <div className="w-full max-w-md">
             {/* Mobile Logo */}
             <div className="lg:hidden flex justify-center mb-10">
@@ -124,7 +124,7 @@ export default function LoginPage() {
                 </p>
               </motion.div>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 {/* Email Input */}
                 <motion.div variants={fadeUp}>
                   <label className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream mb-1.5 block uppercase tracking-wider">
@@ -224,7 +224,7 @@ export default function LoginPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="btn-gold w-full flex justify-center items-center group overflow-hidden relative"
+                    className="btn-gold w-full flex justify-center items-center group overflow-hidden relative h-12"
                   >
                     <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
                     <span className="relative flex items-center gap-2">
@@ -257,7 +257,7 @@ export default function LoginPage() {
                   href="https://wa.me/919876543210"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-brown text-dark-brown dark:text-cream font-poppins font-medium text-sm hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50/50 dark:hover:bg-green-500/10 transition-all duration-300 py-3 shadow-sm hover:shadow-md"
+                  className="flex items-center justify-center gap-3 w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-brown text-dark-brown dark:text-cream font-poppins font-medium text-sm hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50/50 dark:hover:bg-green-500/10 transition-all duration-300 h-12 shadow-sm hover:shadow-md"
                 >
                   <FaWhatsapp className="w-5 h-5 text-green-500" /> 
                   <span>Login via WhatsApp</span>
