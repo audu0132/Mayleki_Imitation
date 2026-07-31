@@ -32,7 +32,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="py-20 sm:py-24 lg:py-28 bg-cream dark:bg-dark-brown overflow-hidden"
+      className="py-16 lg:py-24 bg-cream dark:bg-dark-brown overflow-hidden"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
