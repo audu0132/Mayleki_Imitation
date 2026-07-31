@@ -108,10 +108,10 @@ export default function CheckoutPage() {
           </div>
         </div>
         
-        <div className="container-luxury py-16 md:py-24">
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="container-luxury py-16 lg:py-24">
+          <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Delivery Form */}
-            <div className="lg:col-span-2 bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 border border-gold/10 shadow-card">
+            <div className="lg:col-span-2 card-luxury">
               <h2 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-6">Delivery Details</h2>
               <form id="checkout-form" onSubmit={handlePayment} className="grid sm:grid-cols-2 gap-6">
                 <div>
@@ -138,9 +138,9 @@ export default function CheckoutPage() {
             </div>
 
             {/* Order Summary */}
-            <div className="bg-white dark:bg-dark-brown-light p-6 sm:p-8 rounded-2xl h-fit border border-gold/20 shadow-card">
+            <div className="card-luxury h-fit sticky top-24">
               <h2 className="font-playfair text-xl font-bold text-dark-brown dark:text-cream mb-4">Order Summary</h2>
-              <div className="space-y-4 mb-6 max-h-64 overflow-y-auto">
+              <div className="space-y-4 mb-6 max-h-96 overflow-y-auto pr-2 no-scrollbar">
                 {cart.map(item => (
                   <div key={`${item.id}-${item.type}`} className="flex gap-4 items-center">
                     <img src={item.images && item.images.length > 0 ? item.images[0] : ""} alt={item.title} className="w-16 h-16 rounded-xl object-cover border border-gold/10" />
@@ -162,7 +162,7 @@ export default function CheckoutPage() {
                 <span>Total Amount</span>
                 <span>₹{getCartTotal().toLocaleString("en-IN")}</span>
               </div>
-              <button form="checkout-form" type="submit" disabled={loading} className="btn-gold w-full mt-6 text-sm uppercase tracking-widest">
+              <button form="checkout-form" type="submit" disabled={loading} className="btn-gold w-full mt-6 text-sm uppercase tracking-widest h-12">
                 {loading ? "Processing..." : `Pay ₹${getCartTotal().toLocaleString("en-IN")}`}
               </button>
             </div>
