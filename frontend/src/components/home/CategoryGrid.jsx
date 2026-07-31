@@ -34,7 +34,7 @@ export default function CategoryGrid() {
   return (
     <section
       id="collections"
-      className="relative overflow-hidden bg-cream dark:bg-dark-brown py-24 sm:py-28 lg:py-32 scroll-mt-24"
+      className="relative overflow-hidden bg-cream dark:bg-dark-brown py-16 lg:py-24 scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -161,10 +161,9 @@ export default function CategoryGrid() {
         >
           <Link
             to="/products"
-            className="btn-gold-outline group inline-flex items-center gap-3 px-8 py-4"
+            className="btn-gold-outline group inline-flex items-center gap-3"
           >
             View All Collections
-
             <FiArrowRight
               className="transition-transform duration-300 group-hover:translate-x-1"
             />
