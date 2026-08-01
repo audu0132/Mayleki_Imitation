@@ -31,132 +31,78 @@ export default function Testimonials() {
   };
 
   return (
-    <section
-      className="py-16 lg:py-24 bg-cream dark:bg-dark-brown overflow-hidden"
-      onMouseEnter={() => setIsPlaying(false)}
-      onMouseLeave={() => setIsPlaying(true)}
-    >
+    <section className="py-24 bg-white" onMouseEnter={() => setIsPlaying(false)} onMouseLeave={() => setIsPlaying(true)}>
       <div className="container-luxury">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
-        >
-          <p className="section-subtitle mb-2.5">Happy Brides</p>
-          <h2 className="section-title mb-4">
-            What Our <span className="text-gold-gradient">Customers Say</span>
-          </h2>
-          <div className="gold-divider my-4 mx-auto" />
-        </motion.div>
-
-        {/* Carousel */}
-        <div className="relative max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-4 min-h-[340px]">
-            <AnimatePresence mode="popLayout">
-              {getVisible().map(({ position, ...testimonial }) => {
-                const isCenter = position === 0;
-                const isLeft = position === -1;
-                const isRight = position === 1;
-
-                return (
-                  <motion.div
-                    key={`${testimonial.id}-${position}`}
-                    initial={{
-                      opacity: 0,
-                      scale: 0.7,
-                      x: position > 0 ? 100 : -100,
-                    }}
-                    animate={{
-                      opacity: isCenter ? 1 : 0.5,
-                      scale: isCenter ? 1 : 0.82,
-                      x: isLeft ? -20 : isRight ? 20 : 0,
-                      zIndex: isCenter ? 10 : 0,
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0.7,
-                      x: position > 0 ? -100 : 100,
-                    }}
-                    transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className={`relative flex-shrink-0 ${
-                      isCenter ? "w-full max-w-2xl" : "hidden md:block w-72"
-                    }`}
-                    onClick={!isCenter ? (isLeft ? prev : next) : undefined}
-                    style={{ cursor: !isCenter ? "pointer" : "default" }}
-                  >
-                    <div className={`bg-white dark:bg-dark-brown-light rounded-2xl p-6 sm:p-8 shadow-card ${
-                      isCenter ? "border border-gold/30 shadow-gold-lg" : "border border-gold/10"
-                    }`}>
-                      {/* Quote icon */}
-                      <div className="text-gold text-5xl font-playfair leading-none mb-3 opacity-40">"</div>
-
-                      {/* Review */}
-                      <p className={`font-poppins text-dark-brown dark:text-cream leading-relaxed mb-6 ${
-                        isCenter ? "text-base" : "text-sm line-clamp-3"
-                      }`}>
-                        {testimonial.review}
-                      </p>
-
-                      {/* Stars */}
-                      <div className="flex items-center gap-1 mb-4">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <span key={i} className={`text-sm ${i < testimonial.rating ? "text-gold" : "text-gray-300"}`}>★</span>
-                        ))}
-                      </div>
-
-                      {/* Author */}
-                      <div className="flex items-center gap-3">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-12 h-12 rounded-full object-cover ring-2 ring-gold/30"
-                        />
-                        <div>
-                          <p className="font-playfair font-bold text-dark-brown dark:text-cream">
-                            {testimonial.name}
-                          </p>
-                          <p className="font-poppins text-xs text-gray-400">
-                            {testimonial.location} · {testimonial.date}
-                          </p>
-                        </div>
-                        <div className="ml-auto">
-                          <span className="badge-gold text-[10px]">{testimonial.occasion}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+        <div className="w-full">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-4">
+              Client Stories
+            </h2>
+            <div className="w-12 h-[1px] bg-[#D4AF37] mx-auto" />
           </div>
 
-          {/* Nav buttons */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+          {/* Carousel */}
+          <div className="relative min-h-[300px] flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-center px-4 md:px-12"
+              >
+                <div className="text-[#D4AF37] text-4xl font-serif mb-6 opacity-40">"</div>
+                <p className="font-playfair text-xl md:text-3xl text-[#111111] leading-relaxed mb-8 italic">
+                  {TESTIMONIALS[current].review}
+                </p>
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-12 h-12 rounded-full overflow-hidden mb-2">
+                    <img
+                      src={TESTIMONIALS[current].image}
+                      alt={TESTIMONIALS[current].name}
+                      className="w-full h-full object-cover grayscale"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-poppins text-xs font-medium uppercase tracking-widest text-[#111111]">
+                      {TESTIMONIALS[current].name}
+                    </p>
+                    <p className="font-poppins text-[10px] uppercase tracking-[0.2em] text-gray-500 mt-1">
+                      {TESTIMONIALS[current].location}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Arrows */}
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border-2 border-gold/30 hover:border-gold hover:bg-gold/10 flex items-center justify-center text-gold transition-all duration-200"
+              className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
             >
-              <FiChevronLeft className="w-5 h-5" />
+              <FiChevronLeft strokeWidth={1} className="w-8 h-8" />
             </button>
-            <div className="flex items-center gap-2">
-              {TESTIMONIALS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current ? "w-6 h-2.5 bg-gold" : "w-2.5 h-2.5 bg-gold/30 hover:bg-gold/60"
-                  }`}
-                />
-              ))}
-            </div>
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border-2 border-gold/30 hover:border-gold hover:bg-gold/10 flex items-center justify-center text-gold transition-all duration-200"
+              className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
             >
-              <FiChevronRight className="w-5 h-5" />
+              <FiChevronRight strokeWidth={1} className="w-8 h-8" />
             </button>
+          </div>
+
+          {/* Indicators */}
+          <div className="flex items-center justify-center gap-2 mt-12">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`transition-all duration-500 rounded-none ${
+                  i === current ? "w-8 h-[1px] bg-[#111111]" : "w-4 h-[1px] bg-gray-300"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
