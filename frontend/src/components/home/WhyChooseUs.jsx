@@ -12,91 +12,56 @@ const cardVariants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 lg:py-24 bg-dark-brown relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-gold/5 rounded-full -translate-x-32 -translate-y-32 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-rose-gold/5 rounded-full translate-x-48 translate-y-48 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/[0.03] rounded-full blur-3xl pointer-events-none" />
-
-      <div className="container-luxury relative">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
-        >
-          <p className="section-subtitle mb-2.5">Our Promise</p>
-          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-cream mb-4">
-            Why Choose <span className="text-gold-gradient">Mayleki?</span>
+    <section className="py-24 bg-[#FAFAFA]">
+      <div className="container-luxury">
+        <div className="flex flex-col items-center max-w-4xl mx-auto text-center mb-16">
+          <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-6 text-center">
+            The Mayleki Difference
           </h2>
-          <div className="gold-divider my-4 mx-auto" />
-          <p className="font-poppins text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mt-4 mb-0">
-            We are passionate about making every woman feel like royalty on her special day.
-            Here's why thousands of brides trust us.
+          <p className="font-poppins text-sm text-gray-500 font-light leading-relaxed max-w-xl text-center mx-auto">
+            We are passionate about making every woman feel like royalty on her special day. Our dedication to craftsmanship and quality sets us apart.
           </p>
-        </motion.div>
-
-        {/* Features Grid (gap-6 lg:gap-8 = 24px - 32px) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {WHY_CHOOSE_US.map((item, i) => (
-            <motion.div
-              key={item.title}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-30px" }}
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="group relative h-full flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 sm:p-8 hover:border-gold/40 hover:bg-white/10 transition-all duration-500 cursor-default"
-            >
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gold/0 group-hover:bg-gold/5 transition-all duration-500" />
-
-              {/* Icon */}
-              <div className="relative w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold/20 group-hover:border-gold/40 transition-all duration-300">
-                <span className="text-2xl">{item.icon}</span>
-                {/* Corner accent */}
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gold/40 group-hover:bg-gold transition-colors duration-300" />
+          
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 w-full border-t border-b border-gray-200 py-8">
+            {[
+              { value: "5000+", label: "Happy Customers" },
+              { value: "1000+", label: "Exclusive Designs" },
+              { value: "500+", label: "Rentals Completed" },
+              { value: "4.9/5", label: "Average Rating" },
+            ].map(({ value, label }) => (
+              <div key={label} className="text-center flex flex-col items-center justify-center">
+                <p className="font-playfair text-3xl font-medium text-[#111111] mb-2">{value}</p>
+                <p className="font-poppins text-[10px] uppercase tracking-widest text-gray-500">{label}</p>
               </div>
-
-              <h3 className="font-playfair text-xl font-bold text-cream mb-3 group-hover:text-gold transition-colors duration-300">
-                {item.title}
-              </h3>
-              <p className="font-poppins text-sm text-gray-400 leading-relaxed">
-                {item.description}
-              </p>
-
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gold-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Trust Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-12 sm:mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8"
-        >
-          {[
-            { value: "5000+", label: "Happy Customers", icon: "😊" },
-            { value: "1000+", label: "Jewellery Designs", icon: "💎" },
-            { value: "500+", label: "Rentals Completed", icon: "🎁" },
-            { value: "4.9/5", label: "Average Rating", icon: "⭐" },
-          ].map(({ value, label, icon }) => (
-            <div
-              key={label}
-              className="text-center p-6 rounded-2xl bg-gold/5 border border-gold/20 hover:border-gold/40 hover:bg-gold/10 transition-all duration-300"
-            >
-              <span className="text-3xl mb-2 block">{icon}</span>
-              <p className="font-playfair text-3xl font-bold text-gold mb-1">{value}</p>
-              <p className="font-poppins text-xs text-gray-400 tracking-wide">{label}</p>
-            </div>
-          ))}
-        </motion.div>
+        {/* Features */}
+        <div className="w-full mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 justify-center">
+            {WHY_CHOOSE_US.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="flex flex-col items-center text-center gap-4"
+              >
+                <span className="font-playfair text-3xl text-[#D4AF37] opacity-60 mb-1">0{i + 1}</span>
+                <div>
+                  <h3 className="font-playfair text-xl font-medium text-[#111111] mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="font-poppins text-sm text-gray-500 font-light leading-relaxed max-w-sm mx-auto">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
