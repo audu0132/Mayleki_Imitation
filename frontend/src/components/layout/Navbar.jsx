@@ -92,11 +92,10 @@ export default function Navbar() {
 
       {/* MAIN NAVBAR */}
       <motion.header
-        className={`sticky top-0 z-50 transition-all duration-500 ${
-          scrolled
+        className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
             ? "bg-white/95 dark:bg-dark-brown/95 backdrop-blur-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border-b border-gold/10"
             : "bg-cream dark:bg-dark-brown"
-        }`}
+          }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -141,9 +140,8 @@ export default function Navbar() {
                     onMouseEnter={() => setCollectionsOpen(true)}
                     onMouseLeave={() => setCollectionsOpen(false)}
                   >
-                    <button className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium font-poppins transition-colors duration-200 ${
-                      isActive(link.href) ? "text-gold" : "text-dark-brown dark:text-cream hover:text-gold"
-                    }`}>
+                    <button className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium font-poppins transition-colors duration-200 ${isActive(link.href) ? "text-gold" : "text-dark-brown dark:text-cream hover:text-gold"
+                      }`}>
                       {link.label}
                       <FiChevronDown className={`w-3 h-3 transition-transform duration-200 ${collectionsOpen ? "rotate-180" : ""}`} />
                     </button>
@@ -190,11 +188,10 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     to={link.href}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium font-poppins transition-colors duration-200 ${
-                      isActive(link.href)
+                    className={`px-2 py-4 rounded-lg text-sm font-medium font-poppins transition-colors duration-200 ${isActive(link.href)
                         ? "text-gold"
                         : "text-dark-brown dark:text-cream hover:text-gold"
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -203,7 +200,7 @@ export default function Navbar() {
             </nav>
 
             {/* RIGHT ACTIONS */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-4 py-2 px-5">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(true)}
@@ -352,11 +349,10 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     to={link.href}
-                    className={`flex items-center px-4 py-3 rounded-xl font-poppins text-sm font-medium transition-colors ${
-                      isActive(link.href)
+                    className={`flex items-center px-4 py-3 rounded-xl font-poppins text-sm font-medium transition-colors ${isActive(link.href)
                         ? "bg-gold/10 text-gold"
                         : "text-dark-brown dark:text-cream hover:bg-gold/5 hover:text-gold"
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
