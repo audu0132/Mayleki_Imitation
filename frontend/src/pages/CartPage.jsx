@@ -185,6 +185,7 @@ export default function CartPage() {
                       onClick={applyCoupon}
                       disabled={couponApplied}
                       className="btn-gold px-6 disabled:opacity-50"
+                    >
                       Apply
                     </button>
                   </div>
@@ -220,6 +221,7 @@ export default function CartPage() {
                 <button
                   onClick={() => navigate("/checkout")}
                   className="btn-gold w-full text-base h-12"
+                >
                   Proceed to Checkout →
                 </button>
 
