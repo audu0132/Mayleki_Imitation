@@ -49,143 +49,80 @@ const staggerContainer = {
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-brown text-cream relative overflow-hidden">
-
-      {/* Newsletter Section */}
-      <div className="border-b border-white/10">
+    <footer className="bg-[#111111] text-white pt-20 pb-10 text-center ">
+      <div className="container-luxury">
+        
+        {/* Newsletter Section - Editorial Style */}
         <motion.div 
-          className="container-luxury py-12 sm:py-16"
+          className="flex flex-col items-center text-center border-b border-white/20 pb-16 mb-16 gap-8 max-w-2xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
-            <div className="text-center md:text-left md:max-w-md">
-              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-cream">
-                Stay Updated with <span className="text-gold-gradient">New Collections</span>
-              </h3>
-              <p className="font-poppins text-sm text-gray-400 mt-2">
-                Subscribe for exclusive offers, new arrivals, and bridal styling tips.
-              </p>
-            </div>
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col sm:flex-row items-stretch gap-3 w-full md:w-auto"
-            >
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 sm:w-72 px-5 h-12 rounded-full bg-white/5 border border-white/10 text-cream placeholder:text-gray-500 font-poppins text-sm focus:outline-none focus:border-gold transition-colors"
-              />
-              <button type="submit" className="btn-gold whitespace-nowrap h-12 rounded-full">
-                Subscribe <FiArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Main Footer Content */}
-      <div className="container-luxury pt-16 sm:pt-20 pb-12 sm:pb-16">
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-
-          {/* Brand Column */}
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-gold/30 flex-shrink-0">
-                <img src="/logo.png" alt="Mayleki" className="w-full h-full object-cover"
-                  onError={(e) => { e.target.style.display="none"; }} />
-              </div>
-              <div>
-                <h2 className="font-playfair text-2xl font-bold text-cream">Mayleki</h2>
-                <p className="font-poppins text-xs tracking-widest text-gold uppercase font-semibold">
-                  Imitation Jewellery
-                </p>
-              </div>
-            </div>
-            <p className="font-poppins text-sm text-gray-400 leading-relaxed">
-              Premium imitation & 1GM gold jewellery for every occasion. Specializing in
-              bridal sets, Maharashtrian traditional jewellery, and affordable rental services
-              in Rahuri, Maharashtra.
+          <div className="max-w-xl flex flex-col items-center px-4 py-10 mx-auto">
+            <h3 className="font-playfair text-2xl md:text-4xl font-medium text-white py-6 leading-tight text-center">
+              Join the Mayleki Society
+            </h3>
+            <p className="font-poppins text-sm text-gray-400 font-light tracking-wide text-center mx-auto">
+              Subscribe to receive updates, access to exclusive deals, and more.
             </p>
+          </div>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="w-full max-w-md relative mx-auto"
+          >
+            <input
+              type="email"
+              placeholder="ENTER YOUR EMAIL"
+              className="w-full bg-transparent border-b border-white/30 text-white font-poppins text-xs tracking-widest py-3 focus:outline-none focus:border-white transition-colors uppercase placeholder:text-gray-500 text-center"
+            />
+            <button type="submit" className="absolute right-0 top-1/2 -translate-y-1/2 text-white hover:text-[#D4AF37] transition-colors p-2">
+              <FiArrowRight strokeWidth={1} className="w-5 h-5" />
+            </button>
+          </form>
+        </motion.div>
 
-            {/* Contact Info */}
-            <div className="space-y-3.5">
-              <a href="https://wa.me/919876543210" className="flex items-center gap-3 text-sm font-poppins text-gray-400 hover:text-gold transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 flex-shrink-0">
-                  <FaWhatsapp className="w-4 h-4 text-green-400" />
-                </div>
-                +91 98765 43210
-              </a>
-              <a href="tel:+919876543210" className="flex items-center gap-3 text-sm font-poppins text-gray-400 hover:text-gold transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 flex-shrink-0">
-                  <FiPhone className="w-4 h-4 text-gold" />
-                </div>
-                +91 98765 43210
-              </a>
-              <a href="mailto:hello@mayleki.com" className="flex items-center gap-3 text-sm font-poppins text-gray-400 hover:text-gold transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 flex-shrink-0">
-                  <FiMail className="w-4 h-4 text-gold" />
-                </div>
-                hello@mayleki.com
-              </a>
-              <div className="flex items-start gap-3 text-sm font-poppins text-gray-400">
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <FiMapPin className="w-4 h-4 text-gold" />
-                </div>
-                Rahuri, Ahmednagar District,<br />Maharashtra — 413706
-              </div>
-              <div className="flex items-center gap-3 text-sm font-poppins text-gray-400">
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <FiClock className="w-4 h-4 text-gold" />
-                </div>
-                Mon–Sat: 10:00 AM – 8:00 PM
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-3 pt-2">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-12 lg:gap-16 mb-16 text-center justify-center w-full">
+          
+          {/* Brand Column */}
+          <motion.div variants={fadeInUp} className="flex flex-col items-center">
+            <h2 className="font-playfair text-2xl font-medium tracking-widest text-white mb-6 uppercase text-center">Mayleki</h2>
+            <p className="font-poppins text-xs text-gray-400 font-light leading-loose max-w-xs mb-8 text-center mx-auto">
+              Premium imitation & 1GM gold jewellery. Specializing in bridal sets, Maharashtrian traditional jewellery, and affordable rental services in Rahuri, Maharashtra.
+            </p>
+            <div className="flex items-center justify-center gap-6">
               {[
-                { icon: FaWhatsapp, href: "https://wa.me/919876543210", bg: "bg-green-500", label: "WhatsApp" },
-                { icon: FiInstagram, href: "#", bg: "bg-gradient-to-br from-purple-500 to-rose-500", label: "Instagram" },
-                { icon: FaFacebook, href: "#", bg: "bg-blue-600", label: "Facebook" },
-                { icon: FaYoutube, href: "#", bg: "bg-red-600", label: "YouTube" },
-              ].map(({ icon: Icon, href, bg, label }) => (
+                { icon: FaWhatsapp, href: "https://wa.me/919876543210" },
+                { icon: FiInstagram, href: "#" },
+                { icon: FaFacebook, href: "#" },
+              ].map(({ icon: Icon, href }, i) => (
                 <a
-                  key={label}
+                  key={i}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
-                  className={`w-10 h-10 rounded-full ${bg} flex items-center justify-center text-white hover:scale-110 hover:shadow-lg transition-all duration-200`}
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
           </motion.div>
 
           {/* Collections */}
-          <motion.div variants={fadeInUp}>
-            <h4 className="font-playfair text-lg font-bold text-cream mb-6 relative inline-block">
+          <motion.div variants={fadeInUp} className="flex flex-col items-center text-center">
+            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase text-center">
               Collections
-              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
             </h4>
-            <ul className="space-y-3.5">
+            <ul className="flex flex-col items-center space-y-4 text-center">
               {FOOTER_LINKS.collections.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-poppins text-sm text-gray-400 hover:text-gold transition-colors flex items-center gap-2 group"
+                    className="font-poppins text-xs text-gray-400 font-light hover:text-white transition-colors"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -194,19 +131,17 @@ export default function Footer() {
           </motion.div>
 
           {/* Quick Links */}
-          <motion.div variants={fadeInUp}>
-            <h4 className="font-playfair text-lg font-bold text-cream mb-6 relative inline-block">
-              Quick Links
-              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
+          <motion.div variants={fadeInUp} className="flex flex-col items-center text-center">
+            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase text-center">
+              Company
             </h4>
-            <ul className="space-y-3.5">
+            <ul className="flex flex-col items-center space-y-4 text-center">
               {FOOTER_LINKS.quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-poppins text-sm text-gray-400 hover:text-gold transition-colors flex items-center gap-2 group"
+                    className="font-poppins text-xs text-gray-400 font-light hover:text-white transition-colors"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -214,55 +149,49 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Policies + Badges */}
-          <motion.div variants={fadeInUp}>
-            <h4 className="font-playfair text-lg font-bold text-cream mb-6 relative inline-block">
-              Policies
-              <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold-gradient rounded-full" />
+          {/* Client Services */}
+          <motion.div variants={fadeInUp} className="flex flex-col items-center text-center">
+            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase text-center">
+              Client Services
             </h4>
-            <ul className="space-y-3.5 mb-8">
+            <ul className="flex flex-col items-center space-y-4 mb-8 text-center">
               {FOOTER_LINKS.policies.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-poppins text-sm text-gray-400 hover:text-gold transition-colors flex items-center gap-2 group"
+                    className="font-poppins text-xs text-gray-400 font-light hover:text-white transition-colors"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-
-            {/* Trust Badges */}
-            <div className="space-y-3">
-              <p className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase">
-                We Accept
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["UPI", "VISA", "Mastercard", "Razorpay", "COD"].map((m) => (
-                  <span key={m} className="px-3 py-1.5 bg-white/10 rounded-lg text-xs font-poppins text-gray-300 border border-white/10">
-                    {m}
-                  </span>
-                ))}
-              </div>
-            </div>
+            
+            <p className="font-poppins text-xs text-gray-400 font-light mb-2">
+              <a href="mailto:hello@mayleki.com" className="hover:text-white transition-colors">hello@mayleki.com</a>
+            </p>
+            <p className="font-poppins text-xs text-gray-400 font-light">
+              <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 98765 43210</a>
+            </p>
           </motion.div>
-        </motion.div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container-luxury py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-poppins text-xs text-gray-500 text-center sm:text-left">
-            © {new Date().getFullYear()} Mayleki Imitation Jewellery. All rights reserved. Rahuri, Maharashtra.
-          </p>
-          <p className="font-poppins text-xs text-gray-500 flex items-center gap-1">
-            Made with <FiHeart className="w-3.5 h-3.5 text-rose-gold" /> for beautiful brides
-          </p>
         </div>
-      </div>
 
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col items-center justify-center gap-6 border-t border-white/20 text-center">
+          <p className="font-poppins text-[10px] text-gray-500 tracking-widest uppercase">
+            © {new Date().getFullYear()} MAYLEKI. ALL RIGHTS RESERVED.
+          </p>
+          <div className="flex items-center justify-center gap-4 text-gray-500">
+            {["UPI", "VISA", "MASTERCARD"].map((m) => (
+              <span key={m} className="font-poppins text-[9px] tracking-widest uppercase border border-gray-700 px-2 py-1">
+                {m}
+              </span>
+            ))}
+          </div>
+        </div>
+
+      </div>
     </footer>
   );
 }
