@@ -51,8 +51,8 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="container-luxury py-16 lg:py-24 flex justify-center">
+          <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Left: Info */}
             <div>
               <motion.div
