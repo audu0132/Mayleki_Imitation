@@ -4,88 +4,57 @@ import { INSTAGRAM_POSTS } from "../../data/mockData";
 
 export default function InstagramGallery()  {
   return (
-    <section className="py-16 lg:py-24 bg-white dark:bg-[#1A1414]">
+    <section className="py-24 bg-white">
       <div className="container-luxury">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
-        >
-          <p className="section-subtitle mb-2.5">Follow Us</p>
-          <h2 className="section-title mb-4">
-            <span className="text-gold-gradient">@mayleki.jewellery</span>
-          </h2>
-          <div className="gold-divider my-4 mx-auto" />
+        <div className="flex flex-col items-center text-center mb-12 gap-4">
+          <div className="max-w-2xl mx-auto flex flex-col items-center">
+            <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-4 text-center">
+              #Mayleki
+            </h2>
+            <a
+              href="https://www.instagram.com/mayleki.jewellery"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-poppins text-xs font-medium uppercase tracking-widest text-gray-500 hover:text-[#111111] transition-colors"
+            >
+              @mayleki.jewellery
+            </a>
+          </div>
           <a
             href="https://www.instagram.com/mayleki.jewellery"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-poppins text-sm text-gray-500 hover:text-rose-gold transition-colors mt-2"
+            className="font-poppins text-xs font-medium uppercase tracking-widest text-[#111111] hover:text-[#D4AF37] transition-colors border-b border-[#111111] hover:border-[#D4AF37] pb-1 flex items-center justify-center gap-2 mt-2"
           >
-            <FiInstagram className="w-4 h-4" />
-            Follow us on Instagram for daily inspiration
+            <FiInstagram strokeWidth={1} className="w-4 h-4" />
+            Follow Us
           </a>
-        </motion.div>
+        </div>
 
-        {/* Instagram Grid (gap-4 sm:gap-6 = 16px - 24px) */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 sm:gap-6">
+        {/* Grid - No gaps for editorial feel */}
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] border border-gray-100 justify-center w-full">
           {INSTAGRAM_POSTS.map((post, i) => (
-            <motion.a
+            <a
               key={post.id}
               href={post.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.4 }}
-              whileHover={{ scale: 1.03 }}
-              className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-100 dark:bg-white/5 block border border-gold/10"
+              className="group relative aspect-square overflow-hidden bg-gray-50 block border-[0.5px] border-gray-100"
             >
               <img
                 src={post.image}
                 alt={`Instagram post ${i + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 loading="lazy"
               />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-dark-brown/0 group-hover:bg-dark-brown/60 transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center gap-2">
-                  <FiInstagram className="w-7 h-7 text-white" />
-                  <div className="flex items-center gap-1 text-white font-poppins text-sm font-semibold">
-                    <FiHeart className="w-4 h-4" />
-                    {post.likes}
-                  </div>
-                </div>
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                <FiInstagram strokeWidth={1} className="w-8 h-8 text-white" />
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
-
-        {/* Follow Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 sm:mt-14 lg:mt-16"
-        >
-          <motion.a
-            href="https://www.instagram.com/mayleki.jewellery"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-rose group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FiInstagram className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-            Follow @mayleki.jewellery
-            <FiExternalLink className="w-4 h-4" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );
-
 }
