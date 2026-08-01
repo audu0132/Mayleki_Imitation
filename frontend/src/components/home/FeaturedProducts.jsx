@@ -23,57 +23,49 @@ export default function FeaturedBridal() {
   const hasMore = allFiltered.length > 8 && !showAll;
 
   return (
-    <section className="py-16 lg:py-24 bg-white dark:bg-[#1A1414]">
+    <section className="py-24 bg-white">
       <div className="container-luxury">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
-        >
-          <p className="section-subtitle mb-2.5">Handpicked For You</p>
-          <h2 className="section-title mb-4">
-            Featured <span className="text-gold-gradient">Jewellery</span>
-          </h2>
-          <div className="gold-divider my-4 mx-auto" />
-          <p className="section-description max-w-2xl mx-auto mt-4 mb-0 text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
-            Explore our most loved and trending jewellery pieces, perfect for every occasion.
-          </p>
-        </motion.div>
-
-        {/* Filter Tabs */}
-        <div className="flex items-center justify-center gap-3 flex-wrap mb-10 lg:mb-12">
-          {filters.map((filter) => (
-            <motion.button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className={`px-6 py-2.5 rounded-full font-poppins text-sm font-medium transition-all duration-300 ${
-                activeFilter === filter
-                  ? "bg-gold text-dark-brown shadow-gold font-semibold"
-                  : "bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400 hover:bg-gold/10 hover:text-gold"
-              }`}
-            >
-              {filter}
-            </motion.button>
-          ))}
+        {/* Header & Filters */}
+        <div className="flex flex-col items-center text-center mb-16 gap-8">
+          <div className="max-w-2xl mx-auto flex flex-col items-center">
+            <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-4 text-center">
+              Curated Pieces
+            </h2>
+            <p className="font-poppins text-sm text-gray-500 font-light text-center mx-auto max-w-md">
+              Explore our most loved and trending jewellery pieces, perfect for every occasion.
+            </p>
+          </div>
+          
+          <div className="flex items-center justify-center gap-6 overflow-x-auto pb-2 scrollbar-hide w-full max-w-full">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`font-poppins text-xs font-medium uppercase tracking-widest whitespace-nowrap transition-colors pb-1 border-b ${
+                  activeFilter === filter
+                    ? "text-[#111111] border-[#111111]"
+                    : "text-gray-400 border-transparent hover:text-[#111111]"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Products Grid (consistent 24px-32px gaps) */}
+        {/* Products Grid */}
         <motion.div
           layout
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 justify-items-center items-stretch"
+          className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-x-6 gap-y-12 w-full justify-center"
         >
           {filteredProducts.map((product) => (
             <motion.div
               key={product.id}
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="w-full h-full"
             >
               <ProductCard product={product} />
@@ -82,24 +74,22 @@ export default function FeaturedBridal() {
         </motion.div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 sm:mt-14 lg:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
+        <div className="text-center mt-20 flex flex-col sm:flex-row items-center justify-center gap-6">
           {hasMore && (
             <button
               onClick={() => setShowAll(true)}
-              className="btn-gold-outline text-sm sm:text-base px-8 py-3.5 sm:py-4 inline-flex items-center gap-2"
+              className="font-poppins text-xs font-medium uppercase tracking-widest text-gray-500 hover:text-[#111111] transition-colors border-b border-transparent hover:border-[#111111] pb-1"
             >
-              Show More ({allFiltered.length - 8} more)
+              Load More ({allFiltered.length - 8})
             </button>
           )}
-          <Link to="/products" className="btn-gold text-sm sm:text-base px-8 py-3.5 sm:py-4 inline-flex items-center gap-2">
-            View All Products <FiArrowRight className="w-5 h-5" />
+          <Link 
+            to="/products" 
+            className="font-poppins text-xs font-medium uppercase tracking-widest text-[#111111] hover:text-[#D4AF37] transition-colors border-b border-[#111111] hover:border-[#D4AF37] pb-1"
+          >
+            Discover All
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
