@@ -90,36 +90,35 @@ export default function ProductListingPage() {
         <meta name="description" content={`Browse ${category?.name || "all"} jewellery at Mayleki. Premium imitation and bridal jewellery in Rahuri, Maharashtra.`} />
       </Helmet>
 
-      <div className="page-wrapper">
+      <div className="page-wrapper bg-[#FAFAFA]">
         {/* Page Header */}
-        <div className="bg-dark-brown py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
+        <div className="bg-[#111111] py-24 relative overflow-hidden">
           <div className="container-luxury relative text-center">
             {category ? (
               <>
-                <p className="section-subtitle mb-2">{category.icon} Collection</p>
-                <h1 className="font-playfair text-4xl md:text-5xl font-bold text-cream">
+                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-white/50 mb-2">{category.icon} Collection</p>
+                <h1 className="font-playfair text-4xl md:text-5xl font-medium text-white mb-4">
                   {category.name}
                 </h1>
-                <p className="font-poppins text-sm text-gray-400 mt-2">
+                <p className="font-poppins text-xs text-white/50 uppercase tracking-widest">
                   {category.count} designs available
                 </p>
               </>
             ) : query ? (
               <>
-                <p className="section-subtitle mb-2">Search Results</p>
-                <h1 className="font-playfair text-3xl md:text-4xl font-bold text-cream">
-                  Results for "<span className="text-gold">{query}</span>"
+                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-white/50 mb-2">Search Results</p>
+                <h1 className="font-playfair text-3xl md:text-4xl font-medium text-white mb-4">
+                  Results for "<span className="italic">{query}</span>"
                 </h1>
-                <p className="font-poppins text-sm text-gray-400 mt-2">
+                <p className="font-poppins text-xs text-white/50 uppercase tracking-widest">
                   {filteredProducts.length} products found
                 </p>
               </>
             ) : (
               <>
-                <p className="section-subtitle mb-2">Explore Our</p>
-                <h1 className="font-playfair text-4xl md:text-5xl font-bold text-cream">
-                  All <span className="text-gold-gradient">Collections</span>
+                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-white/50 mb-4">Explore Our</p>
+                <h1 className="font-playfair text-4xl md:text-6xl font-medium text-white">
+                  Collections
                 </h1>
               </>
             )}
@@ -127,15 +126,15 @@ export default function ProductListingPage() {
         </div>
 
         {/* Breadcrumb */}
-        <div className="bg-white dark:bg-dark-brown-light border-b border-gold/10">
-          <div className="container-luxury py-3">
-            <nav className="flex items-center gap-2 font-poppins text-sm text-gray-400">
-              <Link to="/" className="hover:text-gold transition-colors">Home</Link>
+        <div className="bg-white border-b border-gray-100">
+          <div className="container-luxury py-4">
+            <nav className="flex items-center gap-2 font-poppins text-xs uppercase tracking-widest text-gray-400">
+              <Link to="/" className="hover:text-[#111111] transition-colors">Home</Link>
               <span>/</span>
               {category ? (
-                <span className="text-dark-brown dark:text-cream font-medium">{category.name}</span>
+                <span className="text-[#111111] font-medium">{category.name}</span>
               ) : (
-                <span className="text-dark-brown dark:text-cream font-medium">All Collections</span>
+                <span className="text-[#111111] font-medium">All Collections</span>
               )}
             </nav>
           </div>
@@ -335,8 +334,8 @@ export default function ProductListingPage() {
                   layout
                   className={
                     viewMode === "grid"
-                      ? "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
-                      : "flex flex-col gap-6"
+                      ? "grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6 w-full justify-center"
+                      : "flex flex-col gap-6 w-full justify-center"
                   }
                 >
                   {filteredProducts.map((product, i) => (
