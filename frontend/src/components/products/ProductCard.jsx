@@ -46,151 +46,85 @@ export default function ProductCard({ product, onQuickView }) {
   };
 
   return (
-    <Link to={`/products/${product.slug}`} className="product-card h-full flex flex-col justify-between block group">
+    <Link to={`/products/${product.slug}`} className="group block h-full flex flex-col cursor-pointer">
       {/* Image Container */}
-      <div className="relative overflow-hidden aspect-product bg-cream">
+      <div className="relative aspect-[3/4] overflow-hidden bg-gray-50 mb-4">
         <img
           src={product.images[0]}
           alt={product.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
           loading="lazy"
         />
 
-        {/* Badges */}
+        {/* Minimal Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           {product.featured && (
-            <span className="badge-gold text-[10px] px-2 py-0.5">Featured</span>
+            <span className="text-[9px] uppercase tracking-widest text-black bg-white/90 px-2 py-1">New</span>
           )}
           {product.trending && (
-            <span className="px-2 py-0.5 bg-rose-gold text-white rounded-full text-[10px] font-poppins font-semibold">
-              🔥 Trending
-            </span>
-          )}
-          {product.bestSeller && (
-            <span className="px-2 py-0.5 bg-dark-brown text-gold rounded-full text-[10px] font-poppins font-semibold">
-              ⭐ Best Seller
-            </span>
+            <span className="text-[9px] uppercase tracking-widest text-black bg-white/90 px-2 py-1">Trending</span>
           )}
           {product.discount > 0 && (
-            <span className="badge-sale text-[10px] px-2 py-0.5">
-              -{product.discount}% OFF
-            </span>
+            <span className="text-[9px] uppercase tracking-widest text-white bg-black/90 px-2 py-1">-{product.discount}%</span>
           )}
         </div>
 
-        {/* Rental badge */}
-        {product.isRentalAvailable && (
-          <div className="absolute top-3 right-3">
-            <span className="badge-rental text-[10px] px-2 py-0.5">🎁 Rental</span>
-          </div>
-        )}
-
-        {/* Action Buttons Overlay */}
-        <div className="absolute inset-0 bg-dark-brown/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div className="flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+        {/* Action Overlay */}
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4">
+          <div className="flex items-center justify-between translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <button
               onClick={handleWishlist}
-              className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 ${
-                wishlisted ? "bg-rose-gold text-white" : "bg-white text-dark-brown hover:bg-rose-gold hover:text-white"
-              }`}
+              className="text-white hover:text-[#D4AF37] transition-colors p-2"
               title="Add to Wishlist"
             >
-              <FiHeart className={`w-4 h-4 ${wishlisted ? "fill-current" : ""}`} />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              <FiHeart strokeWidth={1} className={`w-5 h-5 ${wishlisted ? "fill-current text-[#D4AF37]" : ""}`} />
+            </button>
+            <button
               onClick={(e) => { e.preventDefault(); onQuickView?.(product); }}
-              className="w-10 h-10 rounded-full bg-white text-dark-brown hover:bg-gold hover:text-dark-brown flex items-center justify-center shadow-lg transition-all duration-200"
-              title="Quick View"
+              className="text-[10px] uppercase tracking-widest text-white hover:text-[#D4AF37] transition-colors border-b border-white hover:border-[#D4AF37] pb-0.5"
             >
-              <FiEye className="w-4 h-4" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={handleWhatsApp}
-              className="w-10 h-10 rounded-full bg-green-500 text-white hover:bg-green-600 flex items-center justify-center shadow-lg transition-all duration-200"
-              title="WhatsApp Inquiry"
-            >
-              <FaWhatsapp className="w-4 h-4" />
-            </motion.button>
+              Quick View
+            </button>
           </div>
         </div>
-
+        
         {/* Availability */}
-        {product.availableQty <= 2 && product.availableQty > 0 && (
-          <div className="absolute bottom-3 left-0 right-0 flex justify-center">
-            <span className="bg-red-500 text-white text-[10px] font-poppins font-semibold px-3 py-1 rounded-full">
-              Only {product.availableQty} left!
-            </span>
-          </div>
-        )}
         {product.availableQty === 0 && (
-          <div className="absolute inset-0 bg-dark-brown/50 flex items-center justify-center">
-            <span className="bg-white text-dark-brown text-sm font-poppins font-semibold px-4 py-2 rounded-full">
+          <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-center">
+            <span className="text-black text-xs uppercase tracking-widest border border-black px-4 py-2">
               Out of Stock
             </span>
           </div>
         )}
       </div>
 
-      {/* Content (p-4 sm:p-5 = balanced proportional padding) */}
-      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
-        {/* Category */}
-        <p className="font-poppins text-xs text-gold font-semibold tracking-wider uppercase mb-1">
+      {/* Details */}
+      <div className="flex flex-col flex-1">
+        <p className="font-poppins text-[10px] uppercase tracking-widest text-gray-500 mb-1">
           {product.category.replace(/-/g, " ")}
         </p>
-
-        {/* Title */}
-        <h3 className="font-playfair text-base font-bold text-dark-brown dark:text-cream group-hover:text-gold transition-colors duration-200 line-clamp-2 leading-snug mb-2">
+        <h3 className="font-playfair text-base text-[#111111] line-clamp-1 mb-2">
           {product.title}
         </h3>
-
-        {/* Rating */}
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex items-center gap-0.5">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span key={i} className={`text-xs ${i < Math.floor(product.rating) ? "text-gold" : "text-gray-300"}`}>★</span>
-            ))}
-          </div>
-          <span className="font-poppins text-xs text-gray-400">
-            {product.rating} ({product.reviews})
-          </span>
-        </div>
-
-        {/* Price Row */}
-        <div className="flex items-center justify-between gap-2">
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-playfair text-lg sm:text-xl font-bold text-dark-brown dark:text-cream">
-                {formatPrice(discountedPrice)}
+        
+        <div className="mt-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="font-poppins text-xs text-[#111111]">
+              {formatPrice(discountedPrice)}
+            </span>
+            {product.discount > 0 && (
+              <span className="font-poppins text-xs text-gray-400 line-through">
+                {formatPrice(product.sellingPrice)}
               </span>
-              {product.discount > 0 && (
-                <span className="font-poppins text-xs sm:text-sm text-gray-400 line-through">
-                  {formatPrice(product.sellingPrice)}
-                </span>
-              )}
-            </div>
-            {product.isRentalAvailable && product.rentalPrice > 0 && (
-              <p className="font-poppins text-xs text-rose-gold font-medium mt-0.5">
-                Rent from {formatPrice(product.rentalPrice)}/day
-              </p>
             )}
           </div>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={handleAddToCart}
             disabled={product.availableQty === 0}
-            className="w-10 h-10 rounded-full bg-gold text-dark-brown hover:bg-gold-dark hover:shadow-gold flex items-center justify-center transition-all duration-200 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed"
-            title="Add to Cart"
+            className="text-[#111111] hover:text-[#D4AF37] transition-colors disabled:opacity-30 p-1"
           >
-            <FiShoppingCart className="w-4 h-4" />
-          </motion.button>
+            <FiShoppingCart strokeWidth={1} className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </Link>
