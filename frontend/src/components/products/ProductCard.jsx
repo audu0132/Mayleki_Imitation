@@ -46,9 +46,9 @@ export default function ProductCard({ product, onQuickView }) {
   };
 
   return (
-    <Link to={`/products/${product.slug}`} className="group block h-full flex flex-col cursor-pointer">
+    <Link to={`/products/${product.slug}`} className="group flex flex-col h-full cursor-pointer bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Image Container */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-gray-50 mb-4">
+      <div className="relative aspect-[3/4] overflow-hidden bg-cream w-full flex-shrink-0">
         <img
           src={product.images[0]}
           alt={product.title}
@@ -99,7 +99,7 @@ export default function ProductCard({ product, onQuickView }) {
       </div>
 
       {/* Details */}
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 p-4">
         <p className="font-poppins text-[10px] uppercase tracking-widest text-gray-500 mb-1">
           {product.category.replace(/-/g, " ")}
         </p>
@@ -107,7 +107,7 @@ export default function ProductCard({ product, onQuickView }) {
           {product.title}
         </h3>
         
-        <div className="mt-auto flex items-center justify-between">
+        <div className="mt-auto flex items-center justify-between pt-3">
           <div className="flex items-center gap-2">
             <span className="font-poppins text-xs text-[#111111]">
               {formatPrice(discountedPrice)}
