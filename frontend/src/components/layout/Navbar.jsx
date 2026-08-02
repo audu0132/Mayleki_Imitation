@@ -200,7 +200,7 @@ export default function Navbar() {
             </nav>
 
             {/* RIGHT ACTIONS */}
-            <div className="flex items-center justify-center gap-4 py-2 px-5">
+            <div className="flex items-center justify-end gap-2 sm:gap-4">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(true)}
