@@ -31,9 +31,9 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 bg-white" onMouseEnter={() => setIsPlaying(false)} onMouseLeave={() => setIsPlaying(true)}>
+    <section className="py-20 lg:py-24 bg-white" onMouseEnter={() => setIsPlaying(false)} onMouseLeave={() => setIsPlaying(true)}>
       <div className="container-luxury">
-        <div className="w-full">
+        <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-4">
@@ -43,7 +43,7 @@ export default function Testimonials() {
           </div>
 
           {/* Carousel */}
-          <div className="relative min-h-[300px] flex items-center justify-center">
+          <div className="relative flex items-center justify-center py-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -80,20 +80,20 @@ export default function Testimonials() {
             {/* Navigation Arrows */}
             <button
               onClick={prev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
+              className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
             >
               <FiChevronLeft strokeWidth={1} className="w-8 h-8" />
             </button>
             <button
               onClick={next}
-              className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
+              className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
             >
               <FiChevronRight strokeWidth={1} className="w-8 h-8" />
             </button>
           </div>
 
           {/* Indicators */}
-          <div className="flex items-center justify-center gap-2 mt-12">
+          <div className="flex items-center justify-center gap-2 mt-8">
             {TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
