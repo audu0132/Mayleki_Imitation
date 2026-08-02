@@ -334,8 +334,8 @@ export default function ProductListingPage() {
                   layout
                   className={
                     viewMode === "grid"
-                      ? "grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6 w-full justify-center"
-                      : "flex flex-col gap-6 w-full justify-center"
+                      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full"
+                      : "flex flex-col gap-6 w-full"
                   }
                 >
                   {filteredProducts.map((product, i) => (
