@@ -39,7 +39,7 @@ export default function WhyChooseUs() {
 
         {/* Features */}
         <div className="w-full mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {WHY_CHOOSE_US.map((item, i) => (
               <motion.div
                 key={item.title}
