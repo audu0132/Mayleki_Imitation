@@ -54,23 +54,23 @@ export default function Footer() {
         
         {/* Newsletter Section - Editorial Style */}
         <motion.div 
-          className="flex flex-col items-center text-center border-b border-white/20 pb-16 mb-16 gap-8 max-w-2xl mx-auto"
+          className="flex flex-col items-center justify-center text-center border-b border-white/20 pb-16 mb-16 w-full max-w-3xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <div className="max-w-xl flex flex-col items-center px-4 py-10 mx-auto">
-            <h3 className="font-playfair text-2xl md:text-4xl font-medium text-white py-6 leading-tight text-center">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="font-playfair text-3xl md:text-4xl font-medium text-white mb-4 leading-tight">
               Join the Mayleki Society
             </h3>
-            <p className="font-poppins text-sm text-gray-400 font-light tracking-wide text-center mx-auto">
+            <p className="font-poppins text-sm text-gray-400 font-light tracking-wide max-w-md">
               Subscribe to receive updates, access to exclusive deals, and more.
             </p>
           </div>
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="w-full max-w-md relative mx-auto"
+            className="w-full max-w-md relative"
           >
             <input
               type="email"
@@ -84,15 +84,15 @@ export default function Footer() {
         </motion.div>
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-12 lg:gap-16 mb-16 text-center justify-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 w-full">
           
           {/* Brand Column */}
-          <motion.div variants={fadeInUp} className="flex flex-col items-center">
-            <h2 className="font-playfair text-2xl font-medium tracking-widest text-white mb-6 uppercase text-center">Mayleki</h2>
-            <p className="font-poppins text-xs text-gray-400 font-light leading-loose max-w-xs mb-8 text-center mx-auto">
+          <motion.div variants={fadeInUp} className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h2 className="font-playfair text-2xl font-medium tracking-widest text-white mb-6 uppercase">Mayleki</h2>
+            <p className="font-poppins text-xs text-gray-400 font-light leading-loose max-w-xs mb-8">
               Premium imitation & 1GM gold jewellery. Specializing in bridal sets, Maharashtrian traditional jewellery, and affordable rental services in Rahuri, Maharashtra.
             </p>
-            <div className="flex items-center justify-center gap-6">
+            <div className="flex items-center gap-6">
               {[
                 { icon: FaWhatsapp, href: "https://wa.me/919876543210" },
                 { icon: FiInstagram, href: "#" },
@@ -112,11 +112,11 @@ export default function Footer() {
           </motion.div>
 
           {/* Collections */}
-          <motion.div variants={fadeInUp} className="flex flex-col items-center text-center">
-            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase text-center">
+          <motion.div variants={fadeInUp} className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase">
               Collections
             </h4>
-            <ul className="flex flex-col items-center space-y-4 text-center">
+            <ul className="flex flex-col items-center md:items-start space-y-4">
               {FOOTER_LINKS.collections.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -131,11 +131,11 @@ export default function Footer() {
           </motion.div>
 
           {/* Quick Links */}
-          <motion.div variants={fadeInUp} className="flex flex-col items-center text-center">
-            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase text-center">
+          <motion.div variants={fadeInUp} className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase">
               Company
             </h4>
-            <ul className="flex flex-col items-center space-y-4 text-center">
+            <ul className="flex flex-col items-center md:items-start space-y-4">
               {FOOTER_LINKS.quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -150,11 +150,11 @@ export default function Footer() {
           </motion.div>
 
           {/* Client Services */}
-          <motion.div variants={fadeInUp} className="flex flex-col items-center text-center">
-            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase text-center">
+          <motion.div variants={fadeInUp} className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h4 className="font-poppins text-[10px] font-medium tracking-[0.2em] text-white mb-8 uppercase">
               Client Services
             </h4>
-            <ul className="flex flex-col items-center space-y-4 mb-8 text-center">
+            <ul className="flex flex-col items-center md:items-start space-y-4 mb-8">
               {FOOTER_LINKS.policies.map((link) => (
                 <li key={link.label}>
                   <Link
