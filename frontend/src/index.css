@@ -211,23 +211,19 @@ h5, h6 {
     @apply min-h-screen bg-cream dark:bg-dark-brown;
   }
 
-  /* CONTAINER — strict 1280px max-width, equal responsive side padding (16px / 24px / 32px) */
+  /* CONTAINER — strict max-w-7xl, equal responsive side padding */
   .container-luxury {
-    width: 100%;
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    @apply px-4 sm:px-6 lg:px-8;
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   /* PAGE HEADER */
   .page-header {
-    @apply bg-cream py-16 md:py-24 relative overflow-hidden text-center;
+    @apply bg-cream py-20 lg:py-24 relative overflow-hidden text-center;
   }
 
   /* SECTION BODY — standardized white/cream content area below page header */
   .section-body {
-    @apply py-16 lg:py-24;
+    @apply py-20 lg:py-24;
   }
 
 
