@@ -14,28 +14,28 @@ export default function FAQ() {
   );
 
   return (
-    <section className="py-16 lg:py-24 bg-cream dark:bg-dark-brown">
+    <section className="py-20 lg:py-24 bg-cream dark:bg-dark-brown">
       <div className="container-luxury">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16"
+          className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center"
         >
-          <p className="section-subtitle mb-2.5">Got Questions?</p>
-          <h2 className="section-title mb-4">
+          <p className="section-subtitle">Got Questions?</p>
+          <h2 className="section-title">
             Frequently Asked <span className="text-gold-gradient">Questions</span>
           </h2>
-          <div className="gold-divider my-4 mx-auto" />
-          <p className="section-description max-w-2xl mx-auto mt-4 mb-0 text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+          <div className="gold-divider" />
+          <p className="section-description">
             Everything you need to know about our jewellery, rental process, and services.
           </p>
         </motion.div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10 md:mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -123,15 +123,15 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-16 p-8 sm:p-10 rounded-2xl bg-white dark:bg-dark-brown-light border border-gold/20 shadow-card max-w-4xl mx-auto"
+          className="text-center mt-20 p-10 rounded-2xl bg-white dark:bg-dark-brown-light border border-gold/20 shadow-sm max-w-3xl mx-auto flex flex-col items-center"
         >
-          <p className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-2">
+          <h3 className="font-playfair text-3xl font-medium text-dark-brown dark:text-cream mb-4">
             Still have questions?
-          </p>
-          <p className="font-poppins text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md mx-auto">
+          </h3>
+          <p className="font-poppins text-sm text-gray-500 dark:text-gray-400 mb-8 max-w-lg mx-auto leading-relaxed">
             Our team is always ready to help you with any queries about jewellery, rentals, or custom orders.
           </p>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
+          <div className="flex items-center justify-center gap-6">
             <a
               href="https://wa.me/919876543210?text=Hi! I have a question about Mayleki jewellery."
               target="_blank"
