@@ -200,7 +200,7 @@ export default function Navbar() {
             </nav>
 
             {/* RIGHT ACTIONS */}
-            <div className="flex items-center justify-end gap-2 sm:gap-4">
+            <div className="flex items-center justify-center gap-2 sm:gap-4">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(true)}
@@ -245,7 +245,7 @@ export default function Navbar() {
                     key={cartCount}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 w-4 h-4 bg-gold text-dark-brown text-[10px] font-bold rounded-full flex items-center justify-center"
+                    className="absolute -top-1 -right-1 w-4 h-4 bg-gold text-dark-brown text-[10px] font-bold rounded-full flex justify-center items-center"
                   >
                     {cartCount > 9 ? "9+" : cartCount}
                   </motion.span>
