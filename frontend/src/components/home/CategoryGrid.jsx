@@ -43,16 +43,16 @@ export default function CategoryGrid() {
           className="flex flex-col items-center text-center mb-16 gap-6"
         >
           <div className="max-w-2xl mx-auto flex flex-col items-center">
-            <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-4 text-center">
+            <h2 className="section-title text-center">
               Explore Collections
             </h2>
-            <p className="font-poppins text-sm text-gray-500 font-light text-center mx-auto max-w-md">
+            <p className="section-description text-center">
               Curated selections of fine imitation jewellery, crafted with precision for your most memorable moments.
             </p>
           </div>
           <Link
             to="/products"
-            className="font-poppins text-xs font-medium uppercase tracking-widest text-[#111111] hover:text-[#D4AF37] transition-colors border-b border-[#111111] hover:border-[#D4AF37] pb-1 whitespace-nowrap mt-2"
+            className="font-poppins text-xs font-medium uppercase tracking-widest text-[#111111] hover:text-gold transition-colors border-b border-[#111111] hover:border-gold pb-1 whitespace-nowrap mt-2"
           >
             View All Collections
           </Link>
@@ -68,25 +68,29 @@ export default function CategoryGrid() {
         >
           {CATEGORIES.map((category) => (
             <motion.div key={category.id} variants={itemVariants} className="group cursor-pointer">
-              <Link to={`/category/${category.slug}`} className="block h-full">
-                <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100">
+              <Link to={`/category/${category.slug}`} className="block h-full card-gold-border !p-4 !pb-6 border-transparent hover:border-gold shadow-card hover:shadow-card-hover overflow-hidden rounded-2xl bg-white relative">
+                <div className="relative aspect-[3/4] overflow-hidden mb-5 bg-gray-100 rounded-xl">
                   <img
                     src={category.image}
                     alt={category.name}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     onError={(e) => {
                       e.currentTarget.src = "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600";
                     }}
                   />
-                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                     <span className="btn-gold !bg-white/90 !text-dark-brown !py-2 !px-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                       View Collection
+                     </span>
+                  </div>
                 </div>
                 
                 <div className="text-center">
-                  <h3 className="font-playfair text-lg font-medium text-[#111111] mb-1 group-hover:text-[#D4AF37] transition-colors">
+                  <h3 className="font-serif text-lg font-normal text-dark-brown mb-1 group-hover:text-gold transition-colors">
                     {category.name}
                   </h3>
-                  <p className="font-poppins text-[10px] uppercase tracking-widest text-gray-500">
+                  <p className="font-poppins text-[10px] uppercase tracking-widest text-gray-400">
                     Explore
                   </p>
                 </div>
