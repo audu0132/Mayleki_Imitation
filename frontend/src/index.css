@@ -44,11 +44,16 @@ body {
   color: #F5E8C8;
 }
 
-html, body, #root {
+html, body {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
 }
 
 /* ============================================
@@ -145,7 +150,7 @@ h5, h6 {
 
   /* SECTION TITLES & TYPOGRAPHY SPACING */
   .section-title {
-    @apply font-playfair text-4xl md:text-5xl lg:text-6xl font-normal text-dark-brown dark:text-cream leading-tight mb-4;
+    @apply w-full font-playfair text-4xl md:text-5xl lg:text-6xl font-normal text-dark-brown dark:text-cream leading-tight mb-4;
   }
 
   .section-subtitle {
