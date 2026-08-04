@@ -31,15 +31,15 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-20 lg:py-24 bg-white" onMouseEnter={() => setIsPlaying(false)} onMouseLeave={() => setIsPlaying(true)}>
+    <section className="py-20 lg:py-24 bg-cream" onMouseEnter={() => setIsPlaying(false)} onMouseLeave={() => setIsPlaying(true)}>
       <div className="container-luxury">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-4">
+          <div className="text-center mb-16 flex flex-col items-center">
+            <h2 className="section-title">
               Client Stories
             </h2>
-            <div className="w-12 h-[1px] bg-[#D4AF37] mx-auto" />
+            <div className="gold-divider" />
           </div>
 
           {/* Carousel */}
@@ -53,8 +53,8 @@ export default function Testimonials() {
                 transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="text-center px-4 md:px-12"
               >
-                <div className="text-[#D4AF37] text-4xl font-serif mb-6 opacity-40">"</div>
-                <p className="font-playfair text-xl md:text-3xl text-[#111111] leading-relaxed mb-8 italic">
+                <div className="text-gold text-4xl font-serif mb-6 opacity-40">"</div>
+                <p className="font-serif text-xl md:text-3xl text-dark-brown leading-relaxed mb-8 italic">
                   {TESTIMONIALS[current].review}
                 </p>
                 <div className="flex flex-col items-center gap-3">
@@ -66,7 +66,7 @@ export default function Testimonials() {
                     />
                   </div>
                   <div>
-                    <p className="font-poppins text-xs font-medium uppercase tracking-widest text-[#111111]">
+                    <p className="font-poppins text-xs font-medium uppercase tracking-widest text-dark-brown">
                       {TESTIMONIALS[current].name}
                     </p>
                     <p className="font-poppins text-[10px] uppercase tracking-[0.2em] text-gray-500 mt-1">
@@ -80,13 +80,13 @@ export default function Testimonials() {
             {/* Navigation Arrows */}
             <button
               onClick={prev}
-              className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
+              className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-dark-brown transition-colors p-2"
             >
               <FiChevronLeft strokeWidth={1} className="w-8 h-8" />
             </button>
             <button
               onClick={next}
-              className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-[#111111] transition-colors p-2"
+              className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-dark-brown transition-colors p-2"
             >
               <FiChevronRight strokeWidth={1} className="w-8 h-8" />
             </button>
@@ -99,7 +99,7 @@ export default function Testimonials() {
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`transition-all duration-500 rounded-none ${
-                  i === current ? "w-8 h-[1px] bg-[#111111]" : "w-4 h-[1px] bg-gray-300"
+                  i === current ? "w-8 h-[1px] bg-dark-brown" : "w-4 h-[1px] bg-gray-300"
                 }`}
               />
             ))}
