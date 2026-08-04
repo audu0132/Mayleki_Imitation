@@ -47,8 +47,7 @@ export default function HeroBanner() {
             loading="eager"
           />
           {/* Subtle gradient to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-hero-gradient" />
         </motion.div>
       </AnimatePresence>
 
@@ -57,35 +56,32 @@ export default function HeroBanner() {
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -40, scale: 0.95 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
             {/* Subtitle */}
-            <p className="font-poppins text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[#D4AF37] mb-6">
+            <p className="font-poppins text-[10px] sm:text-xs tracking-[0.3em] uppercase text-gold mb-6">
               {slide.subtitle}
             </p>
 
             {/* Title */}
-            <h1 className="font-playfair text-5xl sm:text-7xl lg:text-[80px] font-medium text-white leading-[1.1] mb-8">
+            <h1 className="font-serif text-5xl sm:text-7xl lg:text-[80px] font-normal text-white leading-[1.1] mb-8 text-shadow-luxury">
               {slide.title}
             </h1>
 
             {/* CTAs */}
             <div className="flex flex-wrap justify-center gap-6 items-center">
-              <Link to={slide.ctaLink} className="btn-gold">
-                {slide.cta}
+              <Link to={slide.ctaLink} className="btn-gold group relative overflow-hidden">
+                <span className="relative z-10">{slide.cta || "Explore Collection"}</span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-luxury" />
               </Link>
-              <a
-                href={`https://wa.me/919876543210?text=Hi! I'm interested in the ${slide.title} collection.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-poppins text-xs font-medium uppercase tracking-widest text-white hover:text-[#D4AF37] transition-colors border-b border-white hover:border-[#D4AF37] pb-1"
-              >
-                Inquire Now
-              </a>
+              <Link to="/category/bridal-sets" className="btn-gold-outline group relative overflow-hidden">
+                <span className="relative z-10">Shop Bridal</span>
+                <div className="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-luxury" />
+              </Link>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -116,7 +112,7 @@ export default function HeroBanner() {
                 onClick={() => setCurrent(i)}
                 className={`transition-all duration-500 rounded-none ${
                   i === current
-                    ? "w-12 h-[2px] bg-[#D4AF37]"
+                    ? "w-12 h-[2px] bg-gold"
                     : "w-6 h-[1px] bg-white/40 hover:bg-white"
                 }`}
               />
