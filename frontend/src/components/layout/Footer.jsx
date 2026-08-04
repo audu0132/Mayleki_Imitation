@@ -54,7 +54,7 @@ export default function Footer() {
         
         {/* Newsletter Section - Editorial Style */}
         <motion.div 
-          className="flex flex-col items-center justify-center text-center border-b border-white/20 pb-16 mb-16 w-full max-w-3xl mx-auto"
+          className="flex flex-col items-center justify-center text-center border-b border-gold/20 pb-16 mb-16 w-full max-w-3xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -77,7 +77,7 @@ export default function Footer() {
               placeholder="ENTER YOUR EMAIL"
               className="w-full bg-transparent border-b border-white/30 text-white font-poppins text-xs tracking-widest py-3 focus:outline-none focus:border-white transition-colors uppercase placeholder:text-gray-500 text-center"
             />
-            <button type="submit" className="absolute right-0 top-1/2 -translate-y-1/2 text-white hover:text-[#D4AF37] transition-colors p-2">
+            <button type="submit" className="absolute right-0 top-1/2 -translate-y-1/2 text-white hover:text-gold transition-colors p-2">
               <FiArrowRight strokeWidth={1} className="w-5 h-5" />
             </button>
           </form>
@@ -103,7 +103,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-gold hover:-translate-y-1 transition-all duration-300"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -121,7 +121,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-poppins text-xs text-gray-400 font-light hover:text-white transition-colors"
+                    className="font-poppins text-xs text-gray-400 font-light hover:text-gold transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -140,7 +140,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-poppins text-xs text-gray-400 font-light hover:text-white transition-colors"
+                    className="font-poppins text-xs text-gray-400 font-light hover:text-gold transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -159,7 +159,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-poppins text-xs text-gray-400 font-light hover:text-white transition-colors"
+                    className="font-poppins text-xs text-gray-400 font-light hover:text-gold transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -168,17 +168,17 @@ export default function Footer() {
             </ul>
             
             <p className="font-poppins text-xs text-gray-400 font-light mb-2">
-              <a href="mailto:hello@mayleki.com" className="hover:text-white transition-colors">hello@mayleki.com</a>
+              <a href="mailto:hello@mayleki.com" className="hover:text-gold transition-colors">hello@mayleki.com</a>
             </p>
             <p className="font-poppins text-xs text-gray-400 font-light">
-              <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 98765 43210</a>
+              <a href="tel:+919876543210" className="hover:text-gold transition-colors">+91 98765 43210</a>
             </p>
           </motion.div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col items-center justify-center gap-6 border-t border-white/20 text-center">
+        <div className="pt-8 flex flex-col items-center justify-center gap-6 border-t border-gold/20 text-center">
           <p className="font-poppins text-[10px] text-gray-500 tracking-widest uppercase">
             © {new Date().getFullYear()} MAYLEKI. ALL RIGHTS RESERVED.
           </p>
