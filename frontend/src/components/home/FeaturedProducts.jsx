@@ -73,7 +73,7 @@ export default function FeaturedBridal() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-x-6 gap-y-12 w-full justify-center"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 w-full mx-auto"
         >
           {filteredProducts.map((product) => (
             <motion.div
