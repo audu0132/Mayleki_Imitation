@@ -133,7 +133,7 @@ export default function FAQ() {
           </p>
           <div className="flex items-center justify-center gap-6">
             <a
-              href="https://wa.me/919876543210?text=Hi! I have a question about Mayleki jewellery."
+              href="https://wa.me/919139236500?text=Hi! I have a question about Mayleki jewellery."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold"

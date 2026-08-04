@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 
-const WA_NUMBER = "919876543210";
+const WA_NUMBER = "919139236500";
 const WA_DEFAULT_MSG = "Hi! I'm interested in your jewellery collection at Mayleki. Can you help me?";
 
 export default function WhatsAppButton() {
