@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiHeart, FiShoppingCart, FiEye, FiShare2 } from "react-icons/fi";
-import { FaWhatsapp } from "react-icons/fa";
+import { FiHeart, FiShoppingCart, FiEye, FiShare2, FiStar } from "react-icons/fi";
+import { FaWhatsapp, FaStar } from "react-icons/fa";
 import { useCart } from "../../context/AppContext";
 import { useWishlist } from "../../context/AppContext";
 import toast from "react-hot-toast";
@@ -26,7 +26,7 @@ export default function ProductCard({ product, onQuickView }) {
     addToCart(product, 1, "purchase");
     toast.success(`${product.title} added to cart!`, {
       icon: "🛒",
-      style: { background: "#3B2F2F", color: "#FFFDF8", border: "1px solid rgba(212,175,55,0.3)" },
+      style: { background: "#2B2B2B", color: "#FAF8F5", border: "1px solid rgba(201,162,39,0.3)" },
     });
   };
 
@@ -35,7 +35,7 @@ export default function ProductCard({ product, onQuickView }) {
     toggleWishlist(product);
     toast(wishlisted ? "Removed from wishlist" : "Added to wishlist!", {
       icon: wishlisted ? "💔" : "❤️",
-      style: { background: "#3B2F2F", color: "#FFFDF8", border: "1px solid rgba(212,175,55,0.3)" },
+      style: { background: "#2B2B2B", color: "#FAF8F5", border: "1px solid rgba(201,162,39,0.3)" },
     });
   };
 
@@ -74,14 +74,14 @@ export default function ProductCard({ product, onQuickView }) {
           <div className="flex items-center justify-between translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
             <button
               onClick={handleWishlist}
-              className="text-white hover:text-[#D4AF37] transition-colors p-2"
+              className="text-white hover:text-gold transition-colors p-2"
               title="Add to Wishlist"
             >
-              <FiHeart strokeWidth={1} className={`w-5 h-5 ${wishlisted ? "fill-current text-[#D4AF37]" : ""}`} />
+              <FiHeart strokeWidth={1} className={`w-5 h-5 ${wishlisted ? "fill-current text-gold" : ""}`} />
             </button>
             <button
               onClick={(e) => { e.preventDefault(); onQuickView?.(product); }}
-              className="text-[10px] uppercase tracking-widest text-white hover:text-[#D4AF37] transition-colors border-b border-white hover:border-[#D4AF37] pb-0.5"
+              className="text-[10px] uppercase tracking-widest text-white hover:text-gold transition-colors border-b border-white hover:border-gold pb-0.5"
             >
               Quick View
             </button>
@@ -103,13 +103,23 @@ export default function ProductCard({ product, onQuickView }) {
         <p className="font-poppins text-[10px] uppercase tracking-widest text-gray-500 mb-1">
           {product.category.replace(/-/g, " ")}
         </p>
-        <h3 className="font-playfair text-base text-[#111111] line-clamp-1 mb-2">
+        <h3 className="font-playfair text-base text-dark-brown line-clamp-1 mb-1">
           {product.title}
         </h3>
         
+        {/* Ratings */}
+        <div className="flex items-center gap-1 mb-2">
+          {[...Array(5)].map((_, i) => (
+            <FaStar key={i} className={`w-3 h-3 ${i < (product.rating || 5) ? "text-gold" : "text-gray-200"}`} />
+          ))}
+          <span className="text-[10px] text-gray-400 font-poppins ml-1">
+            ({product.reviews || 0})
+          </span>
+        </div>
+        
         <div className="mt-auto flex items-center justify-between pt-3">
           <div className="flex items-center gap-2">
-            <span className="font-poppins text-xs text-[#111111]">
+            <span className="font-poppins text-xs text-dark-brown font-medium">
               {formatPrice(discountedPrice)}
             </span>
             {product.discount > 0 && (
@@ -121,7 +131,7 @@ export default function ProductCard({ product, onQuickView }) {
           <button
             onClick={handleAddToCart}
             disabled={product.availableQty === 0}
-            className="text-[#111111] hover:text-[#D4AF37] transition-colors disabled:opacity-30 p-1"
+            className="text-dark-brown hover:text-gold transition-colors disabled:opacity-30 p-1"
           >
             <FiShoppingCart strokeWidth={1} className="w-4 h-4" />
           </button>
