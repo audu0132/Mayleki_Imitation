@@ -7,15 +7,15 @@
    ROOT VARIABLES & BASE STYLES
    ============================================ */
 :root {
-  --gold: #D4AF37;
+  --gold: #C9A227;
   --gold-light: #E8CC6F;
   --gold-dark: #A8891A;
-  --dark-brown: #3B2F2F;
-  --cream: #FFFDF8;
+  --dark-brown: #2B2B2B;
+  --cream: #FAF8F5;
   --rose-gold: #B76E79;
   --text-primary: #222222;
-  --scrollbar-thumb: #D4AF37;
-  --scrollbar-track: #FFFDF8;
+  --scrollbar-thumb: #C9A227;
+  --scrollbar-track: #FAF8F5;
 }
 
 * {
@@ -31,7 +31,7 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #FFFDF8;
+  background-color: #FAF8F5;
   color: #222222;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -91,7 +91,7 @@ h5, h6 {
   .btn-gold {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
            font-poppins font-medium uppercase text-white text-xs tracking-[0.15em]
-           bg-[#D4AF37] rounded-none
+           bg-[#C9A227] rounded-none
            hover:bg-[#A8891A]
            transition-all duration-500 ease-luxury
            active:scale-95 cursor-pointer select-none;
@@ -99,9 +99,9 @@ h5, h6 {
 
   .btn-gold-outline {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
-           font-poppins font-medium uppercase text-[#D4AF37] text-xs tracking-[0.15em]
-           border border-[#D4AF37] rounded-none bg-transparent
-           hover:bg-[#D4AF37] hover:text-white
+           font-poppins font-medium uppercase text-[#C9A227] text-xs tracking-[0.15em]
+           border border-[#C9A227] rounded-none bg-transparent
+           hover:bg-[#C9A227] hover:text-white
            transition-all duration-500 ease-luxury
            active:scale-95 cursor-pointer select-none;
   }
@@ -248,7 +248,7 @@ h5, h6 {
    ============================================ */
 @layer utilities {
   .text-gold-gradient {
-    background: linear-gradient(135deg, #D4AF37 0%, #F5E090 50%, #A8891A 100%);
+    background: linear-gradient(135deg, #C9A227 0%, #F5E090 50%, #A8891A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -258,6 +258,20 @@ h5, h6 {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
+  }
+
+  .glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(250, 248, 245, 0.7);
+    border: 1px solid rgba(201, 162, 39, 0.2);
+  }
+
+  .glass-dark {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(43, 43, 43, 0.8);
+    border: 1px solid rgba(201, 162, 39, 0.2);
   }
 
   .glassmorphism {
@@ -327,12 +341,12 @@ h5, h6 {
   width: 28px !important;
   height: 8px !important;
   border-radius: 100px !important;
-  background: #D4AF37 !important;
+  background: #C9A227 !important;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #D4AF37 !important;
+  color: #C9A227 !important;
   background: rgba(255, 255, 255, 0.95) !important;
   border-radius: 50% !important;
   width: 46px !important;
@@ -385,24 +399,24 @@ h5, h6 {
 }
 
 .react-datepicker__header {
-  background: linear-gradient(135deg, #3B2F2F, #5C4B4B) !important;
+  background: linear-gradient(135deg, #2B2B2B, #5C4B4B) !important;
   border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
 }
 
 .react-datepicker__current-month,
 .react-datepicker__day-name {
-  color: #D4AF37 !important;
+  color: #C9A227 !important;
 }
 
 .react-datepicker__day--selected {
-  background-color: #D4AF37 !important;
-  color: #3B2F2F !important;
+  background-color: #C9A227 !important;
+  color: #2B2B2B !important;
   font-weight: 700 !important;
 }
 
 .react-datepicker__day:hover {
   background-color: rgba(212, 175, 55, 0.2) !important;
-  color: #D4AF37 !important;
+  color: #C9A227 !important;
 }
 
 /* ============================================
