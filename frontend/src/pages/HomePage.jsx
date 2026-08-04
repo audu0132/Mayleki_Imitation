@@ -157,7 +157,7 @@ export default function HomePage() {
         </script>
       </Helmet>
 
-      <main className="overflow-hidden">
+      <main className="overflow-x-hidden">
 
         {/* Hero */}
 
