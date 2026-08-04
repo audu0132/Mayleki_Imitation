@@ -93,8 +93,8 @@ export default function Navbar() {
       {/* MAIN NAVBAR */}
       <motion.header
         className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
-          ? "bg-white/95 dark:bg-dark-brown/95 backdrop-blur-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border-b border-gold/10"
-          : "bg-cream dark:bg-dark-brown"
+          ? "glass dark:glass-dark shadow-luxury border-b border-gold/20"
+          : "bg-transparent border-b border-transparent"
           }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -153,7 +153,7 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white dark:bg-dark-brown-light rounded-2xl shadow-[0_8px_40px_rgb(0,0,0,0.08)] border border-gold/10 p-8 z-50"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] glass dark:glass-dark rounded-2xl shadow-luxury border border-gold/20 p-8 z-50"
                         >
                           <div className="grid grid-cols-3 gap-4">
                             {CATEGORIES.slice(0, 16).map((cat) => (
