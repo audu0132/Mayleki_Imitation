@@ -35,9 +35,9 @@ export default function CTABanner() {
           Book Your Bridal Look
         </p>
         
-        <h2 className="font-playfair text-4xl md:text-6xl text-white leading-tight mb-8">
+        <h2 className="font-serif text-4xl md:text-6xl text-white leading-[1.1] mb-8 text-shadow-luxury">
           Make Your Wedding Day <br className="hidden md:block" />
-          <span className="italic">Unforgettable</span>
+          <span className="italic font-light">Unforgettable</span>
         </h2>
         
         <p className="font-poppins text-sm text-white/70 font-light max-w-lg mx-auto mb-12 leading-relaxed">
@@ -47,15 +47,17 @@ export default function CTABanner() {
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <Link
             to="/category/bridal-sets"
-            className="font-poppins text-xs font-medium uppercase tracking-widest text-white bg-transparent border border-white px-10 py-4 hover:bg-white hover:text-[#111111] transition-colors"
+            className="btn-gold group relative overflow-hidden"
           >
-            Explore Collection
+            <span className="relative z-10">Explore Collection</span>
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-luxury" />
           </Link>
           <Link
             to="/rental-booking"
-            className="font-poppins text-xs font-medium uppercase tracking-widest text-[#111111] bg-white border border-white px-10 py-4 hover:bg-transparent hover:text-white transition-colors"
+            className="btn-gold-outline group relative overflow-hidden bg-white !text-dark-brown !border-white hover:!bg-transparent hover:!text-white"
           >
-            Book Rental
+            <span className="relative z-10">Book Rental</span>
+            <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-luxury" />
           </Link>
         </div>
       </div>
