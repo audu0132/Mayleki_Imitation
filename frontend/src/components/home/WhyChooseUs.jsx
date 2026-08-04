@@ -12,13 +12,13 @@ const cardVariants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-[#FAFAFA]">
+    <section className="py-24 bg-cream">
       <div className="container-luxury">
         <div className="flex flex-col items-center max-w-4xl mx-auto text-center mb-16">
-          <h2 className="font-playfair text-3xl md:text-5xl font-medium text-[#111111] leading-tight mb-6 text-center">
+          <h2 className="section-title text-center">
             The Mayleki Difference
           </h2>
-          <p className="font-poppins text-sm text-gray-500 font-light leading-relaxed max-w-xl text-center mx-auto">
+          <p className="section-description text-center">
             We are passionate about making every woman feel like royalty on her special day. Our dedication to craftsmanship and quality sets us apart.
           </p>
           
@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
               { value: "4.9/5", label: "Average Rating" },
             ].map(({ value, label }) => (
               <div key={label} className="text-center flex flex-col items-center justify-center">
-                <p className="font-playfair text-3xl font-medium text-[#111111] mb-2">{value}</p>
+                <p className="font-serif text-3xl font-normal text-dark-brown mb-2">{value}</p>
                 <p className="font-poppins text-[10px] uppercase tracking-widest text-gray-500">{label}</p>
               </div>
             ))}
@@ -49,9 +49,9 @@ export default function WhyChooseUs() {
                 transition={{ delay: i * 0.1, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="flex flex-col items-center text-center gap-4"
               >
-                <span className="font-playfair text-3xl text-[#D4AF37] opacity-60 mb-1">0{i + 1}</span>
+                <span className="font-serif text-3xl text-gold opacity-60 mb-1">0{i + 1}</span>
                 <div>
-                  <h3 className="font-playfair text-xl font-medium text-[#111111] mb-3">
+                  <h3 className="font-serif text-xl font-normal text-dark-brown mb-3">
                     {item.title}
                   </h3>
                   <p className="font-poppins text-sm text-gray-500 font-light leading-relaxed max-w-sm mx-auto">
