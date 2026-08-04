@@ -50,7 +50,7 @@ export default function HomePage() {
 
         <meta
           name="theme-color"
-          content="#D4AF37"
+          content="#C9A227"
         />
 
         {/* Canonical */}
