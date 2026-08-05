@@ -6,8 +6,8 @@ import { FaWhatsapp, FaFacebook } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const CONTACT_INFO = [
-  { icon: FiPhone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210", color: "text-gold" },
-  { icon: FaWhatsapp, label: "WhatsApp", value: "+91 98765 43210", href: "https://wa.me/919876543210", color: "text-green-500" },
+  { icon: FiPhone, label: "Phone", value: "+91 91392 36500", href: "tel:+919139236500", color: "text-gold" },
+  { icon: FaWhatsapp, label: "WhatsApp", value: "+91 91392 36500", href: "https://wa.me/919139236500", color: "text-green-500" },
   { icon: FiMail, label: "Email", value: "hello@mayleki.com", href: "mailto:hello@mayleki.com", color: "text-rose-gold" },
   { icon: FiInstagram, label: "Instagram", value: "@mayleki.jewellery", href: "#", color: "text-purple-500" },
   {
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 {/* Quick action buttons */}
                 <div className="flex gap-3 flex-wrap">
                   <a
-                    href="https://wa.me/919876543210?text=Hi! I have an inquiry about Mayleki Jewellery."
+                    href="https://wa.me/919139236500?text=Hi! I have an inquiry about Mayleki Jewellery."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-6 h-12 bg-green-500 hover:bg-green-600 text-white rounded-xl font-poppins font-semibold text-sm transition-colors shadow-sm"
@@ -104,7 +104,7 @@ export default function ContactPage() {
                     <FaWhatsapp className="w-4 h-4" /> WhatsApp Us
                   </a>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+919139236500"
                     className="flex items-center gap-2 px-6 h-12 bg-gold text-dark-brown hover:bg-gold-dark rounded-xl font-poppins font-semibold text-sm transition-colors shadow-gold"
                   >
                     <FiPhone className="w-4 h-4" /> Call Now
@@ -153,7 +153,7 @@ export default function ContactPage() {
                       <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Phone *</label>
                       <input
                         type="tel"
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 91392 36500"
                         className={`input-luxury ${errors.phone ? "border-red-400" : ""}`}
                         {...register("phone", { required: "Phone is required" })}
                       />
