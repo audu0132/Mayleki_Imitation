@@ -32,21 +32,21 @@ const itemVariants = {
 
 export default function CategoryGrid() {
   return (
-    <section id="collections" className="py-24 bg-white">
-      <div className="container-luxury">
+    <section id="collections" className="py-24 bg-white ">
+      <div className="container-luxury ">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="flex flex-col items-center text-center mb-16 gap-6"
+          className="flex flex-col items-center text-center mb-16 gap-6 justify-items-center"
         >
-          <div className="max-w-2xl mx-auto flex flex-col items-center">
-            <h2 className="section-title text-center">
+          <div className="max-w-2xl mx-auto flex flex-col items-center justify-items-center">
+            <h2 className="section-title text-center mb-2">
               Explore Collections
             </h2>
-            <p className="section-description text-center">
+            <p className="section-description text-center ">
               Curated selections of fine imitation jewellery, crafted with precision for your most memorable moments.
             </p>
           </div>
