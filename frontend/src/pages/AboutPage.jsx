@@ -90,7 +90,7 @@ export default function AboutPage() {
             </p>
             <div className="flex items-center justify-center gap-4 flex-wrap">
               <Link to="/contact" className="btn-gold px-8 py-4 text-base">Get Directions</Link>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="btn-gold-outline px-8 py-4 text-base">WhatsApp Us</a>
+              <a href="https://wa.me/919139236500" target="_blank" rel="noopener noreferrer" className="btn-gold-outline px-8 py-4 text-base">WhatsApp Us</a>
             </div>
           </div>
         </section>
