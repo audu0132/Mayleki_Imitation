@@ -11,6 +11,7 @@ import { useWishlist } from "../../context/AppContext";
 import { useAuth } from "../../context/AppContext";
 import { useDarkMode } from "../../context/AppContext";
 import { CATEGORIES } from "../../data/mockData";
+import Logo from "../../assets/logo.jpeg";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -107,7 +108,7 @@ export default function Navbar() {
             <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold/30 group-hover:border-gold transition-all duration-500 shadow-sm bg-white">
                 <img
-                  src="/logo.png"
+                  src={Logo}
                   alt="Mayleki"
                   className="w-full h-full object-contain p-0.5"
                   onError={(e) => {
