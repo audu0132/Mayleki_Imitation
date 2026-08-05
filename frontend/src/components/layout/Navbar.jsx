@@ -78,12 +78,12 @@ export default function Navbar() {
             "👑 Premium Bridal Rentals Available",
             "💍 New Arrivals Every Week",
             "🎁 Wedding Season Special — Use Code: WEDDING25",
-            "📞 Call: +91 98765 43210",
+            "📞 Call: +91 91392 36500",
             "✨ Free Delivery on Orders Above ₹999",
             "👑 Premium Bridal Rentals Available",
             "💍 New Arrivals Every Week",
             "🎁 Wedding Season Special — Use Code: WEDDING25",
-            "📞 Call: +91 98765 43210",
+            "📞 Call: +91 91392 36500",
           ].map((text, i) => (
             <span key={i} className="text-gold-light">{text}</span>
           ))}
@@ -104,18 +104,18 @@ export default function Navbar() {
           <div className="flex items-center h-25 md:h-30">
 
             {/* LOGO */}
-            <Link to="/" className="flex items-center gap-4 group flex-shrink-0">
-              <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/20 group-hover:border-gold transition-all duration-500">
+            <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gold/30 group-hover:border-gold transition-all duration-500 shadow-sm bg-white">
                 <img
                   src="/logo.png"
                   alt="Mayleki"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain p-0.5"
                   onError={(e) => {
                     e.target.style.display = "none";
                     e.target.nextSibling.style.display = "flex";
                   }}
                 />
-                <div className="w-full h-full bg-gold-gradient hidden items-center justify-center text-dark-brown font-playfair font-bold text-lg">
+                <div className="w-full h-full bg-gold/10 hidden items-center justify-center text-gold font-playfair font-bold text-base">
                   M
                 </div>
               </div>
@@ -384,7 +384,7 @@ export default function Navbar() {
                 )}
                 {/* WhatsApp CTA */}
                 <a
-                  href="https://wa.me/919876543210?text=Hi, I'm interested in your jewellery collection!"
+                  href="https://wa.me/919139236500?text=Hi, I'm interested in your jewellery collection!"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 bg-green-500 text-white rounded-xl font-poppins font-semibold text-sm hover:bg-green-600 transition-colors mt-2"
