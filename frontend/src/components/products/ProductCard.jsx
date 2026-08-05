@@ -42,7 +42,7 @@ export default function ProductCard({ product, onQuickView }) {
   const handleWhatsApp = (e) => {
     e.preventDefault();
     const msg = `Hi! I'm interested in "${product.title}" (SKU: ${product.sku}). Price: ₹${discountedPrice}. Can you help me?`;
-    window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/919139236500?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (
