@@ -64,10 +64,10 @@ export default function CategoryGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4 md:gap-6 w-full justify-center"
+          className="flex flex-wrap justify-center gap-4 md:gap-6 w-full"
         >
           {CATEGORIES.map((category) => (
-            <motion.div key={category.id} variants={itemVariants} className="group cursor-pointer">
+            <motion.div key={category.id} variants={itemVariants} className="group cursor-pointer w-40 sm:w-44 md:w-52 lg:w-56 flex-none">
               <Link to={`/category/${category.slug}`} className="block h-full card-gold-border !p-4 !pb-6 border-transparent hover:border-gold shadow-card hover:shadow-card-hover overflow-hidden rounded-2xl bg-white relative">
                 <div className="relative aspect-[3/4] overflow-hidden mb-5 bg-gray-100 rounded-xl">
                   <img
