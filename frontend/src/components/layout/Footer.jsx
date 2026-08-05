@@ -94,7 +94,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-6">
               {[
-                { icon: FaWhatsapp, href: "https://wa.me/919876543210" },
+                { icon: FaWhatsapp, href: "https://wa.me/919139236500" },
                 { icon: FiInstagram, href: "#" },
                 { icon: FaFacebook, href: "#" },
               ].map(({ icon: Icon, href }, i) => (
@@ -171,7 +171,7 @@ export default function Footer() {
               <a href="mailto:hello@mayleki.com" className="hover:text-gold transition-colors">hello@mayleki.com</a>
             </p>
             <p className="font-poppins text-xs text-gray-400 font-light">
-              <a href="tel:+919876543210" className="hover:text-gold transition-colors">+91 98765 43210</a>
+              <a href="tel:+919139236500" className="hover:text-gold transition-colors">+91 91392 36500</a>
             </p>
           </motion.div>
 
