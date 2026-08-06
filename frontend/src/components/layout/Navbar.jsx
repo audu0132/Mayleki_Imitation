@@ -102,7 +102,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <div className="container-luxury">
-          <div className="flex items-center h-25 md:h-30">
+          <div className="flex items-center justify-end h-25 md:h-30 gap-8 md:gap-16">
 
             {/* LOGO */}
             <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
@@ -131,7 +131,7 @@ export default function Navbar() {
             </Link>
 
             {/* DESKTOP NAV (gap-8) */}
-            <nav className="hidden lg:flex flex-1 justify-center items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-8">
 
               {NAV_LINKS.map((link) =>
                 link.hasDropdown ? (
@@ -201,7 +201,8 @@ export default function Navbar() {
             </nav>
 
             {/* RIGHT ACTIONS */}
-            <div className="ml-auto flex items-center gap-[18px]">
+            
+            <div className="flex flex-end items-center gap-[18px]">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(true)}
