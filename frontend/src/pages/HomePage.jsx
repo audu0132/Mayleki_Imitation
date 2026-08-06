@@ -131,7 +131,7 @@ export default function HomePage() {
 
             url: "https://mayleki-studio.vercel.app/",
 
-            telephone: "+919876543210", // Replace
+            telephone: "+919139236500", // Replace
 
             priceRange: "₹₹",
 
