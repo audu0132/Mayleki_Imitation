@@ -49,7 +49,7 @@ export default function ProductDetailPage() {
   const handleWhatsApp = () => {
     const price = activeTab === "rental" ? `Rental: ₹${product.rentalPrice}/day` : `Price: ₹${discountedPrice}`;
     const msg = `Hi! I'm interested in "${product.title}" (SKU: ${product.sku}). ${price}. Please provide more details.`;
-    window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/919139236500?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   const handleShare = () => {
