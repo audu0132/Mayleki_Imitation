@@ -119,7 +119,7 @@ export default function RegisterPage() {
                   </div>
                   <input
                     type="tel"
-                    placeholder="98765 43210"
+                    placeholder="91392 36500"
                     className={`input-luxury pl-16 ${errors.phone ? "border-red-400" : ""}`}
                     {...register("phone", {
                       required: "Phone is required",

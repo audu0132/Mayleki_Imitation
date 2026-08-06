@@ -49,7 +49,7 @@ Dates: ${form.from} to ${form.to} (${days} days)
 Name: ${form.name} | Phone: ${form.phone}
 Note: ${form.note || "None"}
 Rental Total: ₹${rentalTotal} + Deposit ₹${deposit}`;
-    window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/919139236500?text=${encodeURIComponent(msg)}`, "_blank");
     setSubmitted(true);
   };
 
@@ -91,7 +91,7 @@ Rental Total: ₹${rentalTotal} + Deposit ₹${deposit}`;
                   Book Now
                 </button>
                 <a
-                  href="https://wa.me/919876543210?text=Hi! I want to know about jewellery rental at Mayleki."
+                  href="https://wa.me/919139236500?text=Hi! I want to know about jewellery rental at Mayleki."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-gold-outline !text-cream !border-cream hover:!bg-cream hover:!text-dark-brown px-10"
@@ -466,14 +466,14 @@ Rental Total: ₹${rentalTotal} + Deposit ₹${deposit}`;
               <p className="font-poppins text-sm text-gray-400">Our rental team is available Mon–Sat, 10AM–8PM</p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <a href="tel:+919876543210" className="flex items-center gap-2 font-poppins text-sm text-gold hover:text-gold-light transition-colors">
-                <FiPhone className="w-4 h-4" /> +91 98765 43210
+              <a href="tel:+919139236500" className="flex items-center gap-2 font-poppins text-sm text-gold hover:text-gold-light transition-colors">
+                <FiPhone className="w-4 h-4" /> +91 91392 36500
               </a>
               <a href="mailto:hello@mayleki.com" className="flex items-center gap-2 font-poppins text-sm text-gold hover:text-gold-light transition-colors">
                 <FiMail className="w-4 h-4" /> hello@mayleki.com
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919139236500"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold px-6"
