@@ -19,9 +19,42 @@ function SectionLoader() {
   );
 }
 
+import { useEffect, useState } from "react";
+
+function LayoutDebugger() {
+  const [info, setInfo] = useState("");
+  useEffect(() => {
+    const getStyle = (sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return `${sel}: null`;
+      const rect = el.getBoundingClientRect();
+      const style = window.getComputedStyle(el);
+      return `${sel}: rect={L:${rect.left},R:${rect.right},W:${rect.width}}, width=${style.width}, max-width=${style.maxWidth}, margin=${style.margin}, display=${style.display}`;
+    };
+    const update = () => {
+      setInfo([
+        getStyle("html"),
+        getStyle("body"),
+        getStyle("#root"),
+        getStyle(".page-wrapper"),
+        getStyle(".container-luxury"),
+      ].join(" | "));
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return (
+    <div id="layout-debug-info" style={{ position: "fixed", top: 0, left: 0, right: 0, background: "red", color: "white", zIndex: 99999, fontSize: "10px", padding: "4px", wordBreak: "break-all" }}>
+      {info}
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
+      <LayoutDebugger />
       <Helmet>
         <title>
           Mayleki Imitation Jewellery | Premium Bridal Jewellery in Rahuri,
