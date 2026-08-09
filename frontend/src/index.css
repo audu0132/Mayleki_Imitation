@@ -87,10 +87,12 @@ h5, h6 {
   font-weight: 600;
 }
 
+
 /* ============================================
-   COMPONENTS LAYER
+   COMPONENTS
    ============================================ */
-@layer components {
+
+
 
   /* BUTTONS (Luxury standard: 48px height, solid colors or fine borders, uppercase, wide tracking) */
   .btn-gold {
@@ -246,12 +248,12 @@ h5, h6 {
     @apply font-poppins text-sm text-gray-400 hover:text-gold
            transition-colors duration-200;
   }
-}
+
 
 /* ============================================
-   UTILITY LAYER
+   UTILITIES
    ============================================ */
-@layer utilities {
+
   .text-gold-gradient {
     background: linear-gradient(135deg, #C9A227 0%, #F5E090 50%, #A8891A 100%);
     -webkit-background-clip: text;
@@ -327,10 +329,9 @@ h5, h6 {
     aspect-ratio: 3 / 4;
   }
 
-  .aspect-hero {
-    aspect-ratio: 16 / 7;
   }
-}
+
+
 
 /* ============================================
    SWIPER / SLIDER OVERRIDES
