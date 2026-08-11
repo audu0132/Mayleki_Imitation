@@ -71,22 +71,27 @@ export default function Navbar() {
 
   return (
     <>
-      {/* TOP ANNOUNCEMENT BAR */}
-      <div className="bg-dark-brown text-cream py-2.5 text-center text-xs font-poppins tracking-widest uppercase overflow-hidden border-b border-white/5">
-        <div className="animate-marquee inline-flex gap-16 whitespace-nowrap">
+      {/* TOP ANNOUNCEMENT BAR — Kushals style */}
+      <div className="bg-dark-brown text-cream py-2 text-center text-[10px] sm:text-xs font-poppins tracking-[0.15em] uppercase overflow-hidden border-b border-white/5">
+        <div className="animate-marquee inline-flex gap-12 whitespace-nowrap">
           {[
-            "✨ Free Delivery on Orders Above ₹999",
-            "👑 Premium Bridal Rentals Available",
-            "💍 New Arrivals Every Week",
-            "🎁 Wedding Season Special — Use Code: WEDDING25",
-            "📞 Call: +91 91392 36500",
-            "✨ Free Delivery on Orders Above ₹999",
-            "👑 Premium Bridal Rentals Available",
-            "💍 New Arrivals Every Week",
-            "🎁 Wedding Season Special — Use Code: WEDDING25",
-            "📞 Call: +91 91392 36500",
+            "Free Delivery on Orders Above ₹999",
+            "Premium Bridal Rentals from ₹150",
+            "New Arrivals Every Week",
+            "Wedding Season Special — Code: WEDDING25",
+            "100% Authentic Imitation Jewellery",
+            "Easy 7-Day Returns",
+            "Free Delivery on Orders Above ₹999",
+            "Premium Bridal Rentals from ₹150",
+            "New Arrivals Every Week",
+            "Wedding Season Special — Code: WEDDING25",
+            "100% Authentic Imitation Jewellery",
+            "Easy 7-Day Returns",
           ].map((text, i) => (
-            <span key={i} className="text-gold-light">{text}</span>
+            <span key={i} className="inline-flex items-center gap-3">
+              <span className="text-gold-light">{text}</span>
+              <span className="text-gold/40 text-[8px]">✦</span>
+            </span>
           ))}
         </div>
       </div>
