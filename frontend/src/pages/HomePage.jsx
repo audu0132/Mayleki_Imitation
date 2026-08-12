@@ -3,10 +3,12 @@ import { Helmet } from "react-helmet-async";
 import HeroBanner from "../components/home/HeroBanner";
 
 // Lazy-loaded sections
+const PromoBanner = lazy(() => import("../components/home/PromoBanner"));
 const CategoryGrid = lazy(() => import("../components/home/CategoryGrid"));
 const FeaturedProducts = lazy(() => import("../components/home/FeaturedProducts"));
 const WhyChooseUs = lazy(() => import("../components/home/WhyChooseUs"));
 const CTABanner = lazy(() => import("../components/home/CTABanner"));
+const TrustStrip = lazy(() => import("../components/home/TrustStrip"));
 const Testimonials = lazy(() => import("../components/home/Testimonials"));
 const InstagramGallery = lazy(() => import("../components/home/InstagramGallery"));
 const FAQ = lazy(() => import("../components/home/FAQ"));
@@ -167,6 +169,8 @@ export default function HomePage() {
 
         <Suspense fallback={<SectionLoader />}>
 
+          <PromoBanner />
+
           <CategoryGrid />
 
           <FeaturedProducts />
@@ -174,6 +178,8 @@ export default function HomePage() {
           <WhyChooseUs />
 
           <CTABanner />
+
+          <TrustStrip />
 
           <Testimonials />
 
