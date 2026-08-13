@@ -7,15 +7,18 @@
    ROOT VARIABLES & BASE STYLES
    ============================================ */
 :root {
-  --gold: #C9A227;
-  --gold-light: #E8CC6F;
-  --gold-dark: #A8891A;
-  --dark-brown: #2B2B2B;
-  --cream: #FAF8F5;
+  --gold: #C5A059;
+  --gold-light: #E5C88A;
+  --gold-dark: #9E7B32;
+  --wine: #4A0E17;
+  --wine-light: #6B1D2F;
+  --dark-brown: #1C1917;
+  --cream: #FAF7F2;
+  --champagne: #F4EBE1;
   --rose-gold: #B76E79;
-  --text-primary: #222222;
-  --scrollbar-thumb: #C9A227;
-  --scrollbar-track: #FAF8F5;
+  --text-primary: #1C1917;
+  --scrollbar-thumb: #C5A059;
+  --scrollbar-track: #FAF7F2;
 }
 
 * {
@@ -30,9 +33,9 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #FAF8F5;
-  color: #222222;
+  font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+  background-color: #FAF7F2;
+  color: #1C1917;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,8 +43,8 @@ body {
 
 /* Dark mode base */
 .dark body {
-  background-color: #1A1414;
-  color: #F5E8C8;
+  background-color: #141110;
+  color: #FAF7F2;
 }
 
 html, body {
@@ -77,54 +80,62 @@ html, body {
    TYPOGRAPHY
    ============================================ */
 h1, h2, h3, h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-weight: 500;
   line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 h5, h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
   font-weight: 600;
 }
 
 
 /* ============================================
-   COMPONENTS
+   COMPONENTS & BUTTONS
    ============================================ */
-
-
 
   /* BUTTONS (Luxury standard: 48px height, solid colors or fine borders, uppercase, wide tracking) */
   .btn-gold {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
-           font-poppins font-medium uppercase text-white text-xs tracking-[0.15em]
-           bg-[#C9A227] rounded-none
-           hover:bg-[#A8891A]
+           font-sans font-medium uppercase text-white text-xs tracking-[0.18em]
+           bg-[#C5A059] rounded-none
+           hover:bg-[#9E7B32]
            transition-all duration-500 ease-luxury
-           active:scale-95 cursor-pointer select-none;
+           active:scale-95 cursor-pointer select-none shadow-sm hover:shadow-md;
   }
 
   .btn-gold-outline {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
-           font-poppins font-medium uppercase text-[#C9A227] text-xs tracking-[0.15em]
-           border border-[#C9A227] rounded-none bg-transparent
-           hover:bg-[#C9A227] hover:text-white
+           font-sans font-medium uppercase text-[#C5A059] text-xs tracking-[0.18em]
+           border border-[#C5A059] rounded-none bg-transparent
+           hover:bg-[#C5A059] hover:text-white
            transition-all duration-500 ease-luxury
            active:scale-95 cursor-pointer select-none;
   }
 
+  .btn-wine {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
+           font-sans font-medium uppercase text-white text-xs tracking-[0.18em]
+           bg-[#4A0E17] rounded-none
+           hover:bg-[#6B1D2F]
+           transition-all duration-500 ease-luxury
+           active:scale-95 cursor-pointer select-none shadow-sm hover:shadow-md;
+  }
+
   .btn-dark {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
-           font-poppins font-medium uppercase text-white text-xs tracking-[0.15em]
-           bg-[#222222] rounded-none
-           hover:bg-[#111111]
+           font-sans font-medium uppercase text-white text-xs tracking-[0.18em]
+           bg-[#1C1917] rounded-none
+           hover:bg-[#000000]
            transition-all duration-500 ease-luxury
            active:scale-95 cursor-pointer select-none;
   }
 
   .btn-rose {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
-           font-poppins font-medium uppercase text-white text-xs tracking-[0.15em]
+           font-sans font-medium uppercase text-white text-xs tracking-[0.18em]
            bg-[#B76E79] rounded-none
            hover:bg-[#8B4F58]
            transition-all duration-500 ease-luxury
@@ -133,75 +144,81 @@ h5, h6 {
 
   /* CARDS (Minimalist, fine borders, no heavy shadows) */
   .card-luxury {
-    @apply bg-white dark:bg-dark-brown-light rounded-none shadow-none
+    @apply bg-white dark:bg-[#1F1B19] rounded-none shadow-none
            p-8 border border-gray-100 dark:border-white/5
            transition-all duration-500 ease-luxury
-           overflow-hidden hover:border-gold/30;
+           overflow-hidden hover:border-[#C5A059]/30;
   }
 
   .card-glass {
-    @apply backdrop-blur-md bg-white/10 border border-white/20
-           rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6 lg:p-8;
+    @apply backdrop-blur-md bg-white/70 dark:bg-black/40 border border-[#C5A059]/20
+           rounded-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6 lg:p-8;
   }
 
   .card-gold-border {
-    @apply border border-gold/30 rounded-2xl bg-white dark:bg-dark-brown-light
-           p-6 lg:p-8 hover:border-gold hover:shadow-gold
+    @apply border border-[#C5A059]/30 rounded-none bg-white dark:bg-[#1F1B19]
+           p-6 lg:p-8 hover:border-[#C5A059] hover:shadow-md
            transition-all duration-300 ease-luxury;
   }
 
   /* SECTION TITLES & TYPOGRAPHY SPACING */
   .section-title {
-    @apply w-full font-playfair text-4xl md:text-5xl lg:text-6xl font-normal text-dark-brown dark:text-cream leading-tight mb-4;
+    @apply w-full font-cormorant text-4xl md:text-5xl lg:text-6xl font-normal text-charcoal dark:text-cream leading-tight mb-4;
   }
 
   .section-subtitle {
-    @apply font-poppins text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-gold mb-2 md:mb-3 block;
+    @apply font-sans text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-[#C5A059] mb-2 md:mb-3 block;
   }
 
   .section-description {
-    @apply font-poppins text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-12 md:mb-16;
+    @apply font-sans text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-12 md:mb-16;
   }
 
   /* GOLD DIVIDER */
   .gold-divider {
-    @apply w-12 h-px bg-gold mx-auto my-6;
+    @apply w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto my-6;
   }
 
   .gold-divider-left {
-    @apply w-12 h-px bg-gold my-6;
+    @apply w-16 h-px bg-gradient-to-r from-[#C5A059] to-transparent my-6;
   }
 
   /* BADGES */
   .badge-gold {
     @apply inline-flex items-center gap-1.5 px-3 py-1 
-           bg-gold/10 text-gold border border-gold/30 
-           rounded-full text-xs font-poppins font-semibold tracking-wide;
+           bg-[#C5A059]/10 text-[#C5A059] border border-[#C5A059]/30 
+           rounded-none text-xs font-sans font-semibold tracking-wider uppercase;
+  }
+
+  .badge-wine {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 
+           bg-[#4A0E17]/10 text-[#4A0E17] dark:text-[#E88090] border border-[#4A0E17]/30 
+           rounded-none text-xs font-sans font-semibold tracking-wider uppercase;
   }
 
   .badge-new {
     @apply inline-flex items-center gap-1.5 px-3 py-1
            bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800
-           rounded-full text-xs font-poppins font-semibold;
+           rounded-none text-xs font-sans font-semibold;
   }
 
   .badge-sale {
     @apply inline-flex items-center gap-1.5 px-3 py-1
            bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-300 border border-red-200 dark:border-red-800
-           rounded-full text-xs font-poppins font-semibold;
+           rounded-none text-xs font-sans font-semibold;
   }
 
   .badge-rental {
     @apply inline-flex items-center gap-1.5 px-3 py-1
-           bg-rose-gold/10 text-rose-gold border border-rose-gold/30
-           rounded-full text-xs font-poppins font-semibold;
+           bg-[#4A0E17]/10 text-[#4A0E17] dark:text-rose-200 border border-[#4A0E17]/20
+           rounded-none text-xs font-sans font-semibold;
   }
 
-  /* INPUT STYLES (48px min-h-[48px], rounded-xl = 12px) */
+  /* INPUT STYLES (48px min-h-[48px]) */
   .input-luxury {
-    @apply w-full px-4 h-12 rounded-xl border border-gold/20 
-           bg-white dark:bg-white/5 font-poppins text-sm text-dark-brown dark:text-cream
-           focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold
+    @apply w-full px-4 h-12 rounded-none border border-[#C5A059]/30 
+           bg-white dark:bg-white/5 font-sans text-sm text-charcoal dark:text-cream
+           focus:outline-none focus:ring-1 focus:ring-[#C5A059] focus:border-[#C5A059]
            placeholder:text-gray-400 dark:placeholder:text-gray-500
            transition-all duration-300;
   }
