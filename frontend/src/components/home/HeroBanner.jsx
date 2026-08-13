@@ -43,8 +43,8 @@ export default function HeroBanner() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#111]"
-      style={{ height: "min(90vh, 800px)" }}
+      className="relative w-full overflow-hidden bg-[#1C1917]"
+      style={{ height: "min(88vh, 760px)" }}
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
@@ -52,7 +52,7 @@ export default function HeroBanner() {
       <AnimatePresence mode="sync">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.04 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -61,17 +61,17 @@ export default function HeroBanner() {
           <img
             src={slide.bgImage}
             alt={slide.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
             loading="eager"
           />
-          {/* Gradient: strong on left for text, fades out to right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/80 via-dark-brown/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/60 via-transparent to-transparent" />
+          {/* Rich luxury gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1C1917]/90 via-[#4A0E17]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent" />
         </motion.div>
       </AnimatePresence>
 
       {/* Badge top-left */}
-      <div className="absolute top-8 left-8 z-10">
+      <div className="absolute top-8 left-6 sm:left-12 z-10">
         <AnimatePresence mode="wait">
           <motion.span
             key={current}
@@ -79,44 +79,45 @@ export default function HeroBanner() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="inline-block font-poppins text-[10px] font-semibold tracking-[0.25em] uppercase text-white/80 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full"
+            className="inline-block font-sans text-[10px] font-semibold tracking-[0.25em] uppercase text-[#E5C88A] bg-[#4A0E17]/70 backdrop-blur-md border border-[#C5A059]/40 px-4 py-1.5 rounded-none"
           >
-            {slide.badge}
+            {slide.badge || "Heritage Collection"}
           </motion.span>
         </AnimatePresence>
       </div>
 
-      {/* Content — bottom-left aligned (Kushals style) */}
-      <div className="absolute inset-0 flex items-end container-luxury pb-24 sm:pb-28">
+      {/* Content — bottom-left aligned */}
+      <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-24">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="max-w-2xl"
           >
-            <p className="font-poppins text-[10px] sm:text-xs tracking-[0.3em] uppercase text-gold mb-4 font-semibold">
-              {slide.subtitle}
+            <p className="font-sans text-[10px] sm:text-xs tracking-[0.35em] uppercase text-[#C5A059] mb-3 font-semibold flex items-center gap-2">
+              <span className="w-6 h-px bg-[#C5A059]"></span>
+              {slide.subtitle || "Authentic Maharashtrian Craftsmanship"}
             </p>
-            <h1 className="font-playfair text-4xl sm:text-5xl lg:text-6xl font-normal text-white leading-[1.1] mb-6">
+            <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-normal text-[#FAF7F2] leading-[1.08] mb-5 tracking-wide">
               {slide.title}
             </h1>
-            <p className="font-poppins text-sm text-white/70 leading-relaxed mb-8 max-w-md hidden sm:block">
+            <p className="font-sans text-sm text-[#FAF7F2]/80 leading-relaxed mb-8 max-w-md hidden sm:block">
               {slide.description}
             </p>
             <div className="flex flex-wrap gap-4 items-center">
               <Link
-                to={slide.ctaLink}
-                className="inline-flex items-center gap-2 bg-[#C9A227] hover:bg-[#A8891A] text-white font-poppins text-xs font-semibold tracking-wider uppercase px-8 py-4 transition-all duration-300 group"
+                to={slide.ctaLink || "/products"}
+                className="btn-gold text-xs px-8 py-4 flex items-center gap-2 group"
               >
                 <span>{slide.cta || "Explore Collection"}</span>
                 <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
               <Link
                 to="/rental-booking"
-                className="inline-flex items-center gap-2 border border-white/50 hover:border-white text-white font-poppins text-xs font-semibold tracking-wider uppercase px-8 py-4 transition-all duration-300 hover:bg-white/10"
+                className="btn-wine text-xs px-8 py-4 border border-[#C5A059]/40"
               >
                 Book Rental
               </Link>
@@ -127,17 +128,17 @@ export default function HeroBanner() {
 
       {/* Bottom bar: progress + navigation */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
-        {/* Thin progress bar */}
+        {/* Thin gold progress bar */}
         <div className="h-[2px] bg-white/10 w-full">
           <div
-            className="h-full bg-[#C9A227] transition-none"
+            className="h-full bg-[#C5A059] transition-none"
             style={{ width: `${progress}%` }}
           />
         </div>
         
-        <div className="container-luxury py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           {/* Slide counter */}
-          <span className="font-poppins text-[10px] text-white/40 tracking-widest uppercase">
+          <span className="font-sans text-[10px] text-white/50 tracking-widest uppercase font-semibold">
             {String(current + 1).padStart(2, "0")} / {String(HERO_SLIDES.length).padStart(2, "0")}
           </span>
           
@@ -148,23 +149,26 @@ export default function HeroBanner() {
                 key={i}
                 onClick={() => { setCurrent(i); setProgress(0); }}
                 className={`rounded-none transition-all duration-500 ${
-                  i === current ? "w-10 h-[2px] bg-gold" : "w-3 h-[1px] bg-white/30 hover:bg-white/60"
+                  i === current ? "w-10 h-[2px] bg-[#C5A059]" : "w-3 h-[1px] bg-white/30 hover:bg-white/60"
                 }`}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
           
-          {/* Arrow nav */}
+          {/* Arrow navigation */}
           <div className="flex gap-2">
             <button
               onClick={prev}
-              className="w-9 h-9 flex items-center justify-center border border-white/20 text-white hover:bg-white hover:text-dark-brown transition-all duration-200 rounded-none"
+              className="w-9 h-9 flex items-center justify-center border border-[#C5A059]/30 text-[#FAF7F2] hover:bg-[#C5A059] hover:text-[#1C1917] transition-all duration-200 rounded-none"
+              aria-label="Previous slide"
             >
               <FiChevronLeft className="w-4 h-4" strokeWidth={1.5} />
             </button>
             <button
               onClick={next}
-              className="w-9 h-9 flex items-center justify-center border border-white/20 text-white hover:bg-white hover:text-dark-brown transition-all duration-200 rounded-none"
+              className="w-9 h-9 flex items-center justify-center border border-[#C5A059]/30 text-[#FAF7F2] hover:bg-[#C5A059] hover:text-[#1C1917] transition-all duration-200 rounded-none"
+              aria-label="Next slide"
             >
               <FiChevronRight className="w-4 h-4" strokeWidth={1.5} />
             </button>
