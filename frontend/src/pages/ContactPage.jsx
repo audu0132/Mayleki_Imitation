@@ -2,22 +2,22 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FiPhone, FiMail, FiMapPin, FiClock, FiSend, FiInstagram } from "react-icons/fi";
-import { FaWhatsapp, FaFacebook } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const CONTACT_INFO = [
-  { icon: FiPhone, label: "Phone", value: "+91 91392 36500", href: "tel:+919139236500", color: "text-gold" },
-  { icon: FaWhatsapp, label: "WhatsApp", value: "+91 91392 36500", href: "https://wa.me/919139236500", color: "text-green-500" },
-  { icon: FiMail, label: "Email", value: "hello@mayleki.com", href: "mailto:hello@mayleki.com", color: "text-rose-gold" },
-  { icon: FiInstagram, label: "Instagram", value: "@mayleki.jewellery", href: "#", color: "text-purple-500" },
+  { icon: FiPhone, label: "Phone", value: "+91 91392 36500", href: "tel:+919139236500", color: "text-[#C5A059]" },
+  { icon: FaWhatsapp, label: "WhatsApp", value: "+91 91392 36500", href: "https://wa.me/919139236500", color: "text-[#25D366]" },
+  { icon: FiMail, label: "Email", value: "hello@mayleki.com", href: "mailto:hello@mayleki.com", color: "text-[#C5A059]" },
+  { icon: FiInstagram, label: "Instagram", value: "@mayleki.jewellery", href: "https://instagram.com", color: "text-[#E5C88A]" },
   {
     icon: FiMapPin,
-    label: "Address",
-    value: "Rahuri, Ahmednagar District, Maharashtra — 413706",
+    label: "Boutique Location",
+    value: "Mayleki Studio, Main Market Road, Rahuri, Maharashtra — 413706",
     href: "https://maps.google.com/?q=Rahuri,Maharashtra",
-    color: "text-gold",
+    color: "text-[#C5A059]",
   },
-  { icon: FiClock, label: "Business Hours", value: "Mon – Sat: 10:00 AM – 8:00 PM", href: null, color: "text-gold" },
+  { icon: FiClock, label: "Store Hours", value: "Mon – Sat: 10:00 AM – 8:00 PM", href: null, color: "text-[#C5A059]" },
 ];
 
 export default function ContactPage() {
@@ -25,8 +25,8 @@ export default function ContactPage() {
 
   const onSubmit = async (data) => {
     await new Promise((r) => setTimeout(r, 1000));
-    toast.success("Message sent! We'll get back to you within 24 hours. 🙏", {
-      style: { background: "#3B2F2F", color: "#FFFDF8", border: "1px solid rgba(212,175,55,0.3)" },
+    toast.success("Message received! Our Rahuri boutique team will respond within 24 hours. 🙏", {
+      style: { background: "#1C1917", color: "#FAF7F2", border: "1px solid #C5A059" },
     });
     reset();
   };
@@ -34,98 +34,93 @@ export default function ContactPage() {
   return (
     <>
       <Helmet>
-        <title>Contact Us | Mayleki Jewellery — Rahuri, Maharashtra</title>
+        <title>Contact Boutique | Mayleki Imitation Jewellery Rahuri</title>
         <meta name="description" content="Contact Mayleki Imitation Jewellery in Rahuri, Maharashtra. Call, WhatsApp, or email us for jewellery inquiries, rental bookings, and orders." />
       </Helmet>
 
-      <div className="page-wrapper">
-        {/* Hero */}
-        <div className="page-header">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
-          <div className="container-luxury relative text-center">
-            <p className="section-subtitle mb-3">Get in Touch</p>
-            <h1 className="font-playfair text-5xl font-bold text-cream mb-3">
-              Contact <span className="text-gold-gradient">Us</span>
+      <div className="bg-[#FAF7F2] dark:bg-[#141110] min-h-screen">
+        {/* Header */}
+        <div className="bg-[#1C1917] text-[#FAF7F2] py-20 text-center relative border-b border-[#C5A059]/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#C5A059] mb-2">𑁍 Get in Touch</p>
+            <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-normal text-[#FAF7F2] mb-3">
+              Contact Our Boutique Showroom
             </h1>
-            <div className="gold-divider" />
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto my-4" />
           </div>
         </div>
 
-        <div className="container-luxury py-16 lg:py-24 flex justify-center">
-          <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left: Info */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="font-playfair text-3xl font-bold text-dark-brown dark:text-cream mb-2">
-                  We'd love to hear from you
-                </h2>
-                <p className="font-poppins text-sm text-gray-500 mb-8 leading-relaxed">
-                  Whether you have a question about our collection, want to book rental jewellery,
-                  or need help with an order — we're here to help!
-                </p>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="font-cormorant text-3xl sm:text-4xl font-normal text-[#1C1917] dark:text-[#FAF7F2] mb-3">
+                We Welcome Your Inquiries
+              </h2>
+              <p className="font-sans text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-light">
+                Whether you wish to schedule a bridal trial in Rahuri, check rental availability, or place a custom order — our team is here for you.
+              </p>
 
-                <div className="space-y-4 mb-8">
-                  {CONTACT_INFO.map(({ icon: Icon, label, value, href, color }) => (
-                    <div key={label} className="flex items-start gap-4">
-                      <div className={`w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0 ${color}`}>
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="font-poppins text-xs font-semibold text-gray-400 tracking-wider uppercase">{label}</p>
-                        {href ? (
-                          <a
-                            href={href}
-                            target={href.startsWith("http") ? "_blank" : undefined}
-                            rel="noopener noreferrer"
-                            className="font-poppins text-sm font-medium text-dark-brown dark:text-cream hover:text-gold transition-colors"
-                          >
-                            {value}
-                          </a>
-                        ) : (
-                          <p className="font-poppins text-sm font-medium text-dark-brown dark:text-cream">{value}</p>
-                        )}
-                      </div>
+              <div className="space-y-5 mb-8">
+                {CONTACT_INFO.map(({ icon: Icon, label, value, href, color }) => (
+                  <div key={label} className="flex items-start gap-4 p-3 bg-white dark:bg-[#1C1917] border border-[#C5A059]/20">
+                    <div className={`w-10 h-10 bg-[#4A0E17] flex items-center justify-center flex-shrink-0 text-white border border-[#C5A059]/40`}>
+                      <Icon className="w-4 h-4 text-[#E5C88A]" />
                     </div>
-                  ))}
-                </div>
+                    <div>
+                      <p className="font-sans text-[10px] font-semibold text-[#C5A059] tracking-widest uppercase">{label}</p>
+                      {href ? (
+                        <a
+                          href={href}
+                          target={href.startsWith("http") ? "_blank" : undefined}
+                          rel="noopener noreferrer"
+                          className="font-sans text-xs font-medium text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="font-sans text-xs font-medium text-[#1C1917] dark:text-[#FAF7F2]">{value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-                {/* Quick action buttons */}
-                <div className="flex gap-3 flex-wrap">
-                  <a
-                    href="https://wa.me/919139236500?text=Hi! I have an inquiry about Mayleki Jewellery."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 h-12 bg-green-500 hover:bg-green-600 text-white rounded-xl font-poppins font-semibold text-sm transition-colors shadow-sm"
-                  >
-                    <FaWhatsapp className="w-4 h-4" /> WhatsApp Us
-                  </a>
-                  <a
-                    href="tel:+919139236500"
-                    className="flex items-center gap-2 px-6 h-12 bg-gold text-dark-brown hover:bg-gold-dark rounded-xl font-poppins font-semibold text-sm transition-colors shadow-gold"
-                  >
-                    <FiPhone className="w-4 h-4" /> Call Now
-                  </a>
-                </div>
+              {/* Action buttons */}
+              <div className="flex gap-4 flex-wrap mb-8">
+                <a
+                  href="https://wa.me/919139236500?text=Hi Mayleki! I have an inquiry."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-wine text-xs px-6 py-3.5 border border-[#C5A059]/40 flex items-center gap-2"
+                >
+                  <FaWhatsapp className="w-4 h-4 text-[#25D366]" /> WhatsApp Consultation
+                </a>
+                <a
+                  href="tel:+919139236500"
+                  className="btn-gold text-xs px-6 py-3.5 flex items-center gap-2"
+                >
+                  <FiPhone className="w-4 h-4" /> Call Showroom
+                </a>
+              </div>
 
-                {/* Google Maps embed */}
-                <div className="mt-8 rounded-2xl overflow-hidden shadow-luxury border border-gold/10">
-                  <iframe
-                    title="Mayleki Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15115.56388427!2d74.6497!3d19.3926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdc7e0b2f6b3a0f%3A0x5a4a3b2a1c8d9e7f!2sRahuri%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890123"
-                    width="100%"
-                    height="250"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-              </motion.div>
-            </div>
+              {/* Map embed */}
+              <div className="border border-[#C5A059]/30 overflow-hidden shadow-sm">
+                <iframe
+                  title="Mayleki Boutique Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15115.56388427!2d74.6497!3d19.3926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdc7e0b2f6b3a0f%3A0x5a4a3b2a1c8d9e7f!2sRahuri%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890123"
+                  width="100%"
+                  height="220"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
 
             {/* Right: Form */}
             <motion.div
@@ -133,36 +128,36 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="card-luxury">
-                <h3 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-6">
-                  Send us a Message
+              <div className="bg-white dark:bg-[#1C1917] p-8 border border-[#C5A059]/30 shadow-none">
+                <h3 className="font-cormorant text-3xl font-semibold text-[#1C1917] dark:text-[#FAF7F2] mb-6">
+                  Send a Direct Message
                 </h3>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Name *</label>
+                      <label className="font-sans text-xs font-semibold uppercase tracking-widest text-[#1C1917] dark:text-[#FAF7F2] mb-1.5 block">Full Name *</label>
                       <input
                         placeholder="Your name"
                         className={`input-luxury ${errors.name ? "border-red-400" : ""}`}
                         {...register("name", { required: "Name is required" })}
                       />
-                      {errors.name && <p className="font-poppins text-xs text-red-500 mt-1">{errors.name.message}</p>}
+                      {errors.name && <p className="font-sans text-xs text-red-500 mt-1">{errors.name.message}</p>}
                     </div>
                     <div>
-                      <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Phone *</label>
+                      <label className="font-sans text-xs font-semibold uppercase tracking-widest text-[#1C1917] dark:text-[#FAF7F2] mb-1.5 block">Phone *</label>
                       <input
                         type="tel"
                         placeholder="+91 91392 36500"
                         className={`input-luxury ${errors.phone ? "border-red-400" : ""}`}
                         {...register("phone", { required: "Phone is required" })}
                       />
-                      {errors.phone && <p className="font-poppins text-xs text-red-500 mt-1">{errors.phone.message}</p>}
+                      {errors.phone && <p className="font-sans text-xs text-red-500 mt-1">{errors.phone.message}</p>}
                     </div>
                   </div>
 
                   <div>
-                    <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Email</label>
+                    <label className="font-sans text-xs font-semibold uppercase tracking-widest text-[#1C1917] dark:text-[#FAF7F2] mb-1.5 block">Email Address</label>
                     <input
                       type="email"
                       placeholder="you@example.com"
@@ -172,40 +167,40 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Inquiry Type</label>
+                    <label className="font-sans text-xs font-semibold uppercase tracking-widest text-[#1C1917] dark:text-[#FAF7F2] mb-1.5 block">Inquiry Type</label>
                     <select className="input-luxury" {...register("type")}>
                       <option>General Inquiry</option>
-                      <option>Rental Booking</option>
-                      <option>Purchase Order</option>
-                      <option>Custom Order</option>
-                      <option>Complaint / Feedback</option>
+                      <option>Jewellery Rental Booking</option>
+                      <option>Bridal Set Consultation</option>
+                      <option>Order Status Check</option>
+                      <option>Custom Fitting / Modification</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream mb-1.5 block">Message *</label>
+                    <label className="font-sans text-xs font-semibold uppercase tracking-widest text-[#1C1917] dark:text-[#FAF7F2] mb-1.5 block">Message *</label>
                     <textarea
                       rows={5}
-                      placeholder="Tell us about your requirements..."
-                      className={`input-luxury resize-none ${errors.message ? "border-red-400" : ""}`}
+                      placeholder="Specify your wedding date, set preferences, or questions..."
+                      className={`input-luxury h-auto py-3 resize-none ${errors.message ? "border-red-400" : ""}`}
                       {...register("message", { required: "Message is required", minLength: { value: 10, message: "Min 10 characters" } })}
                     />
-                    {errors.message && <p className="font-poppins text-xs text-red-500 mt-1">{errors.message.message}</p>}
+                    {errors.message && <p className="font-sans text-xs text-red-500 mt-1">{errors.message.message}</p>}
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-gold w-full h-12 text-base"
+                    className="btn-gold w-full h-12 text-xs"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2 justify-center">
-                        <span className="w-4 h-4 border-2 border-dark-brown border-t-transparent rounded-full animate-spin" />
-                        Sending...
+                        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Transmitting...
                       </span>
                     ) : (
                       <>
-                        <FiSend className="w-5 h-5" /> Send Message
+                        <FiSend className="w-4 h-4" /> Send Inquiry
                       </>
                     )}
                   </button>
