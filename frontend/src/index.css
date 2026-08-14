@@ -60,20 +60,43 @@ html, body {
 }
 
 /* ============================================
-   CUSTOM SCROLLBAR
+   CUSTOM SCROLLBAR & EDITORIAL UTILITIES
    ============================================ */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--gold), var(--gold-dark));
-  border-radius: 100px;
+  background: #C5A059;
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-light);
+  background: #9E7B32;
+}
+
+/* Vertical Text Utilities */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Editorial Text Stroke */
+.text-stroke-gold {
+  -webkit-text-stroke: 1px #C5A059;
+  color: transparent;
+}
+
+.text-stroke-cream {
+  -webkit-text-stroke: 1px #FAF7F2;
+  color: transparent;
+}
+
+/* Smooth Image Reveal Clip Path */
+.clip-path-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ============================================
