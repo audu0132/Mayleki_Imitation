@@ -1,123 +1,126 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { CATEGORIES } from "../../data/mockData";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
+
+const CATEGORY_ITEMS = [
+  {
+    name: "BRIDAL",
+    slug: "bridal-sets",
+    count: "48 Designs",
+    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1000&q=80",
+  },
+  {
+    name: "MAHARASHTRIAN",
+    slug: "maharashtrian",
+    count: "32 Designs",
+    image: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?w=1000&q=80",
+  },
+  {
+    name: "NECKLACES",
+    slug: "necklace-sets",
+    count: "64 Designs",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1000&q=80",
+  },
+  {
+    name: "EARRINGS",
+    slug: "earrings",
+    count: "78 Designs",
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1000&q=80",
+  },
+  {
+    name: "BANGLES",
+    slug: "bangles",
+    count: "56 Designs",
+    image: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?w=1000&q=80",
+  },
+  {
+    name: "NATH",
+    slug: "nath",
+    count: "22 Designs",
+    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1000&q=80",
+  },
+  {
+    name: "SETS",
+    slug: "kolhapuri-saaj",
+    count: "35 Designs",
+    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=1000&q=80",
+  },
+];
 
 export default function CategoryGrid() {
-  const scrollRef = useRef(null);
-
-  const scroll = (dir) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: dir * 320, behavior: "smooth" });
-    }
-  };
+  const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <section id="collections" className="py-16 md:py-20 bg-[#FAF7F2] dark:bg-[#141110] border-b border-[#C5A059]/15">
-      {/* Section header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 flex items-end justify-between">
+    <section className="relative py-24 lg:py-36 bg-[#1C1917] text-[#FAF7F2] overflow-hidden border-b border-[#C5A059]/30">
+      
+      {/* Dynamic Background Image Reveal on Hover */}
+      <AnimatePresence mode="sync">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          key={activeIdx}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 0.25, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="absolute inset-0 pointer-events-none"
         >
-          <p className="font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[#C5A059] font-semibold mb-2">
-            𑁍 Curated Collections
-          </p>
-          <h2 className="font-cormorant text-3xl sm:text-4xl md:text-5xl text-[#1C1917] dark:text-[#FAF7F2] font-normal tracking-wide">
-            Maharashtrian & Traditional Treasures
-          </h2>
+          <img
+            src={CATEGORY_ITEMS[activeIdx].image}
+            alt={CATEGORY_ITEMS[activeIdx].name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/70 to-[#1C1917]" />
         </motion.div>
+      </AnimatePresence>
 
-        <div className="flex items-center gap-4">
-          <Link
-            to="/products"
-            className="hidden sm:inline-flex font-sans text-xs font-semibold tracking-[0.2em] uppercase text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors border-b border-[#C5A059] pb-0.5"
-          >
-            Explore All Collections
-          </Link>
-          {/* Arrow buttons */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => scroll(-1)}
-              className="w-10 h-10 flex items-center justify-center border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-white text-[#1C1917] dark:text-[#FAF7F2] transition-all duration-300 rounded-none"
-              aria-label="Scroll left"
-            >
-              <FiChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scroll(1)}
-              className="w-10 h-10 flex items-center justify-center border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-white text-[#1C1917] dark:text-[#FAF7F2] transition-all duration-300 rounded-none"
-              aria-label="Scroll right"
-            >
-              <FiChevronRight className="w-5 h-5" />
-            </button>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-[#C5A059]/20">
+          <div>
+            <span className="font-sans text-[10px] font-semibold tracking-[0.35em] uppercase text-[#C5A059] block mb-2">
+              𑁍 EXPLORE BY CATEGORY
+            </span>
+            <h2 className="font-cormorant text-4xl sm:text-5xl font-normal text-[#FAF7F2]">
+              Select Your Aesthetic
+            </h2>
           </div>
+          <p className="font-sans text-xs text-gray-400 font-light mt-3 md:mt-0 tracking-wider">
+            Hover over categories to preview curated designs
+          </p>
         </div>
-      </div>
 
-      {/* Horizontal scroll track */}
-      <div className="relative">
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-6 no-scrollbar"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {CATEGORIES.map((cat, i) => (
+        {/* Interactive Text Category List */}
+        <div className="space-y-4 sm:space-y-6">
+          {CATEGORY_ITEMS.map((item, idx) => (
             <motion.div
-              key={cat.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="flex-none"
+              key={item.name}
+              onMouseEnter={() => setActiveIdx(idx)}
+              className="border-b border-[#C5A059]/15 pb-4 sm:pb-6 group"
             >
               <Link
-                to={`/category/${cat.slug}`}
-                className="flex flex-col items-center group cursor-pointer w-[130px] sm:w-[150px]"
+                to={`/category/${item.slug}`}
+                className="flex items-center justify-between transition-all duration-300"
               >
-                {/* Circular frame with 1px antique gold ring */}
-                <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-[#C5A059]/30 group-hover:border-[#C5A059] transition-all duration-500 shadow-sm p-1 bg-white dark:bg-[#1C1917]">
-                  <div className="w-full h-full rounded-full overflow-hidden relative">
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115"
-                      onError={(e) => {
-                        e.currentTarget.src =
-                          "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400";
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-[#4A0E17]/10 group-hover:bg-[#4A0E17]/25 transition-all duration-300 flex items-center justify-center">
-                      <span className="text-2xl opacity-80 group-hover:scale-125 transition-transform duration-300">{cat.icon}</span>
-                    </div>
-                  </div>
+                <div className="flex items-baseline gap-6 sm:gap-12">
+                  <span className="font-sans text-xs text-[#C5A059] font-mono opacity-60">
+                    0{idx + 1}
+                  </span>
+                  <span className="font-cormorant text-4xl sm:text-6xl lg:text-7xl font-normal text-[#FAF7F2]/80 group-hover:text-[#C5A059] group-hover:translate-x-3 transition-all duration-300 tracking-tight">
+                    {item.name}
+                  </span>
                 </div>
 
-                {/* Category Details */}
-                <h3 className="font-cormorant text-lg font-medium text-center text-[#1C1917] dark:text-[#FAF7F2] group-hover:text-[#C5A059] transition-colors mt-3 leading-tight">
-                  {cat.name}
-                </h3>
-                <span className="font-sans text-[10px] text-[#C5A059] font-medium tracking-wider uppercase mt-0.5">
-                  {cat.count || 24}+ Designs
-                </span>
+                <div className="flex items-center gap-4">
+                  <span className="hidden sm:inline-block font-sans text-xs text-gray-400 font-light tracking-widest uppercase">
+                    {item.count}
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-[#C5A059]/30 flex items-center justify-center text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-[#1C1917] transition-all duration-300">
+                    <FiArrowUpRight className="w-5 h-5" />
+                  </div>
+                </div>
               </Link>
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* Mobile view link */}
-      <div className="sm:hidden text-center mt-4">
-        <Link
-          to="/products"
-          className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors border-b border-[#C5A059] pb-0.5"
-        >
-          View All Categories
-        </Link>
       </div>
     </section>
   );
