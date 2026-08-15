@@ -1,57 +1,55 @@
 import { motion } from "framer-motion";
-import { FiInstagram, FiHeart, FiExternalLink } from "react-icons/fi";
-import { INSTAGRAM_POSTS } from "../../data/mockData";
+import { FiInstagram } from "react-icons/fi";
 
-export default function InstagramGallery()  {
+const MOSAIC_IMAGES = [
+  { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80", colSpan: "md:col-span-6 md:row-span-2", height: "h-[360px] md:h-[480px]" },
+  { url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80", colSpan: "md:col-span-3 md:row-span-1", height: "h-[225px]" },
+  { url: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?w=600&q=80", colSpan: "md:col-span-3 md:row-span-1", height: "h-[225px]" },
+  { url: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=600&q=80", colSpan: "md:col-span-3 md:row-span-1", height: "h-[225px]" },
+  { url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&q=80", colSpan: "md:col-span-3 md:row-span-1", height: "h-[225px]" },
+];
+
+export default function InstagramGallery() {
   return (
-    <section className="py-24 bg-cream">
-      <div className="container-luxury">
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-12 gap-4">
-          <div className="max-w-2xl mx-auto flex flex-col items-center">
-            <h2 className="section-title">
-              #Mayleki
-            </h2>
-            <a
-              href="https://www.instagram.com/mayleki.jewellery"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-poppins text-xs font-medium uppercase tracking-widest text-gray-500 hover:text-dark-brown transition-colors"
-            >
-              @mayleki.jewellery
-            </a>
-          </div>
-          <a
-            href="https://www.instagram.com/mayleki.jewellery"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-poppins text-xs font-medium uppercase tracking-widest text-dark-brown hover:text-gold transition-colors border-b border-dark-brown hover:border-gold pb-1 flex items-center justify-center gap-2 mt-2"
-          >
-            <FiInstagram strokeWidth={1} className="w-4 h-4" />
-            Follow Us
-          </a>
+    <section className="py-24 lg:py-36 bg-[#FAF7F2] dark:bg-[#141110] border-b border-[#C5A059]/15">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16">
+          <span className="font-sans text-[10px] font-semibold tracking-[0.35em] uppercase text-[#C5A059] block mb-2">
+            𑁍 SOCIAL LOOKBOOK
+          </span>
+          <h2 className="font-cormorant text-4xl sm:text-5xl font-normal text-[#1C1917] dark:text-[#FAF7F2] tracking-tight">
+            @maylekiimitation
+          </h2>
         </div>
 
-        {/* Grid - No gaps for editorial feel */}
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] border border-gold/10 justify-center w-full">
-          {INSTAGRAM_POSTS.map((post, i) => (
-            <a
-              key={post.id}
-              href={post.link}
+        {/* Asymmetric Image Mosaic Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          {MOSAIC_IMAGES.map((img, i) => (
+            <motion.a
+              key={i}
+              href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square overflow-hidden bg-gray-50 block border-[0.5px] border-gold/10"
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className={`relative overflow-hidden group border border-[#C5A059]/20 block ${img.colSpan}`}
             >
-              <img
-                src={post.image}
-                alt={`Instagram post ${i + 1}`}
-                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <FiInstagram strokeWidth={1} className="w-8 h-8 text-white" />
+              <div className={`w-full ${img.height}`}>
+                <img
+                  src={img.url}
+                  alt="Mayleki Jewellery Instagram"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[#1C1917]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full border border-[#C5A059] bg-[#1C1917]/80 text-[#C5A059] flex items-center justify-center">
+                    <FiInstagram className="w-6 h-6" />
+                  </div>
+                </div>
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
