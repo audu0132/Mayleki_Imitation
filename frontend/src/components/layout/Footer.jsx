@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FiInstagram, FiPhone, FiMail, FiMapPin,
-  FiArrowRight, FiHeart, FiClock, FiSparkles,
+  FiArrowRight, FiHeart, FiClock, FiStar,
 } from "react-icons/fi";
 import { FaWhatsapp, FaFacebook, FaYoutube } from "react-icons/fa";
 
