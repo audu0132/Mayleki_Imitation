@@ -1,22 +1,24 @@
 import { lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import HeroBanner from "../components/home/HeroBanner";
+import EditorialStatement from "../components/home/EditorialStatement";
 
 // Lazy-loaded sections
-const PromoBanner = lazy(() => import("../components/home/PromoBanner"));
+const EditorialShowcase = lazy(() => import("../components/home/EditorialShowcase"));
 const CategoryGrid = lazy(() => import("../components/home/CategoryGrid"));
 const FeaturedProducts = lazy(() => import("../components/home/FeaturedProducts"));
+const FeaturedMoment = lazy(() => import("../components/home/FeaturedMoment"));
+const HeritageSection = lazy(() => import("../components/home/HeritageSection"));
 const WhyChooseUs = lazy(() => import("../components/home/WhyChooseUs"));
-const CTABanner = lazy(() => import("../components/home/CTABanner"));
-const TrustStrip = lazy(() => import("../components/home/TrustStrip"));
+const LuxuryBookingSection = lazy(() => import("../components/home/LuxuryBookingSection"));
 const Testimonials = lazy(() => import("../components/home/Testimonials"));
 const InstagramGallery = lazy(() => import("../components/home/InstagramGallery"));
-const FAQ = lazy(() => import("../components/home/FAQ"));
+const FinalCTA = lazy(() => import("../components/home/FinalCTA"));
 
 function SectionLoader() {
   return (
-    <div className="flex items-center justify-center py-20">
-      <div className="h-10 w-10 animate-spin rounded-full border-4 border-gold border-t-transparent" />
+    <div className="flex items-center justify-center py-20 bg-[#FAF7F2] dark:bg-[#141110]">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#C5A059] border-t-transparent" />
     </div>
   );
 }
@@ -25,170 +27,55 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>
-          Mayleki Imitation Jewellery | Premium Bridal Jewellery in Rahuri,
-          Maharashtra
-        </title>
-
+        <title>Mayleki Imitation Jewellery | High-Fashion Bridal & Traditional Jewellery Rahuri</title>
         <meta
           name="description"
-          content="Shop premium imitation jewellery, bridal jewellery, Maharashtrian jewellery, Kolhapuri Saaj, Nath, American Diamond sets, and jewellery rentals at Mayleki Jewellery, Rahuri."
+          content="Experience Mayleki's high-fashion imitation jewellery. Royal Maharashtrian bridal sets, Kolhapuri saaj, Nath, Kundan, and luxury jewellery rentals in Rahuri."
         />
-
         <meta
           name="keywords"
-          content="Mayleki Jewellery, imitation jewellery, bridal jewellery, jewellery rental, Maharashtrian jewellery, Kolhapuri Saaj, Nath, American Diamond Jewellery, Rahuri Jewellery"
+          content="Mayleki Jewellery, imitation jewellery, bridal jewellery, jewellery rental, Maharashtrian jewellery, Kolhapuri Saaj, Nath, Kundan Jewellery, Rahuri Jewellery Boutique"
         />
-
-        <meta
-          name="robots"
-          content="index, follow"
-        />
-
-        <meta
-          name="author"
-          content="Mayleki Jewellery"
-        />
-
-        <meta
-          name="theme-color"
-          content="#C9A227"
-        />
-
-        {/* Canonical */}
-        <link
-          rel="canonical"
-          href="https://mayleki-studio.vercel.app/"
-        />
-
-        {/* Open Graph */}
-
-        <meta
-          property="og:type"
-          content="website"
-        />
-
-        <meta
-          property="og:title"
-          content="Mayleki Imitation Jewellery"
-        />
-
-        <meta
-          property="og:description"
-          content="Premium Bridal & Traditional Jewellery in Rahuri. Rent or Buy from hundreds of beautiful collections."
-        />
-
-        <meta
-          property="og:url"
-          content="https://mayleki-studio.vercel.app/"
-        />
-
-        <meta
-          property="og:site_name"
-          content="Mayleki Jewellery"
-        />
-
-        {/* Replace with your banner image */}
-        <meta
-          property="og:image"
-          content="https://mayleki-studio.vercel.app/og-image.jpg"
-        />
-
-        {/* Twitter */}
-
-        <meta
-          name="twitter:card"
-          content="summary_large_image"
-        />
-
-        <meta
-          name="twitter:title"
-          content="Mayleki Jewellery"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Premium Bridal Jewellery & Jewellery Rentals"
-        />
-
-        <meta
-          name="twitter:image"
-          content="https://mayleki-studio.vercel.app/og-image.jpg"
-        />
-
-        {/* Structured Data */}
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "JewelryStore",
-
-            name: "Mayleki Imitation Jewellery",
-
-            image:
-              "https://mayleki-studio.vercel.app/og-image.jpg",
-
-            logo:
-              "https://mayleki-studio.vercel.app/logo.png",
-
-            url: "https://mayleki-studio.vercel.app/",
-
-            telephone: "+919139236500", // Replace
-
-            priceRange: "₹₹",
-
-            description:
-              "Premium imitation jewellery store offering bridal jewellery, jewellery rental and traditional Maharashtrian collections.",
-
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "Rahuri",
-              addressLocality: "Ahmednagar",
-              addressRegion: "Maharashtra",
-              postalCode: "413706",
-              addressCountry: "IN",
-            },
-
-            openingHours: "Mo-Sa 10:00-20:00",
-
-            sameAs: [
-              "https://instagram.com/yourpage",
-              "https://facebook.com/yourpage",
-            ],
-          })}
-        </script>
       </Helmet>
 
-      <main className="overflow-x-hidden">
-
-        {/* Hero */}
-
+      <main className="overflow-x-hidden bg-[#FAF7F2] dark:bg-[#141110]">
+        {/* 1. Viewport Editorial Hero */}
         <HeroBanner />
 
-        {/* Remaining Sections */}
+        {/* 2. Editorial Statement */}
+        <EditorialStatement />
 
         <Suspense fallback={<SectionLoader />}>
+          {/* 3. Alternating Collection Showcase */}
+          <EditorialShowcase />
 
-          <PromoBanner />
-
+          {/* 4. Interactive Category Bar */}
           <CategoryGrid />
 
+          {/* 5. Asymmetric Collection Grid */}
           <FeaturedProducts />
 
+          {/* 6. Cinematic Dark Featured Moment */}
+          <FeaturedMoment />
+
+          {/* 7. Maharashtrian Heritage Section */}
+          <HeritageSection />
+
+          {/* 8. Oversized Statistics */}
           <WhyChooseUs />
 
-          <CTABanner />
+          {/* 9. Split-Screen Appointment Booking */}
+          <LuxuryBookingSection />
 
-          <TrustStrip />
-
+          {/* 10. Pull-Quote Testimonials */}
           <Testimonials />
 
+          {/* 11. Instagram Image Mosaic */}
           <InstagramGallery />
 
-          <FAQ />
-
+          {/* 12. Final Magazine Back Cover CTA */}
+          <FinalCTA />
         </Suspense>
-
       </main>
     </>
   );

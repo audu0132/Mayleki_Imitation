@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
   FiCalendar, FiChevronRight, FiClock, FiShield,
-  FiCheckCircle, FiPhone, FiMail, FiMapPin, FiSparkles,
+  FiCheckCircle, FiPhone, FiMail, FiMapPin, FiStar,
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { PRODUCTS } from "../data/mockData";
