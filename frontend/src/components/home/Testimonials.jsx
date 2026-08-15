@@ -1,112 +1,60 @@
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { TESTIMONIALS } from "../../data/mockData";
+import { motion } from "framer-motion";
+
+const EDITORIAL_TESTIMONIALS = [
+  {
+    quote: "Every piece looked even more beautiful in person. The Kolhapuri saaj set made my special bridal day feel truly memorable and royal.",
+    name: "Priyanka Deshmukh",
+    role: "Bridal Client, Rahuri",
+  },
+  {
+    quote: "The rental process was seamless. The Kundan necklace was pristine, sanitised, and received endless compliments at my reception.",
+    name: "Ananya Patil",
+    role: "Event Client, Ahmednagar",
+  },
+];
 
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  }, []);
-
-  useEffect(() => {
-    if (!isPlaying) return;
-    const timer = setInterval(next, 4000);
-    return () => clearInterval(timer);
-  }, [isPlaying, next]);
-
-  const getVisible = () => {
-    const items = [];
-    for (let i = -1; i <= 1; i++) {
-      const idx = (current + i + TESTIMONIALS.length) % TESTIMONIALS.length;
-      items.push({ ...TESTIMONIALS[idx], position: i });
-    }
-    return items;
-  };
-
   return (
-    <section className="py-20 lg:py-24 bg-cream" onMouseEnter={() => setIsPlaying(false)} onMouseLeave={() => setIsPlaying(true)}>
-      <div className="container-luxury">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16 flex flex-col items-center">
-            <h2 className="section-title">
-              Client Stories
-            </h2>
-            <div className="gold-divider" />
-          </div>
+    <section className="py-24 lg:py-36 bg-[#FAF7F2] dark:bg-[#141110] border-b border-[#C5A059]/15">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16">
+          <span className="font-sans text-[10px] font-semibold tracking-[0.35em] uppercase text-[#C5A059] block mb-2">
+            𑁍 BRIDAL TESTIMONIALS
+          </span>
+          <h2 className="font-cormorant text-4xl sm:text-5xl font-normal text-[#1C1917] dark:text-[#FAF7F2]">
+            Words from Our Brides
+          </h2>
+        </div>
 
-          {/* Carousel */}
-          <div className="relative flex items-center justify-center py-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-center px-4 md:px-12"
-              >
-                <div className="text-gold text-4xl font-serif mb-6 opacity-40">"</div>
-                <p className="font-serif text-xl md:text-3xl text-dark-brown leading-relaxed mb-8 italic">
-                  {TESTIMONIALS[current].review}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+          {EDITORIAL_TESTIMONIALS.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.2 }}
+              className="bg-white dark:bg-[#1C1917] p-10 border border-[#C5A059]/20 relative flex flex-col justify-between"
+            >
+              <span className="font-cormorant text-7xl text-[#C5A059]/30 leading-none absolute top-4 left-6 pointer-events-none select-none">
+                “
+              </span>
+              <p className="font-cormorant text-2xl sm:text-3xl text-[#1C1917] dark:text-[#FAF7F2] font-normal leading-snug mb-8 relative z-10 pt-4 italic">
+                "{t.quote}"
+              </p>
+
+              <div className="border-t border-[#C5A059]/20 pt-4">
+                <h4 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#1C1917] dark:text-[#FAF7F2]">
+                  {t.name}
+                </h4>
+                <p className="font-sans text-[10px] text-[#C5A059] uppercase tracking-wider font-medium mt-0.5">
+                  {t.role}
                 </p>
-                <div className="flex flex-col items-center gap-3">
-                  <div className="w-12 h-12 rounded-full overflow-hidden mb-2">
-                    <img
-                      src={TESTIMONIALS[current].image}
-                      alt={TESTIMONIALS[current].name}
-                      className="w-full h-full object-cover grayscale"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-poppins text-xs font-medium uppercase tracking-widest text-dark-brown">
-                      {TESTIMONIALS[current].name}
-                    </p>
-                    <p className="font-poppins text-[10px] uppercase tracking-[0.2em] text-gray-500 mt-1">
-                      {TESTIMONIALS[current].location}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation Arrows */}
-            <button
-              onClick={prev}
-              className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-dark-brown transition-colors p-2"
-            >
-              <FiChevronLeft strokeWidth={1} className="w-8 h-8" />
-            </button>
-            <button
-              onClick={next}
-              className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-dark-brown transition-colors p-2"
-            >
-              <FiChevronRight strokeWidth={1} className="w-8 h-8" />
-            </button>
-          </div>
-
-          {/* Indicators */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {TESTIMONIALS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`transition-all duration-500 rounded-none ${
-                  i === current ? "w-8 h-[1px] bg-dark-brown" : "w-4 h-[1px] bg-gray-300"
-                }`}
-              />
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-
