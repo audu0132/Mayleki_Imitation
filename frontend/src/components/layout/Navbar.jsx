@@ -16,6 +16,7 @@ import Logo from "../../assets/logo.jpeg";
 const CENTER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Collection", href: "/products" },
+  { label: "AI Stylist ✨", href: "/ai-stylist" },
   { label: "Bridal", href: "/category/bridal-sets" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

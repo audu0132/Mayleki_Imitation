@@ -16,6 +16,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import WhatsAppButton from "./components/common/WhatsAppButton";
 import PageTransition from "./components/common/PageTransition";
+import AiStylistWidget from "./components/ai/AiStylistWidget";
 
 // Lazy-loaded pages for performance
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -35,6 +36,7 @@ const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
 const RentalBookingPage = lazy(() => import("./pages/RentalBookingPage"));
 const OrderSuccessPage = lazy(() => import("./pages/OrderSuccessPage"));
+const AiStylistPage = lazy(() => import("./pages/AiStylistPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 // Admin
@@ -73,6 +75,7 @@ function MainLayout({ children }) {
       </main>
       <Footer />
       <WhatsAppButton />
+      <AiStylistWidget />
     </div>
   );
 }
@@ -199,6 +202,11 @@ export default function App() {
                         <Route path="/profile" element={
                           <MainLayout>
                             <ProfilePage />
+                          </MainLayout>
+                        } />
+                        <Route path="/ai-stylist" element={
+                          <MainLayout>
+                            <AiStylistPage />
                           </MainLayout>
                         } />
 
