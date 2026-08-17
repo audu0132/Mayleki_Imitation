@@ -1,0 +1,325 @@
+import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiSparkles } from "react-icons/hi2";
+import {
+  FiX,
+  FiSend,
+  FiShoppingBag,
+  FiRefreshCw,
+  FiMaximize2,
+  FiUser
+} from "react-icons/fi";
+import { useCart } from "../../context/AppContext";
+import toast from "react-hot-toast";
+
+const QUICK_SUGGESTIONS = [
+  { label: "Bridal Jewellery", prompt: "Recommend bridal jewellery sets for Maharashtrian wedding" },
+  { label: "Wedding Guest", prompt: "Subtle Kundan necklace for wedding guest outfit" },
+  { label: "Maharashtrian Look", prompt: "Authentic Kolhapuri Saaj and Nath accessories" },
+  { label: "Haldi", prompt: "Yellow Haldi ceremony floral or gold plated jewellery" },
+  { label: "Mehendi", prompt: "Green & antique jewellery set for Mehendi" },
+  { label: "Reception", prompt: "Heavy Royal Kundan bridal set for reception" },
+  { label: "Festive Wear", prompt: "Traditional festive wear necklaces and bangles" },
+  { label: "Rental Jewellery", prompt: "Show available rental jewellery sets under ₹1000/day" }
+];
+
+export default function AIJewelleryStylist() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputPrompt, setInputPrompt] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      sender: "ai",
+      text: "Namaste! I am your **Mayleki AI Jewellery Stylist**. Tell me about your outfit (color, occasion, style), and I will recommend perfect jewellery to buy or rent!",
+      products: [],
+      tips: []
+    }
+  ]);
+
+  const { addToCart } = useCart();
+  const chatEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      scrollToBottom();
+    }
+  }, [messages, isOpen]);
+
+  const handleSend = async (customPrompt) => {
+    const promptToSend = customPrompt || inputPrompt;
+    if (!promptToSend.trim() || isLoading) return;
+
+    const userMsg = { sender: "user", text: promptToSend };
+    setMessages((prev) => [...prev, userMsg]);
+    setInputPrompt("");
+    setIsLoading(true);
+
+    try {
+      const res = await fetch("http://localhost:5000/api/ai/stylist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: promptToSend })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: "ai",
+            text: data.advice,
+            products: data.recommendedProducts || [],
+            tips: data.stylingTips || []
+          }
+        ]);
+      } else {
+        throw new Error(data.message || "AI recommendation error");
+      }
+    } catch {
+      // Fallback response if AI server is offline
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "ai",
+          text: "For a timeless Maharashtrian look, pair vibrant silk sarees with an authentic Kolhapuri Saaj or Royal Kundan choker set. Here are top recommended pieces from our boutique:",
+          products: [
+            {
+              id: 1,
+              title: "Royal Kundan Bridal Set",
+              slug: "royal-kundan-bridal-set",
+              category: "bridal-sets",
+              sellingPrice: 4500,
+              rentalPrice: 800,
+              isRentalAvailable: true,
+              image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80"
+            },
+            {
+              id: 2,
+              title: "Authentic Kolhapuri Saaj",
+              slug: "authentic-kolhapuri-saaj",
+              category: "kolhapuri-saaj",
+              sellingPrice: 2200,
+              rentalPrice: 450,
+              isRentalAvailable: true,
+              image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80"
+            }
+          ],
+          tips: [
+            "Match choker height with saree neckline.",
+            "Use rental options for 1-day wedding events to save up to 70%!"
+          ]
+        }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <>
+      {/* AI STYLIST FLOATING PANEL */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 15, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 15, scale: 0.96 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed bottom-[160px] right-4 sm:right-6 z-50 w-[380px] max-w-[calc(100vw-32px)] h-[520px] max-h-[calc(100vh-180px)] bg-white dark:bg-[#1C1917] border border-stone-300 dark:border-stone-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+          >
+            {/* Header */}
+            <div className="px-5 py-4 bg-gradient-to-r from-stone-900 via-stone-850 to-stone-900 text-white border-b border-stone-800 flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 flex items-center justify-center text-white shadow-sm">
+                  <HiSparkles className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-cormorant font-semibold text-lg text-white leading-tight flex items-center gap-1.5">
+                    ✨ AI Jewellery Stylist
+                  </h3>
+                  <p className="font-sans text-[11px] text-stone-300 font-light">
+                    Find the perfect jewellery for your occasion
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/ai-stylist"
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 text-stone-400 hover:text-white transition-colors"
+                  title="Full Screen Stylist Page"
+                >
+                  <FiMaximize2 className="w-4 h-4" />
+                </Link>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 text-stone-400 hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close panel"
+                >
+                  <FiX className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Suggestion Chips */}
+            <div className="px-4 py-2.5 bg-stone-50 dark:bg-stone-900/60 border-b border-stone-200 dark:border-stone-800 flex gap-2 overflow-x-auto no-scrollbar shrink-0">
+              {QUICK_SUGGESTIONS.map((chip, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleSend(chip.prompt)}
+                  disabled={isLoading}
+                  className="whitespace-nowrap px-3 py-1.5 rounded-full text-[11px] font-sans font-medium bg-white dark:bg-stone-800 hover:bg-stone-900 hover:text-white text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-stone-700 transition-all shrink-0 cursor-pointer"
+                >
+                  {chip.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Chat Feed */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs sm:text-sm custom-scrollbar">
+              {messages.map((msg, idx) => (
+                <div
+                  key={idx}
+                  className={`flex flex-col ${
+                    msg.sender === "user" ? "items-end" : "items-start"
+                  }`}
+                >
+                  <div
+                    className={`flex items-start gap-2 max-w-[90%] ${
+                      msg.sender === "user" ? "flex-row-reverse" : "flex-row"
+                    }`}
+                  >
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
+                        msg.sender === "user"
+                          ? "bg-stone-900 text-white"
+                          : "bg-amber-500/20 border border-amber-400/40 text-amber-500"
+                      }`}
+                    >
+                      {msg.sender === "user" ? <FiUser className="w-3.5 h-3.5" /> : <HiSparkles className="w-3.5 h-3.5" />}
+                    </div>
+
+                    <div
+                      className={`p-3.5 rounded-2xl leading-relaxed ${
+                        msg.sender === "user"
+                          ? "bg-stone-900 text-white rounded-tr-none shadow-sm"
+                          : "bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 border border-stone-200 dark:border-stone-700 rounded-tl-none"
+                      }`}
+                    >
+                      <p className="whitespace-pre-line text-xs leading-relaxed">{msg.text}</p>
+
+                      {/* Product Recommendations */}
+                      {msg.products && msg.products.length > 0 && (
+                        <div className="mt-3 pt-2.5 border-t border-stone-200 dark:border-stone-700 space-y-2">
+                          <p className="font-sans font-semibold text-[11px] text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                            Recommended Pieces:
+                          </p>
+                          {msg.products.map((prod) => (
+                            <div
+                              key={prod.id}
+                              className="flex items-center justify-between p-2 rounded-lg bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 gap-2"
+                            >
+                              <div className="flex items-center gap-2 min-w-0">
+                                <img
+                                  src={prod.image}
+                                  alt={prod.title}
+                                  className="w-10 h-10 object-cover rounded-md shrink-0"
+                                />
+                                <div className="min-w-0">
+                                  <p className="font-medium text-xs text-stone-900 dark:text-stone-100 truncate">
+                                    {prod.title}
+                                  </p>
+                                  <p className="text-[10px] text-amber-600 font-bold">
+                                    ₹{prod.sellingPrice} {prod.rentalPrice ? `(Rental ₹${prod.rentalPrice}/day)` : ""}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <button
+                                onClick={() => {
+                                  addToCart(prod, 1);
+                                  toast.success(`Added ${prod.title} to cart!`);
+                                }}
+                                className="p-1.5 rounded-md bg-stone-900 hover:bg-stone-850 text-white shrink-0 cursor-pointer"
+                                title="Add to Cart"
+                              >
+                                <FiShoppingBag className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {isLoading && (
+                <div className="flex items-center gap-2 text-xs text-stone-700 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 p-3 rounded-2xl w-fit border border-stone-300 dark:border-stone-700 animate-pulse">
+                  <FiRefreshCw className="w-3.5 h-3.5 animate-spin text-amber-500" />
+                  <span>Styling your bespoke look...</span>
+                </div>
+              )}
+              <div ref={chatEndRef} />
+            </div>
+
+            {/* Input Bar */}
+            <div className="p-3 bg-white dark:bg-[#1C1917] border-t border-stone-200 dark:border-stone-800 flex items-center gap-2 shrink-0">
+              <input
+                type="text"
+                value={inputPrompt}
+                onChange={(e) => setInputPrompt(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                placeholder="Ask about saree color, outfit, or occasion..."
+                className="flex-1 px-3.5 py-2.5 rounded-xl bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-xs text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:border-stone-500 transition-colors"
+              />
+              <button
+                onClick={() => handleSend()}
+                disabled={isLoading || !inputPrompt.trim()}
+                className="p-2.5 rounded-xl bg-[#111827] hover:bg-stone-800 disabled:opacity-50 text-white shadow-sm transition-all shrink-0 cursor-pointer"
+              >
+                <FiSend className="w-4 h-4" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* INDEPENDENT FLOATING PILL BUTTON (Desktop: right-6 bottom-24, Mobile: right-4 bottom-20) */}
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        initial={{ opacity: 0, scale: 0.9, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ duration: 0.3 }}
+        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 w-[240px] sm:w-[270px] h-14 rounded-full bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 text-white shadow-xl hover:shadow-2xl border border-amber-300/40 cursor-pointer flex items-center justify-center px-4 transition-all duration-300 group select-none"
+        aria-label="Open AI Jewellery Stylist"
+      >
+        {/* Perfectly Centered Internal Row */}
+        <div className="flex items-center justify-center gap-3 w-full h-full">
+          {/* Animated Glow Dot */}
+          <span className="relative flex h-3.5 w-3.5 items-center justify-center shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-200 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-100 shadow-[0_0_8px_#FDE047]" />
+          </span>
+
+          {/* Sparkle Icon */}
+          <HiSparkles className="w-5 h-5 text-amber-100 group-hover:rotate-12 transition-transform duration-300 shrink-0" />
+
+          {/* Centered Button Title */}
+          <span className="font-sans font-semibold text-sm sm:text-base text-white tracking-wide whitespace-nowrap drop-shadow-xs">
+            AI Jewellery Stylist
+          </span>
+        </div>
+      </motion.button>
+    </>
+  );
+}
