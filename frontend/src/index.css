@@ -7,6 +7,11 @@
    ROOT VARIABLES & BASE STYLES
    ============================================ */
 :root {
+  --bs-primary: #C5A059;
+  --bs-primary-rgb: 197, 160, 89;
+  --bs-dark: #1C1917;
+  --bs-dark-rgb: 28, 25, 23;
+  --bs-[#FAF7F2]: #FAF7F2;
   --gold: #C5A059;
   --gold-light: #E5C88A;
   --gold-dark: #9E7B32;
@@ -21,10 +26,27 @@
   --scrollbar-track: #FAF7F2;
 }
 
+/* Bootstrap Button Customizations */
+.btn-primary {
+  background-color: #C5A059 !important;
+  border-color: #C5A059 !important;
+  color: #ffffff !important;
+}
+.btn-primary:hover {
+  background-color: #9E7B32 !important;
+  border-color: #9E7B32 !important;
+}
+.btn-outline-primary {
+  color: #C5A059 !important;
+  border-color: #C5A059 !important;
+}
+.btn-outline-primary:hover {
+  background-color: #C5A059 !important;
+  color: #ffffff !important;
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -33,7 +55,7 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   background-color: #FAF7F2;
   color: #1C1917;
   overflow-x: hidden;
