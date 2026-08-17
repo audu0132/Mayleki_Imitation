@@ -75,7 +75,7 @@ function MainLayout({ children }) {
       </main>
       <Footer />
       <WhatsAppButton />
-      <AiStylistWidget />
+      <AIJewelleryStylist />
     </div>
   );
 }

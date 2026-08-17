@@ -7,41 +7,82 @@
    ROOT VARIABLES & BASE STYLES
    ============================================ */
 :root {
-  --bs-primary: #111827;
-  --bs-primary-rgb: 17, 24, 39;
-  --bs-dark: #111827;
-  --bs-dark-rgb: 17, 24, 39;
-  --gold: #111827;
-  --gold-light: #374151;
-  --gold-dark: #111827;
-  --wine: #1F2937;
-  --wine-light: #374151;
-  --dark-brown: #111827;
-  --cream: #F9FAFB;
-  --champagne: #F3F4F6;
-  --rose-gold: #4B5563;
-  --text-primary: #111827;
-  --scrollbar-thumb: #9CA3AF;
-  --scrollbar-track: #F3F4F6;
+  --primary-gold: #D4AF37;
+  --secondary-gold: #C9A227;
+  --soft-gold: #E6C76A;
+  --cream: #FFFDF8;
+  --dark-brown: #3B2F2F;
+  --secondary-text: #A9A9A9;
+  --gold-border: rgba(212, 175, 55, 0.18);
+  --bs-primary: #111111;
+  --bs-primary-rgb: 17, 17, 17;
+  --bs-link-color: #D4AF37;
+  --bs-link-hover-color: #E6C76A;
+  --bs-dark: #111111;
+  --bs-dark-rgb: 17, 17, 17;
+  --gold: #D4AF37;
+  --gold-light: #E6C76A;
+  --gold-dark: #C9A227;
+  --scrollbar-thumb: #D4AF37;
+  --scrollbar-track: #111111;
 }
 
-/* Bootstrap Button Customizations - Neutral Monochrome */
+/* GLOBAL HYPERLINK MAYLEKI LUXURY STYLING - ZERO BLUE HYPERLINKS */
+a, a:visited {
+  color: #D4AF37;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: #E6C76A;
+  text-decoration: none;
+}
+
+.text-gold {
+  color: #D4AF37 !important;
+}
+
+.text-gold-hover:hover {
+  color: #E6C76A !important;
+}
+
+/* Link underline animation */
+.hover-underline-gold {
+  position: relative;
+}
+.hover-underline-gold::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #E6C76A;
+  transition: width 0.3s ease;
+}
+.hover-underline-gold:hover::after {
+  width: 100%;
+}
+
+/* Bootstrap Button Customizations */
 .btn-primary {
-  background-color: #111827 !important;
-  border-color: #111827 !important;
-  color: #ffffff !important;
+  background-color: #111111 !important;
+  border-color: #D4AF37 !important;
+  color: #FFFDF8 !important;
 }
 .btn-primary:hover {
-  background-color: #1F2937 !important;
-  border-color: #1F2937 !important;
+  background-color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+  color: #111111 !important;
 }
 .btn-outline-primary {
-  color: #111827 !important;
-  border-color: #111827 !important;
+  color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
 }
 .btn-outline-primary:hover {
-  background-color: #111827 !important;
-  color: #ffffff !important;
+  background-color: #D4AF37 !important;
+  color: #111111 !important;
 }
 
 * {
