@@ -49,9 +49,11 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#C5A059] mb-2">
-            𑁍 Join the Mayleki Circle
-          </p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#C5A059]/10 border border-[#C5A059]/30 rounded-full mb-4">
+            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-[#C5A059]">
+              𑁍 Join the Mayleki Circle
+            </span>
+          </div>
           <h3 className="font-cormorant text-3xl sm:text-4xl font-normal text-[#FAF7F2] mb-3 leading-tight">
             Subscribe for Private Offers & New Collections
           </h3>
@@ -61,15 +63,15 @@ export default function Footer() {
           
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="w-full max-w-md relative flex items-center border-b border-[#C5A059]/50 focus-within:border-[#C5A059] transition-colors"
+            className="w-full max-w-md relative flex items-center backdrop-blur-md bg-white/5 border border-[#C5A059]/40 p-1.5 shadow-lg focus-within:border-[#C5A059] focus-within:gold-glow-sm transition-all duration-300"
           >
             <input
               type="email"
               placeholder="ENTER YOUR EMAIL ADDRESS"
-              className="w-full bg-transparent text-[#FAF7F2] font-sans text-xs tracking-widest py-3 focus:outline-none uppercase placeholder:text-gray-500 pr-10"
+              className="w-full bg-transparent text-[#FAF7F2] font-sans text-xs tracking-widest px-4 py-3 focus:outline-none uppercase placeholder:text-gray-500 pr-10"
             />
-            <button type="submit" className="text-[#C5A059] hover:text-[#E5C88A] transition-colors p-2" aria-label="Subscribe">
-              <FiArrowRight className="w-5 h-5" />
+            <button type="submit" className="bg-[#C5A059] text-[#1C1917] hover:bg-[#E5C88A] font-semibold p-3 transition-colors flex items-center justify-center" aria-label="Subscribe">
+              <FiArrowRight className="w-4 h-4" />
             </button>
           </form>
         </motion.div>
