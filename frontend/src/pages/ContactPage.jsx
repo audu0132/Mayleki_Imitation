@@ -9,7 +9,7 @@ const CONTACT_INFO = [
   { icon: FiPhone, label: "Phone", value: "+91 91392 36500", href: "tel:+919139236500", color: "text-[#C5A059]" },
   { icon: FaWhatsapp, label: "WhatsApp", value: "+91 91392 36500", href: "https://wa.me/919139236500", color: "text-[#25D366]" },
   { icon: FiMail, label: "Email", value: "hello@mayleki.com", href: "mailto:hello@mayleki.com", color: "text-[#C5A059]" },
-  { icon: FiInstagram, label: "Instagram", value: "@mayleki.jewellery", href: "https://instagram.com", color: "text-[#E5C88A]" },
+  { icon: FiInstagram, label: "Instagram", value: "@mayleki_imitation", href: "https://www.instagram.com/mayleki_imitation/?hl=en", color: "text-[#E5C88A]" },
   {
     icon: FiMapPin,
     label: "Boutique Location",
