@@ -6,6 +6,10 @@ export default function HeroBanner() {
   return (
     <section className="relative w-full min-h-[90vh] lg:min-h-screen bg-[#FAF7F2] dark:bg-[#141110] overflow-hidden flex flex-col justify-between pt-6 pb-12">
       
+      {/* Ambient Glowing Light Blobs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C5A059]/15 dark:bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-1/3 right-10 w-80 h-80 bg-[#4A0E17]/10 dark:bg-[#4A0E17]/20 rounded-full blur-3xl pointer-events-none" />
+
       {/* Background Subtle Line Grid */}
       <div className="absolute inset-0 pointer-events-none opacity-25">
         <div className="max-w-7xl mx-auto h-full border-x border-[#C5A059]/20 flex justify-between">
@@ -25,9 +29,12 @@ export default function HeroBanner() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <span className="font-sans text-[10px] sm:text-xs font-semibold tracking-[0.35em] text-[#C5A059] uppercase block mb-4">
-                MAYLEKI IMITATION
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#C5A059]/10 border border-[#C5A059]/30 rounded-full mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] animate-pulse" />
+                <span className="font-sans text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase">
+                  MAYLEKI IMITATION BOUTIQUE
+                </span>
+              </div>
 
               <h1 className="font-cormorant text-5xl sm:text-7xl lg:text-8xl font-normal text-[#1C1917] dark:text-[#FAF7F2] leading-[0.95] tracking-tight mb-6">
                 Tradition,<br />
@@ -41,7 +48,7 @@ export default function HeroBanner() {
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   to="/products"
-                  className="btn-gold text-xs px-8 py-4 flex items-center gap-2 group shadow-sm hover:shadow-md"
+                  className="btn-gold text-xs px-8 py-4 flex items-center gap-2 group shadow-lg gold-glow-sm hover:gold-glow"
                 >
                   <span>EXPLORE COLLECTION</span>
                   <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -49,7 +56,7 @@ export default function HeroBanner() {
 
                 <Link
                   to="/rental-booking"
-                  className="btn-gold-outline text-xs px-8 py-4 border border-[#C5A059]"
+                  className="btn-gold-outline text-xs px-8 py-4 border border-[#C5A059] backdrop-blur-sm"
                 >
                   BOOK JEWELLERY
                 </Link>
@@ -73,17 +80,17 @@ export default function HeroBanner() {
               </div>
 
               {/* Dominant Image Container */}
-              <div className="relative aspect-[3/4] overflow-hidden border border-[#C5A059]/30 shadow-2xl bg-[#1C1917] lg:translate-x-4">
+              <div className="relative aspect-[3/4] overflow-hidden border border-[#C5A059]/40 gold-glow-sm bg-[#1C1917] lg:translate-x-4 group">
                 <img
                   src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1000&q=85"
                   alt="Royal Kundan Bridal Jewellery Set"
-                  className="w-full h-full object-cover object-center scale-105 hover:scale-110 transition-transform duration-1000"
+                  className="w-full h-full object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-1000"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/70 via-transparent to-transparent" />
                 
                 {/* Image Overlay Tag */}
-                <div className="absolute bottom-6 left-6 right-6 border-t border-[#C5A059]/40 pt-3 flex justify-between items-baseline">
+                <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-[#1C1917]/60 border border-[#C5A059]/40 p-4 flex justify-between items-baseline">
                   <span className="font-cormorant text-xl text-[#FAF7F2]">Royal Kundan Set</span>
                   <span className="font-sans text-[10px] text-[#C5A059] uppercase tracking-widest font-semibold">Bridal Collection</span>
                 </div>
