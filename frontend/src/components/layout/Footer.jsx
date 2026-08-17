@@ -38,46 +38,44 @@ const FOOTER_LINKS = {
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white py-5 mt-5 border-top border-secondary">
-      <div className="container">
+    <footer className="bg-[#111111] text-[#FFFDF8] pt-16 pb-10 border-t border-[rgba(212,175,55,0.18)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Bootstrap Newsletter Section */}
-        <div className="row justify-content-center text-center pb-5 mb-5 border-bottom border-secondary">
-          <div className="col-lg-6">
-            <span className="badge bg-secondary text-white text-uppercase tracking-widest px-3 py-2 mb-3">
-              Join the Mayleki Circle
-            </span>
-            <h3 className="h3 font-weight-bold text-white mb-2">
-              Subscribe for Private Offers & New Collections
-            </h3>
-            <p className="text-muted text-sm mb-4">
-              Be the first to receive updates on new bridal launches, rental collection restocks, and boutique events in Rahuri.
-            </p>
-            
-            <form onSubmit={(e) => e.preventDefault()} className="input-group shadow-sm">
-              <input
-                type="email"
-                placeholder="ENTER YOUR EMAIL ADDRESS"
-                className="form-control bg-secondary text-white border-0 py-3 text-uppercase text-xs"
-              />
-              <button type="submit" className="btn btn-light px-4 text-dark font-weight-bold" aria-label="Subscribe">
-                <FiArrowRight className="w-5 h-5" />
-              </button>
-            </form>
-          </div>
+        {/* Newsletter Section */}
+        <div className="flex flex-col items-center justify-center text-center pb-12 mb-12 border-b border-[rgba(212,175,55,0.18)] max-w-3xl mx-auto">
+          <span className="font-sans text-[10px] font-semibold tracking-[0.3em] uppercase text-[#D4AF37] bg-[#D4AF37]/10 border border-[rgba(212,175,55,0.25)] px-3 py-1 rounded-full mb-3">
+            𑁍 Join the Mayleki Circle
+          </span>
+          <h3 className="font-cormorant text-3xl sm:text-4xl font-normal text-[#FFFDF8] mb-2 leading-tight">
+            Subscribe for Private Offers & New Collections
+          </h3>
+          <p className="font-sans text-xs text-[#A9A9A9] font-light tracking-wide max-w-md mb-6">
+            Be the first to receive updates on new bridal launches, rental collection restocks, and boutique events in Rahuri.
+          </p>
+          
+          <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-md flex items-center bg-[#1F1B19] border border-[rgba(212,175,55,0.3)] p-1 rounded-lg">
+            <input
+              type="email"
+              placeholder="ENTER YOUR EMAIL ADDRESS"
+              className="w-full bg-transparent text-[#FFFDF8] font-sans text-xs tracking-widest px-3 py-2.5 focus:outline-none uppercase placeholder:text-[#A9A9A9]"
+            />
+            <button type="submit" className="bg-[#D4AF37] hover:bg-[#E6C76A] text-[#111111] font-semibold px-4 py-2.5 rounded transition-colors flex items-center justify-center shrink-0 cursor-pointer" aria-label="Subscribe">
+              <FiArrowRight className="w-4 h-4" />
+            </button>
+          </form>
         </div>
 
-        {/* Main Bootstrap Footer Grid */}
-        <div className="row gy-4 mb-5">
+        {/* Main Footer Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           
           {/* Brand Column */}
           <div className="flex flex-col items-start">
-            <h2 className="font-cormorant text-3xl font-semibold tracking-wide text-[#FAF7F2] mb-1">Mayleki</h2>
-            <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-[#C5A059] font-bold mb-4">Imitation Jewellery</p>
-            <p className="font-sans text-xs text-gray-400 font-light leading-relaxed mb-6">
+            <h2 className="font-cormorant text-3xl font-semibold tracking-wide text-[#FFFDF8] mb-1">Mayleki</h2>
+            <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-[#D4AF37] font-bold mb-3">Imitation Jewellery</p>
+            <p className="font-sans text-xs text-[#A9A9A9] font-light leading-relaxed mb-5">
               Rahuri's premier boutique for Maharashtrian imitation jewellery, bridal sets, and affordable rental jewellery crafted for your special moments.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {[
                 { icon: FaWhatsapp, href: "https://wa.me/919139236500" },
                 { icon: FiInstagram, href: "https://www.instagram.com/mayleki_imitation/?hl=en" },
@@ -88,7 +86,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 border border-[#C5A059]/30 text-[#E5C88A] hover:bg-[#C5A059] hover:text-[#1C1917] flex items-center justify-center transition-all duration-300"
+                  className="w-9 h-9 border border-[rgba(212,175,55,0.3)] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#3B2F2F] rounded-md flex items-center justify-center transition-all duration-300 shadow-2xs"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -98,15 +96,15 @@ export default function Footer() {
 
           {/* Collections */}
           <div>
-            <h4 className="font-sans text-xs font-semibold tracking-[0.2em] text-[#C5A059] mb-6 uppercase">
+            <h4 className="font-sans text-xs font-semibold tracking-[0.2em] text-[#D4AF37] mb-5 uppercase">
               Collections
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {FOOTER_LINKS.collections.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-sans text-xs text-gray-400 hover:text-[#C5A059] transition-colors"
+                    className="font-sans text-xs text-[#D4AF37] hover:text-[#E6C76A] hover-underline-gold transition-colors block w-fit"
                   >
                     {link.label}
                   </Link>
@@ -117,15 +115,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-sans text-xs font-semibold tracking-[0.2em] text-[#C5A059] mb-6 uppercase">
+            <h4 className="font-sans text-xs font-semibold tracking-[0.2em] text-[#D4AF37] mb-5 uppercase">
               Boutique & Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {FOOTER_LINKS.quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="font-sans text-xs text-gray-400 hover:text-[#C5A059] transition-colors"
+                    className="font-sans text-xs text-[#D4AF37] hover:text-[#E6C76A] hover-underline-gold transition-colors block w-fit"
                   >
                     {link.label}
                   </Link>
@@ -136,24 +134,24 @@ export default function Footer() {
 
           {/* Store Info */}
           <div>
-            <h4 className="font-sans text-xs font-semibold tracking-[0.2em] text-[#C5A059] mb-6 uppercase">
+            <h4 className="font-sans text-xs font-semibold tracking-[0.2em] text-[#D4AF37] mb-5 uppercase">
               Boutique Location
             </h4>
-            <div className="space-y-3 font-sans text-xs text-gray-400 font-light">
+            <div className="space-y-3 font-sans text-xs text-[#A9A9A9] font-light">
               <p className="flex items-start gap-2">
-                <FiMapPin className="w-4 h-4 text-[#C5A059] flex-shrink-0 mt-0.5" />
+                <FiMapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
                 <span>Mayleki Jewellery Studio, Main Market Road, Rahuri, Ahmednagar, Maharashtra 413706</span>
               </p>
               <p className="flex items-center gap-2">
-                <FiPhone className="w-4 h-4 text-[#C5A059] flex-shrink-0" />
-                <a href="tel:+919139236500" className="hover:text-[#C5A059] transition-colors">+91 91392 36500</a>
+                <FiPhone className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                <a href="tel:+919139236500" className="text-[#D4AF37] hover:text-[#E6C76A] hover-underline-gold transition-colors">+91 91392 36500</a>
               </p>
               <p className="flex items-center gap-2">
-                <FiMail className="w-4 h-4 text-[#C5A059] flex-shrink-0" />
-                <a href="mailto:hello@mayleki.com" className="hover:text-[#C5A059] transition-colors">hello@mayleki.com</a>
+                <FiMail className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                <a href="mailto:hello@mayleki.com" className="text-[#D4AF37] hover:text-[#E6C76A] hover-underline-gold transition-colors">hello@mayleki.com</a>
               </p>
               <p className="flex items-center gap-2">
-                <FiClock className="w-4 h-4 text-[#C5A059] flex-shrink-0" />
+                <FiClock className="w-4 h-4 text-[#D4AF37] shrink-0" />
                 <span>Mon – Sat: 10:00 AM – 8:00 PM</span>
               </p>
             </div>
@@ -162,13 +160,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#C5A059]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p className="font-sans text-[10px] text-gray-400 tracking-widest uppercase">
+        <div className="pt-6 border-t border-[rgba(212,175,55,0.18)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <p className="font-sans text-[10px] text-[#A9A9A9] tracking-widest uppercase">
             © {new Date().getFullYear()} MAYLEKI IMITATION JEWELLERY. ALL RIGHTS RESERVED.
           </p>
           <div className="flex items-center gap-3">
             {["UPI", "RAZORPAY", "VISA", "COD"].map((m) => (
-              <span key={m} className="font-sans text-[9px] tracking-widest uppercase border border-[#C5A059]/30 text-[#C5A059] px-2 py-0.5">
+              <span key={m} className="font-sans text-[9px] tracking-widest uppercase border border-[rgba(212,175,55,0.25)] text-[#D4AF37] px-2 py-0.5 rounded-sm">
                 {m}
               </span>
             ))}
