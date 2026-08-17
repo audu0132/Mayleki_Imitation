@@ -18,7 +18,7 @@ export default function InstagramGallery() {
             𑁍 SOCIAL LOOKBOOK
           </span>
           <h2 className="font-cormorant text-4xl sm:text-5xl font-normal text-[#1C1917] dark:text-[#FAF7F2] tracking-tight">
-            @maylekiimitation
+            @mayleki_imitation
           </h2>
         </div>
 
@@ -27,7 +27,7 @@ export default function InstagramGallery() {
           {MOSAIC_IMAGES.map((img, i) => (
             <motion.a
               key={i}
-              href="https://instagram.com"
+              href="https://www.instagram.com/mayleki_imitation/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.96 }}
