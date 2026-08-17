@@ -131,19 +131,19 @@ export default function AIJewelleryStylist() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.96 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-[160px] right-4 sm:right-6 z-50 w-[380px] max-w-[calc(100vw-32px)] h-[520px] max-h-[calc(100vh-180px)] bg-white dark:bg-[#1C1917] border border-stone-300 dark:border-stone-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-[160px] right-4 sm:right-6 z-50 w-[380px] max-w-[calc(100vw-32px)] h-[520px] max-h-[calc(100vh-180px)] bg-[#FFFDF8] dark:bg-[#111111] border border-[rgba(212,175,55,0.3)] rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="px-5 py-4 bg-gradient-to-r from-stone-900 via-stone-850 to-stone-900 text-white border-b border-stone-800 flex items-center justify-between shrink-0">
+            <div className="px-5 py-4 bg-gradient-to-r from-[#111111] via-[#1F1B19] to-[#111111] text-[#FFFDF8] border-b border-[rgba(212,175,55,0.2)] flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 flex items-center justify-center text-white shadow-sm">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#E6B93F] to-[#C88A18] flex items-center justify-center text-[#111111] shadow-sm">
                   <HiSparkles className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-cormorant font-semibold text-lg text-white leading-tight flex items-center gap-1.5">
+                  <h3 className="font-cormorant font-semibold text-lg text-[#FFFDF8] leading-tight flex items-center gap-1.5">
                     ✨ AI Jewellery Stylist
                   </h3>
-                  <p className="font-sans text-[11px] text-stone-300 font-light">
+                  <p className="font-sans text-[11px] text-[#A9A9A9] font-light">
                     Find the perfect jewellery for your occasion
                   </p>
                 </div>
@@ -153,14 +153,14 @@ export default function AIJewelleryStylist() {
                 <Link
                   to="/ai-stylist"
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 text-stone-400 hover:text-white transition-colors"
+                  className="p-1.5 text-[#D4AF37] hover:text-[#E6C76A] transition-colors"
                   title="Full Screen Stylist Page"
                 >
                   <FiMaximize2 className="w-4 h-4" />
                 </Link>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 text-stone-400 hover:text-white transition-colors cursor-pointer"
+                  className="p-1.5 text-[#D4AF37] hover:text-[#E6C76A] transition-colors cursor-pointer"
                   aria-label="Close panel"
                 >
                   <FiX className="w-5 h-5" />
@@ -169,13 +169,13 @@ export default function AIJewelleryStylist() {
             </div>
 
             {/* Quick Suggestion Chips */}
-            <div className="px-4 py-2.5 bg-stone-50 dark:bg-stone-900/60 border-b border-stone-200 dark:border-stone-800 flex gap-2 overflow-x-auto no-scrollbar shrink-0">
+            <div className="px-4 py-2.5 bg-[#FFFDF8] dark:bg-[#181818] border-b border-[rgba(212,175,55,0.18)] flex gap-2 overflow-x-auto no-scrollbar shrink-0">
               {QUICK_SUGGESTIONS.map((chip, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSend(chip.prompt)}
                   disabled={isLoading}
-                  className="whitespace-nowrap px-3 py-1.5 rounded-full text-[11px] font-sans font-medium bg-white dark:bg-stone-800 hover:bg-stone-900 hover:text-white text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-stone-700 transition-all shrink-0 cursor-pointer"
+                  className="whitespace-nowrap px-3 py-1.5 rounded-full text-[11px] font-sans font-medium bg-[#FFFDF8] dark:bg-[#111111] hover:bg-[#D4AF37] hover:text-[#111111] text-[#D4AF37] border border-[rgba(212,175,55,0.3)] transition-all shrink-0 cursor-pointer shadow-2xs"
                 >
                   {chip.label}
                 </button>
@@ -199,8 +199,8 @@ export default function AIJewelleryStylist() {
                     <div
                       className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
                         msg.sender === "user"
-                          ? "bg-stone-900 text-white"
-                          : "bg-amber-500/20 border border-amber-400/40 text-amber-500"
+                          ? "bg-[#111111] text-[#FFFDF8]"
+                          : "bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37]"
                       }`}
                     >
                       {msg.sender === "user" ? <FiUser className="w-3.5 h-3.5" /> : <HiSparkles className="w-3.5 h-3.5" />}
@@ -209,22 +209,22 @@ export default function AIJewelleryStylist() {
                     <div
                       className={`p-3.5 rounded-2xl leading-relaxed ${
                         msg.sender === "user"
-                          ? "bg-stone-900 text-white rounded-tr-none shadow-sm"
-                          : "bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 border border-stone-200 dark:border-stone-700 rounded-tl-none"
+                          ? "bg-[#111111] text-[#FFFDF8] rounded-tr-none shadow-sm"
+                          : "bg-[#FAF7F2] dark:bg-[#1C1917] text-[#3B2F2F] dark:text-[#FFFDF8] border border-[rgba(212,175,55,0.2)] rounded-tl-none"
                       }`}
                     >
                       <p className="whitespace-pre-line text-xs leading-relaxed">{msg.text}</p>
 
                       {/* Product Recommendations */}
                       {msg.products && msg.products.length > 0 && (
-                        <div className="mt-3 pt-2.5 border-t border-stone-200 dark:border-stone-700 space-y-2">
-                          <p className="font-sans font-semibold text-[11px] text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                        <div className="mt-3 pt-2.5 border-t border-[rgba(212,175,55,0.2)] space-y-2">
+                          <p className="font-sans font-semibold text-[11px] text-[#D4AF37] uppercase tracking-wider">
                             Recommended Pieces:
                           </p>
                           {msg.products.map((prod) => (
                             <div
                               key={prod.id}
-                              className="flex items-center justify-between p-2 rounded-lg bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 gap-2"
+                              className="flex items-center justify-between p-2 rounded-lg bg-white dark:bg-[#111111] border border-[rgba(212,175,55,0.2)] gap-2"
                             >
                               <div className="flex items-center gap-2 min-w-0">
                                 <img
@@ -233,10 +233,10 @@ export default function AIJewelleryStylist() {
                                   className="w-10 h-10 object-cover rounded-md shrink-0"
                                 />
                                 <div className="min-w-0">
-                                  <p className="font-medium text-xs text-stone-900 dark:text-stone-100 truncate">
+                                  <p className="font-medium text-xs text-[#3B2F2F] dark:text-[#FFFDF8] truncate">
                                     {prod.title}
                                   </p>
-                                  <p className="text-[10px] text-amber-600 font-bold">
+                                  <p className="text-[10px] text-[#D4AF37] font-bold">
                                     ₹{prod.sellingPrice} {prod.rentalPrice ? `(Rental ₹${prod.rentalPrice}/day)` : ""}
                                   </p>
                                 </div>
@@ -247,7 +247,7 @@ export default function AIJewelleryStylist() {
                                   addToCart(prod, 1);
                                   toast.success(`Added ${prod.title} to cart!`);
                                 }}
-                                className="p-1.5 rounded-md bg-stone-900 hover:bg-stone-850 text-white shrink-0 cursor-pointer"
+                                className="p-1.5 rounded-md bg-[#D4AF37] hover:bg-[#E6C76A] text-[#111111] shrink-0 cursor-pointer transition-colors"
                                 title="Add to Cart"
                               >
                                 <FiShoppingBag className="w-3.5 h-3.5" />
@@ -262,8 +262,8 @@ export default function AIJewelleryStylist() {
               ))}
 
               {isLoading && (
-                <div className="flex items-center gap-2 text-xs text-stone-700 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 p-3 rounded-2xl w-fit border border-stone-300 dark:border-stone-700 animate-pulse">
-                  <FiRefreshCw className="w-3.5 h-3.5 animate-spin text-amber-500" />
+                <div className="flex items-center gap-2 text-xs text-[#D4AF37] bg-[#FAF7F2] dark:bg-[#1C1917] p-3 rounded-2xl w-fit border border-[rgba(212,175,55,0.3)] animate-pulse">
+                  <FiRefreshCw className="w-3.5 h-3.5 animate-spin text-[#D4AF37]" />
                   <span>Styling your bespoke look...</span>
                 </div>
               )}
@@ -271,19 +271,19 @@ export default function AIJewelleryStylist() {
             </div>
 
             {/* Input Bar */}
-            <div className="p-3 bg-white dark:bg-[#1C1917] border-t border-stone-200 dark:border-stone-800 flex items-center gap-2 shrink-0">
+            <div className="p-3 bg-[#FFFDF8] dark:bg-[#111111] border-t border-[rgba(212,175,55,0.18)] flex items-center gap-2 shrink-0">
               <input
                 type="text"
                 value={inputPrompt}
                 onChange={(e) => setInputPrompt(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
                 placeholder="Ask about saree color, outfit, or occasion..."
-                className="flex-1 px-3.5 py-2.5 rounded-xl bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-xs text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:border-stone-500 transition-colors"
+                className="flex-1 px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#1C1917] border border-[rgba(212,175,55,0.25)] text-xs text-[#3B2F2F] dark:text-[#FFFDF8] placeholder-[#A9A9A9] focus:outline-none focus:border-[#D4AF37] transition-colors"
               />
               <button
                 onClick={() => handleSend()}
                 disabled={isLoading || !inputPrompt.trim()}
-                className="p-2.5 rounded-xl bg-[#111827] hover:bg-stone-800 disabled:opacity-50 text-white shadow-sm transition-all shrink-0 cursor-pointer"
+                className="p-2.5 rounded-xl bg-gradient-to-r from-[#E6B93F] to-[#C88A18] hover:from-[#C88A18] hover:to-[#E6B93F] disabled:opacity-50 text-[#FFFDF8] shadow-sm transition-all shrink-0 cursor-pointer"
               >
                 <FiSend className="w-4 h-4" />
               </button>
@@ -292,7 +292,7 @@ export default function AIJewelleryStylist() {
         )}
       </AnimatePresence>
 
-      {/* INDEPENDENT FLOATING PILL BUTTON (Desktop: right-6 bottom-24, Mobile: right-4 bottom-20) */}
+      {/* INDEPENDENT FLOATING PILL BUTTON */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -300,22 +300,22 @@ export default function AIJewelleryStylist() {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         transition={{ duration: 0.3 }}
-        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 w-[240px] sm:w-[270px] h-14 rounded-full bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 text-white shadow-xl hover:shadow-2xl border border-amber-300/40 cursor-pointer flex items-center justify-center px-4 transition-all duration-300 group select-none"
+        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 w-[240px] sm:w-[270px] h-14 rounded-full bg-gradient-to-r from-[#E6B93F] to-[#C88A18] text-[#FFFDF8] shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:shadow-[0_6px_24px_rgba(212,175,55,0.35)] border border-[rgba(255,253,248,0.4)] cursor-pointer flex items-center justify-center px-4 transition-all duration-300 group select-none"
         aria-label="Open AI Jewellery Stylist"
       >
         {/* Perfectly Centered Internal Row */}
         <div className="flex items-center justify-center gap-3 w-full h-full">
           {/* Animated Glow Dot */}
           <span className="relative flex h-3.5 w-3.5 items-center justify-center shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-200 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-100 shadow-[0_0_8px_#FDE047]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFFDF8] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FFFDF8] shadow-[0_0_8px_#FFFDF8]" />
           </span>
 
           {/* Sparkle Icon */}
-          <HiSparkles className="w-5 h-5 text-amber-100 group-hover:rotate-12 transition-transform duration-300 shrink-0" />
+          <HiSparkles className="w-5 h-5 text-[#FFFDF8] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
 
           {/* Centered Button Title */}
-          <span className="font-sans font-semibold text-sm sm:text-base text-white tracking-wide whitespace-nowrap drop-shadow-xs">
+          <span className="font-sans font-semibold text-sm sm:text-base text-[#FFFDF8] tracking-wide whitespace-nowrap drop-shadow-xs">
             AI Jewellery Stylist
           </span>
         </div>
