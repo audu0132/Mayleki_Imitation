@@ -67,22 +67,17 @@ export default function Navbar() {
 
   return (
     <>
-      {/* MAIN LUXURY NAVBAR */}
-      <motion.header
-        className={`sticky top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "glass-header gold-glow-sm py-4"
-            : "bg-transparent py-6 border-b border-transparent"
+      {/* MAIN BOOTSTRAP 5 NAVBAR */}
+      <header
+        className={`sticky-top transition-all ${
+          scrolled ? "bg-white border-bottom shadow-sm py-2" : "bg-light border-bottom py-3"
         }`}
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="container flex flex-row items-center justify-between px-3">
 
           {/* LEFT: BRAND LOGO */}
-          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-[#C5A059]/40 group-hover:border-[#C5A059] transition-all duration-500 bg-white p-0.5">
+          <Link to="/" className="flex items-center gap-3 group flex-shrink-0 text-decoration-none">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-dark group-hover:border-black transition-all bg-white p-0.5">
               <img
                 src={Logo}
                 alt="Mayleki"
@@ -92,48 +87,43 @@ export default function Navbar() {
                   e.target.nextSibling.style.display = "flex";
                 }}
               />
-              <div className="w-full h-full bg-[#1C1917] hidden items-center justify-center text-[#C5A059] font-cormorant font-bold text-base">
+              <div className="w-full h-full bg-dark hidden items-center justify-center text-white font-cormorant font-bold text-base">
                 M
               </div>
             </div>
             <div>
-              <span className="font-cormorant text-2xl font-semibold tracking-widest text-[#1C1917] dark:text-[#FAF7F2] uppercase group-hover:text-[#C5A059] transition-colors leading-none block">
+              <span className="font-cormorant text-2xl font-semibold tracking-widest text-dark uppercase group-hover:text-black transition-colors leading-none block">
                 Mayleki
               </span>
-              <span className="font-sans text-[8px] tracking-[0.3em] text-[#C5A059] uppercase font-semibold block mt-0.5">
+              <span className="font-sans text-[8px] tracking-[0.3em] text-muted uppercase font-semibold block mt-0.5">
                 Boutique
               </span>
             </div>
           </Link>
 
           {/* CENTER: DESKTOP NAVIGATION */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8">
             {CENTER_LINKS.map((link) => (
               <Link
                 key={link.label}
                 to={link.href}
-                className={`relative font-sans text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300 py-1 group ${
+                className={`relative font-sans text-xs font-semibold uppercase tracking-wider transition-colors duration-300 py-1 text-decoration-none ${
                   isActive(link.href)
-                    ? "text-[#C5A059]"
-                    : "text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059]"
+                    ? "text-dark fw-bold border-bottom border-dark"
+                    : "text-secondary hover:text-dark"
                 }`}
               >
                 {link.label}
-                <span
-                  className={`absolute bottom-0 left-0 h-[1.5px] bg-[#C5A059] transition-all duration-300 ${
-                    isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
               </Link>
             ))}
           </nav>
 
           {/* RIGHT: SEARCH / ACCOUNT / CART / BOOKING */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             {/* Search */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors p-1"
+              className="text-dark hover:text-secondary transition-colors p-1 bg-transparent border-0"
               aria-label="Search"
             >
               <FiSearch className="w-4 h-4" />
@@ -142,12 +132,12 @@ export default function Navbar() {
             {/* Wishlist */}
             <Link
               to="/wishlist"
-              className="relative text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors p-1 hidden sm:block"
+              className="relative text-dark hover:text-secondary transition-colors p-1 hidden sm:block text-decoration-none"
               aria-label="Wishlist"
             >
               <FiHeart className="w-4 h-4" />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#4A0E17] text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-dark text-white text-[9px] font-bold rounded-full flex items-center justify-center">
                   {wishlistCount}
                 </span>
               )}
@@ -156,12 +146,12 @@ export default function Navbar() {
             {/* Cart */}
             <Link
               to="/cart"
-              className="relative text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors p-1"
+              className="relative text-dark hover:text-secondary transition-colors p-1 text-decoration-none"
               aria-label="Cart"
             >
               <FiShoppingCart className="w-4 h-4" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#C5A059] text-[#1C1917] text-[9px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-dark text-white text-[9px] font-bold rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
@@ -244,7 +234,7 @@ export default function Navbar() {
           </div>
 
         </div>
-      </motion.header>
+      </header>
 
       {/* FULL-SCREEN LUXURY MOBILE MENU OVERLAY */}
       <AnimatePresence>

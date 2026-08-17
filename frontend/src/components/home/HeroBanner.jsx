@@ -14,51 +14,50 @@ export default function HeroBanner() {
         </div>
       </div>
 
-      {/* Main Editorial Hero Grid */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full my-auto py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative">
+      {/* Main Bootstrap 5 Hero Grid */}
+      <div className="container py-5 my-auto">
+        <div className="row align-items-center gy-4">
           
-          {/* LEFT: EDITORIAL TYPOGRAPHY & CTAs (7 Cols) */}
-          <div className="lg:col-span-7 z-20 pr-0 lg:pr-8">
+          {/* LEFT: BOOTSTRAP TYPOGRAPHY & BUTTONS */}
+          <div className="col-lg-7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
+              transition={{ duration: 0.6 }}
             >
-              <span className="font-sans text-[10px] sm:text-xs font-semibold tracking-[0.35em] text-[#C5A059] uppercase block mb-4">
-                MAYLEKI IMITATION BOUTIQUE
+              <span className="badge bg-dark text-white text-uppercase tracking-widest px-3 py-2 mb-3">
+                Mayleki Imitation Boutique
               </span>
 
-              <h1 className="font-cormorant text-5xl sm:text-7xl lg:text-8xl font-normal text-[#1C1917] dark:text-[#FAF7F2] leading-[0.95] tracking-tight mb-6">
-                Tradition,<br />
-                <span className="italic font-serif text-[#4A0E17] dark:text-[#E88090]">Reimagined.</span>
+              <h1 className="display-4 fw-bold text-dark mb-3">
+                Tradition, <span className="text-secondary italic font-serif">Reimagined.</span>
               </h1>
 
-              <p className="font-sans text-xs sm:text-sm text-gray-600 dark:text-gray-400 max-w-md leading-relaxed font-light mb-10">
+              <p className="lead text-muted mb-4 font-light max-w-lg">
                 High-end Maharashtrian bridal sets, authentic Kolhapuri saaj, Kundan necklaces, and affordable rental jewellery crafted for your special moments.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="d-flex flex-wrap gap-3">
                 <Link
                   to="/products"
-                  className="btn-gold text-xs px-8 py-4 flex items-center gap-2 group"
+                  className="btn btn-dark btn-lg rounded-0 px-4 py-3 text-uppercase text-xs tracking-widest d-inline-flex align-items-center gap-2 shadow-sm text-decoration-none"
                 >
-                  <span>EXPLORE COLLECTION</span>
-                  <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  <span>Explore Collection</span>
+                  <FiArrowRight className="w-4 h-4" />
                 </Link>
 
                 <Link
                   to="/rental-booking"
-                  className="btn-gold-outline text-xs px-8 py-4 border border-[#C5A059]"
+                  className="btn btn-outline-dark btn-lg rounded-0 px-4 py-3 text-uppercase text-xs tracking-widest text-decoration-none"
                 >
-                  BOOK JEWELLERY
+                  Book Jewellery
                 </Link>
               </div>
             </motion.div>
           </div>
 
-          {/* RIGHT: DOMINANT OVERLAPPING IMAGE WITH VERTICAL TYPOGRAPHY (5 Cols) */}
-          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
+          {/* RIGHT: BOOTSTRAP IMAGE CONTAINER */}
+          <div className="col-lg-5">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
