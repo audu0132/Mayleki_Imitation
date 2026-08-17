@@ -38,46 +38,37 @@ const FOOTER_LINKS = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#181214] text-[#FAF7F2] pt-20 pb-12 border-t border-[#C5A059]/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-dark text-white py-5 mt-5 border-top border-secondary">
+      <div className="container">
         
-        {/* Newsletter Section */}
-        <motion.div 
-          className="flex flex-col items-center justify-center text-center border-b border-[#C5A059]/20 pb-16 mb-16 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#C5A059]/10 border border-[#C5A059]/30 rounded-full mb-4">
-            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-[#C5A059]">
-              𑁍 Join the Mayleki Circle
+        {/* Bootstrap Newsletter Section */}
+        <div className="row justify-content-center text-center pb-5 mb-5 border-bottom border-secondary">
+          <div className="col-lg-6">
+            <span className="badge bg-secondary text-white text-uppercase tracking-widest px-3 py-2 mb-3">
+              Join the Mayleki Circle
             </span>
+            <h3 className="h3 font-weight-bold text-white mb-2">
+              Subscribe for Private Offers & New Collections
+            </h3>
+            <p className="text-muted text-sm mb-4">
+              Be the first to receive updates on new bridal launches, rental collection restocks, and boutique events in Rahuri.
+            </p>
+            
+            <form onSubmit={(e) => e.preventDefault()} className="input-group shadow-sm">
+              <input
+                type="email"
+                placeholder="ENTER YOUR EMAIL ADDRESS"
+                className="form-control bg-secondary text-white border-0 py-3 text-uppercase text-xs"
+              />
+              <button type="submit" className="btn btn-light px-4 text-dark font-weight-bold" aria-label="Subscribe">
+                <FiArrowRight className="w-5 h-5" />
+              </button>
+            </form>
           </div>
-          <h3 className="font-cormorant text-3xl sm:text-4xl font-normal text-[#FAF7F2] mb-3 leading-tight">
-            Subscribe for Private Offers & New Collections
-          </h3>
-          <p className="font-sans text-xs text-gray-400 font-light tracking-wide max-w-md mb-8">
-            Be the first to receive updates on new bridal launches, rental collection restocks, and boutique events in Rahuri.
-          </p>
-          
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="w-full max-w-md relative flex items-center backdrop-blur-md bg-white/5 border border-[#C5A059]/40 p-1.5 shadow-lg focus-within:border-[#C5A059] focus-within:gold-glow-sm transition-all duration-300"
-          >
-            <input
-              type="email"
-              placeholder="ENTER YOUR EMAIL ADDRESS"
-              className="w-full bg-transparent text-[#FAF7F2] font-sans text-xs tracking-widest px-4 py-3 focus:outline-none uppercase placeholder:text-gray-500 pr-10"
-            />
-            <button type="submit" className="bg-[#C5A059] text-[#1C1917] hover:bg-[#E5C88A] font-semibold p-3 transition-colors flex items-center justify-center" aria-label="Subscribe">
-              <FiArrowRight className="w-4 h-4" />
-            </button>
-          </form>
-        </motion.div>
+        </div>
 
-        {/* Main Footer Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        {/* Main Bootstrap Footer Grid */}
+        <div className="row gy-4 mb-5">
           
           {/* Brand Column */}
           <div className="flex flex-col items-start">
@@ -89,7 +80,7 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               {[
                 { icon: FaWhatsapp, href: "https://wa.me/919139236500" },
-                { icon: FiInstagram, href: "https://instagram.com" },
+                { icon: FiInstagram, href: "https://www.instagram.com/mayleki_imitation/?hl=en" },
                 { icon: FaFacebook, href: "https://facebook.com" },
               ].map(({ icon: Icon, href }, i) => (
                 <a
