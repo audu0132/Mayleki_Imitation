@@ -294,8 +294,32 @@ h5, h6 {
    UTILITIES
    ============================================ */
 
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/75 dark:bg-[#1C1917]/75 border border-[#C5A059]/20 shadow-[0_8px_32px_rgba(197,160,89,0.08)] transition-all duration-500 hover:border-[#C5A059]/50 hover:shadow-[0_12px_40px_rgba(197,160,89,0.18)];
+  }
+
+  .glass-header {
+    @apply backdrop-blur-2xl bg-[#FAF7F2]/85 dark:bg-[#141110]/85 border-b border-[#C5A059]/20 transition-all duration-500;
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 35px -5px rgba(197, 160, 89, 0.35);
+  }
+
+  .gold-glow-sm {
+    box-shadow: 0 0 15px 0px rgba(197, 160, 89, 0.25);
+  }
+
+  .golden-shimmer {
+    background: linear-gradient(110deg, #C5A059 20%, #FAF7F2 50%, #C5A059 80%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .text-gold-gradient {
-    background: linear-gradient(135deg, #C9A227 0%, #F5E090 50%, #A8891A 100%);
+    background: linear-gradient(135deg, #C5A059 0%, #F5E090 50%, #9E7B32 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -310,22 +334,22 @@ h5, h6 {
   .glass {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(250, 248, 245, 0.7);
-    border: 1px solid rgba(201, 162, 39, 0.2);
+    background: rgba(250, 248, 245, 0.75);
+    border: 1px solid rgba(197, 160, 89, 0.25);
   }
 
   .glass-dark {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(43, 43, 43, 0.8);
-    border: 1px solid rgba(201, 162, 39, 0.2);
+    background: rgba(20, 17, 16, 0.85);
+    border: 1px solid rgba(197, 160, 89, 0.25);
   }
 
   .glassmorphism {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   .text-shadow-luxury {
@@ -333,7 +357,7 @@ h5, h6 {
   }
 
   .gold-text-shadow {
-    text-shadow: 0 2px 15px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 2px 15px rgba(197, 160, 89, 0.5);
   }
 
   .line-clamp-2 {
