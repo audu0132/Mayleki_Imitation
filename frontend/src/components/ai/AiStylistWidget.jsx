@@ -357,6 +357,33 @@ export default function AiStylistWidget() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* SEPARATE FLOATING AI JEWELLERY STYLIST BADGE BUTTON (matching screenshot) */}
+      {!isOpen && (
+        <motion.button
+          onClick={() => setIsOpen(true)}
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3.5 bg-gradient-to-r from-[#EA580C] via-[#D97706] to-[#B45309] text-white shadow-2xl border border-white/40 rounded-lg cursor-pointer transition-all duration-300 group"
+          aria-label="Open AI Jewellery Stylist"
+        >
+          {/* Glowing Circular Indicator */}
+          <span className="relative flex h-3.5 w-3.5 items-center justify-center">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-200 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-100 shadow-[0_0_10px_#FDE047]"></span>
+          </span>
+
+          {/* Sparkles Icon */}
+          <HiSparkles className="w-5 h-5 text-amber-200 group-hover:rotate-12 transition-transform duration-300" />
+
+          {/* Text */}
+          <span className="font-sans font-semibold text-sm sm:text-base tracking-wide text-white drop-shadow-sm whitespace-nowrap">
+            AI Jewellery Stylist
+          </span>
+        </motion.button>
+      )}
     </>
   );
 }
