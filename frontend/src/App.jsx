@@ -16,7 +16,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import WhatsAppButton from "./components/common/WhatsAppButton";
 import PageTransition from "./components/common/PageTransition";
-import AiStylistWidget from "./components/ai/AiStylistWidget";
+import AIJewelleryStylist from "./components/common/AIJewelleryStylist";
 
 // Lazy-loaded pages for performance
 const HomePage = lazy(() => import("./pages/HomePage"));
