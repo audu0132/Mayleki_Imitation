@@ -7,41 +7,40 @@
    ROOT VARIABLES & BASE STYLES
    ============================================ */
 :root {
-  --bs-primary: #C5A059;
-  --bs-primary-rgb: 197, 160, 89;
-  --bs-dark: #1C1917;
-  --bs-dark-rgb: 28, 25, 23;
-  --bs-[#FAF7F2]: #FAF7F2;
-  --gold: #C5A059;
-  --gold-light: #E5C88A;
-  --gold-dark: #9E7B32;
-  --wine: #4A0E17;
-  --wine-light: #6B1D2F;
-  --dark-brown: #1C1917;
-  --cream: #FAF7F2;
-  --champagne: #F4EBE1;
-  --rose-gold: #B76E79;
-  --text-primary: #1C1917;
-  --scrollbar-thumb: #C5A059;
-  --scrollbar-track: #FAF7F2;
+  --bs-primary: #111827;
+  --bs-primary-rgb: 17, 24, 39;
+  --bs-dark: #111827;
+  --bs-dark-rgb: 17, 24, 39;
+  --gold: #111827;
+  --gold-light: #374151;
+  --gold-dark: #111827;
+  --wine: #1F2937;
+  --wine-light: #374151;
+  --dark-brown: #111827;
+  --cream: #F9FAFB;
+  --champagne: #F3F4F6;
+  --rose-gold: #4B5563;
+  --text-primary: #111827;
+  --scrollbar-thumb: #9CA3AF;
+  --scrollbar-track: #F3F4F6;
 }
 
-/* Bootstrap Button Customizations */
+/* Bootstrap Button Customizations - Neutral Monochrome */
 .btn-primary {
-  background-color: #C5A059 !important;
-  border-color: #C5A059 !important;
+  background-color: #111827 !important;
+  border-color: #111827 !important;
   color: #ffffff !important;
 }
 .btn-primary:hover {
-  background-color: #9E7B32 !important;
-  border-color: #9E7B32 !important;
+  background-color: #1F2937 !important;
+  border-color: #1F2937 !important;
 }
 .btn-outline-primary {
-  color: #C5A059 !important;
-  border-color: #C5A059 !important;
+  color: #111827 !important;
+  border-color: #111827 !important;
 }
 .btn-outline-primary:hover {
-  background-color: #C5A059 !important;
+  background-color: #111827 !important;
   color: #ffffff !important;
 }
 
