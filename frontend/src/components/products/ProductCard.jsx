@@ -31,26 +31,26 @@ export default function ProductCard({ product, featured = false }) {
   return (
     <Link
       to={`/products/${product.slug}`}
-      className="group flex flex-col h-full cursor-pointer bg-white dark:bg-[#1F1B19] border border-[#C5A059]/15 hover:border-[#C5A059] transition-all duration-300 overflow-hidden"
+      className="card h-100 shadow-sm border-0 rounded-3 text-decoration-none group overflow-hidden"
     >
-      {/* Image Container */}
-      <div className={`relative ${featured ? "aspect-[3/4]" : "aspect-[4/5]"} overflow-hidden bg-[#FAF7F2] dark:bg-black/30 w-full flex-shrink-0`}>
+      {/* Bootstrap Card Image Header */}
+      <div className={`position-relative ${featured ? "aspect-[3/4]" : "aspect-[4/5]"} overflow-hidden bg-light`}>
         <img
           src={product.images[0]}
           alt={product.title}
-          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
 
-        {/* Minimal Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
+        {/* Bootstrap Badges */}
+        <div className="position-absolute top-0 start-0 m-3 d-flex flex-column gap-1 z-2">
           {product.featured && (
-            <span className="text-[9px] font-sans uppercase tracking-[0.2em] font-semibold text-white bg-[#4A0E17] px-2.5 py-0.5">
+            <span className="badge bg-danger text-uppercase px-2.5 py-1 text-xs">
               New
             </span>
           )}
           {product.isRentalAvailable && (
-            <span className="text-[9px] font-sans uppercase tracking-[0.18em] font-semibold text-[#1C1917] bg-[#C5A059] px-2 py-0.5">
+            <span className="badge bg-dark text-white text-uppercase px-2 py-1 text-xs">
               Rental Available
             </span>
           )}
@@ -59,45 +59,38 @@ export default function ProductCard({ product, featured = false }) {
         {/* Wishlist Button */}
         <button
           onClick={handleWishlist}
-          className="absolute top-3 right-3 z-10 p-2 text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors"
+          className="position-absolute top-0 end-0 m-3 btn btn-light btn-sm rounded-circle p-2 shadow-sm border-0 z-2"
           title="Wishlist"
         >
-          <FiHeart className={`w-4 h-4 ${wishlisted ? "fill-[#4A0E17] text-[#4A0E17]" : ""}`} />
+          <FiHeart className={`w-4 h-4 ${wishlisted ? "text-danger fill-danger" : "text-dark"}`} />
         </button>
-
-        {/* Minimal Hover Link */}
-        <div className="absolute inset-0 bg-[#1C1917]/25 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-5">
-          <span className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold text-[#FAF7F2] flex items-center gap-2 group-hover:text-[#C5A059] transition-colors">
-            VIEW PRODUCT <FiArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </span>
-        </div>
       </div>
 
-      {/* Details */}
-      <div className="flex flex-col flex-1 p-5 bg-white dark:bg-[#1F1B19]">
-        <p className="font-sans text-[9px] uppercase tracking-[0.25em] text-[#C5A059] font-semibold mb-1">
+      {/* Bootstrap Card Body */}
+      <div className="card-body d-flex flex-column p-4">
+        <span className="text-uppercase text-muted text-xs font-semibold tracking-wider mb-1">
           {product.category.replace(/-/g, " ")}
-        </p>
+        </span>
 
-        <h3 className={`font-cormorant ${featured ? "text-2xl" : "text-xl"} font-normal text-[#1C1917] dark:text-[#FAF7F2] line-clamp-1 mb-2 group-hover:text-[#C5A059] transition-colors`}>
+        <h5 className="card-title text-dark fw-bold text-truncate mb-3">
           {product.title}
-        </h3>
+        </h5>
 
-        <div className="mt-auto pt-3 border-t border-[#C5A059]/15 flex items-baseline justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="font-sans text-xs sm:text-sm font-semibold text-[#1C1917] dark:text-[#FAF7F2]">
+        <div className="mt-auto pt-3 border-top d-flex align-items-baseline justify-content-between">
+          <div>
+            <span className="fw-bold text-dark me-2">
               {formatPrice(discountedPrice)}
             </span>
             {product.discount > 0 && (
-              <span className="font-sans text-[11px] text-gray-400 line-through">
+              <small className="text-muted text-decoration-line-through">
                 {formatPrice(product.sellingPrice)}
-              </span>
+              </small>
             )}
           </div>
           {product.isRentalAvailable && product.rentalPrice && (
-            <span className="font-sans text-[10px] text-[#4A0E17] dark:text-[#E88090] uppercase tracking-wider font-semibold">
+            <small className="text-danger fw-semibold">
               Rental: ₹{product.rentalPrice}/day
-            </span>
+            </small>
           )}
         </div>
       </div>
