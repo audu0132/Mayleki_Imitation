@@ -71,7 +71,7 @@ export default function Navbar() {
       <motion.header
         className={`sticky top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#FAF7F2]/90 dark:bg-[#1C1917]/90 backdrop-blur-md shadow-sm border-b border-[#C5A059]/20 py-4"
+            ? "glass-header gold-glow-sm py-4"
             : "bg-transparent py-6 border-b border-transparent"
         }`}
         initial={{ y: -80 }}
