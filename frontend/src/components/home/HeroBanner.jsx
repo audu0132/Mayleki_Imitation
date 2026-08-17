@@ -4,14 +4,10 @@ import { FiArrowRight, FiChevronDown } from "react-icons/fi";
 
 export default function HeroBanner() {
   return (
-    <section className="relative w-full min-h-[90vh] lg:min-h-screen bg-[#FAF7F2] dark:bg-[#141110] overflow-hidden flex flex-col justify-between pt-6 pb-12">
+    <section className="relative w-full min-h-[85vh] lg:min-h-[90vh] bg-[#FAF7F2] dark:bg-[#141110] flex flex-col justify-between pt-8 pb-12">
       
-      {/* Ambient Glowing Light Blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C5A059]/15 dark:bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-1/3 right-10 w-80 h-80 bg-[#4A0E17]/10 dark:bg-[#4A0E17]/20 rounded-full blur-3xl pointer-events-none" />
-
       {/* Background Subtle Line Grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-25">
+      <div className="absolute inset-0 pointer-events-none opacity-15">
         <div className="max-w-7xl mx-auto h-full border-x border-[#C5A059]/20 flex justify-between">
           <div className="w-px h-full bg-[#C5A059]/10 hidden md:block" />
           <div className="w-px h-full bg-[#C5A059]/10 hidden lg:block" />
@@ -25,16 +21,13 @@ export default function HeroBanner() {
           {/* LEFT: EDITORIAL TYPOGRAPHY & CTAs (7 Cols) */}
           <div className="lg:col-span-7 z-20 pr-0 lg:pr-8">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#C5A059]/10 border border-[#C5A059]/30 rounded-full mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] animate-pulse" />
-                <span className="font-sans text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase">
-                  MAYLEKI IMITATION BOUTIQUE
-                </span>
-              </div>
+              <span className="font-sans text-[10px] sm:text-xs font-semibold tracking-[0.35em] text-[#C5A059] uppercase block mb-4">
+                MAYLEKI IMITATION BOUTIQUE
+              </span>
 
               <h1 className="font-cormorant text-5xl sm:text-7xl lg:text-8xl font-normal text-[#1C1917] dark:text-[#FAF7F2] leading-[0.95] tracking-tight mb-6">
                 Tradition,<br />
@@ -48,7 +41,7 @@ export default function HeroBanner() {
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   to="/products"
-                  className="btn-gold text-xs px-8 py-4 flex items-center gap-2 group shadow-lg gold-glow-sm hover:gold-glow"
+                  className="btn-gold text-xs px-8 py-4 flex items-center gap-2 group"
                 >
                   <span>EXPLORE COLLECTION</span>
                   <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -56,7 +49,7 @@ export default function HeroBanner() {
 
                 <Link
                   to="/rental-booking"
-                  className="btn-gold-outline text-xs px-8 py-4 border border-[#C5A059] backdrop-blur-sm"
+                  className="btn-gold-outline text-xs px-8 py-4 border border-[#C5A059]"
                 >
                   BOOK JEWELLERY
                 </Link>
@@ -67,9 +60,9 @@ export default function HeroBanner() {
           {/* RIGHT: DOMINANT OVERLAPPING IMAGE WITH VERTICAL TYPOGRAPHY (5 Cols) */}
           <div className="lg:col-span-5 relative mt-6 lg:mt-0">
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.8, delay: 0.1 }}
               className="relative w-full max-w-lg mx-auto lg:max-w-none"
             >
               {/* Vertical Text running along image edge */}
@@ -80,17 +73,17 @@ export default function HeroBanner() {
               </div>
 
               {/* Dominant Image Container */}
-              <div className="relative aspect-[3/4] overflow-hidden border border-[#C5A059]/40 gold-glow-sm bg-[#1C1917] lg:translate-x-4 group">
+              <div className="relative aspect-[3/4] overflow-hidden border border-[#C5A059]/30 bg-[#1C1917] lg:translate-x-4 group">
                 <img
                   src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1000&q=85"
                   alt="Royal Kundan Bridal Jewellery Set"
-                  className="w-full h-full object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-1000"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/60 via-transparent to-transparent" />
                 
                 {/* Image Overlay Tag */}
-                <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-[#1C1917]/60 border border-[#C5A059]/40 p-4 flex justify-between items-baseline">
+                <div className="absolute bottom-6 left-6 right-6 border-t border-[#C5A059]/30 pt-3 flex justify-between items-baseline">
                   <span className="font-cormorant text-xl text-[#FAF7F2]">Royal Kundan Set</span>
                   <span className="font-sans text-[10px] text-[#C5A059] uppercase tracking-widest font-semibold">Bridal Collection</span>
                 </div>
