@@ -15,12 +15,10 @@ const Testimonials = lazy(() => import("../components/home/Testimonials"));
 const InstagramGallery = lazy(() => import("../components/home/InstagramGallery"));
 const FinalCTA = lazy(() => import("../components/home/FinalCTA"));
 
+import LoadingSpinner from "../components/common/LoadingSpinner";
+
 function SectionLoader() {
-  return (
-    <div className="flex items-center justify-center py-20 bg-[#FAF7F2] dark:bg-[#141110]">
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#C5A059] border-t-transparent" />
-    </div>
-  );
+  return <LoadingSpinner fullScreen={false} text="Loading Royal Collection..." />;
 }
 
 export default function HomePage() {
