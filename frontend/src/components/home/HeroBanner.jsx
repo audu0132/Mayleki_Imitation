@@ -48,9 +48,9 @@ export default function HeroBanner() {
 
                 <Link
                   to="/rental-booking"
-                  className="btn btn-lg rounded-0 px-4 py-3 text-uppercase text-xs tracking-widest text-decoration-none bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-stone-950 font-bold border border-[#F3E5AB]/60 hover:from-[#C5A059] hover:via-[#F3E5AB] hover:to-[#B8860B] shadow-md transition-all duration-300"
+                  className="btn-gold-metallic btn btn-lg rounded-0 px-4 py-3 text-uppercase text-xs tracking-widest text-decoration-none text-[#0E0C0B] font-bold shadow-md transition-all duration-300"
                 >
-                  Book Jewellery Rental
+                  <span className="text-[#0E0C0B] font-bold">Book Jewellery Rental</span>
                 </Link>
               </div>
             </motion.div>
