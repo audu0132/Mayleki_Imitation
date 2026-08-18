@@ -32,7 +32,7 @@ export default function PageTransition({ children }) {
 
   return (
     <AnimatePresence mode="wait">
-      <motion.main
+      <motion.div
         key={location.pathname}
         variants={pageVariants}
         initial="initial"
@@ -41,7 +41,7 @@ export default function PageTransition({ children }) {
         transition={pageTransition}
       >
         {children}
-      </motion.main>
+      </motion.div>
     </AnimatePresence>
   );
 }
