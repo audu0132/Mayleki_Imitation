@@ -7,6 +7,7 @@ import { FiMail, FiEye, FiEyeOff, FiLock, FiArrowRight, FiChevronDown, FiChevron
 import { FaWhatsapp, FaGoogle, FaApple } from "react-icons/fa";
 import { useAuth } from "../context/AppContext";
 import toast from "react-hot-toast";
+import Logo from "../assets/logo.jpeg";
 
 // === Animations ===
 const fadeUp = {
@@ -26,11 +27,11 @@ const staggerContainer = {
 
 const BrandLogo = () => (
   <Link to="/" className="flex flex-col items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-xl p-2">
-    <div className="w-16 h-16 rounded-full overflow-hidden ring-1 ring-[#D4AF37]/30 shadow-lg group-hover:scale-105 transition-transform duration-300">
-      <img src="/logo.png" alt="Mayleki" className="w-full h-full object-cover bg-white" onError={(e) => e.target.style.display = "none"} />
+    <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#D4AF37]/60 shadow-[0_0_15px_rgba(212,175,55,0.3)] group-hover:scale-105 transition-transform duration-300 p-0.5 bg-[#1F1B19]">
+      <img src={Logo} alt="Mayleki" className="w-full h-full object-cover rounded-full" />
     </div>
     <div className="text-center">
-      <h1 className="font-playfair text-xl font-bold tracking-widest text-[#2D2A26] uppercase">
+      <h1 className="font-playfair text-xl font-bold tracking-widest text-[#2D2A26] dark:text-[#FAF7F2] uppercase">
         Mayleki
       </h1>
       <p className="font-poppins text-[9px] tracking-[0.3em] text-[#D4AF37] uppercase font-semibold">
