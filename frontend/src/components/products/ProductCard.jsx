@@ -45,7 +45,7 @@ export default function ProductCard({ product, featured = false }) {
         {/* Bootstrap Badges */}
         <div className="position-absolute top-0 start-0 m-3 d-flex flex-column gap-1 z-2">
           {product.featured && (
-            <span className="badge bg-danger text-uppercase px-2.5 py-1 text-xs">
+            <span className="badge bg-[#C5A059] text-dark text-uppercase px-2.5 py-1 text-xs fw-bold">
               New
             </span>
           )}
@@ -88,7 +88,7 @@ export default function ProductCard({ product, featured = false }) {
             )}
           </div>
           {product.isRentalAvailable && product.rentalPrice && (
-            <small className="text-danger fw-semibold">
+            <small className="fw-semibold text-[#C5A059]">
               Rental: ₹{product.rentalPrice}/day
             </small>
           )}
