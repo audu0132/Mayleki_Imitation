@@ -7,6 +7,7 @@ import { FiUser, FiMail, FiPhone, FiLock, FiEye, FiEyeOff, FiCheck } from "react
 import { HiSparkles } from "react-icons/hi2";
 import { useAuth } from "../context/AppContext";
 import toast from "react-hot-toast";
+import Logo from "../assets/logo.jpeg";
 
 export default function RegisterPage() {
   const [showPass, setShowPass] = useState(false);
@@ -58,19 +59,17 @@ export default function RegisterPage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl pointer-events-none" />
 
           {/* Centered Content Block */}
-          <div className="relative text-center max-w-[420px] w-full my-auto py-8 z-10">
+          <div className="relative text-center max-w-[420px] w-full my-auto py-8 z-10 flex flex-col items-center justify-center">
             {/* Logo / Emblem */}
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[rgba(212,175,55,0.5)] shadow-lg mx-auto mb-4 bg-[#1F1B19] flex items-center justify-center p-0.5">
-              <img
-                src="/logo.png"
-                alt="Mayleki"
-                className="w-full h-full object-cover rounded-full"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                }}
-              />
-              <span className="font-cormorant text-xl font-bold text-[#D4AF37] fallback-logo">M</span>
-            </div>
+            <Link to="/" className="flex items-center justify-center group focus:outline-none mb-4 mx-auto">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-[0_0_18px_rgba(212,175,55,0.4)] bg-[#1F1B19] flex items-center justify-center p-0.5 group-hover:scale-105 transition-transform duration-300">
+                <img
+                  src={Logo}
+                  alt="Mayleki Jewellery"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+            </Link>
 
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-[10px] uppercase tracking-[0.25em] font-medium mb-3">
               <HiSparkles className="w-3 h-3 text-[#D4AF37]" />
