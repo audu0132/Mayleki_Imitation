@@ -300,22 +300,22 @@ export default function AIJewelleryStylist() {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         transition={{ duration: 0.3 }}
-        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 w-[240px] sm:w-[270px] h-14 rounded-full bg-gradient-to-r from-[#E6B93F] to-[#C88A18] text-[#FFFDF8] shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:shadow-[0_6px_24px_rgba(212,175,55,0.35)] border border-[rgba(255,253,248,0.4)] cursor-pointer flex items-center justify-center px-4 transition-all duration-300 group select-none"
+        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 w-[240px] sm:w-[270px] h-14 rounded-full bg-gradient-to-r from-[#1C1917] via-[#2A2421] to-[#3B1219] text-[#FAF7F2] shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.4)] border border-[#D4AF37]/70 cursor-pointer flex items-center justify-center px-4 transition-all duration-300 group select-none"
         aria-label="Open AI Jewellery Stylist"
       >
         {/* Perfectly Centered Internal Row */}
         <div className="flex items-center justify-center gap-3 w-full h-full">
           {/* Animated Glow Dot */}
           <span className="relative flex h-3.5 w-3.5 items-center justify-center shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFFDF8] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FFFDF8] shadow-[0_0_8px_#FFFDF8]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#D4AF37] shadow-[0_0_8px_#D4AF37]" />
           </span>
 
           {/* Sparkle Icon */}
-          <HiSparkles className="w-5 h-5 text-[#FFFDF8] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
+          <HiSparkles className="w-5 h-5 text-[#D4AF37] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
 
           {/* Centered Button Title */}
-          <span className="font-sans font-semibold text-sm sm:text-base text-[#FFFDF8] tracking-wide whitespace-nowrap drop-shadow-xs">
+          <span className="font-sans font-bold text-sm sm:text-base text-[#FAF7F2] tracking-wider whitespace-nowrap">
             AI Jewellery Stylist
           </span>
         </div>
