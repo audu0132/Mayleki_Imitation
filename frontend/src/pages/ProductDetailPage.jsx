@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
     addToCart(product, qty, activeTab);
     toast.success(`Added to cart!`, {
       icon: "🛒",
-      style: { background: "#3B2F2F", color: "#FFFDF8", border: "1px solid rgba(212,175,55,0.3)" },
+      style: { background: "#111111", color: "#FFFDF8", border: "1px solid rgba(212,175,55,0.3)" },
     });
   };
 
@@ -64,39 +64,40 @@ export default function ProductDetailPage() {
   return (
     <>
       <Helmet>
-        <title>{product.title} | Mayleki Jewellery</title>
+        <title>{product.title} | Mayleki Jewellery Boutique</title>
         <meta name="description" content={product.description} />
         <meta property="og:title" content={product.title} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.images[0]} />
       </Helmet>
 
-      <div className="page-wrapper">
-        {/* Breadcrumb */}
-        <div className="bg-white dark:bg-dark-brown-light border-b border-gold/10">
-          <div className="container-luxury py-3">
-            <nav className="flex items-center gap-1 font-poppins text-sm text-gray-400 flex-wrap">
-              <Link to="/" className="hover:text-gold transition-colors">Home</Link>
-              <FiChevronRight className="w-3.5 h-3.5" />
-              <Link to="/products" className="hover:text-gold transition-colors">Collections</Link>
-              <FiChevronRight className="w-3.5 h-3.5" />
-              <Link to={`/category/${product.category}`} className="hover:text-gold transition-colors capitalize">
+      <div className="min-h-screen bg-[#FFFDF8] dark:bg-[#111111] text-[#111111] dark:text-[#FFFDF8]">
+        {/* COMPACT BREADCRUMB BAR */}
+        <div className="bg-[#FFFDF8] dark:bg-[#181818] border-b border-[rgba(212,175,55,0.18)] py-3 sm:py-4">
+          <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="flex items-center gap-1.5 font-sans text-xs text-[#A9A9A9] flex-wrap">
+              <Link to="/" className="text-[#D4AF37] hover:text-[#E6C76A] transition-colors">Home</Link>
+              <FiChevronRight className="w-3 h-3 text-[#A9A9A9]" />
+              <Link to="/products" className="text-[#D4AF37] hover:text-[#E6C76A] transition-colors">Collections</Link>
+              <FiChevronRight className="w-3 h-3 text-[#A9A9A9]" />
+              <Link to={`/category/${product.category}`} className="text-[#D4AF37] hover:text-[#E6C76A] transition-colors capitalize">
                 {product.category.replace(/-/g, " ")}
               </Link>
-              <FiChevronRight className="w-3.5 h-3.5" />
-              <span className="text-dark-brown dark:text-cream font-medium truncate">{product.title}</span>
+              <FiChevronRight className="w-3 h-3 text-[#A9A9A9]" />
+              <span className="text-[#111111] dark:text-[#FFFDF8] font-medium truncate max-w-[200px] sm:max-w-xs">{product.title}</span>
             </nav>
           </div>
         </div>
 
-        <div className="container-luxury py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        {/* MAIN PRODUCT SECTION CONTAINER */}
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-14 items-start">
 
-            {/* ===== LEFT: Image Gallery ===== */}
-            <div className="space-y-4">
+            {/* ===== LEFT COLUMN: Image Gallery ===== */}
+            <div className="space-y-3.5">
               {/* Main Image */}
               <div
-                className="relative aspect-square rounded-3xl overflow-hidden bg-cream cursor-zoom-in group"
+                className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF7F2] dark:bg-[#181818] border border-[rgba(212,175,55,0.2)] shadow-md cursor-zoom-in group"
                 onClick={() => setZoomed(true)}
               >
                 <motion.img
@@ -108,27 +109,35 @@ export default function ProductDetailPage() {
                   alt={product.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-dark-brown/0 group-hover:bg-dark-brown/10 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
-                    <FiZoomIn className="w-6 h-6 text-dark-brown" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-black/80 rounded-full p-3 shadow-lg">
+                    <FiZoomIn className="w-5 h-5 text-[#111111] dark:text-[#FFFDF8]" />
                   </div>
                 </div>
                 {/* Badges */}
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
-                  {product.trending && <span className="badge-gold">🔥 Trending</span>}
-                  {product.discount > 0 && <span className="badge-sale">-{product.discount}% OFF</span>}
+                <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
+                  {product.trending && (
+                    <span className="px-2.5 py-1 rounded-full bg-[#111111] text-[#D4AF37] border border-[#D4AF37]/40 text-[10px] font-semibold uppercase tracking-wider shadow-sm">
+                      🔥 Trending
+                    </span>
+                  )}
+                  {product.discount > 0 && (
+                    <span className="px-2.5 py-1 rounded-full bg-[#D4AF37] text-[#111111] font-semibold text-[10px] uppercase tracking-wider shadow-sm">
+                      -{product.discount}% OFF
+                    </span>
+                  )}
                 </div>
               </div>
 
               {/* Thumbnails */}
               {product.images.length > 1 && (
-                <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">
+                <div className="flex gap-2.5 overflow-x-auto no-scrollbar pt-1 pb-1">
                   {product.images.map((img, i) => (
                     <button
                       key={i}
                       onClick={() => setSelectedImage(i)}
-                      className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 ${
-                        selectedImage === i ? "border-gold shadow-gold scale-105" : "border-transparent hover:border-gold/50"
+                      className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
+                        selectedImage === i ? "border-[#D4AF37] shadow-sm scale-105" : "border-stone-200 dark:border-stone-800 hover:border-[#D4AF37]/50"
                       }`}
                     >
                       <img src={img} alt="" className="w-full h-full object-cover" />
@@ -137,65 +146,73 @@ export default function ProductDetailPage() {
                 </div>
               )}
 
-              {/* Share row */}
-              <div className="flex items-center justify-between pt-2">
-                <span className="font-poppins text-xs text-gray-400">Share this product:</span>
+              {/* Share & Social Row */}
+              <div className="flex items-center justify-between pt-1">
+                <span className="font-sans text-xs text-[#A9A9A9]">Share this piece:</span>
                 <div className="flex gap-2">
-                  <button onClick={handleShare} className="p-2 rounded-lg border border-gray-200 hover:border-gold text-gray-500 hover:text-gold transition-all">
+                  <button
+                    onClick={handleShare}
+                    className="p-2 rounded-lg border border-[rgba(212,175,55,0.3)] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#111111] transition-all cursor-pointer"
+                    title="Share Link"
+                  >
                     <FiShare2 className="w-4 h-4" />
                   </button>
-                  <button onClick={handleWhatsApp} className="p-2 rounded-lg border border-gray-200 hover:border-green-400 text-gray-500 hover:text-green-500 transition-all">
+                  <button
+                    onClick={handleWhatsApp}
+                    className="p-2 rounded-lg border border-green-500/30 text-green-500 hover:bg-green-500 hover:text-white transition-all cursor-pointer"
+                    title="Share on WhatsApp"
+                  >
                     <FaWhatsapp className="w-4 h-4" />
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* ===== RIGHT: Product Info ===== */}
-            <div className="space-y-6">
-              {/* Category & SKU */}
+            {/* ===== RIGHT COLUMN: Product Information & Actions ===== */}
+            <div className="space-y-4 sm:space-y-5">
+              
+              {/* Category & SKU Header Row */}
               <div className="flex items-center justify-between">
                 <Link
                   to={`/category/${product.category}`}
-                  className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase hover:underline"
+                  className="font-sans text-xs font-semibold text-[#D4AF37] tracking-widest uppercase hover:underline"
                 >
                   {product.category.replace(/-/g, " ")}
                 </Link>
-                <span className="font-poppins text-xs text-gray-400">SKU: {product.sku}</span>
+                <span className="font-sans text-xs text-[#A9A9A9] tracking-wider">SKU: {product.sku}</span>
               </div>
 
-              {/* Title */}
-              <h1 className="font-playfair text-3xl md:text-4xl font-bold text-dark-brown dark:text-cream leading-tight">
+              {/* Product Title */}
+              <h1 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111111] dark:text-[#FFFDF8] leading-tight">
                 {product.title}
               </h1>
 
-              {/* Rating */}
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-0.5">
+              {/* Rating Row */}
+              <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <FiStar
                       key={i}
-                      className={`w-4 h-4 ${i < Math.floor(product.rating) ? "text-gold fill-gold" : "text-gray-300"}`}
-                      fill={i < Math.floor(product.rating) ? "#D4AF37" : "none"}
+                      className={`w-3.5 h-3.5 ${i < Math.floor(product.rating) ? "text-[#D4AF37] fill-[#D4AF37]" : "text-stone-300 dark:text-stone-700"}`}
                     />
                   ))}
                 </div>
-                <span className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream">
+                <span className="font-sans text-xs font-semibold text-[#111111] dark:text-[#FFFDF8]">
                   {product.rating}
                 </span>
-                <span className="font-poppins text-sm text-gray-400">
+                <span className="font-sans text-xs text-[#A9A9A9]">
                   ({product.reviews} reviews)
                 </span>
               </div>
 
-              {/* Purchase / Rental Toggle */}
-              <div className="flex rounded-2xl border border-gold/20 overflow-hidden bg-gray-50 dark:bg-white/5 p-1">
+              {/* Buy / Rent Toggle (Height h-12 with equal 50/50 tabs) */}
+              <div className="flex h-12 rounded-xl border border-[rgba(212,175,55,0.25)] overflow-hidden bg-[#FAF7F2] dark:bg-[#181818] p-1">
                 <button
                   onClick={() => setActiveTab("purchase")}
-                  className={`flex-1 py-3 rounded-xl font-poppins font-semibold text-sm transition-all duration-300 ${
+                  className={`flex-1 h-full rounded-lg font-sans font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer ${
                     activeTab === "purchase"
-                      ? "bg-gold text-dark-brown shadow-gold"
-                      : "text-gray-500 hover:text-gold"
+                      ? "bg-[#111111] dark:bg-[#D4AF37] text-[#FFFDF8] dark:text-[#111111] shadow-sm"
+                      : "text-stone-600 dark:text-stone-300 hover:text-[#D4AF37]"
                   }`}
                 >
                   💳 Buy Now
@@ -203,193 +220,209 @@ export default function ProductDetailPage() {
                 {product.isRentalAvailable && (
                   <button
                     onClick={() => setActiveTab("rental")}
-                    className={`flex-1 py-3 rounded-xl font-poppins font-semibold text-sm transition-all duration-300 ${
+                    className={`flex-1 h-full rounded-lg font-sans font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer ${
                       activeTab === "rental"
-                        ? "bg-rose-gold text-white shadow-rose-gold"
-                        : "text-gray-500 hover:text-rose-gold"
+                        ? "bg-gradient-to-r from-[#E6B93F] to-[#C88A18] text-[#FFFDF8] shadow-sm"
+                        : "text-stone-600 dark:text-stone-300 hover:text-[#D4AF37]"
                     }`}
                   >
-                    🎁 Rent
+                    🎁 Rent Set
                   </button>
                 )}
               </div>
 
-              {/* Price */}
+              {/* Price Card */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="bg-gradient-to-r from-gold/10 to-transparent rounded-2xl p-5 border border-gold/20"
+                  exit={{ opacity: 0, y: 6 }}
+                  className="bg-gradient-to-r from-[#D4AF37]/10 via-[#D4AF37]/5 to-transparent rounded-xl p-4 sm:p-5 border border-[rgba(212,175,55,0.25)]"
                 >
                   {activeTab === "purchase" ? (
                     <div>
-                      <div className="flex items-end gap-3">
-                        <span className="font-playfair text-4xl font-bold text-dark-brown dark:text-cream">
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-cormorant text-3xl sm:text-4xl font-bold text-[#111111] dark:text-[#FFFDF8]">
                           ₹{discountedPrice.toLocaleString("en-IN")}
                         </span>
                         {product.discount > 0 && (
-                          <span className="font-poppins text-lg text-gray-400 line-through mb-1">
+                          <span className="font-sans text-base text-[#A9A9A9] line-through">
                             ₹{product.sellingPrice.toLocaleString("en-IN")}
                           </span>
                         )}
                         {product.discount > 0 && (
-                          <span className="badge-sale mb-1">{product.discount}% off</span>
+                          <span className="font-sans text-[11px] font-semibold text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-2 py-0.5 rounded-full">
+                            Save {product.discount}%
+                          </span>
                         )}
                       </div>
-                      <p className="font-poppins text-xs text-gray-400 mt-1">Inclusive of all taxes</p>
+                      <p className="font-sans text-[11px] text-[#A9A9A9] mt-1">Inclusive of all taxes & free shipping across India</p>
                     </div>
                   ) : (
                     <div>
-                      <div className="flex items-end gap-3">
-                        <span className="font-playfair text-4xl font-bold text-rose-gold">
-                          ₹{product.rentalPrice.toLocaleString("en-IN")}<span className="text-xl">/day</span>
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-cormorant text-3xl sm:text-4xl font-bold text-[#D4AF37]">
+                          ₹{product.rentalPrice?.toLocaleString("en-IN")}
                         </span>
+                        <span className="font-sans text-xs text-[#A9A9A9]">/ 2-day rental</span>
                       </div>
-                      <p className="font-poppins text-xs text-gray-400 mt-1">
-                        Security deposit: ₹{(product.sellingPrice * 0.5).toLocaleString("en-IN")} (refundable)
+                      <p className="font-sans text-[11px] text-[#A9A9A9] mt-1">
+                        Refundable deposit: ₹{(product.sellingPrice * 0.4).toLocaleString("en-IN")} (returned upon receipt)
                       </p>
-                      <p className="font-poppins text-xs text-gold mt-1">
-                        ✓ Min. 2 days rental · Free pickup available
+                      <p className="font-sans text-[11px] text-[#D4AF37] font-medium mt-1">
+                        ✓ Min. 2 days rental · Free Rahuri boutique pickup
                       </p>
                     </div>
                   )}
                 </motion.div>
               </AnimatePresence>
 
-              {/* Stock status */}
+              {/* Stock Status Indicator */}
               <div className="flex items-center gap-2">
-                <span className={`w-2 h-2 rounded-full ${product.availableQty > 0 ? "bg-green-500" : "bg-red-500"}`} />
-                <span className="font-poppins text-sm font-medium text-dark-brown dark:text-cream">
+                <span className={`w-2 h-2 rounded-full ${product.availableQty > 0 ? "bg-emerald-500" : "bg-rose-500"}`} />
+                <span className="font-sans text-xs font-semibold text-[#111111] dark:text-[#FFFDF8]">
                   {product.availableQty > 0
                     ? product.availableQty <= 3
                       ? `Only ${product.availableQty} left in stock!`
-                      : "In Stock"
+                      : "In Stock & Ready to Dispatch"
                     : "Out of Stock"}
                 </span>
               </div>
 
-              {/* Product Details */}
-              <div className="grid grid-cols-2 gap-3">
+              {/* Specifications Grid */}
+              <div className="grid grid-cols-2 gap-2.5">
                 {[
                   { label: "Material", value: product.material },
                   { label: "Weight", value: product.weight },
                   { label: "Occasion", value: product.occasion },
                   { label: "Color", value: product.color },
                 ].map(({ label, value }) => (
-                  <div key={label} className="bg-white dark:bg-white/5 rounded-xl p-3 border border-gray-100 dark:border-white/10">
-                    <p className="font-poppins text-xs text-gray-400">{label}</p>
-                    <p className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream">{value}</p>
+                  <div key={label} className="bg-[#FAF7F2] dark:bg-[#181818] rounded-xl p-3 border border-[rgba(212,175,55,0.18)]">
+                    <p className="font-sans text-[10px] uppercase text-[#A9A9A9] tracking-wider">{label}</p>
+                    <p className="font-sans text-xs font-semibold text-[#111111] dark:text-[#FFFDF8] mt-0.5">{value}</p>
                   </div>
                 ))}
               </div>
 
               {/* Description */}
-              <div>
-                <p className="font-poppins text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {product.description}
-                </p>
-              </div>
+              <p className="font-sans text-xs sm:text-sm text-[#A9A9A9] font-light leading-relaxed">
+                {product.description}
+              </p>
 
-              {/* Quantity */}
-              <div className="flex items-center gap-4">
-                <span className="font-poppins text-sm font-semibold text-dark-brown dark:text-cream">Qty:</span>
-                <div className="flex items-center border border-gold/20 rounded-xl overflow-hidden">
+              {/* Quantity Selector */}
+              <div className="flex items-center gap-3">
+                <span className="font-sans text-xs font-semibold text-[#111111] dark:text-[#FFFDF8]">Quantity:</span>
+                <div className="flex items-center border border-[rgba(212,175,55,0.3)] rounded-xl overflow-hidden bg-[#FAF7F2] dark:bg-[#181818]">
                   <button
                     onClick={() => setQty(Math.max(1, qty - 1))}
-                    className="w-10 h-10 flex items-center justify-center hover:bg-gold/10 text-dark-brown dark:text-cream transition-colors"
+                    className="w-9 h-9 flex items-center justify-center text-[#111111] dark:text-[#FFFDF8] hover:bg-[#D4AF37]/20 transition-colors cursor-pointer"
                   >
                     −
                   </button>
-                  <span className="w-12 text-center font-poppins font-semibold text-dark-brown dark:text-cream">
+                  <span className="w-10 text-center font-sans font-semibold text-xs text-[#111111] dark:text-[#FFFDF8]">
                     {qty}
                   </span>
                   <button
                     onClick={() => setQty(Math.min(product.availableQty, qty + 1))}
-                    className="w-10 h-10 flex items-center justify-center hover:bg-gold/10 text-dark-brown dark:text-cream transition-colors"
+                    className="w-9 h-9 flex items-center justify-center text-[#111111] dark:text-[#FFFDF8] hover:bg-[#D4AF37]/20 transition-colors cursor-pointer"
                   >
                     +
                   </button>
                 </div>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* Primary Action Buttons */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <button
                   onClick={handleAddToCart}
                   disabled={product.availableQty === 0}
-                  className="btn-gold disabled:opacity-50 h-12 w-full"
+                  className="h-11 sm:h-12 rounded-xl bg-[#111111] dark:bg-[#D4AF37] text-[#FFFDF8] dark:text-[#111111] font-sans font-semibold text-xs sm:text-sm tracking-wider uppercase border border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#111111] disabled:opacity-50 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 shadow-sm"
                 >
-                  <FiShoppingCart className="w-5 h-5" />
+                  <FiShoppingCart className="w-4 h-4" />
                   {activeTab === "rental" ? "Add to Rental Cart" : "Add to Cart"}
                 </button>
                 {activeTab === "rental" ? (
-                  <Link to={`/rental-booking?product=${product.id}`} className="btn-rose flex items-center justify-center gap-2 h-12 w-full">
-                    <FiCalendar className="w-5 h-5" /> Book Now
+                  <Link
+                    to={`/rental-booking?product=${product.id}`}
+                    className="h-11 sm:h-12 rounded-xl bg-gradient-to-r from-[#E6B93F] to-[#C88A18] text-[#FFFDF8] font-sans font-semibold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm hover:from-[#C88A18] hover:to-[#E6B93F] transition-all"
+                  >
+                    <FiCalendar className="w-4 h-4" /> Book Rental Now
                   </Link>
                 ) : (
-                  <Link to="/checkout" className="btn-dark flex items-center justify-center gap-2 h-12 w-full">
+                  <Link
+                    to="/checkout"
+                    className="h-11 sm:h-12 rounded-xl bg-gradient-to-r from-[#E6B93F] to-[#C88A18] text-[#FFFDF8] font-sans font-semibold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm hover:from-[#C88A18] hover:to-[#E6B93F] transition-all"
+                  >
                     Buy Now
                   </Link>
                 )}
               </div>
 
+              {/* Wishlist Button */}
               <button
-                onClick={() => { toggleWishlist(product); toast(isWishlisted(product.id) ? "Removed from wishlist" : "Added to wishlist!", { icon: "❤️" }); }}
-                className={`w-full flex items-center justify-center gap-2 h-12 rounded-xl border-2 font-poppins font-semibold text-sm transition-all duration-300 ${
-                  wishlisted ? "border-rose-gold bg-rose-gold/10 text-rose-gold" : "border-gray-200 hover:border-rose-gold text-gray-500 hover:text-rose-gold"
+                onClick={() => {
+                  toggleWishlist(product);
+                  toast(isWishlisted(product.id) ? "Removed from wishlist" : "Added to wishlist!", { icon: "❤️" });
+                }}
+                className={`w-full h-11 sm:h-12 rounded-xl border-2 font-sans font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                  wishlisted
+                    ? "border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]"
+                    : "border-stone-300 dark:border-stone-700 hover:border-[#D4AF37] text-stone-700 dark:text-stone-300 hover:text-[#D4AF37]"
                 }`}
               >
-                <FiHeart className={`w-5 h-5 ${wishlisted ? "fill-current" : ""}`} />
+                <FiHeart className={`w-4 h-4 ${wishlisted ? "fill-current" : ""}`} />
                 {wishlisted ? "Saved to Wishlist" : "Add to Wishlist"}
               </button>
 
               {/* WhatsApp Button */}
               <button
                 onClick={handleWhatsApp}
-                className="w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-green-500 hover:bg-green-600 text-white font-poppins font-semibold text-sm transition-colors"
+                className="w-full h-11 sm:h-12 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-sans font-semibold text-xs sm:text-sm tracking-wide transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
               >
-                <FaWhatsapp className="w-5 h-5" />
+                <FaWhatsapp className="w-4 h-4" />
                 Inquire on WhatsApp
               </button>
 
-              {/* Trust badges */}
-              <div className="grid grid-cols-3 gap-3 pt-2 border-t border-gold/10">
+              {/* Trust Badges Row */}
+              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-[rgba(212,175,55,0.2)]">
                 {[
                   { icon: FiTruck, label: "Free Delivery", sub: "Above ₹999" },
-                  { icon: FiRotateCcw, label: "7-Day Return", sub: "Easy returns" },
+                  { icon: FiRotateCcw, label: "7-Day Return", sub: "Easy replacement" },
                   { icon: FiShield, label: "Genuine Quality", sub: "100% authentic" },
                 ].map(({ icon: Icon, label, sub }) => (
                   <div key={label} className="text-center">
-                    <Icon className="w-5 h-5 text-gold mx-auto mb-1" />
-                    <p className="font-poppins text-xs font-semibold text-dark-brown dark:text-cream">{label}</p>
-                    <p className="font-poppins text-[10px] text-gray-400">{sub}</p>
+                    <Icon className="w-4 h-4 text-[#D4AF37] mx-auto mb-1" />
+                    <p className="font-sans text-[11px] font-semibold text-[#111111] dark:text-[#FFFDF8]">{label}</p>
+                    <p className="font-sans text-[9px] text-[#A9A9A9]">{sub}</p>
                   </div>
                 ))}
               </div>
+
             </div>
           </div>
 
-          {/* Related Products */}
+          {/* RELATED PRODUCTS SHOWCASE */}
           {related.length > 0 && (
-            <div className="mt-16 md:mt-20">
-              <div className="text-center mb-12">
-                <p className="section-subtitle">You May Also Like</p>
-                <h2 className="font-playfair text-3xl md:text-4xl font-bold text-dark-brown dark:text-cream">
-                  Related <span className="text-gold-gradient">Products</span>
+            <div className="mt-14 sm:mt-20">
+              <div className="text-center mb-8">
+                <span className="font-sans text-[10px] font-semibold tracking-[0.3em] uppercase text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-3 py-1 rounded-full inline-block mb-2">
+                  Complete Your Look
+                </span>
+                <h2 className="font-cormorant text-3xl sm:text-4xl font-normal text-[#111111] dark:text-[#FFFDF8]">
+                  Related <span className="text-[#D4AF37]">Products</span>
                 </h2>
-                <div className="gold-divider" />
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                {related.map((p) => <ProductCard key={p.id} product={p} />)}
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                {related.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
               </div>
             </div>
           )}
         </div>
 
-
-        {/* Zoom Modal */}
+        {/* IMAGE ZOOM MODAL */}
         <AnimatePresence>
           {zoomed && (
             <motion.div
@@ -397,7 +430,7 @@ export default function ProductDetailPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setZoomed(false)}
-              className="fixed inset-0 z-[70] bg-dark-brown/95 flex items-center justify-center p-4 cursor-zoom-out"
+              className="fixed inset-0 z-[70] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
             >
               <motion.img
                 initial={{ scale: 0.8 }}
@@ -405,7 +438,7 @@ export default function ProductDetailPage() {
                 exit={{ scale: 0.8 }}
                 src={product.images[selectedImage]}
                 alt={product.title}
-                className="max-w-full max-h-full object-contain rounded-2xl"
+                className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
               />
             </motion.div>
           )}
