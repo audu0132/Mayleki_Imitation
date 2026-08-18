@@ -191,13 +191,43 @@ h5, h6 {
    ============================================ */
 
   /* BUTTONS (Luxury standard: 48px height, solid colors or fine borders, uppercase, wide tracking) */
-  .btn-gold {
+  /* BUTTONS (Luxury standard: 48px height, solid colors or fine borders, uppercase, wide tracking) */
+  .btn-gold, a.btn-gold, button.btn-gold {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
-           font-sans font-medium uppercase text-white text-xs tracking-[0.18em]
+           font-sans font-bold uppercase text-[#141110] text-xs tracking-[0.18em]
            bg-[#C5A059] rounded-none
-           hover:bg-[#9E7B32]
+           hover:bg-[#141110] hover:text-[#FAF7F2]
            transition-all duration-500 ease-luxury
            active:scale-95 cursor-pointer select-none shadow-sm hover:shadow-md;
+    color: #141110 !important;
+  }
+  .btn-gold span, a.btn-gold span, .btn-gold svg, a.btn-gold svg {
+    color: #141110 !important;
+    font-weight: 700 !important;
+  }
+  .btn-gold:hover span, a.btn-gold:hover span, .btn-gold:hover svg, a.btn-gold:hover svg {
+    color: #FAF7F2 !important;
+  }
+
+  .btn-gold-metallic, a.btn-gold-metallic, button.btn-gold-metallic {
+    background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%) !important;
+    color: #0E0C0B !important;
+    font-weight: 700 !important;
+    border: 1px solid rgba(243, 229, 171, 0.8) !important;
+  }
+  .btn-gold-metallic span, a.btn-gold-metallic span,
+  .btn-gold-metallic svg, a.btn-gold-metallic svg {
+    color: #0E0C0B !important;
+    font-weight: 700 !important;
+  }
+  .btn-gold-metallic:hover, a.btn-gold-metallic:hover, button.btn-gold-metallic:hover {
+    background: linear-gradient(135deg, #C5A059 0%, #F3E5AB 50%, #B8860B 100%) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5) !important;
+  }
+  .btn-gold-metallic:hover span, a.btn-gold-metallic:hover span,
+  .btn-gold-metallic:hover svg, a.btn-gold-metallic:hover svg {
+    color: #000000 !important;
   }
 
   .btn-gold-outline {
@@ -217,6 +247,9 @@ h5, h6 {
            transition-all duration-500 ease-luxury
            active:scale-95 cursor-pointer select-none shadow-sm hover:shadow-md;
   }
+  .btn-wine span, a.btn-wine span, .btn-wine svg, a.btn-wine svg {
+    color: #FAF7F2 !important;
+  }
 
   .btn-dark {
     @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 min-h-[48px]
@@ -225,6 +258,9 @@ h5, h6 {
            hover:bg-[#000000]
            transition-all duration-500 ease-luxury
            active:scale-95 cursor-pointer select-none;
+  }
+  .btn-dark span, a.btn-dark span, .btn-dark svg, a.btn-dark svg {
+    color: #FAF7F2 !important;
   }
 
   .btn-rose {
