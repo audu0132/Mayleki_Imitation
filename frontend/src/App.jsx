@@ -17,6 +17,7 @@ import Footer from "./components/layout/Footer";
 import WhatsAppButton from "./components/common/WhatsAppButton";
 import PageTransition from "./components/common/PageTransition";
 import AIJewelleryStylist from "./components/common/AIJewelleryStylist";
+import LoadingSpinner from "./components/common/LoadingSpinner";
 
 // Lazy-loaded pages for performance
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -55,16 +56,7 @@ const queryClient = new QueryClient({
   },
 });
 
-function LoadingSpinner() {
-  return (
-    <div className="flex items-center justify-center min-h-screen w-full bg-[#FAF7F2] dark:bg-[#141110]">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 rounded-full border-4 border-gold/20 border-t-gold animate-spin" />
-        <p className="font-poppins text-sm text-gray-400">Loading...</p>
-      </div>
-    </div>
-  );
-}
+
 
 function MainLayout({ children }) {
   return (
