@@ -88,10 +88,10 @@ export default function EditorialShowcase() {
 
                 <Link
                   to={item.link}
-                  className="inline-flex items-center gap-3 font-sans text-xs font-semibold tracking-[0.2em] uppercase text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors border-b border-[#C5A059] pb-1 group/btn"
+                  className="inline-flex items-center gap-3 font-sans text-xs font-bold tracking-[0.2em] uppercase text-[#C5A059] hover:text-[#E6C76A] transition-colors border-b border-[#C5A059] pb-1.5 group/btn"
                 >
-                  <span>VIEW COLLECTION</span>
-                  <FiArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform duration-200 text-[#C5A059]" />
+                  <span className="text-[#C5A059] group-hover/btn:text-[#E6C76A] transition-colors">VIEW COLLECTION</span>
+                  <FiArrowRight className="w-4 h-4 text-[#C5A059] group-hover/btn:translate-x-1.5 group-hover/btn:text-[#E6C76A] transition-all duration-200" />
                 </Link>
               </motion.div>
             </div>
