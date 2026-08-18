@@ -1,4 +1,5 @@
 import { HiSparkles } from "react-icons/hi2";
+import Logo from "../../assets/logo.jpeg";
 
 export default function LoadingSpinner({ fullScreen = true, text = "Crafting Royal Experience..." }) {
   const containerClasses = fullScreen
@@ -33,9 +34,9 @@ export default function LoadingSpinner({ fullScreen = true, text = "Crafting Roy
           {/* Inner Pulsing Glass Core */}
           <div className="absolute inset-5 rounded-full bg-gradient-to-br from-[#D4AF37]/15 via-transparent to-black/20 border border-[#D4AF37]/30 backdrop-blur-xs animate-pulse" />
 
-          {/* Center Royal Crown & Sparkle Icon */}
-          <div className="relative z-10 flex items-center justify-center p-3.5 rounded-full bg-gradient-to-br from-[#1C1917] via-[#2A2421] to-[#141110] shadow-[0_0_20px_rgba(212,175,55,0.25)] border border-[#D4AF37]/60">
-            <HiSparkles className="w-7 h-7 text-[#D4AF37] animate-pulse" />
+          {/* Center Mayleki Boutique Logo */}
+          <div className="relative z-10 w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37]/80 shadow-[0_0_20px_rgba(212,175,55,0.4)] p-0.5 bg-[#1F1B19] flex items-center justify-center shrink-0">
+            <img src={Logo} alt="Mayleki" className="w-full h-full object-cover rounded-full" />
           </div>
         </div>
 
