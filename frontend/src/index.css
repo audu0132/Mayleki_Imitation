@@ -92,6 +92,10 @@ a:hover, a:focus {
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF37 #111111;
 }
 
 body {
@@ -99,6 +103,7 @@ body {
   background-color: #FAF7F2;
   color: #1C1917;
   overflow-x: hidden;
+  overflow-y: auto !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -119,23 +124,25 @@ html, body {
 #root {
   width: 100%;
   max-width: 100%;
+  min-height: 100vh;
 }
 
 /* ============================================
-   CUSTOM SCROLLBAR & EDITORIAL UTILITIES
+   ELEGANT MAYLEKI LUXURY GOLD SCROLLBAR
    ============================================ */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #111111;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C5A059;
-  border-radius: 0px;
+  background: #D4AF37;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9E7B32;
+  background: #E6C76A;
 }
 
 /* Vertical Text Utilities */
@@ -434,13 +441,13 @@ h5, h6 {
     text-orientation: mixed;
   }
 
-  /* Hide scrollbar but allow scroll */
+  /* Hide scrollbar class for horizontal carousels */
   .no-scrollbar::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
   .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
   }
 
   /* Aspect ratios */
