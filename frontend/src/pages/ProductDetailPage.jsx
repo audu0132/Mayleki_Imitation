@@ -345,9 +345,9 @@ export default function ProductDetailPage() {
                 {activeTab === "rental" ? (
                   <Link
                     to={`/rental-booking?product=${product.id}`}
-                    className="h-11 sm:h-12 rounded-xl bg-gradient-to-r from-[#E6B93F] to-[#C88A18] text-[#FFFDF8] font-sans font-semibold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm hover:from-[#C88A18] hover:to-[#E6B93F] transition-all"
+                    className="h-11 sm:h-12 rounded-xl bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-stone-950 font-sans font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md border border-[#F3E5AB]/60 hover:from-[#C5A059] hover:via-[#F3E5AB] hover:to-[#B8860B] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 transform hover:-translate-y-0.5"
                   >
-                    <FiCalendar className="w-4 h-4" /> Book Rental Now
+                    <FiCalendar className="w-4 h-4 text-stone-950" /> Book Rental Now
                   </Link>
                 ) : (
                   <Link
