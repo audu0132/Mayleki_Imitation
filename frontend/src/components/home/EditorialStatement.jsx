@@ -120,7 +120,7 @@ export default function EditorialStatement() {
                 className={`relative px-3.5 py-1.5 rounded-full text-xs font-sans transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   isSelected
                     ? "bg-[#1C1917] text-[#FAF7F2] dark:bg-[#C5A059] dark:text-[#141110] font-semibold shadow-md border border-[#C5A059]"
-                    : "bg-white/60 dark:bg-[#1C1917]/60 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800 hover:border-[#C5A059]/50"
+                    : "bg-[#F7F4EE]/90 dark:bg-[#1C1917]/60 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-800 hover:border-[#C5A059]/50"
                 }`}
               >
                 <span>{item.day.slice(0, 3)}</span>
@@ -141,7 +141,7 @@ export default function EditorialStatement() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.98 }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="w-full max-w-3xl bg-white/80 dark:bg-[#1C1917]/80 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-[#C5A059]/25 shadow-xl relative"
+              className="w-full max-w-3xl bg-[#FDFBF7]/95 dark:bg-[#1C1917]/90 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-[#C5A059]/25 shadow-xl relative"
             >
               {/* Corner Floral Motifs */}
               <div className="absolute top-4 left-4 text-[#C5A059]/40 text-sm font-serif">𑁍</div>
@@ -181,7 +181,7 @@ export default function EditorialStatement() {
               <div className="flex items-center justify-between pt-4 border-t border-[#C5A059]/15">
                 <button
                   onClick={handlePrev}
-                  className="p-2.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-[#C5A059] hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="p-2.5 rounded-full bg-[#F5F2EC] dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-[#C5A059] hover:text-white transition-colors duration-200 cursor-pointer"
                   title="Previous Philosophy"
                 >
                   <FiChevronLeft className="w-4 h-4" />
@@ -197,7 +197,7 @@ export default function EditorialStatement() {
 
                 <button
                   onClick={handleNext}
-                  className="p-2.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-[#C5A059] hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="p-2.5 rounded-full bg-[#F5F2EC] dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-[#C5A059] hover:text-white transition-colors duration-200 cursor-pointer"
                   title="Next Philosophy"
                 >
                   <FiChevronRight className="w-4 h-4" />
