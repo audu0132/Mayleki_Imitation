@@ -37,10 +37,10 @@ export default function FinalCTA() {
 
           <Link
             to="/products"
-            className="btn-gold text-xs px-10 py-4.5 inline-flex items-center gap-3 group shadow-xl"
+            className="btn-gold text-xs px-10 py-4.5 inline-flex items-center gap-3 group shadow-xl text-[#141110] font-bold"
           >
-            <span>EXPLORE THE COLLECTION</span>
-            <FiArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+            <span className="text-[#141110] font-bold">EXPLORE THE COLLECTION</span>
+            <FiArrowRight className="w-4 h-4 text-[#141110] group-hover:translate-x-1.5 transition-transform" />
           </Link>
         </motion.div>
       </div>
