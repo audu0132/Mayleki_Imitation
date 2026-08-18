@@ -113,10 +113,11 @@ export default function LuxuryBookingSection() {
 
                 <button
                   type="submit"
-                  className="btn-gold w-full py-4 text-xs flex items-center justify-center gap-2 group mt-4"
+                  className="w-full py-4 text-xs font-sans font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2 group mt-4 rounded-none bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-stone-950 border border-[#F3E5AB]/60 hover:from-[#C5A059] hover:via-[#F3E5AB] hover:to-[#B8860B] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
-                  <span>CHECK AVAILABILITY</span>
-                  <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <FiCalendar className="w-4 h-4 text-stone-950" />
+                  <span>CHECK RENTAL AVAILABILITY</span>
+                  <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-stone-950" />
                 </button>
               </form>
             </motion.div>
