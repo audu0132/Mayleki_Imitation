@@ -218,10 +218,10 @@ export default function Navbar() {
             {/* Quick Rental CTA Button */}
             <Link
               to="/rental-booking"
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C5A059] text-stone-950 font-sans font-bold text-[10px] uppercase tracking-[0.2em] shadow-md border border-[#F3E5AB]/60 hover:from-[#C5A059] hover:via-[#F3E5AB] hover:to-[#B8860B] hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all duration-300 transform hover:-translate-y-0.5"
+              className="btn-gold-metallic hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[#0E0C0B] font-sans font-bold text-[10px] uppercase tracking-[0.2em] shadow-md border border-[#F3E5AB]/80 transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              <FiPackage className="w-3.5 h-3.5" />
-              <span>Book Rental</span>
+              <FiPackage className="w-3.5 h-3.5 text-[#0E0C0B]" />
+              <span className="text-[#0E0C0B] font-bold">Book Rental</span>
             </Link>
 
             {/* Mobile Menu Toggle */}
