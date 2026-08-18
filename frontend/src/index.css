@@ -516,9 +516,15 @@ h5, h6 {
   70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
 }
 
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
 .animate-float { animation: float 3s ease-in-out infinite; }
 .animate-marquee { animation: marquee 25s linear infinite; }
 .animate-gold-pulse { animation: goldPulse 2s ease-in-out infinite; }
+.animate-spin-reverse { animation: spinReverse 2.5s linear infinite; }
 
 /* ============================================
    REACT DATE PICKER OVERRIDES
