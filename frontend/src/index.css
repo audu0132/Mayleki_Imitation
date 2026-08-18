@@ -27,14 +27,16 @@
   --scrollbar-track: #111111;
 }
 
-/* GLOBAL HYPERLINK MAYLEKI LUXURY STYLING - ZERO BLUE HYPERLINKS */
-a, a:visited {
+/* GLOBAL HYPERLINK MAYLEKI LUXURY STYLING - HIGH CONTRAST & LEGIBILITY */
+a:not([class*="btn"]):not([class*="bg-"]),
+a:not([class*="btn"]):not([class*="bg-"]):visited {
   color: #D4AF37;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-a:hover, a:focus {
+a:not([class*="btn"]):not([class*="bg-"]):hover,
+a:not([class*="btn"]):not([class*="bg-"]):focus {
   color: #E6C76A;
   text-decoration: none;
 }
