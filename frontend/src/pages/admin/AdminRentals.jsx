@@ -7,6 +7,7 @@ import {
 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
 import { RENTAL_BOOKINGS } from "../../data/mockData";
+import Logo from "../../assets/logo.jpeg";
 
 export default function AdminRentals() {
   const [rentals, setRentals] = useState(RENTAL_BOOKINGS || []);
@@ -89,7 +90,7 @@ export default function AdminRentals() {
         <title>Rental Bookings | Mayleki Admin</title>
       </Helmet>
 
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-6 sm:p-8 space-y-6 no-print">
         {/* Page Header */}
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
@@ -324,12 +325,12 @@ export default function AdminRentals() {
         {/* Modal: View Details */}
         <AnimatePresence>
           {selectedBooking && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-50 overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center min-h-screen">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm no-print"
                 onClick={() => setSelectedBooking(null)}
               />
 
@@ -337,27 +338,60 @@ export default function AdminRentals() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative bg-white dark:bg-dark-brown-light border border-gold/20 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl z-10 space-y-6 font-poppins"
+                className="printable-document relative bg-white dark:bg-dark-brown-light border border-gold/20 rounded-3xl p-5 sm:p-6 max-w-lg w-full max-h-[85vh] overflow-y-auto my-auto shadow-2xl z-10 space-y-4 font-poppins no-scrollbar"
               >
-                <div className="flex items-center justify-between border-b border-gold/10 pb-4">
-                  <div>
-                    <span className="font-mono text-xs text-gold font-bold">
-                      {selectedBooking.id}
-                    </span>
-                    <h2 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream">
-                      Rental Receipt Details
-                    </h2>
+                {/* Brand Header with Logo for Print & View */}
+                <div className="flex items-center justify-between border-b border-gold/20 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/60 bg-dark-brown p-0.5 shadow-sm flex-shrink-0 flex items-center justify-center">
+                      <img
+                        src={Logo}
+                        alt="Mayleki Logo"
+                        className="w-full h-full object-cover rounded-full"
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                          if (e.target.nextSibling) e.target.nextSibling.style.display = "flex";
+                        }}
+                      />
+                      <div className="w-full h-full rounded-full bg-gold-gradient hidden items-center justify-center text-dark-brown font-playfair font-bold text-base">
+                        M
+                      </div>
+                    </div>
+                    <div>
+                      <h2 className="font-playfair font-bold text-xl text-dark-brown dark:text-cream leading-tight">
+                        MAYLEKI BOUTIQUE
+                      </h2>
+                      <p className="font-poppins text-[10px] text-gold tracking-widest uppercase font-semibold">
+                        Premium Imitation & Rental Jewellery
+                      </p>
+                      <p className="text-[10px] text-gray-400">Main Road, Rahuri • +91 98220 12345</p>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setSelectedBooking(null)}
-                    className="p-2 rounded-full hover:bg-gold/10 text-gray-400 hover:text-dark-brown dark:hover:text-cream transition-colors"
-                  >
-                    <FiX className="w-5 h-5" />
-                  </button>
+
+                  <div className="text-right no-print">
+                    <button
+                      onClick={() => setSelectedBooking(null)}
+                      className="p-2 rounded-full hover:bg-gold/10 text-gray-400 hover:text-dark-brown dark:hover:text-cream transition-colors"
+                    >
+                      <FiX className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
 
+                {/* Receipt Ref Badge */}
+                <div className="flex items-center justify-between bg-gold/10 p-3 rounded-xl border border-gold/20">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-gold">Official Rental Receipt</p>
+                    <p className="font-mono text-xs font-bold text-dark-brown dark:text-cream">Ref: {selectedBooking.id}</p>
+                  </div>
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                    {selectedBooking.status}
+                  </span>
+                </div>
+
+                {/* Booking & Item Details */}
                 <div className="space-y-4 text-sm">
-                  <div className="flex gap-4 items-center bg-gold/5 p-3 rounded-2xl border border-gold/10">
+                  <div className="flex gap-4 items-center bg-gray-50 dark:bg-white/5 p-3 rounded-2xl border border-gold/10">
                     <img
                       src={selectedBooking.image}
                       alt={selectedBooking.productTitle}
@@ -373,19 +407,19 @@ export default function AdminRentals() {
 
                   <div className="grid grid-cols-2 gap-3 text-xs bg-gray-50 dark:bg-white/5 p-4 rounded-xl">
                     <div>
-                      <p className="text-gray-400">Customer</p>
+                      <p className="text-gray-400">Customer Name</p>
                       <p className="font-semibold text-dark-brown dark:text-cream">
                         {selectedBooking.customerName}
                       </p>
                     </div>
                     <div>
-                      <p className="text-gray-400">Phone</p>
+                      <p className="text-gray-400">Phone Number</p>
                       <p className="font-semibold text-dark-brown dark:text-cream">
                         {selectedBooking.phone}
                       </p>
                     </div>
                     <div>
-                      <p className="text-gray-400">Rental Dates</p>
+                      <p className="text-gray-400">Rental Period</p>
                       <p className="font-semibold text-dark-brown dark:text-cream">
                         {selectedBooking.startDate} to {selectedBooking.endDate}
                       </p>
@@ -399,32 +433,51 @@ export default function AdminRentals() {
                   <div className="border-t border-gold/10 pt-3 space-y-2 text-xs">
                     <div className="flex justify-between">
                       <span className="text-gray-400">Rental Fee ({selectedBooking.totalDays} days @ ₹{selectedBooking.dailyRate}/day):</span>
-                      <span className="font-semibold">₹{selectedBooking.totalAmount}</span>
+                      <span className="font-semibold">₹{selectedBooking.totalAmount?.toLocaleString("en-IN")}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-400">Refundable Security Deposit:</span>
-                      <span className="font-semibold text-emerald-600">₹{selectedBooking.depositAmount}</span>
+                      <span className="font-semibold text-emerald-600">₹{selectedBooking.depositAmount?.toLocaleString("en-IN")}</span>
                     </div>
                     <div className="flex justify-between font-bold text-sm text-dark-brown dark:text-cream border-t border-gold/10 pt-2">
-                      <span>Total Payable:</span>
-                      <span className="text-gold">₹{selectedBooking.totalAmount + selectedBooking.depositAmount}</span>
+                      <span>Total Paid / Payable:</span>
+                      <span className="text-gold">₹{(selectedBooking.totalAmount + selectedBooking.depositAmount)?.toLocaleString("en-IN")}</span>
+                    </div>
+                  </div>
+
+                  {/* Signature & Disclaimer Block */}
+                  <div className="pt-4 border-t border-dashed border-gray-300 space-y-4">
+                    <p className="text-[10px] text-gray-400 italic text-center">
+                      * Security deposit will be fully refunded upon return of jewellery item in original condition.
+                    </p>
+                    <div className="flex justify-between items-end pt-3">
+                      <div className="text-left text-[10px] text-gray-400">
+                        <p>Thank you for choosing Mayleki Boutique!</p>
+                        <p>Visit us again at Rahuri.</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="w-32 border-b border-gray-400 mb-1"></div>
+                        <p className="text-[10px] font-bold text-dark-brown uppercase">Authorized Signatory</p>
+                        <p className="text-[9px] text-gold">Mayleki Jewellery Boutique</p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex justify-end gap-3 pt-4 border-t border-gold/10">
+                {/* Print & Action Buttons */}
+                <div className="flex justify-end gap-3 pt-4 border-t border-gold/10 no-print">
                   <button
                     onClick={() => {
-                      toast.success("Printing rental receipt...");
+                      toast.success("Printing official receipt with Mayleki Logo...");
                       window.print();
                     }}
-                    className="btn-gold-outline text-xs px-4 py-2 rounded-xl flex items-center gap-2 min-h-0"
+                    className="btn-gold-outline text-xs px-4 py-2 rounded-xl flex items-center gap-2 min-h-0 cursor-pointer"
                   >
                     <FiPrinter className="w-4 h-4" /> Print Receipt
                   </button>
                   <button
                     onClick={() => setSelectedBooking(null)}
-                    className="btn-gold text-xs px-5 py-2 rounded-xl min-h-0"
+                    className="btn-gold text-xs px-5 py-2 rounded-xl min-h-0 cursor-pointer"
                   >
                     Close
                   </button>
