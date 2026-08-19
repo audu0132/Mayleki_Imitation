@@ -44,7 +44,18 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
 const AdminProducts = lazy(() => import("./pages/admin/AdminProducts"));
+const AdminCategories = lazy(() => import("./pages/admin/AdminCategories"));
 const AdminOrders = lazy(() => import("./pages/admin/AdminOrders"));
+const AdminRentals = lazy(() => import("./pages/admin/AdminRentals"));
+const AdminCustomers = lazy(() => import("./pages/admin/AdminCustomers"));
+const AdminTestimonials = lazy(() => import("./pages/admin/AdminTestimonials"));
+const AdminBanners = lazy(() => import("./pages/admin/AdminBanners"));
+const AdminCoupons = lazy(() => import("./pages/admin/AdminCoupons"));
+const AdminBlog = lazy(() => import("./pages/admin/AdminBlog"));
+const AdminFaqs = lazy(() => import("./pages/admin/AdminFaqs"));
+const AdminContacts = lazy(() => import("./pages/admin/AdminContacts"));
+const AdminReports = lazy(() => import("./pages/admin/AdminReports"));
+const AdminSeo = lazy(() => import("./pages/admin/AdminSeo"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -106,8 +117,18 @@ export default function App() {
                         <Route path="/admin" element={<AdminLayout />}>
                           <Route index element={<AdminDashboard />} />
                           <Route path="products" element={<AdminProducts />} />
+                          <Route path="categories" element={<AdminCategories />} />
                           <Route path="orders" element={<AdminOrders />} />
-                          {/* Add more admin routes */}
+                          <Route path="rentals" element={<AdminRentals />} />
+                          <Route path="customers" element={<AdminCustomers />} />
+                          <Route path="testimonials" element={<AdminTestimonials />} />
+                          <Route path="banners" element={<AdminBanners />} />
+                          <Route path="coupons" element={<AdminCoupons />} />
+                          <Route path="blog" element={<AdminBlog />} />
+                          <Route path="faqs" element={<AdminFaqs />} />
+                          <Route path="contacts" element={<AdminContacts />} />
+                          <Route path="reports" element={<AdminReports />} />
+                          <Route path="seo" element={<AdminSeo />} />
                         </Route>
 
                         {/* Public Routes (with Navbar/Footer) */}
