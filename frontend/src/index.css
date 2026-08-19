@@ -41,6 +41,44 @@ a:not([class*="btn"]):not([class*="bg-"]):focus {
   text-decoration: none;
 }
 
+/* ADMIN SIDEBAR LINKS OVERRIDES - PREVENT BOOTSTRAP OVERRIDES */
+a.admin-sidebar-link,
+a.admin-sidebar-link:visited,
+a.admin-sidebar-link:hover,
+a.admin-sidebar-link:focus {
+  text-decoration: none !important;
+}
+
+.admin-sidebar-link-active {
+  background: linear-gradient(135deg, #D4AF37 0%, #E6C76A 100%) !important;
+  color: #1A1612 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25) !important;
+}
+
+.admin-sidebar-link-active svg,
+.admin-sidebar-link-active span {
+  color: #1A1612 !important;
+}
+
+.admin-sidebar-link-inactive {
+  color: #E5DCC3 !important;
+  background-color: transparent;
+}
+
+.admin-sidebar-link-inactive:hover {
+  color: #FFFFFF !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.admin-sidebar-link-inactive svg {
+  color: #D4AF37 !important;
+}
+
+.admin-sidebar-link-inactive:hover svg {
+  color: #E6C76A !important;
+}
+
 .text-gold {
   color: #D4AF37 !important;
 }
