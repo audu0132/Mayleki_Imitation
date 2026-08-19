@@ -129,9 +129,9 @@ export default function AdminOrders() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="printable-document relative bg-white dark:bg-dark-brown-light border border-gold/20 rounded-3xl p-5 sm:p-6 max-w-lg w-full max-h-[85vh] overflow-y-auto my-auto shadow-2xl z-10 space-y-4 font-poppins no-scrollbar"
+                className="relative bg-white dark:bg-dark-brown-light border border-gold/20 rounded-3xl p-5 sm:p-6 max-w-lg w-full max-h-[85vh] overflow-y-auto my-auto shadow-2xl z-10 space-y-4 font-poppins no-scrollbar"
               >
-                {/* Printable Brand Header with Logo */}
+                {/* Brand Header with Logo */}
                 <div className="flex items-center justify-between border-b border-gold/20 pb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/60 bg-dark-brown p-0.5 shadow-sm flex-shrink-0 flex items-center justify-center">
@@ -252,6 +252,97 @@ export default function AdminOrders() {
             </div>
           )}
         </AnimatePresence>
+
+        {/* DEDICATED PRINTABLE INVOICE TEMPLATE (HIDDEN ON SCREEN, VISIBLE ON PRINT) */}
+        {selectedOrder && (
+          <div className="printable-only-area font-poppins">
+            <div className="flex items-center justify-between border-b-2 border-amber-600 pb-4 mb-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-600 p-0.5">
+                  <img src={Logo} alt="Mayleki Logo" className="w-full h-full object-cover rounded-full" />
+                </div>
+                <div>
+                  <h1 className="font-serif font-bold text-2xl text-amber-900 tracking-wide uppercase">
+                    MAYLEKI BOUTIQUE
+                  </h1>
+                  <p className="text-xs text-amber-700 font-semibold tracking-widest uppercase">
+                    Premium Imitation & Rental Jewellery
+                  </p>
+                  <p className="text-xs text-gray-500">Main Road, Opp. Market, Rahuri, Maharashtra - 413705 • Tel: +91 98220 12345</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <span className="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-1">
+                  Official Tax Invoice
+                </span>
+                <p className="font-mono text-sm font-bold text-gray-800">Invoice #: {selectedOrder.id}</p>
+                <p className="text-xs text-gray-500">Date: {selectedOrder.date}</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 bg-amber-50/50 p-4 rounded-xl border border-amber-200 mb-6 text-sm">
+              <div>
+                <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Billed To (Customer):</p>
+                <p className="font-bold text-gray-900 text-base mt-1">{selectedOrder.customer}</p>
+                <p className="text-xs text-gray-600 mt-0.5">Phone: {selectedOrder.phone}</p>
+                <p className="text-xs text-gray-600">Location: Rahuri, Maharashtra</p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Order Status & Type:</p>
+                <p className="font-bold text-emerald-700 text-base mt-1">{selectedOrder.status}</p>
+                <p className="text-xs text-gray-600 mt-0.5">Type: {selectedOrder.type}</p>
+                <p className="text-xs text-gray-600">Payment Method: UPI / Cash</p>
+              </div>
+            </div>
+
+            <table className="w-full border-collapse mb-6 text-sm">
+              <thead>
+                <tr className="border-b-2 border-gray-300 text-left font-bold text-xs uppercase text-gray-600 bg-gray-100">
+                  <th className="py-3 px-4">Item Description</th>
+                  <th className="py-3 px-4 text-center">Category / Type</th>
+                  <th className="py-3 px-4 text-right">Amount (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-200">
+                  <td className="py-4 px-4 font-semibold text-gray-900">{selectedOrder.product}</td>
+                  <td className="py-4 px-4 text-center text-gray-600">{selectedOrder.type}</td>
+                  <td className="py-4 px-4 text-right font-bold text-gray-900">₹{selectedOrder.amount.toLocaleString("en-IN")}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className="flex justify-end mb-8">
+              <div className="w-64 space-y-2 text-sm bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <div className="flex justify-between text-gray-600 text-xs">
+                  <span>Subtotal:</span>
+                  <span>₹{selectedOrder.amount.toLocaleString("en-IN")}</span>
+                </div>
+                <div className="flex justify-between text-gray-600 text-xs">
+                  <span>Taxes (GST 0%):</span>
+                  <span>₹0</span>
+                </div>
+                <div className="flex justify-between font-bold text-base border-t border-gray-300 pt-2 text-gray-900">
+                  <span>Grand Total:</span>
+                  <span className="text-amber-800">₹{selectedOrder.amount.toLocaleString("en-IN")}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-8 border-t border-dashed border-gray-300 flex justify-between items-end text-xs">
+              <div>
+                <p className="font-semibold text-gray-800">Mayleki Jewellery Boutique</p>
+                <p className="text-gray-500">Thank you for your business!</p>
+                <p className="text-[10px] text-gray-400 mt-1">Computer generated invoice. No signature required.</p>
+              </div>
+              <div className="text-right">
+                <div className="w-36 border-b border-gray-400 mb-1"></div>
+                <p className="font-bold text-gray-800 uppercase">Authorized Signatory</p>
+                <p className="text-amber-800 font-semibold">Mayleki Boutique, Rahuri</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
