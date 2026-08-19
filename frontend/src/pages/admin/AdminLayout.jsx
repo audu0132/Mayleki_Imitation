@@ -9,6 +9,7 @@ import {
   FiHome,
 } from "react-icons/fi";
 import { useAuth } from "../../context/AppContext";
+import Logo from "../../assets/logo.jpeg";
 
 const NAV_ITEMS = [
   { label: "Dashboard", href: "/admin", icon: FiGrid, badge: null },
@@ -45,9 +46,20 @@ export default function AdminLayout() {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="flex items-center gap-3 p-5 border-b border-white/10">
-        <div className="w-10 h-10 rounded-full bg-gold-gradient flex items-center justify-center flex-shrink-0">
-          <span className="font-playfair font-bold text-dark-brown text-sm">M</span>
+      <div className="flex items-center gap-3 p-4 border-b border-white/10">
+        <div className="w-10 h-10 rounded-full overflow-hidden border border-gold/50 bg-dark-brown p-0.5 shadow-sm flex-shrink-0 flex items-center justify-center relative">
+          <img
+            src={Logo}
+            alt="Mayleki Logo"
+            className="w-full h-full object-cover rounded-full"
+            onError={(e) => {
+              e.target.style.display = "none";
+              if (e.target.nextSibling) e.target.nextSibling.style.display = "flex";
+            }}
+          />
+          <div className="w-full h-full rounded-full bg-gold-gradient hidden items-center justify-center text-dark-brown font-playfair font-bold text-sm">
+            M
+          </div>
         </div>
         <AnimatePresence>
           {(sidebarOpen || mobileSidebarOpen) && (
@@ -55,9 +67,10 @@ export default function AdminLayout() {
               initial={{ opacity: 0, width: 0 }}
               animate={{ opacity: 1, width: "auto" }}
               exit={{ opacity: 0, width: 0 }}
+              className="overflow-hidden"
             >
-              <p className="font-playfair font-bold text-cream text-sm whitespace-nowrap">Mayleki Admin</p>
-              <p className="font-poppins text-[10px] text-gold whitespace-nowrap">Control Panel</p>
+              <p className="font-playfair font-bold text-cream text-sm whitespace-nowrap leading-tight">Mayleki Admin</p>
+              <p className="font-poppins text-[10px] text-gold tracking-wider uppercase whitespace-nowrap">Control Panel</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -71,10 +84,10 @@ export default function AdminLayout() {
               key={href}
               to={href}
               onClick={() => setMobileSidebarOpen(false)}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group relative ${
+              className={`admin-sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group relative no-underline ${
                 isActive(href)
-                  ? "bg-gold text-dark-brown font-semibold"
-                  : "text-gray-400 hover:bg-white/10 hover:text-cream"
+                  ? "admin-sidebar-link-active"
+                  : "admin-sidebar-link-inactive"
               }`}
               title={!sidebarOpen ? label : undefined}
             >
@@ -92,8 +105,8 @@ export default function AdminLayout() {
                 )}
               </AnimatePresence>
               {badge && (sidebarOpen || mobileSidebarOpen) && (
-                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
-                  isActive(href) ? "bg-dark-brown/30 text-dark-brown" : "bg-gold/20 text-gold"
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                  isActive(href) ? "bg-dark-brown/40 text-dark-brown" : "bg-gold/20 text-gold"
                 }`}>
                   {badge}
                 </span>
@@ -107,7 +120,7 @@ export default function AdminLayout() {
       <div className="p-3 border-t border-white/10 space-y-1">
         <Link
           to="/"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/10 hover:text-cream transition-all"
+          className="admin-sidebar-link admin-sidebar-link-inactive flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all no-underline"
         >
           <FiHome className="w-4 h-4 flex-shrink-0" />
           {(sidebarOpen || mobileSidebarOpen) && (
@@ -116,7 +129,7 @@ export default function AdminLayout() {
         </Link>
         <button
           onClick={logout}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-all w-full text-left"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all w-full text-left cursor-pointer"
         >
           <FiLogOut className="w-4 h-4 flex-shrink-0" />
           {(sidebarOpen || mobileSidebarOpen) && (
