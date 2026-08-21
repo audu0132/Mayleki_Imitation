@@ -1,5 +1,5 @@
 // Context Providers for Mayleki
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
 
 // ===================== CART CONTEXT =====================
 const CartContext = createContext();
@@ -47,8 +47,10 @@ export function CartProvider({ children }) {
     return sum + discounted * i.qty;
   }, 0);
 
+  const getCartTotal = () => cartTotal;
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQty, clearCart, cartCount, cartTotal }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQty, clearCart, cartCount, cartTotal, getCartTotal }}>
       {children}
     </CartContext.Provider>
   );
@@ -184,14 +186,18 @@ export function RecentlyViewedProvider({ children }) {
     } catch { return []; }
   });
 
-  const addRecentlyViewed = (product) => {
+  const addRecentlyViewed = useCallback((product) => {
+    if (!product || !product.id) return;
     setRecentlyViewed(prev => {
+      if (prev.length > 0 && prev[0]?.id === product.id) return prev;
       const filtered = prev.filter(i => i.id !== product.id);
       const updated = [product, ...filtered].slice(0, 10);
-      localStorage.setItem("mayleki_recently_viewed", JSON.stringify(updated));
+      try {
+        localStorage.setItem("mayleki_recently_viewed", JSON.stringify(updated));
+      } catch { /* ignore */ }
       return updated;
     });
-  };
+  }, []);
 
   return (
     <RecentlyViewedContext.Provider value={{ recentlyViewed, addRecentlyViewed }}>
