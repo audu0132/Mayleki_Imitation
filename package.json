@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Mayleki Imitation Jewellery Monorepo",
   "scripts": {
-    "build": "node -e \"const {execSync,existsSync}=require('child_process'); if(existsSync('frontend')){execSync('cd frontend && npm install && npm run build',{stdio:'inherit'});}else{execSync('npm run build',{stdio:'inherit'});}\"",
+    "build": "node -e \"const fs=require('fs'), cp=require('child_process'); if (fs.existsSync('src')) { cp.execSync('npm run build', {stdio:'inherit'}); } else { cp.execSync('cd frontend && npm install && npm run build', {stdio:'inherit'}); if (fs.existsSync('frontend/dist')) { fs.cpSync('frontend/dist', 'dist', {recursive: true}); } }\"",
     "start": "cd backend && npm start"
   }
 }
