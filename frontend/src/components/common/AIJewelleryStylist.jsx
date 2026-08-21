@@ -12,6 +12,7 @@ import {
 } from "react-icons/fi";
 import { useCart } from "../../context/AppContext";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../../config/api";
 
 const QUICK_SUGGESTIONS = [
   { label: "Bridal Jewellery", prompt: "Recommend bridal jewellery sets for Maharashtrian wedding" },
@@ -60,7 +61,7 @@ export default function AIJewelleryStylist() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/ai/stylist", {
+      const res = await fetch(`${API_BASE_URL}/api/ai/stylist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: promptToSend })
