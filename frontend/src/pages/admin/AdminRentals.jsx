@@ -391,18 +391,36 @@ export default function AdminRentals() {
 
                 {/* Booking & Item Details */}
                 <div className="space-y-4 text-sm">
-                  <div className="flex gap-4 items-center bg-gray-50 dark:bg-white/5 p-3 rounded-2xl border border-gold/10">
-                    <img
-                      src={selectedBooking.image}
-                      alt={selectedBooking.productTitle}
-                      className="w-16 h-16 rounded-xl object-cover"
-                    />
-                    <div>
-                      <h3 className="font-bold text-dark-brown dark:text-cream">
-                        {selectedBooking.productTitle}
-                      </h3>
-                      <p className="text-xs text-gold">Occasion: {selectedBooking.eventOccasion}</p>
-                    </div>
+                  {/* Rental Product Items Table */}
+                  <div className="border border-gold/20 rounded-2xl overflow-hidden bg-gray-50/50 dark:bg-white/5">
+                    <table className="w-full text-xs">
+                      <thead className="bg-gold/10 text-dark-brown dark:text-cream border-b border-gold/20 font-semibold uppercase text-[10px]">
+                        <tr>
+                          <th className="py-2.5 px-3 text-left">Rented Item</th>
+                          <th className="py-2.5 px-3 text-center">Daily Rate</th>
+                          <th className="py-2.5 px-3 text-center">Days</th>
+                          <th className="py-2.5 px-3 text-right">Fee</th>
+                          <th className="py-2.5 px-3 text-right">Deposit</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gold/10 text-dark-brown dark:text-cream">
+                        <tr>
+                          <td className="py-3 px-3">
+                            <div className="flex items-center gap-2">
+                              <img src={selectedBooking.image} alt="" className="w-8 h-8 rounded-lg object-cover flex-shrink-0" />
+                              <div>
+                                <p className="font-semibold line-clamp-1">{selectedBooking.productTitle}</p>
+                                <p className="text-[10px] text-gold">{selectedBooking.eventOccasion}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="py-3 px-3 text-center font-medium">₹{selectedBooking.dailyRate}</td>
+                          <td className="py-3 px-3 text-center font-medium">{selectedBooking.totalDays}</td>
+                          <td className="py-3 px-3 text-right font-medium">₹{selectedBooking.totalAmount?.toLocaleString("en-IN")}</td>
+                          <td className="py-3 px-3 text-right font-bold text-emerald-600">₹{selectedBooking.depositAmount?.toLocaleString("en-IN")}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
 
                   <div className="grid grid-cols-2 gap-3 text-xs bg-gray-50 dark:bg-white/5 p-4 rounded-xl">
@@ -646,6 +664,99 @@ export default function AdminRentals() {
             </div>
           )}
         </AnimatePresence>
+        {/* DEDICATED PRINTABLE RENTAL RECEIPT TEMPLATE (HIDDEN ON SCREEN, VISIBLE ON PRINT) */}
+        {selectedBooking && (
+          <div className="printable-only-area font-poppins">
+            <div className="flex items-center justify-between border-b-2 border-amber-600 pb-4 mb-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-600 p-0.5">
+                  <img src={Logo} alt="Mayleki Logo" className="w-full h-full object-cover rounded-full" />
+                </div>
+                <div>
+                  <h1 className="font-serif font-bold text-2xl text-amber-900 tracking-wide uppercase">
+                    MAYLEKI BOUTIQUE
+                  </h1>
+                  <p className="text-xs text-amber-700 font-semibold tracking-widest uppercase">
+                    Official Rental Receipt & Reservation
+                  </p>
+                  <p className="text-xs text-gray-500">Main Road, Opp. Market, Rahuri, Maharashtra - 413705 • Tel: +91 98220 12345</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <span className="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-1">
+                  Rental Voucher
+                </span>
+                <p className="font-mono text-sm font-bold text-gray-800">Booking Ref: {selectedBooking.id}</p>
+                <p className="text-xs font-semibold text-emerald-700">Status: {selectedBooking.status}</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 bg-amber-50/50 p-4 rounded-xl border border-amber-200 mb-6 text-sm">
+              <div>
+                <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Customer Details:</p>
+                <p className="font-bold text-gray-900 text-base mt-1">{selectedBooking.customerName}</p>
+                <p className="text-xs text-gray-600 mt-0.5">Phone: {selectedBooking.phone}</p>
+                <p className="text-xs text-gray-600">City / Location: {selectedBooking.city}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Event & Rental Dates:</p>
+                <p className="font-bold text-amber-900 text-sm mt-1">Occasion: {selectedBooking.eventOccasion}</p>
+                <p className="text-xs text-gray-700 mt-0.5">Period: {selectedBooking.startDate} to {selectedBooking.endDate}</p>
+                <p className="text-xs font-bold text-amber-800">Total Duration: {selectedBooking.totalDays} Days</p>
+              </div>
+            </div>
+
+            <table className="w-full border-collapse mb-6 text-sm">
+              <thead>
+                <tr className="border-b-2 border-gray-300 text-left font-bold text-xs uppercase text-gray-600 bg-gray-100">
+                  <th className="py-3 px-4">Reserved Jewellery Item</th>
+                  <th className="py-3 px-4 text-center">Daily Rate (₹)</th>
+                  <th className="py-3 px-4 text-center">Days</th>
+                  <th className="py-3 px-4 text-right">Subtotal Fee (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-200">
+                  <td className="py-4 px-4 font-semibold text-gray-900">{selectedBooking.productTitle}</td>
+                  <td className="py-4 px-4 text-center text-gray-600">₹{selectedBooking.dailyRate}/day</td>
+                  <td className="py-4 px-4 text-center text-gray-600">{selectedBooking.totalDays}</td>
+                  <td className="py-4 px-4 text-right font-bold text-gray-900">₹{selectedBooking.totalAmount?.toLocaleString("en-IN")}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className="flex justify-end mb-8">
+              <div className="w-72 space-y-2 text-sm bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <div className="flex justify-between text-gray-600 text-xs">
+                  <span>Rental Fee ({selectedBooking.totalDays} days):</span>
+                  <span>₹{selectedBooking.totalAmount?.toLocaleString("en-IN")}</span>
+                </div>
+                <div className="flex justify-between text-emerald-700 text-xs font-semibold">
+                  <span>Refundable Deposit:</span>
+                  <span>₹{selectedBooking.depositAmount?.toLocaleString("en-IN")}</span>
+                </div>
+                <div className="flex justify-between font-bold text-base border-t border-gray-300 pt-2 text-gray-900">
+                  <span>Grand Total Paid:</span>
+                  <span className="text-amber-800">₹{(selectedBooking.totalAmount + selectedBooking.depositAmount)?.toLocaleString("en-IN")}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-dashed border-gray-300 flex justify-between items-end text-xs">
+              <div className="space-y-1 text-gray-500">
+                <p className="italic text-[10px] text-gray-500">
+                  * Security deposit will be fully refunded upon return of jewellery item in original undamaged condition.
+                </p>
+                <p className="font-semibold text-gray-800 text-xs">Mayleki Jewellery Boutique • Rahuri</p>
+              </div>
+              <div className="text-right">
+                <div className="w-36 border-b border-gray-400 mb-1"></div>
+                <p className="font-bold text-gray-800 uppercase">Authorized Signatory</p>
+                <p className="text-amber-800 font-semibold">Mayleki Boutique, Rahuri</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
