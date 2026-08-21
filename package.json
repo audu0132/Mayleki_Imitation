@@ -2,9 +2,9 @@
   "name": "mayleki-imitation",
   "private": true,
   "version": "1.0.0",
-  "description": "Mayleki Imitation Jewellery Root Package",
+  "description": "Mayleki Imitation Jewellery Monorepo",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
+    "build": "node -e \"const {execSync,existsSync}=require('child_process'); if(existsSync('frontend')){execSync('cd frontend && npm install && npm run build',{stdio:'inherit'});}else{execSync('npm run build',{stdio:'inherit'});}\"",
     "start": "cd backend && npm start"
   }
 }
