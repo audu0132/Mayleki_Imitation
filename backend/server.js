@@ -23,9 +23,22 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
+// CORS configuration supporting single or multiple origins
+const rawOrigins = process.env.FRONTEND_URL || process.env.CLIENT_URL || "http://localhost:5173,http://localhost:3000,http://localhost:5174";
+const allowedOrigins = rawOrigins.split(",").map(url => url.trim().replace(/\/+$/, "")).filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const normalizedOrigin = origin.replace(/\/+$/, "");
+    if (allowedOrigins.includes(normalizedOrigin) || allowedOrigins.includes("*")) {
+      return callback(null, true);
+    }
+    if (process.env.NODE_ENV !== "production" && normalizedOrigin.includes("localhost")) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: "10mb" }));
@@ -53,6 +66,7 @@ app.get("/api/health", (req, res) => {
     message: "Mayleki API is running 🛍️",
     timestamp: new Date().toISOString(),
     version: "1.0.0",
+    environment: process.env.NODE_ENV || "development",
   });
 });
 
@@ -73,23 +87,23 @@ app.use((err, req, res, next) => {
 });
 
 // Database connection & server start
+const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI || "mongodb://localhost:27017/mayleki";
+
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/mayleki", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGODB_URI)
   .then(() => {
-    console.log("✅ MongoDB connected");
+    console.log("✅ MongoDB connected successfully");
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`🚀 Mayleki Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
     console.error("❌ MongoDB connection failed:", err.message);
-    console.log("💡 Running without DB connection...");
-    // Still start server even if DB fails (for dev)
+    if (process.env.NODE_ENV === "production") {
+      console.error("⚠️ Server starting in fallback mode (Database connection failed)...");
+    }
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT} (no DB)`);
+      console.log(`🚀 Server running on port ${PORT} (fallback mode)`);
     });
   });
 
