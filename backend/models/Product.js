@@ -41,12 +41,11 @@ const productSchema = new mongoose.Schema(
     metaTitle: { type: String },
     metaDescription: { type: String },
   },
-  { timestamps: true }
+  { timestamps: true, suppressReservedKeysWarning: true }
 );
 
 // Index for text search
 productSchema.index({ title: "text", description: "text", tags: "text" });
 productSchema.index({ category: 1, isActive: 1 });
-productSchema.index({ slug: 1 });
 
 export default mongoose.model("Product", productSchema);
