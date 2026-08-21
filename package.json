@@ -1,0 +1,10 @@
+{
+  "name": "mayleki-imitation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Mayleki Imitation Jewellery Root Package",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd backend && npm start"
+  }
+}
