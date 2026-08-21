@@ -32,11 +32,12 @@ export default function ProductDetailPage() {
   const related = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   useEffect(() => {
-    addRecentlyViewed(product);
-    setSelectedImage(0);
-    setQty(1);
-    window.scrollTo(0, 0);
-  }, [product, addRecentlyViewed]);
+    if (product) {
+      addRecentlyViewed(product);
+      setSelectedImage(0);
+      setQty(1);
+    }
+  }, [product?.id, addRecentlyViewed]);
 
   const handleAddToCart = () => {
     addToCart(product, qty, activeTab);
