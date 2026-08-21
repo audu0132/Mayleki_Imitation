@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import {
   FiShoppingCart, FiPackage, FiUsers, FiCalendar,
   FiTrendingUp, FiDollarSign,
@@ -177,7 +178,7 @@ export default function AdminDashboard() {
           <div className="bg-white dark:bg-dark-brown-light rounded-2xl border border-gold/10 overflow-hidden">
             <div className="p-5 border-b border-gold/10 flex items-center justify-between">
               <h3 className="font-playfair text-lg font-bold text-dark-brown dark:text-cream">Recent Orders</h3>
-              <a href="/admin/orders" className="font-poppins text-xs text-gold hover:underline">View all</a>
+              <Link to="/admin/orders" className="font-poppins text-xs text-gold hover:underline">View all</Link>
             </div>
             <div className="divide-y divide-gold/5">
               {[
@@ -211,7 +212,7 @@ export default function AdminDashboard() {
           <div className="bg-white dark:bg-dark-brown-light rounded-2xl border border-gold/10 overflow-hidden">
             <div className="p-5 border-b border-gold/10 flex items-center justify-between">
               <h3 className="font-playfair text-lg font-bold text-dark-brown dark:text-cream">Upcoming Rentals</h3>
-              <a href="/admin/rentals" className="font-poppins text-xs text-gold hover:underline">View all</a>
+              <Link to="/admin/rentals" className="font-poppins text-xs text-gold hover:underline">View all</Link>
             </div>
             <div className="divide-y divide-gold/5">
               {[
@@ -219,8 +220,8 @@ export default function AdminDashboard() {
                 { customer: "Pooja Bhosale", product: "Kolhapuri Saaj", date: "Jul 26-29", status: "Pending" },
                 { customer: "Sunita More", product: "Temple Gold Nath", date: "Jul 28-30", status: "Confirmed" },
                 { customer: "Meena Pawar", product: "Haldi Bangles Set", date: "Aug 01-03", status: "Confirmed" },
-              ].map((rental, i) => (
-                <div key={i} className="flex items-center gap-4 px-5 py-3.5">
+              ].map((rental) => (
+                <div key={rental.customer} className="flex items-center gap-4 px-5 py-3.5">
                   <div className="w-9 h-9 rounded-xl bg-rose-gold/10 flex items-center justify-center flex-shrink-0">
                     <FiCalendar className="w-4 h-4 text-rose-gold" />
                   </div>
@@ -247,14 +248,14 @@ export default function AdminDashboard() {
               { label: "New Rental", href: "/admin/rentals", icon: FiCalendar, color: "bg-rose-50 text-rose-gold hover:bg-rose-100" },
               { label: "View Reports", href: "/admin/reports", icon: FiTrendingUp, color: "bg-green-50 text-green-500 hover:bg-green-100" },
             ].map(({ label, href, icon: Icon, color }) => (
-              <a
+              <Link
                 key={label}
-                href={href}
+                to={href}
                 className={`flex flex-col items-center gap-2 p-4 rounded-2xl ${color} transition-all duration-200 hover:-translate-y-1 text-center`}
               >
                 <Icon className="w-6 h-6" />
                 <span className="font-poppins text-sm font-semibold">{label}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
