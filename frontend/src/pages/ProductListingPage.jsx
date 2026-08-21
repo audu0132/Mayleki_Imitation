@@ -50,7 +50,14 @@ export default function ProductListingPage() {
   const filteredProducts = useMemo(() => {
     let items = [...PRODUCTS];
 
-    if (slug) items = items.filter((p) => p.category === slug);
+    if (slug) {
+      items = items.filter(
+        (p) =>
+          p.category === slug ||
+          p.tags.includes(slug) ||
+          (slug === "maharashtrian" && (p.category === "maharashtrian" || p.category === "kolhapuri-saaj" || p.category === "nath" || p.tags.includes("maharashtrian")))
+      );
+    }
     if (query) items = items.filter((p) =>
       p.title.toLowerCase().includes(query.toLowerCase()) ||
       p.description.toLowerCase().includes(query.toLowerCase()) ||
@@ -61,7 +68,7 @@ export default function ProductListingPage() {
     if (filters.priceMin) items = items.filter((p) => p.sellingPrice >= Number(filters.priceMin));
     if (filters.priceMax) items = items.filter((p) => p.sellingPrice <= Number(filters.priceMax));
     if (filters.availability === "rental") items = items.filter((p) => p.isRentalAvailable);
-    if (filters.availability === "instock") items = items.filter((p) => p.availableQty > 0);
+    if (filters.availability === "inStock") items = items.filter((p) => p.availableQty > 0);
 
     switch (sortBy) {
       case "price-asc": items.sort((a, b) => a.sellingPrice - b.sellingPrice); break;
@@ -155,7 +162,7 @@ export default function ProductListingPage() {
                 Filters
                 {hasActiveFilters && (
                   <span className="w-5 h-5 rounded-full bg-gold text-dark-brown text-xs font-bold flex items-center justify-center">
-                    {filters.occasion.length + filters.color.length + (filters.priceMin ? 1 : 0) + (filters.availability !== "all" ? 1 : 0)}
+                    {filters.occasion.length + filters.color.length + (filters.priceMin || filters.priceMax ? 1 : 0) + (filters.availability !== "all" ? 1 : 0)}
                   </span>
                 )}
               </button>
@@ -357,6 +364,9 @@ export default function ProductListingPage() {
                               alt={product.title}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                               loading="lazy"
+                              onError={(e) => {
+                                e.target.src = "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600";
+                              }}
                             />
                           </div>
                           <div className="flex-1 min-w-0 p-4 flex flex-col justify-between">
