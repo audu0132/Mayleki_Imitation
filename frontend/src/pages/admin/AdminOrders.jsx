@@ -200,15 +200,37 @@ export default function AdminOrders() {
                     </div>
                   </div>
 
-                  <div className="border border-gold/10 rounded-xl p-3 text-xs space-y-2">
-                    <div className="flex justify-between font-bold border-b border-gold/10 pb-2">
-                      <span>Item Purchased / Rented</span>
-                      <span>Amount</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">{selectedOrder.product}</span>
-                      <span className="font-semibold">₹{selectedOrder.amount.toLocaleString("en-IN")}</span>
-                    </div>
+                  {/* Product Items Table in Modal */}
+                  <div className="border border-gold/20 rounded-2xl overflow-hidden bg-gray-50/50 dark:bg-white/5">
+                    <table className="w-full text-xs">
+                      <thead className="bg-gold/10 text-dark-brown dark:text-cream border-b border-gold/20 font-semibold uppercase text-[10px]">
+                        <tr>
+                          <th className="py-2.5 px-3 text-left">Product Item</th>
+                          <th className="py-2.5 px-3 text-center">Type</th>
+                          <th className="py-2.5 px-3 text-center">Qty</th>
+                          <th className="py-2.5 px-3 text-right">Price</th>
+                          <th className="py-2.5 px-3 text-right">Subtotal</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gold/10 text-dark-brown dark:text-cream">
+                        <tr>
+                          <td className="py-3 px-3">
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm">💎</span>
+                              <span className="font-semibold line-clamp-1">{selectedOrder.product}</span>
+                            </div>
+                          </td>
+                          <td className="py-3 px-3 text-center">
+                            <span className="px-2 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-semibold">
+                              {selectedOrder.type}
+                            </span>
+                          </td>
+                          <td className="py-3 px-3 text-center font-medium">1</td>
+                          <td className="py-3 px-3 text-right font-medium">₹{selectedOrder.amount.toLocaleString("en-IN")}</td>
+                          <td className="py-3 px-3 text-right font-bold text-gold">₹{selectedOrder.amount.toLocaleString("en-IN")}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
 
                   <div className="border-t border-gold/10 pt-3 space-y-2 text-xs">
@@ -219,7 +241,7 @@ export default function AdminOrders() {
                   </div>
 
                   {/* Print Signature Footer */}
-                  <div className="pt-6 border-t border-dashed border-gray-300 flex justify-between items-end">
+                  <div className="pt-4 border-t border-dashed border-gray-300 flex justify-between items-end">
                     <div className="text-left text-[10px] text-gray-400">
                       <p>Thank you for shopping with Mayleki Boutique!</p>
                     </div>
@@ -295,19 +317,23 @@ export default function AdminOrders() {
               </div>
             </div>
 
-            <table className="w-full border-collapse mb-6 text-sm">
+            <table className="w-full border-collapse mb-6 text-xs">
               <thead>
-                <tr className="border-b-2 border-gray-300 text-left font-bold text-xs uppercase text-gray-600 bg-gray-100">
-                  <th className="py-3 px-4">Item Description</th>
-                  <th className="py-3 px-4 text-center">Category / Type</th>
-                  <th className="py-3 px-4 text-right">Amount (₹)</th>
+                <tr className="border-b-2 border-gray-300 text-left font-bold uppercase text-gray-700 bg-gray-100">
+                  <th className="py-3 px-3">Product Description</th>
+                  <th className="py-3 px-3 text-center">Order Type</th>
+                  <th className="py-3 px-3 text-center">Qty</th>
+                  <th className="py-3 px-3 text-right">Unit Price</th>
+                  <th className="py-3 px-3 text-right">Total (₹)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="py-4 px-4 font-semibold text-gray-900">{selectedOrder.product}</td>
-                  <td className="py-4 px-4 text-center text-gray-600">{selectedOrder.type}</td>
-                  <td className="py-4 px-4 text-right font-bold text-gray-900">₹{selectedOrder.amount.toLocaleString("en-IN")}</td>
+                  <td className="py-3.5 px-3 font-semibold text-gray-900">{selectedOrder.product}</td>
+                  <td className="py-3.5 px-3 text-center text-gray-600 font-medium">{selectedOrder.type}</td>
+                  <td className="py-3.5 px-3 text-center text-gray-800">1</td>
+                  <td className="py-3.5 px-3 text-right text-gray-800">₹{selectedOrder.amount.toLocaleString("en-IN")}</td>
+                  <td className="py-3.5 px-3 text-right font-bold text-gray-900">₹{selectedOrder.amount.toLocaleString("en-IN")}</td>
                 </tr>
               </tbody>
             </table>
