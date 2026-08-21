@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCart } from "../context/AppContext";
 import { useAuth } from "../context/AppContext";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../config/api";
 
 export default function CheckoutPage() {
   const { cart, getCartTotal, clearCart } = useCart();
@@ -35,7 +36,7 @@ export default function CheckoutPage() {
       // 1. Try Create Order on Backend ONLY if authenticated token exists
       if (token) {
         try {
-          const orderRes = await fetch("http://localhost:5000/api/payment/create-order", {
+          const orderRes = await fetch(`${API_BASE_URL}/api/payment/create-order`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -85,7 +86,7 @@ export default function CheckoutPage() {
           try {
             const token = localStorage.getItem("token");
             if (token && orderId) {
-              await fetch("http://localhost:5000/api/payment/verify", {
+              await fetch(`${API_BASE_URL}/api/payment/verify`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
                 body: JSON.stringify({
