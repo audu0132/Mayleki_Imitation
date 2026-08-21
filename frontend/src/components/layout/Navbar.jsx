@@ -132,7 +132,7 @@ export default function Navbar() {
             {/* Wishlist */}
             <Link
               to="/wishlist"
-              className="relative text-dark hover:text-secondary transition-colors p-1 hidden sm:block text-decoration-none"
+              className="relative text-dark hover:text-secondary transition-colors p-1 text-decoration-none"
               aria-label="Wishlist"
             >
               <FiHeart className="w-4 h-4" />
@@ -158,7 +158,7 @@ export default function Navbar() {
             </Link>
 
             {/* Account */}
-            <div className="relative hidden sm:block">
+            <div className="relative">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
                 className="text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors p-1"
@@ -245,10 +245,10 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[100] bg-[#1C1917] text-[#FAF7F2] flex flex-col justify-between p-8 overflow-y-auto"
+            className="fixed inset-0 z-[100] bg-[#1C1917] text-[#FAF7F2] flex flex-col justify-between p-6 sm:p-8 overflow-y-auto"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-[#C5A059]/30 pb-6">
+            <div className="flex items-center justify-between border-b border-[#C5A059]/30 pb-4 mb-4">
               <div className="flex items-center gap-3">
                 <span className="font-cormorant text-2xl font-semibold tracking-widest uppercase text-[#FAF7F2]">Mayleki</span>
                 <span className="text-[9px] font-sans tracking-[0.3em] uppercase text-[#C5A059]">Boutique</span>
@@ -261,8 +261,58 @@ export default function Navbar() {
               </button>
             </div>
 
+            {/* User Account & Book Rental CTA Card in Mobile Drawer */}
+            <div className="bg-[#24201E] border border-[#C5A059]/30 rounded-2xl p-4 my-2 space-y-3 shadow-lg">
+              {user ? (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#C5A059]/20 border border-[#C5A059] flex items-center justify-center text-[#C5A059]">
+                      <FiUser className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="font-sans font-semibold text-sm text-[#FAF7F2]">{user.name}</p>
+                      <p className="font-sans text-[10px] text-gray-400">{user.email}</p>
+                    </div>
+                  </div>
+                  <Link
+                    to="/profile"
+                    onClick={() => setMobileOpen(false)}
+                    className="px-3 py-1.5 rounded-lg border border-[#C5A059]/40 text-xs font-sans text-[#C5A059] hover:bg-[#C5A059] hover:text-[#1C1917] transition-all"
+                  >
+                    Profile
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <Link
+                    to="/login"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex-1 py-2.5 rounded-xl bg-[#C5A059] text-[#1C1917] font-sans font-bold text-xs uppercase text-center tracking-wider"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex-1 py-2.5 rounded-xl border border-[#C5A059]/50 text-[#C5A059] font-sans font-semibold text-xs uppercase text-center tracking-wider"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
+
+              <Link
+                to="/rental-booking"
+                onClick={() => setMobileOpen(false)}
+                className="w-full btn-gold-metallic py-2.5 rounded-xl text-[#0E0C0B] font-sans font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2"
+              >
+                <FiPackage className="w-4 h-4 text-[#0E0C0B]" />
+                Book Rental Jewellery
+              </Link>
+            </div>
+
             {/* Animated Links */}
-            <div className="my-auto py-8 space-y-6">
+            <div className="my-auto py-4 space-y-4">
               {[
                 { label: "Home", href: "/" },
                 { label: "The Collection", href: "/products" },
@@ -276,15 +326,15 @@ export default function Navbar() {
                   key={link.label}
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
                 >
                   <Link
                     to={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="font-cormorant text-3xl sm:text-4xl text-[#FAF7F2] hover:text-[#C5A059] transition-colors flex items-center justify-between group"
+                    className="font-cormorant text-2xl sm:text-3xl text-[#FAF7F2] hover:text-[#C5A059] transition-colors flex items-center justify-between group"
                   >
                     <span>{link.label}</span>
-                    <FiArrowRight className="w-6 h-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 text-[#C5A059]" />
+                    <FiArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 text-[#C5A059]" />
                   </Link>
                 </motion.div>
               ))}
