@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import { useCart, useWishlist } from "../context/AppContext";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../config/api";
 
 const OCCASIONS = [
   { id: "Wedding", label: "Wedding", icon: "👑" },
@@ -71,7 +72,7 @@ export default function AiStylistPage() {
         prompt: customPrompt || `I need jewellery recommendations for a ${outfitColor} ${outfitType} for a ${occasion}. My budget is ₹${budget}.`
       };
 
-      const res = await fetch("http://localhost:5000/api/ai/stylist", {
+      const res = await fetch(`${API_BASE_URL}/api/ai/stylist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
