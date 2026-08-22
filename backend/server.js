@@ -22,25 +22,41 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const IS_PRODUCTION = process.env.NODE_ENV === "production" || process.env.RENDER === "true";
 
-// CORS configuration supporting single or multiple origins
-const rawOrigins = process.env.FRONTEND_URL || process.env.CLIENT_URL || "http://localhost:5173,http://localhost:3000,http://localhost:5174";
-const allowedOrigins = rawOrigins.split(",").map(url => url.trim().replace(/\/+$/, "")).filter(Boolean);
+// CORS configuration supporting one or more deployed frontend origins.
+const rawOrigins =
+  process.env.FRONTEND_URL ||
+  process.env.CLIENT_URL ||
+  "http://localhost:5173,http://localhost:3000,http://localhost:5174";
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    const normalizedOrigin = origin.replace(/\/+$/, "");
-    if (allowedOrigins.includes(normalizedOrigin) || allowedOrigins.includes("*")) {
-      return callback(null, true);
-    }
-    if (process.env.NODE_ENV !== "production" && normalizedOrigin.includes("localhost")) {
-      return callback(null, true);
-    }
-    return callback(null, true);
-  },
-  credentials: true,
-}));
+const allowedOrigins = rawOrigins
+  .split(",")
+  .map((url) => url.trim().replace(/\/+$/, ""))
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Non-browser/server-to-server requests have no Origin header.
+      if (!origin) return callback(null, true);
+
+      const normalizedOrigin = origin.replace(/\/+$/, "");
+
+      if (allowedOrigins.includes("*") || allowedOrigins.includes(normalizedOrigin)) {
+        return callback(null, true);
+      }
+
+      if (!IS_PRODUCTION && normalizedOrigin.includes("localhost")) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`CORS blocked origin: ${origin}`));
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
@@ -75,7 +91,7 @@ app.get("/api/health", (req, res) => {
     message: "Mayleki API is running 🛍️",
     timestamp: new Date().toISOString(),
     version: "1.0.0",
-    environment: process.env.NODE_ENV || "development",
+    environment: process.env.NODE_ENV || (IS_PRODUCTION ? "production" : "development"),
     database,
   });
 });
@@ -100,11 +116,9 @@ app.use((err, req, res, next) => {
 const MONGODB_URI =
   process.env.MONGODB_URI ||
   process.env.MONGO_URI ||
-  (process.env.NODE_ENV !== "production"
-    ? "mongodb://localhost:27017/mayleki"
-    : "");
+  (!IS_PRODUCTION ? "mongodb://localhost:27017/mayleki" : "");
 
-if (process.env.NODE_ENV === "production" && !MONGODB_URI) {
+if (!MONGODB_URI) {
   console.error("❌ MONGODB_URI is not configured");
   process.exit(1);
 }
@@ -113,7 +127,7 @@ mongoose
   .connect(MONGODB_URI)
   .then(() => {
     console.log("✅ MongoDB connected successfully");
-    app.listen(PORT, () => {
+    app.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 Mayleki Server running on port ${PORT}`);
     });
   })
