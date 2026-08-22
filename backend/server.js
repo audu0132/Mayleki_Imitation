@@ -38,7 +38,6 @@ const allowedOrigins = rawOrigins
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Non-browser/server-to-server requests have no Origin header.
       if (!origin) return callback(null, true);
 
       const normalizedOrigin = origin.replace(/\/+$/, "");
@@ -86,8 +85,8 @@ const dbStates = {
 app.get("/api/health", (req, res) => {
   const database = dbStates[mongoose.connection.readyState] || "unknown";
 
-  res.json({
-    success: true,
+  res.status(database === "connected" ? 200 : 503).json({
+    success: database === "connected",
     message: "Mayleki API is running 🛍️",
     timestamp: new Date().toISOString(),
     version: "1.0.0",
@@ -113,18 +112,31 @@ app.use((err, req, res, next) => {
 });
 
 // Database connection & server start
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  process.env.MONGO_URI ||
-  (!IS_PRODUCTION ? "mongodb://localhost:27017/mayleki" : "");
+const configuredMongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || "";
+const MONGODB_URI = configuredMongoUri || (!IS_PRODUCTION ? "mongodb://localhost:27017/mayleki" : "");
 
 if (!MONGODB_URI) {
-  console.error("❌ MONGODB_URI is not configured");
+  console.error("❌ MONGODB_URI is not configured. Add MONGODB_URI to the Render Environment Variables.");
   process.exit(1);
 }
 
+try {
+  const parsedMongoUrl = new URL(MONGODB_URI);
+  console.log(`🔎 MongoDB URI configured: ${parsedMongoUrl.protocol}//${parsedMongoUrl.hostname}${parsedMongoUrl.port ? `:${parsedMongoUrl.port}` : ""}`);
+} catch {
+  console.error("❌ MONGODB_URI is present but is not a valid MongoDB connection string.");
+  process.exit(1);
+}
+
+console.log(`🌍 Environment: ${IS_PRODUCTION ? "production" : "development"}`);
+console.log(`🔌 Render: ${process.env.RENDER === "true" ? "yes" : "no"}`);
+console.log(`🌐 PORT: ${PORT}`);
+
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 10000,
+    connectTimeoutMS: 10000,
+  })
   .then(() => {
     console.log("✅ MongoDB connected successfully");
     app.listen(PORT, "0.0.0.0", () => {
@@ -132,7 +144,10 @@ mongoose
     });
   })
   .catch((error) => {
-    console.error("❌ MongoDB connection failed:", error.message);
+    console.error("❌ MongoDB connection failed");
+    console.error(`   Message: ${error.message}`);
+    if (error.name) console.error(`   Name: ${error.name}`);
+    if (error.code) console.error(`   Code: ${error.code}`);
     process.exit(1);
   });
 
