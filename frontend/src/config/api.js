@@ -1,5 +1,10 @@
 // Centralized API configuration for Mayleki Frontend
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const configuredApiUrl = import.meta.env.VITE_API_URL;
+const API_URL =
+  configuredApiUrl ||
+  (import.meta.env.PROD
+    ? "https://mayleki-imitation.onrender.com"
+    : "http://localhost:5000");
 
 // Ensure no trailing slash
 export const API_BASE_URL = API_URL.replace(/\/+$/, "");
@@ -8,8 +13,10 @@ export const API_BASE_URL = API_URL.replace(/\/+$/, "");
  * Helper utility for API requests with automatic JSON parsing and error handling
  */
 export async function fetchAPI(endpoint, options = {}) {
-  const url = endpoint.startsWith("http") ? endpoint : `${API_BASE_URL}${endpoint.startsWith("/") ? "" : "/"}${endpoint}`;
-  
+  const url = endpoint.startsWith("http")
+    ? endpoint
+    : `${API_BASE_URL}${endpoint.startsWith("/") ? "" : "/"}${endpoint}`;
+
   const defaultHeaders = {
     "Content-Type": "application/json",
   };
