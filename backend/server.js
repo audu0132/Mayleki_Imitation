@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
-// Route imports
 import authRoutes from "./routes/auth.js";
 import productRoutes from "./routes/products.js";
 import categoryRoutes from "./routes/categories.js";
@@ -24,7 +23,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const IS_PRODUCTION = process.env.NODE_ENV === "production" || process.env.RENDER === "true";
 
-// CORS configuration supporting one or more deployed frontend origins.
 const rawOrigins =
   process.env.FRONTEND_URL ||
   process.env.CLIENT_URL ||
@@ -39,17 +37,13 @@ app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-
       const normalizedOrigin = origin.replace(/\/+$/, "");
-
       if (allowedOrigins.includes("*") || allowedOrigins.includes(normalizedOrigin)) {
         return callback(null, true);
       }
-
       if (!IS_PRODUCTION && normalizedOrigin.includes("localhost")) {
         return callback(null, true);
       }
-
       return callback(new Error(`CORS blocked origin: ${origin}`));
     },
     credentials: true,
@@ -60,7 +54,6 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
 
-// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
@@ -74,7 +67,6 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/ai", aiRoutes);
 
-// Health check
 const dbStates = {
   0: "disconnected",
   1: "connected",
@@ -84,7 +76,6 @@ const dbStates = {
 
 app.get("/api/health", (req, res) => {
   const database = dbStates[mongoose.connection.readyState] || "unknown";
-
   res.status(database === "connected" ? 200 : 503).json({
     success: database === "connected",
     message: "Mayleki API is running 🛍️",
@@ -95,12 +86,10 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// 404 handler
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
 
-// Global error handler
 app.use((err, req, res, next) => {
   console.error("Error:", err.message);
   const statusCode = err.statusCode || 500;
@@ -111,26 +100,37 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Database connection & server start
 const configuredMongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || "";
 const MONGODB_URI = configuredMongoUri || (!IS_PRODUCTION ? "mongodb://localhost:27017/mayleki" : "");
 
 if (!MONGODB_URI) {
-  console.error("❌ MONGODB_URI is not configured. Add MONGODB_URI to the Render Environment Variables.");
+  console.error("❌ MONGODB_URI is not configured. Add MONGODB_URI to Render Environment Variables.");
   process.exit(1);
 }
 
+let parsedMongoUrl;
 try {
-  const parsedMongoUrl = new URL(MONGODB_URI);
-  console.log(`🔎 MongoDB URI configured: ${parsedMongoUrl.protocol}//${parsedMongoUrl.hostname}${parsedMongoUrl.port ? `:${parsedMongoUrl.port}` : ""}`);
+  parsedMongoUrl = new URL(MONGODB_URI);
 } catch {
   console.error("❌ MONGODB_URI is present but is not a valid MongoDB connection string.");
   process.exit(1);
 }
 
+if (!['mongodb:', 'mongodb+srv:'].includes(parsedMongoUrl.protocol)) {
+  console.error("❌ MONGODB_URI must start with mongodb:// or mongodb+srv://");
+  process.exit(1);
+}
+
+const mongoHost = parsedMongoUrl.hostname;
+console.log(`🔎 MongoDB target: ${parsedMongoUrl.protocol}//${mongoHost}${parsedMongoUrl.port ? `:${parsedMongoUrl.port}` : ""}`);
 console.log(`🌍 Environment: ${IS_PRODUCTION ? "production" : "development"}`);
 console.log(`🔌 Render: ${process.env.RENDER === "true" ? "yes" : "no"}`);
 console.log(`🌐 PORT: ${PORT}`);
+
+if (IS_PRODUCTION && ["localhost", "127.0.0.1", "::1"].includes(mongoHost)) {
+  console.error("❌ Production is using a local MongoDB host. Set MONGODB_URI to your MongoDB Atlas connection string in Render.");
+  process.exit(1);
+}
 
 mongoose
   .connect(MONGODB_URI, {
@@ -146,8 +146,9 @@ mongoose
   .catch((error) => {
     console.error("❌ MongoDB connection failed");
     console.error(`   Message: ${error.message}`);
-    if (error.name) console.error(`   Name: ${error.name}`);
+    console.error(`   Name: ${error.name || "MongoError"}`);
     if (error.code) console.error(`   Code: ${error.code}`);
+    console.error("   Check MongoDB Atlas Network Access, database username/password, and the MONGODB_URI stored in Render.");
     process.exit(1);
   });
 
