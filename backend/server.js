@@ -60,13 +60,23 @@ app.use("/api/payment", paymentRoutes);
 app.use("/api/ai", aiRoutes);
 
 // Health check
+const dbStates = {
+  0: "disconnected",
+  1: "connected",
+  2: "connecting",
+  3: "disconnecting",
+};
+
 app.get("/api/health", (req, res) => {
+  const database = dbStates[mongoose.connection.readyState] || "unknown";
+
   res.json({
     success: true,
     message: "Mayleki API is running 🛍️",
     timestamp: new Date().toISOString(),
     version: "1.0.0",
     environment: process.env.NODE_ENV || "development",
+    database,
   });
 });
 
@@ -87,7 +97,17 @@ app.use((err, req, res, next) => {
 });
 
 // Database connection & server start
-const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI || "mongodb://localhost:27017/mayleki";
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  process.env.MONGO_URI ||
+  (process.env.NODE_ENV !== "production"
+    ? "mongodb://localhost:27017/mayleki"
+    : "");
+
+if (process.env.NODE_ENV === "production" && !MONGODB_URI) {
+  console.error("❌ MONGODB_URI is not configured");
+  process.exit(1);
+}
 
 mongoose
   .connect(MONGODB_URI)
@@ -97,14 +117,9 @@ mongoose
       console.log(`🚀 Mayleki Server running on port ${PORT}`);
     });
   })
-  .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err.message);
-    if (process.env.NODE_ENV === "production") {
-      console.error("⚠️ Server starting in fallback mode (Database connection failed)...");
-    }
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT} (fallback mode)`);
-    });
+  .catch((error) => {
+    console.error("❌ MongoDB connection failed:", error.message);
+    process.exit(1);
   });
 
 export default app;
