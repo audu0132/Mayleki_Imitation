@@ -38,10 +38,11 @@ app.use(
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
       const normalizedOrigin = origin.replace(/\/+$/, "");
-      if (allowedOrigins.includes("*") || allowedOrigins.includes(normalizedOrigin)) {
-        return callback(null, true);
-      }
-      if (!IS_PRODUCTION && normalizedOrigin.includes("localhost")) {
+      const isVercelDomain = normalizedOrigin.endsWith(".vercel.app") || normalizedOrigin.includes("vercel.app");
+      const isAllowedOrigin = allowedOrigins.includes("*") || allowedOrigins.includes(normalizedOrigin);
+      const isLocalhost = normalizedOrigin.includes("localhost") || normalizedOrigin.includes("127.0.0.1");
+
+      if (isAllowedOrigin || isVercelDomain || isLocalhost) {
         return callback(null, true);
       }
       return callback(new Error(`CORS blocked origin: ${origin}`));
