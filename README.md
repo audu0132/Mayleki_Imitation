@@ -4,7 +4,7 @@ A premium luxury jewellery rental and shopping platform built with the MERN Stac
 
 ---
 
-## ✨ Features
+## ✨
 
 ### 👩 Customer Features
 
