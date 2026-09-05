@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { PRODUCTS } from "../../data/mockData";
 import ProductCard from "../products/ProductCard";
+import ScrollReveal from "../common/ScrollReveal";
 
 export default function FeaturedProducts() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -10,85 +11,84 @@ export default function FeaturedProducts() {
 
   const filteredProducts = PRODUCTS.filter((p) => {
     if (activeFilter === "All") return true;
-    if (activeFilter === "Necklaces") return p.category.includes("necklace") || p.category.includes("saaj");
-    if (activeFilter === "Earrings") return p.category.includes("earrings") || p.category.includes("jhumkas");
+    if (activeFilter === "Necklaces")
+      return p.category.includes("necklace") || p.category.includes("saaj");
+    if (activeFilter === "Earrings")
+      return p.category.includes("earrings") || p.category.includes("jhumkas");
     if (activeFilter === "Bridal") return p.category.includes("bridal");
-    if (activeFilter === "Traditional") return p.category.includes("maharashtrian") || p.category.includes("temple");
+    if (activeFilter === "Traditional")
+      return p.category.includes("maharashtrian") || p.category.includes("temple");
     return true;
   }).slice(0, 7);
 
   return (
-    <section className="py-24 lg:py-36 bg-[#FAF7F2] dark:bg-[#141110] border-b border-[#C5A059]/15">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        
-        {/* Title & Refined Filter Bar */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="font-sans text-[10px] font-semibold tracking-[0.35em] uppercase text-[#C5A059] block mb-2">
-            𑁍 CURATED PIECES
-          </span>
-          <h2 className="font-cormorant text-4xl sm:text-6xl font-normal text-[#1C1917] dark:text-[#FAF7F2] mb-8">
-            The Collection
-          </h2>
+    <section className="py-section bg-ivory">
+      <div className="container-luxury">
+        {/* Header */}
+        <ScrollReveal>
+          <div className="flex flex-col items-center text-center mb-14">
+            <span className="section-eyebrow">Curated Pieces</span>
+            <h2 className="section-heading section-heading-lg mb-10">
+              The Collection
+            </h2>
 
-          <div className="flex items-center justify-center gap-6 sm:gap-10 border-b border-[#C5A059]/20 pb-3 flex-wrap">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`font-sans text-xs font-semibold uppercase tracking-[0.2em] transition-colors pb-1 relative ${
-                  activeFilter === filter
-                    ? "text-[#C5A059] border-b-2 border-[#C5A059]"
-                    : "text-gray-500 dark:text-gray-400 hover:text-[#C5A059]"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
+            {/* Filter Tabs */}
+            <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap">
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`font-body text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 pb-1 relative ${
+                    activeFilter === filter
+                      ? "text-charcoal after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-champagne"
+                      : "text-text-secondary hover:text-charcoal"
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
-        {/* Asymmetric Rhythm Grid (Large | Small | Medium) */}
-        <AnimatePresence mode="popLayout">
+        {/* Product Grid — Asymmetric */}
+        <AnimatePresence mode="wait">
           <motion.div
             key={activeFilter}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start"
+            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="grid grid-cols-2 md:grid-cols-12 gap-4 sm:gap-6 items-start"
           >
-            {/* Column 1: Large Featured Card (Span 7) */}
+            {/* Large Featured Card */}
             {filteredProducts[0] && (
-              <div className="md:col-span-7">
+              <div className="col-span-2 md:col-span-7">
                 <ProductCard product={filteredProducts[0]} featured={true} />
               </div>
             )}
 
-            {/* Column 2: Two Medium Stacked Cards (Span 5) */}
-            <div className="md:col-span-5 space-y-8">
+            {/* Two Stacked Cards */}
+            <div className="col-span-2 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
               {filteredProducts[1] && <ProductCard product={filteredProducts[1]} />}
               {filteredProducts[2] && <ProductCard product={filteredProducts[2]} />}
             </div>
 
-            {/* Row 2: Three Balanced Cards */}
+            {/* Row 2 — Three Cards */}
             {filteredProducts.slice(3, 6).map((product) => (
-              <div key={product.id} className="md:col-span-4">
+              <div key={product.id} className="col-span-1 md:col-span-4">
                 <ProductCard product={product} />
               </div>
             ))}
           </motion.div>
         </AnimatePresence>
 
-        {/* Bottom Editorial Link */}
-        <div className="text-center mt-20">
-          <Link
-            to="/products"
-            className="font-sans text-xs font-semibold tracking-[0.25em] uppercase text-[#1C1917] dark:text-[#FAF7F2] hover:text-[#C5A059] transition-colors border-b border-[#C5A059] pb-1"
-          >
-            EXPLORE COMPLETE CATALOGUE →
+        {/* Bottom Link */}
+        <div className="text-center mt-16">
+          <Link to="/products" className="btn-ghost-luxury">
+            Explore Complete Collection →
           </Link>
         </div>
-
       </div>
     </section>
   );
