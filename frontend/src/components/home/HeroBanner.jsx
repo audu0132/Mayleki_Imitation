@@ -20,14 +20,33 @@ export default function HeroBanner() {
     return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
 
+  const [animateStart, setAnimateStart] = useState(() => {
+    return typeof window !== "undefined" && !!window.__maylekiLoaded;
+  });
+
+  useEffect(() => {
+    if (animateStart) return;
+
+    const handleLoaded = () => setAnimateStart(true);
+    window.addEventListener("mayleki:loaded", handleLoaded);
+
+    // Fallback safety timeout if loader isn't mounted or completes earlier
+    const timer = setTimeout(() => setAnimateStart(true), 1400);
+
+    return () => {
+      window.removeEventListener("mayleki:loaded", handleLoaded);
+      clearTimeout(timer);
+    };
+  }, [animateStart]);
+
   const textReveal = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 35 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.9,
-        delay: 0.5 + i * 0.15,
+        delay: 0.2 + i * 0.16,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     }),
@@ -38,7 +57,7 @@ export default function HeroBanner() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.75, delay: 0.85, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   };
 
@@ -47,8 +66,8 @@ export default function HeroBanner() {
       {/* Background Image with parallax */}
       <motion.div
         className="absolute inset-0"
-        initial={{ scale: 1.08 }}
-        animate={{ scale: 1 }}
+        initial={{ scale: 1.07 }}
+        animate={animateStart ? { scale: 1 } : { scale: 1.07 }}
         transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <div
@@ -80,8 +99,8 @@ export default function HeroBanner() {
             {/* Eyebrow */}
             <motion.span
               initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              animate={animateStart ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
               className="inline-block font-body text-[10px] font-semibold tracking-[0.4em] uppercase text-champagne mb-6"
             >
               Mayleki Jewellery
@@ -92,7 +111,7 @@ export default function HeroBanner() {
               <motion.span
                 custom={0}
                 initial="hidden"
-                animate="visible"
+                animate={animateStart ? "visible" : "hidden"}
                 variants={textReveal}
                 className="block font-display text-display-xl text-ivory leading-none"
               >
@@ -101,7 +120,7 @@ export default function HeroBanner() {
               <motion.span
                 custom={1}
                 initial="hidden"
-                animate="visible"
+                animate={animateStart ? "visible" : "hidden"}
                 variants={textReveal}
                 className="block font-display text-display-xl text-ivory italic leading-none"
               >
@@ -113,7 +132,7 @@ export default function HeroBanner() {
             <motion.p
               custom={2}
               initial="hidden"
-              animate="visible"
+              animate={animateStart ? "visible" : "hidden"}
               variants={textReveal}
               className="font-body text-sm sm:text-base text-ivory/70 font-light max-w-lg mb-10 leading-relaxed"
             >
@@ -124,7 +143,7 @@ export default function HeroBanner() {
             {/* CTAs */}
             <motion.div
               initial="hidden"
-              animate="visible"
+              animate={animateStart ? "visible" : "hidden"}
               variants={ctaReveal}
               className="flex flex-wrap items-center gap-4"
             >
@@ -143,8 +162,8 @@ export default function HeroBanner() {
       {/* Bottom Right — Floating Detail */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
+        animate={animateStart ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8, delay: 1.1 }}
         className="absolute bottom-8 right-8 hidden lg:block z-10"
       >
         <span className="font-body text-[9px] tracking-[0.3em] uppercase text-ivory/40">

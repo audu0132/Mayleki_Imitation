@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "react-hot-toast";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 
 import {
   CartProvider,
@@ -18,6 +18,7 @@ import WhatsAppButton from "./components/common/WhatsAppButton";
 import PageTransition from "./components/common/PageTransition";
 import AIJewelleryStylist from "./components/common/AIJewelleryStylist";
 import LoadingSpinner from "./components/common/LoadingSpinner";
+import LuxuryLoader from "./components/common/LuxuryLoader";
 
 // Lazy-loaded pages for performance
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -90,8 +91,22 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const [showLoader, setShowLoader] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !window.__maylekiLoaded;
+  });
+
+  const handleLoadingComplete = () => {
+    setShowLoader(false);
+    if (typeof window !== "undefined") {
+      window.__maylekiLoaded = true;
+      window.dispatchEvent(new CustomEvent("mayleki:loaded"));
+    }
+  };
+
   return (
     <HelmetProvider>
+      {showLoader && <LuxuryLoader onComplete={handleLoadingComplete} />}
       <QueryClientProvider client={queryClient}>
         <DarkModeProvider>
           <AuthProvider>

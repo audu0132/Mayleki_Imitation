@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -28,15 +28,27 @@ export default function Navbar({ onSearchOpen, onCartOpen }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [cartBounced, setCartBounced] = useState(false);
   const location = useLocation();
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
   const { user, logout, isAdmin } = useAuth();
+  const prevCartCount = useRef(cartCount);
 
   const isHome = location.pathname === "/";
 
+  // Trigger luxury cart bounce micro-animation on count change
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    if (cartCount > prevCartCount.current) {
+      setCartBounced(true);
+      const timer = setTimeout(() => setCartBounced(false), 650);
+      return () => clearTimeout(timer);
+    }
+    prevCartCount.current = cartCount;
+  }, [cartCount]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -60,20 +72,35 @@ export default function Navbar({ onSearchOpen, onCartOpen }) {
 
   return (
     <>
-      <header className={navClasses}>
+      <motion.header
+        initial={{ y: -25, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className={navClasses}
+      >
         <div className="container-luxury">
           <div className="flex items-center justify-between">
 
-            {/* LEFT — Desktop Navigation */}
+            {/* LEFT — Desktop Navigation with Staggered Fade */}
             <nav className="hidden lg:flex items-center gap-8 flex-1">
-              {LEFT_LINKS.map((link) => (
-                <Link
+              {LEFT_LINKS.map((link, i) => (
+                <motion.div
                   key={link.label}
-                  to={link.href}
-                  className={`nav-link-luxury ${isActive(link.href) ? "active" : ""}`}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.35 + i * 0.08,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    to={link.href}
+                    className={`nav-link-luxury ${isActive(link.href) ? "active" : ""}`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
             </nav>
 
@@ -82,39 +109,60 @@ export default function Navbar({ onSearchOpen, onCartOpen }) {
               to="/"
               className="flex-shrink-0 text-center group"
             >
-              <span className="brand-wordmark font-display text-2xl lg:text-[1.75rem] font-medium tracking-[0.25em] uppercase transition-colors duration-300">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.96, letterSpacing: "0.18em" }}
+                animate={{ opacity: 1, scale: 1, letterSpacing: "0.25em" }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                className="brand-wordmark font-display text-2xl lg:text-[1.75rem] font-medium tracking-[0.25em] uppercase transition-colors duration-300"
+              >
                 Mayleki
-              </span>
+              </motion.span>
             </Link>
 
-            {/* RIGHT — Icons */}
+            {/* RIGHT — Desktop Icons */}
             <div className="hidden lg:flex items-center gap-6 flex-1 justify-end">
               {/* Search */}
-              <button
+              <motion.button
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.45 }}
+                whileHover={{ y: -1.5, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={onSearchOpen}
                 className="nav-icon text-inherit hover:text-champagne transition-colors"
                 aria-label="Search"
               >
                 <FiSearch className="w-[18px] h-[18px]" />
-              </button>
+              </motion.button>
 
               {/* Account */}
-              <div className="relative">
-                <button
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.52 }}
+                className="relative"
+              >
+                <motion.button
+                  whileHover={{ y: -1.5, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="nav-icon text-inherit hover:text-champagne transition-colors"
                   aria-label="Account"
                 >
                   <FiUser className="w-[18px] h-[18px]" />
-                </button>
+                </motion.button>
 
                 <AnimatePresence>
                   {userMenuOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                      transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
                       className="absolute right-0 top-full mt-3 w-52 bg-ivory border border-champagne/15 shadow-elevated py-2 z-50"
                       onMouseLeave={() => setUserMenuOpen(false)}
                     >
@@ -154,69 +202,102 @@ export default function Navbar({ onSearchOpen, onCartOpen }) {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
 
               {/* Wishlist */}
-              <Link
-                to="/wishlist"
-                className="nav-icon relative text-inherit hover:text-champagne transition-colors"
-                aria-label="Wishlist"
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.59 }}
               >
-                <FiHeart className="w-[18px] h-[18px]" />
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-charcoal text-ivory text-[9px] font-bold rounded-full flex items-center justify-center">
-                    {wishlistCount}
-                  </span>
-                )}
-              </Link>
+                <Link
+                  to="/wishlist"
+                  className="nav-icon relative text-inherit hover:text-champagne transition-colors"
+                  aria-label="Wishlist"
+                >
+                  <FiHeart className="w-[18px] h-[18px]" />
+                  {wishlistCount > 0 && (
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-charcoal text-ivory text-[9px] font-bold rounded-full flex items-center justify-center border border-ivory/20"
+                    >
+                      {wishlistCount}
+                    </motion.span>
+                  )}
+                </Link>
+              </motion.div>
 
               {/* Cart */}
-              <button
-                onClick={onCartOpen}
-                className="nav-icon relative text-inherit hover:text-champagne transition-colors"
-                aria-label="Cart"
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.66 }}
               >
-                <FiShoppingCart className="w-[18px] h-[18px]" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-charcoal text-ivory text-[9px] font-bold rounded-full flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
+                <motion.button
+                  onClick={onCartOpen}
+                  animate={cartBounced ? { scale: [1, 1.25, 0.92, 1.06, 1], rotate: [0, -5, 5, -2, 0] } : { scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="nav-icon relative text-inherit hover:text-champagne transition-colors"
+                  aria-label="Cart"
+                >
+                  <FiShoppingCart className="w-[18px] h-[18px]" />
+                  {cartCount > 0 && (
+                    <motion.span
+                      key={cartCount}
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-charcoal text-ivory text-[9px] font-bold rounded-full flex items-center justify-center border border-ivory/20"
+                    >
+                      {cartCount}
+                    </motion.span>
+                  )}
+                </motion.button>
+              </motion.div>
             </div>
 
             {/* MOBILE — Right Icons */}
             <div className="flex lg:hidden items-center gap-4">
-              <button
+              <motion.button
+                whileTap={{ scale: 0.92 }}
                 onClick={onSearchOpen}
                 className="text-inherit hover:text-champagne transition-colors"
                 aria-label="Search"
               >
                 <FiSearch className="w-5 h-5" />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.92 }}
+                animate={cartBounced ? { scale: [1, 1.25, 0.92, 1.06, 1], rotate: [0, -5, 5, -2, 0] } : { scale: 1, rotate: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 onClick={onCartOpen}
                 className="relative text-inherit hover:text-champagne transition-colors"
                 aria-label="Cart"
               >
                 <FiShoppingCart className="w-5 h-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-charcoal text-ivory text-[9px] font-bold rounded-full flex items-center justify-center">
+                  <motion.span
+                    key={cartCount}
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-charcoal text-ivory text-[9px] font-bold rounded-full flex items-center justify-center"
+                  >
                     {cartCount}
-                  </span>
+                  </motion.span>
                 )}
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.92 }}
                 onClick={() => setMobileOpen(true)}
                 className="text-inherit hover:text-champagne transition-colors"
                 aria-label="Menu"
               >
                 <FiMenu className="w-5 h-5" />
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* FULL-SCREEN MOBILE MENU */}
       <AnimatePresence>
