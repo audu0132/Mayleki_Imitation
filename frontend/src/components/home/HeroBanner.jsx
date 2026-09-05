@@ -1,114 +1,156 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FiArrowRight, FiChevronDown } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function HeroBanner() {
+  const imageRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouse = (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 15;
+      const y = (e.clientY / window.innerHeight - 0.5) * 10;
+      setMousePos({ x, y });
+    };
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.addEventListener("mousemove", handleMouse, { passive: true });
+    }
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
+  const textReveal = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.9,
+        delay: 0.5 + i * 0.15,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    }),
+  };
+
+  const ctaReveal = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] },
+    },
+  };
+
   return (
-    <section className="relative w-full min-h-[85vh] lg:min-h-[90vh] bg-[#FAF7F2] dark:bg-[#141110] flex flex-col justify-between pt-8 pb-12">
-      
-      {/* Background Subtle Line Grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-15">
-        <div className="max-w-7xl mx-auto h-full border-x border-[#C5A059]/20 flex justify-between">
-          <div className="w-px h-full bg-[#C5A059]/10 hidden md:block" />
-          <div className="w-px h-full bg-[#C5A059]/10 hidden lg:block" />
+    <section className="relative w-full h-screen min-h-[600px] max-h-[1100px] overflow-hidden bg-charcoal">
+      {/* Background Image with parallax */}
+      <motion.div
+        className="absolute inset-0"
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
+        <div
+          ref={imageRef}
+          className="absolute inset-[-20px] transition-transform duration-[2s] ease-out"
+          style={{
+            transform: `translate(${mousePos.x}px, ${mousePos.y}px)`,
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1920&q=85"
+            alt="Premium jewellery editorial"
+            className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
         </div>
-      </div>
+      </motion.div>
 
-      {/* Main Bootstrap 5 Hero Grid */}
-      <div className="container py-5 my-auto">
-        <div className="row align-items-center gy-4">
-          
-          {/* LEFT: BOOTSTRAP TYPOGRAPHY & BUTTONS */}
-          <div className="col-lg-7">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-charcoal/15" />
+      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/50 to-transparent" />
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-end pb-16 sm:pb-20 lg:pb-24">
+        <div className="container-luxury">
+          <div className="max-w-3xl">
+
+            {/* Eyebrow */}
+            <motion.span
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="inline-block font-body text-[10px] font-semibold tracking-[0.4em] uppercase text-champagne mb-6"
             >
-              <span className="badge bg-dark text-white text-uppercase tracking-widest px-3 py-2 mb-3">
-                Mayleki Imitation Boutique
-              </span>
+              Mayleki Jewellery
+            </motion.span>
 
-              <h1 className="display-4 fw-bold text-dark mb-3">
-                Tradition, <span className="text-secondary italic font-serif">Reimagined.</span>
-              </h1>
+            {/* Display Heading — Line by Line */}
+            <h1 className="mb-6">
+              <motion.span
+                custom={0}
+                initial="hidden"
+                animate="visible"
+                variants={textReveal}
+                className="block font-display text-display-xl text-ivory leading-none"
+              >
+                Timeless
+              </motion.span>
+              <motion.span
+                custom={1}
+                initial="hidden"
+                animate="visible"
+                variants={textReveal}
+                className="block font-display text-display-xl text-ivory italic leading-none"
+              >
+                Elegance
+              </motion.span>
+            </h1>
 
-              <p className="lead text-muted mb-4 font-light max-w-lg">
-                High-end Maharashtrian bridal sets, authentic Kolhapuri saaj, Kundan necklaces, and affordable rental jewellery crafted for your special moments.
-              </p>
+            {/* Subtitle */}
+            <motion.p
+              custom={2}
+              initial="hidden"
+              animate="visible"
+              variants={textReveal}
+              className="font-body text-sm sm:text-base text-ivory/70 font-light max-w-lg mb-10 leading-relaxed"
+            >
+              Jewellery designed to make every moment unforgettable.
+              Premium Maharashtrian bridal sets crafted for your story.
+            </motion.p>
 
-              <div className="d-flex flex-wrap gap-3">
-                <Link
-                  to="/products"
-                  className="btn btn-dark btn-lg rounded-0 px-4 py-3 text-uppercase text-xs tracking-widest d-inline-flex align-items-center gap-2 shadow-sm text-decoration-none"
-                >
-                  <span>Explore Collection</span>
-                  <FiArrowRight className="w-4 h-4" />
-                </Link>
-
-                <Link
-                  to="/rental-booking"
-                  className="btn-gold-metallic btn btn-lg rounded-0 px-4 py-3 text-uppercase text-xs tracking-widest text-decoration-none text-[#0E0C0B] font-bold shadow-md transition-all duration-300"
-                >
-                  <span className="text-[#0E0C0B] font-bold">Book Jewellery Rental</span>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* RIGHT: BOOTSTRAP IMAGE CONTAINER */}
-          <div className="col-lg-5">
+            {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="relative w-full max-w-lg mx-auto lg:max-w-none"
+              initial="hidden"
+              animate="visible"
+              variants={ctaReveal}
+              className="flex flex-wrap items-center gap-4"
             >
-              {/* Vertical Text running along image edge */}
-              <div className="hidden sm:block absolute -left-8 top-1/2 -translate-y-1/2 z-20 writing-mode-vertical rotate-180">
-                <span className="font-sans text-[9px] font-semibold tracking-[0.4em] uppercase text-[#C5A059] whitespace-nowrap">
-                  CRAFTED FOR YOUR MOMENTS
-                </span>
-              </div>
-
-              {/* Dominant Image Container */}
-              <div className="relative aspect-[3/4] overflow-hidden border border-[#C5A059]/30 bg-[#1C1917] lg:translate-x-4 group">
-                <img
-                  src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1000&q=85"
-                  alt="Royal Kundan Bridal Jewellery Set"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/60 via-transparent to-transparent" />
-                
-                {/* Image Overlay Tag */}
-                <div className="absolute bottom-6 left-6 right-6 border-t border-[#C5A059]/30 pt-3 flex justify-between items-baseline">
-                  <span className="font-cormorant text-xl text-[#FAF7F2]">Royal Kundan Set</span>
-                  <span className="font-sans text-[10px] text-[#C5A059] uppercase tracking-widest font-semibold">Bridal Collection</span>
-                </div>
-              </div>
-
-              {/* Decorative Gold Frame Outline Behind */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full border border-[#C5A059]/40 pointer-events-none hidden sm:block -z-10" />
+              <Link to="/products" className="btn-primary-luxury bg-ivory !text-charcoal border-ivory hover:bg-champagne hover:border-champagne hover:!text-charcoal">
+                Shop Collection
+                <FiArrowRight className="w-4 h-4" />
+              </Link>
+              <Link to="/category/bridal-sets" className="btn-outline-luxury border-ivory/40 !text-ivory hover:bg-ivory hover:!text-charcoal">
+                Explore New Arrivals
+              </Link>
             </motion.div>
           </div>
-
         </div>
       </div>
 
-      {/* BOTTOM SCROLL INDICATOR */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full flex items-center justify-between z-20">
-        <div className="flex items-center gap-3 font-sans text-[10px] font-semibold tracking-[0.25em] text-gray-500 uppercase">
-          <span className="w-8 h-px bg-[#C5A059]" />
-          <span>RAHURI, MAHARASHTRA</span>
-        </div>
-
-        <a href="#statement" className="flex items-center gap-2 font-sans text-[10px] font-semibold tracking-[0.25em] text-[#C5A059] uppercase hover:text-[#9E7B32] transition-colors">
-          <span>SCROLL TO DISCOVER</span>
-          <FiChevronDown className="w-4 h-4 animate-bounce text-[#C5A059]" />
-        </a>
-      </div>
-
+      {/* Bottom Right — Floating Detail */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.5 }}
+        className="absolute bottom-8 right-8 hidden lg:block z-10"
+      >
+        <span className="font-body text-[9px] tracking-[0.3em] uppercase text-ivory/40">
+          Rahuri, Maharashtra
+        </span>
+      </motion.div>
     </section>
   );
 }

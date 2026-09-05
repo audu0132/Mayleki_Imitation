@@ -132,25 +132,25 @@ export default function AIJewelleryStylist() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.96 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-[160px] right-4 sm:right-6 z-50 w-[380px] max-w-[calc(100vw-32px)] h-[520px] max-h-[calc(100vh-180px)] bg-[#FFFDF8] dark:bg-[#111111] border border-[rgba(212,175,55,0.3)] rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-24 sm:bottom-[160px] right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[380px] sm:max-w-[380px] h-[60vh] sm:h-[520px] max-h-[calc(100vh-120px)] sm:max-h-[calc(100vh-180px)] bg-[#FFFDF8] dark:bg-[#111111] border border-[rgba(212,175,55,0.3)] rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="px-5 py-4 bg-gradient-to-r from-[#111111] via-[#1F1B19] to-[#111111] text-[#FFFDF8] border-b border-[rgba(212,175,55,0.2)] flex items-center justify-between shrink-0">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#E6B93F] to-[#C88A18] flex items-center justify-center text-[#111111] shadow-sm">
+            <div className="px-4 sm:px-5 py-3 sm:py-4 bg-gradient-to-r from-[#111111] via-[#1F1B19] to-[#111111] text-[#FFFDF8] border-b border-[rgba(212,175,55,0.2)] flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#E6B93F] to-[#C88A18] flex items-center justify-center text-[#111111] shadow-sm shrink-0">
                   <HiSparkles className="w-4 h-4" />
                 </div>
-                <div>
-                  <h3 className="font-cormorant font-semibold text-lg text-[#FFFDF8] leading-tight flex items-center gap-1.5">
-                    ✨ AI Jewellery Stylist
+                <div className="min-w-0">
+                  <h3 className="font-display font-semibold text-base sm:text-lg text-[#FFFDF8] leading-tight flex items-center gap-1.5">
+                    ✨ AI Stylist
                   </h3>
-                  <p className="font-sans text-[11px] text-[#A9A9A9] font-light">
-                    Find the perfect jewellery for your occasion
+                  <p className="font-sans text-[10px] sm:text-[11px] text-[#A9A9A9] font-light truncate">
+                    Find perfect jewellery for your occasion
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 shrink-0">
                 <Link
                   to="/ai-stylist"
                   onClick={() => setIsOpen(false)}
@@ -170,7 +170,7 @@ export default function AIJewelleryStylist() {
             </div>
 
             {/* Quick Suggestion Chips */}
-            <div className="px-4 py-2.5 bg-[#FFFDF8] dark:bg-[#181818] border-b border-[rgba(212,175,55,0.18)] flex gap-2 overflow-x-auto no-scrollbar shrink-0">
+            <div className="px-3 sm:px-4 py-2 sm:py-2.5 bg-[#FFFDF8] dark:bg-[#181818] border-b border-[rgba(212,175,55,0.18)] flex gap-2 overflow-x-auto no-scrollbar shrink-0">
               {QUICK_SUGGESTIONS.map((chip, idx) => (
                 <button
                   key={idx}
@@ -184,7 +184,7 @@ export default function AIJewelleryStylist() {
             </div>
 
             {/* Chat Feed */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs sm:text-sm custom-scrollbar">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-3.5 text-xs sm:text-sm custom-scrollbar">
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
@@ -193,22 +193,22 @@ export default function AIJewelleryStylist() {
                   }`}
                 >
                   <div
-                    className={`flex items-start gap-2 max-w-[90%] ${
+                    className={`flex items-start gap-2 max-w-[92%] sm:max-w-[90%] ${
                       msg.sender === "user" ? "flex-row-reverse" : "flex-row"
                     }`}
                   >
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
+                      className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
                         msg.sender === "user"
                           ? "bg-[#111111] text-[#FFFDF8]"
                           : "bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37]"
                       }`}
                     >
-                      {msg.sender === "user" ? <FiUser className="w-3.5 h-3.5" /> : <HiSparkles className="w-3.5 h-3.5" />}
+                      {msg.sender === "user" ? <FiUser className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> : <HiSparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />}
                     </div>
 
                     <div
-                      className={`p-3.5 rounded-2xl leading-relaxed ${
+                      className={`p-3 sm:p-3.5 rounded-2xl leading-relaxed ${
                         msg.sender === "user"
                           ? "bg-[#111111] text-[#FFFDF8] rounded-tr-none shadow-sm"
                           : "bg-[#FAF7F2] dark:bg-[#1C1917] text-[#3B2F2F] dark:text-[#FFFDF8] border border-[rgba(212,175,55,0.2)] rounded-tl-none"
@@ -272,14 +272,14 @@ export default function AIJewelleryStylist() {
             </div>
 
             {/* Input Bar */}
-            <div className="p-3 bg-[#FFFDF8] dark:bg-[#111111] border-t border-[rgba(212,175,55,0.18)] flex items-center gap-2 shrink-0">
+            <div className="p-2.5 sm:p-3 bg-[#FFFDF8] dark:bg-[#111111] border-t border-[rgba(212,175,55,0.18)] flex items-center gap-2 shrink-0">
               <input
                 type="text"
                 value={inputPrompt}
                 onChange={(e) => setInputPrompt(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder="Ask about saree color, outfit, or occasion..."
-                className="flex-1 px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#1C1917] border border-[rgba(212,175,55,0.25)] text-xs text-[#3B2F2F] dark:text-[#FFFDF8] placeholder-[#A9A9A9] focus:outline-none focus:border-[#D4AF37] transition-colors"
+                placeholder="Ask about outfit or occasion..."
+                className="flex-1 px-3 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#1C1917] border border-[rgba(212,175,55,0.25)] text-xs text-[#3B2F2F] dark:text-[#FFFDF8] placeholder-[#A9A9A9] focus:outline-none focus:border-[#D4AF37] transition-colors min-w-0"
               />
               <button
                 onClick={() => handleSend()}
@@ -293,7 +293,7 @@ export default function AIJewelleryStylist() {
         )}
       </AnimatePresence>
 
-      {/* INDEPENDENT FLOATING PILL BUTTON */}
+      {/* FLOATING TRIGGER BUTTON — Compact icon on mobile, pill on desktop */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -301,11 +301,14 @@ export default function AIJewelleryStylist() {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         transition={{ duration: 0.3 }}
-        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 w-[240px] sm:w-[270px] h-14 rounded-full bg-gradient-to-r from-[#1C1917] via-[#2A2421] to-[#3B1219] text-[#FAF7F2] shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.4)] border border-[#D4AF37]/70 cursor-pointer flex items-center justify-center px-4 transition-all duration-300 group select-none"
+        className="fixed bottom-[104px] sm:bottom-24 right-4 sm:right-6 z-50 w-12 h-12 sm:w-[270px] sm:h-14 rounded-full bg-gradient-to-r from-[#1C1917] via-[#2A2421] to-[#3B1219] text-[#FAF7F2] shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.4)] border border-[#D4AF37]/70 cursor-pointer flex items-center justify-center sm:px-4 transition-all duration-300 group select-none"
         aria-label="Open AI Jewellery Stylist"
       >
-        {/* Perfectly Centered Internal Row */}
-        <div className="flex items-center justify-center gap-3 w-full h-full">
+        {/* Mobile: just sparkle icon */}
+        <HiSparkles className="w-5 h-5 text-[#D4AF37] sm:hidden group-hover:rotate-12 transition-transform duration-300" />
+
+        {/* Desktop: full pill content */}
+        <div className="hidden sm:flex items-center justify-center gap-3 w-full h-full">
           {/* Animated Glow Dot */}
           <span className="relative flex h-3.5 w-3.5 items-center justify-center shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75" />
@@ -316,7 +319,7 @@ export default function AIJewelleryStylist() {
           <HiSparkles className="w-5 h-5 text-[#D4AF37] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
 
           {/* Centered Button Title */}
-          <span className="font-sans font-bold text-sm sm:text-base text-[#FAF7F2] tracking-wider whitespace-nowrap">
+          <span className="font-sans font-bold text-base text-[#FAF7F2] tracking-wider whitespace-nowrap">
             AI Jewellery Stylist
           </span>
         </div>

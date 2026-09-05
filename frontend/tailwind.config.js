@@ -29,6 +29,7 @@ export default {
       },
       fontFamily: {
         display: ['"Cormorant Garamond"', "Georgia", "serif"],
+        cormorant: ['"Cormorant Garamond"', "Georgia", "serif"],
         body: ['"Plus Jakarta Sans"', "system-ui", "-apple-system", "sans-serif"],
         serif: ['"Cormorant Garamond"', "Georgia", "serif"],
         sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],

@@ -1,78 +1,57 @@
 import { lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import HeroBanner from "../components/home/HeroBanner";
-import EditorialStatement from "../components/home/EditorialStatement";
+import BrandMarquee from "../components/home/BrandMarquee";
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 // Lazy-loaded sections
 const EditorialShowcase = lazy(() => import("../components/home/EditorialShowcase"));
 const CategoryGrid = lazy(() => import("../components/home/CategoryGrid"));
 const FeaturedProducts = lazy(() => import("../components/home/FeaturedProducts"));
-const FeaturedMoment = lazy(() => import("../components/home/FeaturedMoment"));
 const HeritageSection = lazy(() => import("../components/home/HeritageSection"));
-const WhyChooseUs = lazy(() => import("../components/home/WhyChooseUs"));
-const LuxuryBookingSection = lazy(() => import("../components/home/LuxuryBookingSection"));
 const Testimonials = lazy(() => import("../components/home/Testimonials"));
 const InstagramGallery = lazy(() => import("../components/home/InstagramGallery"));
-const FinalCTA = lazy(() => import("../components/home/FinalCTA"));
-
-import LoadingSpinner from "../components/common/LoadingSpinner";
 
 function SectionLoader() {
-  return <LoadingSpinner fullScreen={false} text="Loading Royal Collection..." />;
+  return <LoadingSpinner fullScreen={false} />;
 }
 
 export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Mayleki Imitation Jewellery | High-Fashion Bridal & Traditional Jewellery Rahuri</title>
+        <title>Mayleki — Premium Imitation Jewellery | Bridal & Traditional</title>
         <meta
           name="description"
-          content="Experience Mayleki's high-fashion imitation jewellery. Royal Maharashtrian bridal sets, Kolhapuri saaj, Nath, Kundan, and luxury jewellery rentals in Rahuri."
-        />
-        <meta
-          name="keywords"
-          content="Mayleki Jewellery, imitation jewellery, bridal jewellery, jewellery rental, Maharashtrian jewellery, Kolhapuri Saaj, Nath, Kundan Jewellery, Rahuri Jewellery Boutique"
+          content="Mayleki — Premium Maharashtrian imitation jewellery. Bridal sets, Kolhapuri saaj, Kundan, Nath, and luxury rental jewellery. Crafted for your moments."
         />
       </Helmet>
 
-      <main className="overflow-x-hidden bg-[#FAF7F2] dark:bg-[#141110]">
-        {/* 1. Viewport Editorial Hero */}
+      <main className="overflow-x-hidden bg-ivory">
+        {/* 1. Cinematic Full-Viewport Hero */}
         <HeroBanner />
 
-        {/* 2. Editorial Statement */}
-        <EditorialStatement />
+        {/* 2. Brand Marquee */}
+        <BrandMarquee />
 
         <Suspense fallback={<SectionLoader />}>
-          {/* 3. Alternating Collection Showcase */}
+          {/* 3. Editorial Collection Showcase */}
           <EditorialShowcase />
 
-          {/* 4. Interactive Category Bar */}
+          {/* 4. Shop by Category */}
           <CategoryGrid />
 
-          {/* 5. Asymmetric Collection Grid */}
+          {/* 5. The Collection — Featured Products */}
           <FeaturedProducts />
 
-          {/* 6. Cinematic Dark Featured Moment */}
-          <FeaturedMoment />
-
-          {/* 7. Maharashtrian Heritage Section */}
+          {/* 6. Heritage Brand Moment */}
           <HeritageSection />
 
-          {/* 8. Oversized Statistics */}
-          <WhyChooseUs />
-
-          {/* 9. Split-Screen Appointment Booking */}
-          <LuxuryBookingSection />
-
-          {/* 10. Pull-Quote Testimonials */}
+          {/* 7. Pull-Quote Testimonials */}
           <Testimonials />
 
-          {/* 11. Instagram Image Mosaic */}
+          {/* 8. Instagram Gallery */}
           <InstagramGallery />
-
-          {/* 12. Final Magazine Back Cover CTA */}
-          <FinalCTA />
         </Suspense>
       </main>
     </>
