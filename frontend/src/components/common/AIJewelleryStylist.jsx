@@ -132,7 +132,7 @@ export default function AIJewelleryStylist() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.96 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-24 sm:bottom-[160px] right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[380px] sm:max-w-[380px] h-[60vh] sm:h-[520px] max-h-[calc(100vh-120px)] sm:max-h-[calc(100vh-180px)] bg-[#FFFDF8] dark:bg-[#111111] border border-[rgba(212,175,55,0.3)] rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-20 left-4 sm:left-6 z-50 w-[calc(100vw-32px)] sm:w-[380px] sm:max-w-[380px] h-[60vh] sm:h-[520px] max-h-[calc(100vh-120px)] sm:max-h-[calc(100vh-140px)] bg-[#FFFDF8] dark:bg-[#111111] border border-[rgba(212,175,55,0.3)] rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="px-4 sm:px-5 py-3 sm:py-4 bg-gradient-to-r from-[#111111] via-[#1F1B19] to-[#111111] text-[#FFFDF8] border-b border-[rgba(212,175,55,0.2)] flex items-center justify-between shrink-0">
@@ -293,36 +293,30 @@ export default function AIJewelleryStylist() {
         )}
       </AnimatePresence>
 
-      {/* FLOATING TRIGGER BUTTON — Compact icon on mobile, pill on desktop */}
+      {/* FLOATING TRIGGER BUTTON — Compact icon on mobile, sleek pill on desktop */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         initial={{ opacity: 0, scale: 0.9, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.96 }}
         transition={{ duration: 0.3 }}
-        className="fixed bottom-[104px] sm:bottom-24 right-4 sm:right-6 z-50 w-12 h-12 sm:w-[270px] sm:h-14 rounded-full bg-gradient-to-r from-[#1C1917] via-[#2A2421] to-[#3B1219] text-[#FAF7F2] shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.4)] border border-[#D4AF37]/70 cursor-pointer flex items-center justify-center sm:px-4 transition-all duration-300 group select-none"
+        className="fixed bottom-6 left-4 sm:left-6 z-40 w-12 h-12 sm:w-auto sm:px-4 sm:h-12 rounded-full bg-gradient-to-r from-[#1C1917] via-[#2A2421] to-[#3B1219] text-[#FAF7F2] shadow-[0_8px_30px_rgba(0,0,0,0.45)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.4)] border border-[#D4AF37]/60 cursor-pointer flex items-center justify-center gap-2.5 transition-all duration-300 group select-none"
         aria-label="Open AI Jewellery Stylist"
       >
-        {/* Mobile: just sparkle icon */}
-        <HiSparkles className="w-5 h-5 text-[#D4AF37] sm:hidden group-hover:rotate-12 transition-transform duration-300" />
+        {/* Animated Glow Dot */}
+        <span className="relative flex h-2.5 w-2.5 items-center justify-center shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4AF37] shadow-[0_0_6px_#D4AF37]" />
+        </span>
 
-        {/* Desktop: full pill content */}
-        <div className="hidden sm:flex items-center justify-center gap-3 w-full h-full">
-          {/* Animated Glow Dot */}
-          <span className="relative flex h-3.5 w-3.5 items-center justify-center shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#D4AF37] shadow-[0_0_8px_#D4AF37]" />
-          </span>
+        {/* Sparkle Icon */}
+        <HiSparkles className="w-4 h-4 text-[#D4AF37] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
 
-          {/* Sparkle Icon */}
-          <HiSparkles className="w-5 h-5 text-[#D4AF37] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
-
-          {/* Centered Button Title */}
-          <span className="font-sans font-bold text-base text-[#FAF7F2] tracking-wider whitespace-nowrap">
-            AI Jewellery Stylist
-          </span>
-        </div>
+        {/* Desktop: Text Title */}
+        <span className="hidden sm:inline-block font-sans font-medium text-xs text-[#FAF7F2] tracking-wider whitespace-nowrap">
+          AI Stylist
+        </span>
       </motion.button>
     </>
   );
