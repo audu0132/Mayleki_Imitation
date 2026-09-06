@@ -99,32 +99,32 @@ export default function ProductListingPage() {
 
       <div className="page-wrapper bg-[#FAFAFA]">
         {/* Page Header */}
-        <div className="bg-[#111111] py-24 relative overflow-hidden">
-          <div className="container-luxury relative text-center">
+        <div className="page-header text-center">
+          <div className="container-luxury relative">
             {category ? (
               <>
-                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-white/50 mb-2">{category.icon} Collection</p>
-                <h1 className="font-playfair text-4xl md:text-5xl font-medium text-white mb-4">
+                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-[#B8975F] mb-2">{category.icon} Collection</p>
+                <h1 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-2">
                   {category.name}
                 </h1>
-                <p className="font-poppins text-xs text-white/50 uppercase tracking-widest">
+                <p className="font-poppins text-xs text-white/60 uppercase tracking-widest">
                   {category.count} designs available
                 </p>
               </>
             ) : query ? (
               <>
-                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-white/50 mb-2">Search Results</p>
-                <h1 className="font-playfair text-3xl md:text-4xl font-medium text-white mb-4">
+                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-[#B8975F] mb-2">Search Results</p>
+                <h1 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-2">
                   Results for "<span className="italic">{query}</span>"
                 </h1>
-                <p className="font-poppins text-xs text-white/50 uppercase tracking-widest">
+                <p className="font-poppins text-xs text-white/60 uppercase tracking-widest">
                   {filteredProducts.length} products found
                 </p>
               </>
             ) : (
               <>
-                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-white/50 mb-4">Explore Our</p>
-                <h1 className="font-playfair text-4xl md:text-6xl font-medium text-white">
+                <p className="font-poppins text-xs font-medium uppercase tracking-widest text-[#B8975F] mb-2">Explore Our</p>
+                <h1 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-normal text-white">
                   Collections
                 </h1>
               </>
@@ -133,26 +133,26 @@ export default function ProductListingPage() {
         </div>
 
         {/* Breadcrumb */}
-        <div className="bg-white border-b border-gray-100">
-          <div className="container-luxury py-4">
+        <div className="bg-white dark:bg-[#141110] border-b border-gray-100 dark:border-white/10">
+          <div className="container-luxury py-3 sm:py-3.5">
             <nav className="flex items-center gap-2 font-poppins text-xs uppercase tracking-widest text-gray-400">
-              <Link to="/" className="hover:text-[#111111] transition-colors">Home</Link>
+              <Link to="/" className="hover:text-gold transition-colors">Home</Link>
               <span>/</span>
               {category ? (
-                <span className="text-[#111111] font-medium">{category.name}</span>
+                <span className="text-dark-brown dark:text-cream font-medium">{category.name}</span>
               ) : (
-                <span className="text-[#111111] font-medium">All Collections</span>
+                <span className="text-dark-brown dark:text-cream font-medium">All Collections</span>
               )}
             </nav>
           </div>
         </div>
 
-        <div className="container-luxury py-16 lg:py-24">
-          <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+        <div className="container-luxury py-8 sm:py-10 lg:py-14">
+          <div className="flex items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 flex-wrap">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setFiltersOpen(!filtersOpen)}
-                className={`flex items-center gap-2 px-4 h-12 rounded-xl border font-poppins text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 h-11 sm:h-12 rounded-xl border font-poppins text-xs sm:text-sm font-medium transition-all duration-200 ${
                   filtersOpen || hasActiveFilters
                     ? "border-gold bg-gold/10 text-gold"
                     : "border-gray-200 text-dark-brown hover:border-gold hover:text-gold"
@@ -186,7 +186,7 @@ export default function ProductListingPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none pl-4 pr-10 h-12 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-dark-brown-light font-poppins text-sm text-dark-brown dark:text-cream focus:outline-none focus:border-gold cursor-pointer"
+                  className="appearance-none pl-4 pr-10 h-11 sm:h-12 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-dark-brown-light font-poppins text-xs sm:text-sm text-dark-brown dark:text-cream focus:outline-none focus:border-gold cursor-pointer"
                 >
                   {SORT_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -195,16 +195,16 @@ export default function ProductListingPage() {
                 <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
               </div>
 
-              <div className="flex items-center border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden">
+              <div className="flex items-center h-11 sm:h-12 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2.5 transition-colors ${viewMode === "grid" ? "bg-gold text-dark-brown" : "bg-white dark:bg-dark-brown-light text-gray-400 hover:text-gold"}`}
+                  className={`h-full px-3 transition-colors cursor-pointer flex items-center justify-center ${viewMode === "grid" ? "bg-gold text-dark-brown" : "bg-white dark:bg-dark-brown-light text-gray-400 hover:text-gold"}`}
                 >
                   <FiGrid className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2.5 transition-colors ${viewMode === "list" ? "bg-gold text-dark-brown" : "bg-white dark:bg-dark-brown-light text-gray-400 hover:text-gold"}`}
+                  className={`h-full px-3 transition-colors cursor-pointer flex items-center justify-center ${viewMode === "list" ? "bg-gold text-dark-brown" : "bg-white dark:bg-dark-brown-light text-gray-400 hover:text-gold"}`}
                 >
                   <FiList className="w-4 h-4" />
                 </button>
@@ -212,20 +212,139 @@ export default function ProductListingPage() {
             </div>
           </div>
 
-          <div className="flex gap-8 lg:gap-10">
+          <div className="flex gap-6 lg:gap-8 items-start">
+            {/* Desktop Aside */}
+            <div className="hidden lg:block">
+              <AnimatePresence>
+                {filtersOpen && (
+                  <motion.aside
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 280, opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden flex-shrink-0"
+                  >
+                    <div className="w-[280px] bg-white dark:bg-dark-brown-light rounded-2xl p-6 border border-gold/10 space-y-6">
+                      <div className="flex items-center justify-between border-b border-gold/10 pb-4">
+                        <h3 className="font-playfair font-bold text-lg text-dark-brown dark:text-cream">Filters</h3>
+                        <button onClick={() => setFiltersOpen(false)} className="text-gray-400 hover:text-gold cursor-pointer">
+                          <FiX className="w-5 h-5" />
+                        </button>
+                      </div>
+
+                      {/* Price Range */}
+                      <div>
+                        <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Price Range</h4>
+                        <div className="grid grid-cols-2 gap-2">
+                          <input
+                            type="number"
+                            placeholder="Min ₹"
+                            value={filters.priceMin}
+                            onChange={(e) => setFilters(p => ({ ...p, priceMin: e.target.value }))}
+                            className="input-luxury text-xs h-10"
+                          />
+                          <input
+                            type="number"
+                            placeholder="Max ₹"
+                            value={filters.priceMax}
+                            onChange={(e) => setFilters(p => ({ ...p, priceMax: e.target.value }))}
+                            className="input-luxury text-xs h-10"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Availability */}
+                      <div>
+                        <h4 className="font-poppins text-xs font-semibold text-gold tracking-wider uppercase mb-3">Availability</h4>
+                        <div className="space-y-2">
+                          {[
+                            { label: "All Items", value: "all" },
+                            { label: "In Stock Only", value: "inStock" },
+                            { label: "Available for Rent", value: "rental" },
+                          ].map((opt) => (
+                            <label key={opt.value} className="flex items-center gap-2.5 cursor-pointer group">
+                              <input
+                                type="radio"
+                                className="hidden"
+                                value={opt.value}
+                                checked={filters.availability === opt.value}
+                                onChange={() => setFilters(p => ({ ...p, availability: opt.value }))}
+                              />
+                              <span className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${
+                                filters.availability === opt.value ? "border-gold bg-gold" : "border-gray-300"
+                              }`} />
+                              <span className="font-poppins text-sm text-dark-brown dark:text-cream">{opt.label}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Occasion */}
+                      <div>
+                        <h4 className="font-poppins font-semibold text-xs text-gold tracking-wider uppercase mb-3">Occasion</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {OCCASIONS.map((occ) => (
+                            <button
+                              key={occ}
+                              onClick={() => updateFilter("occasion", occ)}
+                              className={`px-3 py-1.5 rounded-full text-xs font-poppins font-medium transition-all duration-200 cursor-pointer ${
+                                filters.occasion.includes(occ)
+                                  ? "bg-gold text-dark-brown font-semibold"
+                                  : "bg-gray-100 dark:bg-white/10 text-gray-500 hover:bg-gold/10 hover:text-gold"
+                              }`}
+                            >
+                              {occ}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Color */}
+                      <div>
+                        <h4 className="font-poppins font-semibold text-xs text-gold tracking-wider uppercase mb-3">Color</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {COLORS.map((color) => (
+                            <button
+                              key={color}
+                              onClick={() => updateFilter("color", color)}
+                              className={`px-3 py-1.5 rounded-full text-xs font-poppins font-medium transition-all duration-200 cursor-pointer ${
+                                filters.color.includes(color)
+                                  ? "bg-gold text-dark-brown font-semibold"
+                                  : "bg-gray-100 dark:bg-white/10 text-gray-500 hover:bg-gold/10 hover:text-gold"
+                              }`}
+                            >
+                              {color}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.aside>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Mobile / Tablet Filter Overlay Drawer */}
             <AnimatePresence>
               {filtersOpen && (
-                <motion.aside
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 280, opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden flex-shrink-0"
-                >
-                  <div className="w-64 bg-white dark:bg-dark-brown-light rounded-2xl p-6 border border-gold/10 space-y-6">
+                <div className="lg:hidden fixed inset-0 z-50 flex">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setFiltersOpen(false)}
+                    className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+                  />
+                  <motion.aside
+                    initial={{ x: "-100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "-100%" }}
+                    transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                    className="relative w-4/5 max-w-xs bg-white dark:bg-dark-brown-light h-full overflow-y-auto p-6 shadow-2xl z-10 space-y-6"
+                  >
                     <div className="flex items-center justify-between border-b border-gold/10 pb-4">
                       <h3 className="font-playfair font-bold text-lg text-dark-brown dark:text-cream">Filters</h3>
-                      <button onClick={() => setFiltersOpen(false)} className="text-gray-400 hover:text-gold">
+                      <button onClick={() => setFiltersOpen(false)} className="text-gray-400 hover:text-gold cursor-pointer p-1">
                         <FiX className="w-5 h-5" />
                       </button>
                     </div>
@@ -239,14 +358,14 @@ export default function ProductListingPage() {
                           placeholder="Min ₹"
                           value={filters.priceMin}
                           onChange={(e) => setFilters(p => ({ ...p, priceMin: e.target.value }))}
-                          className="input-luxury text-xs"
+                          className="input-luxury text-xs h-10"
                         />
                         <input
                           type="number"
                           placeholder="Max ₹"
                           value={filters.priceMax}
                           onChange={(e) => setFilters(p => ({ ...p, priceMax: e.target.value }))}
-                          className="input-luxury text-xs"
+                          className="input-luxury text-xs h-10"
                         />
                       </div>
                     </div>
@@ -285,9 +404,9 @@ export default function ProductListingPage() {
                           <button
                             key={occ}
                             onClick={() => updateFilter("occasion", occ)}
-                            className={`px-3 py-1.5 rounded-full text-xs font-poppins font-medium transition-all duration-200 ${
+                            className={`px-3 py-1.5 rounded-full text-xs font-poppins font-medium transition-all duration-200 cursor-pointer ${
                               filters.occasion.includes(occ)
-                                ? "bg-gold text-dark-brown"
+                                ? "bg-gold text-dark-brown font-semibold"
                                 : "bg-gray-100 dark:bg-white/10 text-gray-500 hover:bg-gold/10 hover:text-gold"
                             }`}
                           >
@@ -305,9 +424,9 @@ export default function ProductListingPage() {
                           <button
                             key={color}
                             onClick={() => updateFilter("color", color)}
-                            className={`px-3 py-1.5 rounded-full text-xs font-poppins font-medium transition-all duration-200 ${
+                            className={`px-3 py-1.5 rounded-full text-xs font-poppins font-medium transition-all duration-200 cursor-pointer ${
                               filters.color.includes(color)
-                                ? "bg-gold text-dark-brown"
+                                ? "bg-gold text-dark-brown font-semibold"
                                 : "bg-gray-100 dark:bg-white/10 text-gray-500 hover:bg-gold/10 hover:text-gold"
                             }`}
                           >
@@ -316,8 +435,15 @@ export default function ProductListingPage() {
                         ))}
                       </div>
                     </div>
-                  </div>
-                </motion.aside>
+
+                    <button
+                      onClick={() => setFiltersOpen(false)}
+                      className="w-full btn-gold h-11 text-xs font-semibold uppercase tracking-wider"
+                    >
+                      Apply Filters
+                    </button>
+                  </motion.aside>
+                </div>
               )}
             </AnimatePresence>
 
@@ -341,8 +467,8 @@ export default function ProductListingPage() {
                   layout
                   className={
                     viewMode === "grid"
-                      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full"
-                      : "flex flex-col gap-6 w-full"
+                      ? `grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 ${filtersOpen ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-3.5 sm:gap-4 lg:gap-6 w-full`
+                      : "flex flex-col gap-4 sm:gap-6 w-full"
                   }
                 >
                   {filteredProducts.map((product, i) => (

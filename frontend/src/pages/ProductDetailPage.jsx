@@ -74,8 +74,8 @@ export default function ProductDetailPage() {
 
       <div className="min-h-screen bg-[#FFFDF8] dark:bg-[#111111] text-[#111111] dark:text-[#FFFDF8]">
         {/* COMPACT BREADCRUMB BAR */}
-        <div className="bg-[#FFFDF8] dark:bg-[#181818] border-b border-[rgba(212,175,55,0.18)] py-3 sm:py-4">
-          <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#FFFDF8] dark:bg-[#181818] border-b border-[rgba(212,175,55,0.18)] py-3 sm:py-3.5">
+          <div className="container-luxury">
             <nav className="flex items-center gap-1.5 font-sans text-xs text-[#A9A9A9] flex-wrap">
               <Link to="/" className="text-[#D4AF37] hover:text-[#E6C76A] transition-colors">Home</Link>
               <FiChevronRight className="w-3 h-3 text-[#A9A9A9]" />
@@ -91,7 +91,7 @@ export default function ProductDetailPage() {
         </div>
 
         {/* MAIN PRODUCT SECTION CONTAINER */}
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
+        <div className="container-luxury py-6 sm:py-8 lg:py-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-14 items-start">
 
             {/* ===== LEFT COLUMN: Image Gallery ===== */}
