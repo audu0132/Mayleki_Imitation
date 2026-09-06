@@ -72,17 +72,17 @@ export default function CartPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16 lg:py-24">
-          <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
+        <div className="container-luxury py-8 sm:py-10 lg:py-14">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-10 items-start">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
-              <Link to="/products" className="flex items-center gap-2 text-sm font-poppins text-gold hover:underline mb-4 inline-flex">
+              <Link to="/products" className="flex items-center gap-2 text-sm font-poppins text-gold hover:underline mb-2 inline-flex">
                 <FiArrowLeft className="w-4 h-4" /> Continue Shopping
               </Link>
 
               {cart.map((item) => {
                 const price = item.type === "rental" ? item.rentalPrice : item.sellingPrice;
-                const discounted = price - (price * (item.discount || 0)) / 100;
+                const discounted = Math.round(price - (price * (item.discount || 0)) / 100);
                 return (
                   <motion.div
                     key={`${item.id}-${item.type}`}
@@ -90,7 +90,7 @@ export default function CartPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
-                    className="card-luxury p-5 flex gap-4 hover:border-gold/30"
+                    className="card-luxury p-4 sm:p-5 flex gap-4 hover:border-gold/30 items-center"
                   >
 
                     <Link to={`/products/${item.slug}`} className="flex-shrink-0">

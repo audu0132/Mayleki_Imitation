@@ -150,10 +150,10 @@ export default function CheckoutPage() {
           </div>
         </div>
         
-        <div className="container-luxury py-16 lg:py-24 flex justify-center">
-          <div className="w-full max-w-5xl grid lg:grid-cols-3 gap-12 lg:gap-16">
+        <div className="container-luxury py-8 sm:py-10 lg:py-14">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-10 items-start">
             {/* Delivery Form */}
-            <div className="lg:col-span-2 card-luxury">
+            <div className="lg:col-span-2 card-luxury p-6 sm:p-8">
               <h2 className="font-playfair text-2xl font-bold text-dark-brown dark:text-cream mb-6">Delivery Details</h2>
               <form id="checkout-form" onSubmit={handlePayment} className="grid sm:grid-cols-2 gap-6">
                 <div>
