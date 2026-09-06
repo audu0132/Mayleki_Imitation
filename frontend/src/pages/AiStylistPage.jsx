@@ -149,7 +149,7 @@ export default function AiStylistPage() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-950 text-gray-100 font-poppins pt-8 pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="bg-stone-950 text-gray-100 font-poppins py-8 sm:py-10 lg:py-14">
       <Helmet>
         <title>AI Jewellery Stylist & Outfit Matcher | Mayleki Imitation</title>
         <meta
@@ -159,7 +159,7 @@ export default function AiStylistPage() {
       </Helmet>
 
       {/* Header Banner */}
-      <div className="max-w-7xl mx-auto mb-10 text-center relative">
+      <div className="container-luxury mb-10 text-center relative">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-medium mb-4">
           <HiSparkles className="w-4 h-4 text-amber-400 animate-pulse" />
           <span>Powered by Mayleki AI & Gemini Intelligence</span>
@@ -172,7 +172,7 @@ export default function AiStylistPage() {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="container-luxury grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Form Controls Column */}
         <div className="lg:col-span-5 space-y-6">
           <div className="p-6 rounded-3xl bg-stone-900/80 border border-amber-500/20 shadow-2xl backdrop-blur-xl space-y-6">
