@@ -45,8 +45,13 @@ export default {
         "caption": ["0.6875rem", { lineHeight: "1.5", letterSpacing: "0.15em" }],
       },
       spacing: {
-        "section": "clamp(5rem, 10vw, 9rem)",
-        "section-sm": "clamp(3rem, 6vw, 5rem)",
+        "section": "clamp(3.5rem, 6vw, 5.5rem)",
+        "section-sm": "clamp(2.5rem, 4vw, 3.5rem)",
+      },
+      aspectRatio: {
+        "product": "3/4",
+        "category": "4/5",
+        "editorial": "16/10",
       },
       transitionTimingFunction: {
         luxury: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
