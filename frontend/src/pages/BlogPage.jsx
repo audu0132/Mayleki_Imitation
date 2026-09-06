@@ -88,21 +88,21 @@ export default function BlogPage() {
           ))}
         </svg>
 
-        <div className="container-luxury relative z-10 pt-28 pb-16 lg:pt-36 lg:pb-24">
-          <div className="max-w-5xl mx-auto">
+        <div className="container-luxury relative z-10 py-10 sm:py-12 lg:py-16">
+          <div className="w-full">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center"
+              className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 flex flex-col items-center"
             >
-              <h1 className="font-playfair text-4xl sm:text-5xl md:text-6.5xl font-semibold text-dark-brown dark:text-cream leading-tight">
+              <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-semibold text-dark-brown dark:text-cream leading-tight">
                 Mayleki <span className="text-[#C9A227] dark:text-gold-light mt-1 block sm:inline-block">Chronicles</span>
               </h1>
 
               {/* Custom Luxury Divider with Diamond */}
-              <div className="flex items-center justify-center gap-3 my-5">
+              <div className="flex items-center justify-center gap-3 my-4">
                 <div className="w-8 h-px bg-[#C9A227]/40" />
                 <div className="w-2.5 h-2.5 rotate-45 border border-[#C9A227] bg-transparent flex items-center justify-center">
                   <div className="w-1 h-1 bg-[#C9A227] rounded-full" />
@@ -110,13 +110,13 @@ export default function BlogPage() {
                 <div className="w-8 h-px bg-[#C9A227]/40" />
               </div>
 
-              <p className="font-poppins text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+              <p className="font-poppins text-gray-500 dark:text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
                 Discover styling guides, traditional bridal tips, jewellery care rules, and the latest trends from our experts.
               </p>
             </motion.div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10 sm:mb-12">
               {categories.map((cat) => {
                 const isActive = activeCategory === cat;
                 return (
