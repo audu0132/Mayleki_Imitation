@@ -101,56 +101,81 @@ app.use((err, req, res, next) => {
   });
 });
 
-const configuredMongoUri = process.env.MONGODB_URI || process.env.MONGO_URI || "";
-const MONGODB_URI = configuredMongoUri || (!IS_PRODUCTION ? "mongodb://localhost:27017/mayleki" : "");
+// Database connection configuration
+const isProduction = IS_PRODUCTION;
 
-if (!MONGODB_URI) {
-  console.error("❌ MONGODB_URI is not configured. Add MONGODB_URI to Render Environment Variables.");
+const mongoUri = isProduction
+  ? process.env.MONGODB_URI
+  : process.env.MONGODB_URI || "mongodb://localhost:27017/mayleki";
+
+// Fail-fast checks for production environment
+if (isProduction) {
+  if (!mongoUri || !mongoUri.trim()) {
+    console.error("❌ Fatal Startup Error: MONGODB_URI is missing in production.");
+    console.error("   Please set MONGODB_URI to your MongoDB Atlas connection string in Render environment variables.");
+    process.exit(1);
+  }
+
+  // Reject local MongoDB hosts in production
+  if (
+    mongoUri.includes("localhost") ||
+    mongoUri.includes("127.0.0.1") ||
+    mongoUri.includes("::1")
+  ) {
+    console.error("❌ Fatal Startup Error: Local MongoDB host detected in production.");
+    console.error("   Production must never connect to localhost MongoDB.");
+    console.error("   Please set MONGODB_URI to your remote MongoDB Atlas connection string in Render.");
+    process.exit(1);
+  }
+} else if (!mongoUri || !mongoUri.trim()) {
+  console.error("❌ Fatal Startup Error: No MongoDB connection URI configured.");
   process.exit(1);
 }
 
-let parsedMongoUrl;
+// Log safe diagnostic information without exposing credentials
+let safeHost = "unknown";
 try {
-  parsedMongoUrl = new URL(MONGODB_URI);
+  const match = mongoUri.match(/^(mongodb(?:\+srv)?):\/\/(?:[^@]+@)?([^/?#]+)/i);
+  if (match) {
+    safeHost = `${match[1]}://${match[2]}`;
+  }
 } catch {
-  console.error("❌ MONGODB_URI is present but is not a valid MongoDB connection string.");
-  process.exit(1);
+  // Keep fallback safe
 }
 
-if (!['mongodb:', 'mongodb+srv:'].includes(parsedMongoUrl.protocol)) {
-  console.error("❌ MONGODB_URI must start with mongodb:// or mongodb+srv://");
-  process.exit(1);
-}
+console.log(`🌍 Environment: ${isProduction ? "production" : "development"}`);
+console.log(`🔌 Platform: ${process.env.RENDER === "true" ? "Render" : "Local/Other"}`);
+console.log(`🌐 Port: ${PORT}`);
+console.log(`🔎 MongoDB target: ${safeHost}`);
 
-const mongoHost = parsedMongoUrl.hostname;
-console.log(`🔎 MongoDB target: ${parsedMongoUrl.protocol}//${mongoHost}${parsedMongoUrl.port ? `:${parsedMongoUrl.port}` : ""}`);
-console.log(`🌍 Environment: ${IS_PRODUCTION ? "production" : "development"}`);
-console.log(`🔌 Render: ${process.env.RENDER === "true" ? "yes" : "no"}`);
-console.log(`🌐 PORT: ${PORT}`);
-
-if (IS_PRODUCTION && ["localhost", "127.0.0.1", "::1"].includes(mongoHost)) {
-  console.error("❌ Production is using a local MongoDB host. Set MONGODB_URI to your MongoDB Atlas connection string in Render.");
-  process.exit(1);
-}
-
-mongoose
-  .connect(MONGODB_URI, {
-    serverSelectionTimeoutMS: 10000,
-    connectTimeoutMS: 10000,
-  })
-  .then(() => {
-    console.log("✅ MongoDB connected successfully");
-    app.listen(PORT, "0.0.0.0", () => {
-      console.log(`🚀 Mayleki Server running on port ${PORT}`);
+// Start server only after MongoDB successfully connects
+const startServer = async () => {
+  try {
+    console.log("⏳ Connecting to MongoDB...");
+    await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: 10000,
+      connectTimeoutMS: 10000,
     });
-  })
-  .catch((error) => {
-    console.error("❌ MongoDB connection failed");
+    console.log("✅ MongoDB connected successfully");
+
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`🚀 Mayleki Server running on port ${PORT} (bound to 0.0.0.0)`);
+    });
+  } catch (error) {
+    console.error("❌ Fatal Error: MongoDB connection failed.");
     console.error(`   Message: ${error.message}`);
     console.error(`   Name: ${error.name || "MongoError"}`);
     if (error.code) console.error(`   Code: ${error.code}`);
-    console.error("   Check MongoDB Atlas Network Access, database username/password, and the MONGODB_URI stored in Render.");
+    if (isProduction) {
+      console.error("   Render Troubleshooting:");
+      console.error("   1. Verify your MongoDB Atlas Network Access allows connections from anywhere (0.0.0.0/0).");
+      console.error("   2. Verify your database username and password in MONGODB_URI.");
+      console.error("   3. Ensure MONGODB_URI is saved in Render's Environment tab.");
+    }
     process.exit(1);
-  });
+  }
+};
+
+startServer();
 
 export default app;
