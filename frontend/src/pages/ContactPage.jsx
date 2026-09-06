@@ -40,18 +40,18 @@ export default function ContactPage() {
 
       <div className="bg-[#FAF7F2] dark:bg-[#141110] min-h-screen">
         {/* Header */}
-        <div className="bg-[#1C1917] text-[#FAF7F2] py-20 text-center relative border-b border-[#C5A059]/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#C5A059] mb-2">𑁍 Get in Touch</p>
-            <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-normal text-[#FAF7F2] mb-3">
+        <div className="page-header text-center">
+          <div className="container-luxury relative">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#B8975F] mb-2">𑁍 Get in Touch</p>
+            <h1 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-2">
               Contact Our Boutique Showroom
             </h1>
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto my-4" />
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto my-3" />
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="container-luxury py-8 sm:py-10 lg:py-14">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left: Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}

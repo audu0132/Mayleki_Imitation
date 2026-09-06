@@ -10,7 +10,7 @@ export default function NotFoundPage() {
         <title>Page Not Found | Mayleki Jewellery</title>
         <meta name="description" content="The page you are looking for does not exist." />
       </Helmet>
-      <div className="min-h-screen bg-cream dark:bg-dark-brown flex items-center justify-center p-6">
+      <div className="bg-cream dark:bg-dark-brown py-16 sm:py-24 flex items-center justify-center p-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

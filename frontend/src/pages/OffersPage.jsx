@@ -17,14 +17,14 @@ export default function OffersPage() {
         <div className="page-header text-center">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative">
-            <p className="section-subtitle mb-3">Save More</p>
-            <h1 className="font-playfair text-5xl font-bold text-cream">
-              Exclusive <span className="text-gold-gradient">Offers</span>
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#B8975F] mb-2">Save More</p>
+            <h1 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-2">
+              Exclusive <span className="italic text-[#E5C88A]">Offers</span>
             </h1>
-            <div className="gold-divider mt-4 mx-auto" />
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto my-3" />
           </div>
         </div>
-        <div className="container-luxury py-16 lg:py-24">
+        <div className="container-luxury py-8 sm:py-10 lg:py-14">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {OFFERS.map((offer, i) => (
               <motion.div
