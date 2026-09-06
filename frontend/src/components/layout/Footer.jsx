@@ -22,11 +22,11 @@ const FOOTER_LINKS = {
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal text-ivory pt-20 pb-10">
+    <footer className="bg-charcoal text-ivory pt-16 sm:pt-20 pb-10 sm:pb-12">
       <div className="container-luxury">
 
         {/* Newsletter Section */}
-        <div className="max-w-xl mx-auto text-center mb-20">
+        <div className="max-w-xl mx-auto text-center mb-14 sm:mb-16">
           <span className="font-body text-eyebrow font-semibold uppercase text-champagne tracking-widest block mb-3">
             Join the Circle
           </span>
@@ -36,7 +36,7 @@ export default function Footer() {
           <p className="font-body text-xs text-text-secondary mb-6 leading-relaxed">
             New collections, private offers, and boutique events delivered to your inbox.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="flex items-center border-b border-champagne/30 pb-1">
+          <form onSubmit={(e) => e.preventDefault()} className="flex items-center border-b border-champagne/30 pb-1 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Your email address"
@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-16">
 
           {/* Brand */}
           <div>

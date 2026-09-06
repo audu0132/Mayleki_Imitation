@@ -72,7 +72,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="relative pt-28 pb-20 lg:pt-36 lg:pb-24 bg-cream dark:bg-dark-brown overflow-hidden">
+    <section className="relative py-12 sm:py-16 lg:py-20 bg-cream dark:bg-dark-brown overflow-hidden">
       {/* Decorative Top-Right Jewellery Background Image with Gradient Fade */}
       <div 
         className="absolute right-0 top-0 w-full sm:w-[50%] h-[350px] sm:h-[600px] bg-no-repeat bg-cover sm:bg-contain bg-right pointer-events-none opacity-20 sm:opacity-90 transition-opacity duration-500" 
