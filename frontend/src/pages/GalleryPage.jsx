@@ -23,14 +23,14 @@ export default function GalleryPage() {
         <div className="page-header text-center">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)`, backgroundSize: "30px 30px" }} />
           <div className="container-luxury relative">
-            <p className="section-subtitle mb-3">Our Portfolio</p>
-            <h1 className="font-playfair text-5xl font-bold text-cream">
-              Photo <span className="text-gold-gradient">Gallery</span>
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.3em] text-[#B8975F] mb-2">Our Portfolio</p>
+            <h1 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-2">
+              Photo <span className="italic text-[#E5C88A]">Gallery</span>
             </h1>
-            <div className="gold-divider mt-4 mx-auto" />
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto my-3" />
           </div>
         </div>
-        <div className="container-luxury py-20 sm:py-24 lg:py-28">
+        <div className="container-luxury py-10 sm:py-12 lg:py-16">
           <div className="columns-2 sm:columns-3 md:columns-4 gap-4 space-y-4">
             {allImages.map((img, i) => (
               <motion.div
