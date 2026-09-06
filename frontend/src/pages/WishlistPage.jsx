@@ -62,7 +62,7 @@ export default function WishlistPage() {
           </div>
         </div>
 
-        <div className="container-luxury py-16 lg:py-24">
+        <div className="container-luxury py-8 sm:py-10 lg:py-14">
           {/* Add all to cart */}
           <div className="flex items-center justify-between mb-8">
             <p className="font-poppins text-sm text-gray-500">{wishlist.length} items saved</p>
@@ -71,13 +71,13 @@ export default function WishlistPage() {
                 wishlist.forEach((p) => addToCart(p, 1, "purchase"));
                 toast.success("All items added to cart!", { icon: "🛒" });
               }}
-              className="btn-gold px-6 h-12 text-sm"
+              className="btn-gold px-6 h-11 sm:h-12 text-xs sm:text-sm font-semibold"
             >
               <FiShoppingCart className="w-4 h-4" /> Add All to Cart
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-6">
             {wishlist.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

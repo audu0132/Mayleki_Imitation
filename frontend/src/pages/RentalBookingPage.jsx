@@ -69,7 +69,7 @@ Rental Total: ₹${rentalTotal} + Refundable Deposit ₹${deposit}`;
             className="absolute inset-0 w-full h-full object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1C1917]/70 via-[#4A0E17]/60 to-[#1C1917]" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center text-center">
+          <div className="relative container-luxury py-14 sm:py-16 lg:py-20 flex flex-col items-center text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ Rental Total: ₹${rentalTotal} + Refundable Deposit ₹${deposit}`;
 
         {/* ─── Breadcrumb ─────────────────────────────── */}
         <div className="bg-white dark:bg-[#1C1917] border-b border-[#C5A059]/15">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div className="container-luxury py-3">
             <nav className="flex items-center gap-2 font-sans text-xs text-gray-500">
               <Link to="/" className="hover:text-[#C5A059] transition-colors">Home</Link>
               <FiChevronRight className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -118,8 +118,8 @@ Rental Total: ₹${rentalTotal} + Refundable Deposit ₹${deposit}`;
         </div>
 
         {/* ─── Booking Form Section ────────────────────────────── */}
-        <section className="py-16 lg:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-8 sm:py-10 lg:py-14">
+          <div className="container-luxury">
             <div className="max-w-4xl mx-auto">
 
               {!submitted ? (
@@ -453,9 +453,9 @@ Rental Total: ₹${rentalTotal} + Refundable Deposit ₹${deposit}`;
         </section>
 
         {/* ─── Rental Policies ────────────────────────── */}
-        <section className="py-16 lg:py-24 bg-white dark:bg-[#1C1917] border-t border-[#C5A059]/20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+        <section className="py-10 sm:py-12 lg:py-16 bg-white dark:bg-[#1C1917] border-t border-[#C5A059]/20">
+          <div className="container-luxury">
+            <div className="text-center mb-10 sm:mb-12">
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.25em] text-[#C5A059] mb-2">Transparent Guidelines</p>
               <h2 className="font-cormorant text-3xl sm:text-4xl text-[#1C1917] dark:text-[#FAF7F2]">How Jewellery Rental Works</h2>
             </div>
@@ -479,10 +479,10 @@ Rental Total: ₹${rentalTotal} + Refundable Deposit ₹${deposit}`;
         </section>
 
         {/* ─── Contact Banner ─────────────────────────── */}
-        <section className="py-12 bg-[#4A0E17] text-[#FAF7F2]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <section className="py-10 sm:py-12 bg-[#4A0E17] text-[#FAF7F2]">
+          <div className="container-luxury flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
-              <h3 className="font-cormorant text-3xl font-semibold mb-1 text-[#FAF7F2]">Need Rental Assistance?</h3>
+              <h3 className="font-cormorant text-2xl sm:text-3xl font-semibold mb-1 text-[#FAF7F2]">Need Rental Assistance?</h3>
               <p className="font-sans text-xs text-[#E5C88A]">Our Rahuri boutique team is ready to assist you Mon–Sat, 10 AM–8 PM</p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
