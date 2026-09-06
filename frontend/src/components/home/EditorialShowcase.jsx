@@ -33,7 +33,7 @@ const SHOWCASE_COLLECTIONS = [
 export default function EditorialShowcase() {
   return (
     <section className="py-section bg-ivory">
-      <div className="container-luxury space-y-24 lg:space-y-36">
+      <div className="container-luxury space-y-16 lg:space-y-20">
         {SHOWCASE_COLLECTIONS.map((item) => (
           <div
             key={item.eyebrow}
