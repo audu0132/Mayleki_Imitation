@@ -153,8 +153,8 @@ const startServer = async () => {
   try {
     console.log("⏳ Connecting to MongoDB...");
     await mongoose.connect(mongoUri, {
-      serverSelectionTimeoutMS: 10000,
-      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
     });
     console.log("✅ MongoDB connected successfully");
 
@@ -162,6 +162,23 @@ const startServer = async () => {
       console.log(`🚀 Mayleki Server running on port ${PORT} (bound to 0.0.0.0)`);
     });
   } catch (error) {
+    if (!isProduction && mongoUri !== "mongodb://localhost:27017/mayleki") {
+      console.warn("⚠️  Primary MongoDB connection failed (likely IP not whitelisted on Atlas).");
+      console.warn("   Attempting fallback to local MongoDB (mongodb://localhost:27017/mayleki)...");
+      try {
+        await mongoose.connect("mongodb://localhost:27017/mayleki", {
+          serverSelectionTimeoutMS: 5000,
+        });
+        console.log("✅ Local MongoDB connected successfully as fallback!");
+        app.listen(PORT, "0.0.0.0", () => {
+          console.log(`🚀 Mayleki Server running on port ${PORT} (bound to 0.0.0.0) [Local Fallback]`);
+        });
+        return;
+      } catch (localErr) {
+        console.error("❌ Local MongoDB fallback also failed:", localErr.message);
+      }
+    }
+
     console.error("❌ Fatal Error: MongoDB connection failed.");
     console.error(`   Message: ${error.message}`);
     console.error(`   Name: ${error.name || "MongoError"}`);
