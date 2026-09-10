@@ -149,6 +149,24 @@ console.log(`🌐 Port: ${PORT}`);
 console.log(`🔎 MongoDB target: ${safeHost}`);
 
 // Start server only after MongoDB successfully connects
+// Centralized 404 handler for undefined API routes
+app.use("/api/*", (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `API endpoint not found: ${req.method} ${req.originalUrl}`,
+  });
+});
+
+// Global error handling middleware
+app.use((err, req, res, next) => {
+  const statusCode = err.status || 500;
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || "An unexpected internal server error occurred.",
+    ...(IS_PRODUCTION ? {} : { stack: err.stack }),
+  });
+});
+
 const startServer = async () => {
   try {
     console.log("⏳ Connecting to MongoDB...");
