@@ -11,7 +11,7 @@ export default function AboutPage() {
         <meta name="description" content="Learn about Mayleki Imitation Jewellery — our story, Maharashtrian heritage, craftsmanship, and affordable bridal jewellery rental in Rahuri." />
       </Helmet>
 
-      <div className="bg-[#FAF7F2] dark:bg-[#141110] min-h-screen">
+      <main className="bg-[#FAF7F2] dark:bg-[#141110] min-h-screen" role="main" aria-label="About Mayleki Heritage">
         {/* Hero */}
         <div className="relative overflow-hidden min-h-[55vh] flex items-center bg-[#1C1917] border-b border-[#C5A059]/30">
           <img src="https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?w=1920" alt="About Mayleki Jewellery" className="absolute inset-0 w-full h-full object-cover opacity-25" />
@@ -93,7 +93,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }
