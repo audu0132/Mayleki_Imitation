@@ -48,6 +48,9 @@ export default function NotFoundPage() {
             <Link to="/products" className="btn-gold-outline px-8 h-12 inline-flex justify-center items-center gap-2">
               <FiSearch className="w-4 h-4" /> Browse Collections
             </Link>
+            <Link to="/ai-stylist" className="btn-gold-outline px-8 h-12 inline-flex justify-center items-center gap-2">
+              <span>✨</span> AI Stylist
+            </Link>
           </div>
 
           {/* Back link */}
