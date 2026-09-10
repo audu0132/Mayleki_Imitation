@@ -249,6 +249,11 @@ This builds the frontend and copies the `dist/` output to the root `dist/` folde
 | POST | `/api/ai/stylist` | AI Jewellery Stylist (Gemini) |
 | POST | `/api/upload` | Upload images to Cloudinary |
 | POST | `/api/contact` | Submit contact/inquiry form |
+| POST | `/api/rentals/calculate-quote` | Calculate duration-based rental quotes & deposits |
+| GET | `/api/rentals/check-availability` | Check item availability across rental dates |
+| GET | `/api/testimonials` | Curated customer reviews and verified ratings |
+| GET | `/api/users/profile` | Retrieve authenticated user profile |
+| GET | `/api/categories/:slug` | Fetch specific category details and item counts |
 
 ---
 
