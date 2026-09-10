@@ -179,8 +179,10 @@ export default function FAQ() {
                   }`}
                 >
                   <button
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${faq.id}`}
                     onClick={() => setActiveId(isOpen ? null : faq.id)}
-                    className="w-full flex items-center justify-between p-5 sm:p-6 text-left gap-4 cursor-pointer"
+                    className="w-full flex items-center justify-between p-5 sm:p-6 text-left gap-4 cursor-pointer focus:outline-none focus:ring-1 focus:ring-gold/40"
                   >
                     <div className="flex items-center gap-4 flex-1">
                       <span className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold font-poppins transition-colors duration-300 border ${
