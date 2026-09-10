@@ -1,39 +1,23 @@
-import { useState, useEffect } from "react";
+import React from "react";
 
-export default function LoadingSpinner({ fullScreen = true, text = "" }) {
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    if (fullScreen) {
-      const timer = setTimeout(() => setVisible(false), 1200);
-      return () => clearTimeout(timer);
-    }
-  }, [fullScreen]);
-
-  if (!visible && fullScreen) return null;
-
-  if (!fullScreen) {
-    return (
-      <div className="flex items-center justify-center min-h-[300px] w-full">
-        <div className="flex flex-col items-center gap-4">
-          <span className="font-display text-xl tracking-[0.3em] uppercase text-charcoal opacity-60">
-            Mayleki
-          </span>
-          <div className="w-8 h-px bg-champagne animate-pulse" />
-        </div>
-      </div>
-    );
-  }
+export default function LoadingSpinner({ size = "md", text = "Loading elegance..." }) {
+  const sizeClasses = {
+    sm: "w-5 h-5 border-2",
+    md: "w-8 h-8 border-3",
+    lg: "w-12 h-12 border-4",
+  };
 
   return (
-    <div
-      className="loader-screen"
-      style={{
-        animation: visible ? "none" : "loaderFadeOut 0.5s ease forwards",
-      }}
-    >
-      <span className="loader-wordmark">Mayleki</span>
-      <div className="mt-4 w-8 h-px bg-champagne opacity-50" />
+    <div className="flex flex-col items-center justify-center p-6 space-y-3" role="status" aria-label="Loading">
+      <div
+        className={`${sizeClasses[size] || sizeClasses.md} rounded-full border-amber-200/30 border-t-amber-500 animate-spin`}
+      />
+      {text && (
+        <p className="text-xs tracking-widest text-amber-300 uppercase font-light animate-pulse">
+          {text}
+        </p>
+      )}
+      <span className="sr-only">Loading content</span>
     </div>
   );
 }
