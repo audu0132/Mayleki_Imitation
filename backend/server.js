@@ -108,7 +108,7 @@ const isProduction = IS_PRODUCTION;
 // Development: Falls back to local MongoDB if MONGODB_URI is not set in .env.
 const mongoUri = isProduction
   ? process.env.MONGODB_URI
-  : process.env.MONGODB_URI || "mongodb://localhost:27017/mayleki";
+  : process.env.MONGODB_URI || "mongodb://mayLEKI:jbvbcdbhjbdMoer%40123456@ac-lh41gkf-shard-00-00.ksxevvf.mongodb.net:27017,ac-lh41gkf-shard-00-01.ksxevvf.mongodb.net:27017,ac-lh41gkf-shard-00-02.ksxevvf.mongodb.net:27017/?ssl=true&replicaSet=atlas-hncoqd-shard-0&authSource=admin&appName=Cluster0";
 
 
 // Fail-fast checks for production environment
