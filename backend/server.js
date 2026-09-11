@@ -104,9 +104,11 @@ app.use((err, req, res, next) => {
 // Database connection configuration
 const isProduction = IS_PRODUCTION;
 
+// Production: MONGODB_URI must be set in Render's Environment Variables panel.
+// Development: Falls back to local MongoDB if MONGODB_URI is not set in .env.
 const mongoUri = isProduction
-  ? process.env.MONGODB_URI        // ← reads from Render's env vars
-  : process.env.MONGODB_URI || "mongodb+srv://audumbarmore43%40gmail.com:Moer%40123456@cluster0.ksxevvf.mongodb.net/mayleki?retryWrites=true&w=majority";
+  ? process.env.MONGODB_URI
+  : process.env.MONGODB_URI || "mongodb://localhost:27017/mayleki";
 
 
 // Fail-fast checks for production environment
