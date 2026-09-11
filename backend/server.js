@@ -105,8 +105,9 @@ app.use((err, req, res, next) => {
 const isProduction = IS_PRODUCTION;
 
 const mongoUri = isProduction
-  ? process.env.MONGODB_URI
-  : process.env.MONGODB_URI || "mongodb://localhost:27017/mayleki";
+  ? process.env.MONGODB_URI        // ← reads from Render's env vars
+  : process.env.MONGODB_URI || "mongodb+srv://audumbarmore43%40gmail.com:Moer%40123456@cluster0.ksxevvf.mongodb.net/mayleki?retryWrites=true&w=majority";
+
 
 // Fail-fast checks for production environment
 if (isProduction) {
