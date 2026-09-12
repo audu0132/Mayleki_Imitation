@@ -1,12 +1,46 @@
-import express from "express";
+import express from 'express';
 const router = express.Router();
-const COUPONS = { WEDDING25: 25, FESTIVAL3: 10, FIRSTRENT: 15 };
-router.post("/validate", async (req, res) => {
-  const { code, amount } = req.body;
-  const discount = COUPONS[code?.toUpperCase()];
-  if (discount === undefined) return res.status(400).json({ success: false, message: "Invalid coupon code" });
-  const savings = (amount * discount) / 100;
-  res.json({ success: true, discount, savings, message: `${discount}% discount applied!` });
+
+const ACTIVE_COUPONS = [
+  { code: 'ROYAL10', discountType: 'PERCENTAGE', discountValue: 10, minOrderValue: 2000, maxDiscount: 1000 },
+  { code: 'BRIDAL500', discountType: 'FLAT', discountValue: 500, minOrderValue: 5000, maxDiscount: 500 },
+  { code: 'FIRSTFESTIVE', discountType: 'PERCENTAGE', discountValue: 15, minOrderValue: 1500, maxDiscount: 750 },
+];
+
+router.post('/validate', async (req, res) => {
+  const { code, cartTotal } = req.body;
+  
+  if (!code) {
+    return res.status(400).json({ success: false, message: 'Promo code is required.' });
+  }
+
+  const coupon = ACTIVE_COUPONS.find(c => c.code.toUpperCase() === code.trim().toUpperCase());
+  
+  if (!coupon) {
+    return res.status(404).json({ success: false, message: 'Invalid or expired promo code.' });
+  }
+
+  if (cartTotal < coupon.minOrderValue) {
+    return res.status(400).json({
+      success: false,
+      message: `Minimum cart value of ₹${coupon.minOrderValue} required for this code.`,
+    });
+  }
+
+  let discountAmount = 0;
+  if (coupon.discountType === 'PERCENTAGE') {
+    discountAmount = Math.min((cartTotal * coupon.discountValue) / 100, coupon.maxDiscount);
+  } else {
+    discountAmount = Math.min(coupon.discountValue, coupon.maxDiscount);
+  }
+
+  res.json({
+    success: true,
+    code: coupon.code,
+    discountAmount,
+    finalTotal: Math.max(0, cartTotal - discountAmount),
+    message: `Coupon ${coupon.code} applied successfully!`,
+  });
 });
-router.get("/", async (req, res) => { res.json({ success: true, data: Object.keys(COUPONS).map(code => ({ code, discount: COUPONS[code] })) }); });
+
 export default router;
