@@ -37,3 +37,4 @@ Thumbs.db
 *.sw?
  
 batch_commits.mjs
+batch_commits_all.mjs
