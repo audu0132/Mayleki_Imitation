@@ -1005,3 +1005,12 @@ html {
   color: #FFFFFF !important;
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
+
+
+/* Luxury Gold Utility Accents */
+.border-gold-gradient {
+  border-image: linear-gradient(to bottom right, #d4af37, #996515, #f3e5ab) 1;
+}
+.shadow-gold-subtle {
+  box-shadow: 0 4px 20px -2px rgba(212, 175, 55, 0.15);
+}
