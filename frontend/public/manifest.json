@@ -1,0 +1,15 @@
+{
+  "short_name": "Mayleki",
+  "name": "Mayleki Imitation Jewellery & Bridal Rental",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0c0a09",
+  "theme_color": "#d4af37",
+  "display": "standalone"
+}
