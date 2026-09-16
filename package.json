@@ -2,7 +2,7 @@
   "name": "mayleki-imitation",
   "private": true,
   "version": "1.4.0",
-  "description": "Mayleki Imitation Jewellery",
+  "description": "Mayleki Imitation Jewellery E-Commerce",
   "scripts": {
     "build": "node build.js",
     "start": "cd backend && npm start"
