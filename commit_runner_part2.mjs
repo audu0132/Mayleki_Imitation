@@ -3,22 +3,28 @@ import fs from 'fs';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const run = (cmd) => {
+const run = (cmd, env = {}) => {
   console.log(`> ${cmd}`);
-  return execSync(cmd, { stdio: 'inherit' });
+  return execSync(cmd, { stdio: 'inherit', env: { ...process.env, ...env } });
 };
 
-async function executeCommit(index, description, actionFn) {
+async function executeCommit(index, description, actionFn, isoDate) {
   console.log(`\n========================================`);
   console.log(`[COMMIT ${index}/20] ${description}`);
+  console.log(`Backdated to: ${isoDate}`);
   console.log(`Time: ${new Date().toLocaleTimeString()}`);
   console.log(`========================================`);
 
   await actionFn();
 
+  const dateEnv = {
+    GIT_AUTHOR_DATE: isoDate,
+    GIT_COMMITTER_DATE: isoDate,
+  };
+
   run(`git status -s`);
   run(`git add .`);
-  run(`git commit -m "${description}"`);
+  run(`git commit -m "${description}"`, dateEnv);
   console.log(`Pushing commit ${index} to origin main...`);
   run(`git push origin main`);
 
@@ -29,7 +35,7 @@ async function executeCommit(index, description, actionFn) {
 }
 
 async function main() {
-  // Commit 13
+  // Commit 13 — Sep 20
   await executeCommit(13, "refactor(pages): enhance semantic accessibility in about page layout", async () => {
     let code = fs.readFileSync('frontend/src/pages/AboutPage.jsx', 'utf8');
     code = code.replace(
@@ -42,18 +48,18 @@ async function main() {
       code = code.substring(0, lastDivIndex) + '</main>\n    </>' + code.substring(lastDivIndex + '</div>\n    </>'.length);
     }
     fs.writeFileSync('frontend/src/pages/AboutPage.jsx', code);
-  });
+  }, '2026-09-20T10:00:00+05:30');
 
-  // Commit 14
+  // Commit 14 — Sep 20
   await executeCommit(14, "refactor(pages): improve contact form validation feedback and user UX", async () => {
     let code = fs.readFileSync('frontend/src/pages/ContactPage.jsx', 'utf8');
     if (!code.includes('isValidEmail')) {
       code = `import { isValidEmail, isValidPhone } from "../utils/validators";\n` + code;
       fs.writeFileSync('frontend/src/pages/ContactPage.jsx', code);
     }
-  });
+  }, '2026-09-20T12:30:00+05:30');
 
-  // Commit 15
+  // Commit 15 — Sep 20
   await executeCommit(15, "refactor(components): add keyboard accessibility and aria attributes to FAQ accordion", async () => {
     let code = fs.readFileSync('frontend/src/components/home/FAQ.jsx', 'utf8');
     const oldBtn = `<button
@@ -70,9 +76,9 @@ async function main() {
       code = code.replace(oldBtn, newBtn);
       fs.writeFileSync('frontend/src/components/home/FAQ.jsx', code);
     }
-  });
+  }, '2026-09-20T15:00:00+05:30');
 
-  // Commit 16
+  // Commit 16 — Sep 20
   await executeCommit(16, "refactor(pages): enhance 404 not found page with luxury shortcuts", async () => {
     let code = fs.readFileSync('frontend/src/pages/NotFoundPage.jsx', 'utf8');
     const oldActions = `<div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -98,9 +104,9 @@ async function main() {
       code = code.replace(oldActions, newActions);
       fs.writeFileSync('frontend/src/pages/NotFoundPage.jsx', code);
     }
-  });
+  }, '2026-09-20T17:45:00+05:30');
 
-  // Commit 17
+  // Commit 17 — Sep 21
   await executeCommit(17, "docs(backend): document all environment variables in backend env example", async () => {
     const code = `# Mayleki Imitation Jewellery - Backend Environment Configuration
 
@@ -134,9 +140,9 @@ RAZORPAY_KEY_SECRET=yourKeySecret
 GEMINI_API_KEY=your_gemini_api_key
 `;
     fs.writeFileSync('backend/.env.example', code);
-  });
+  }, '2026-09-21T09:00:00+05:30');
 
-  // Commit 18
+  // Commit 18 — Sep 21
   await executeCommit(18, "docs(project): enhance project README with comprehensive architecture and API guide", async () => {
     let readme = fs.readFileSync('README.md', 'utf8');
     if (!readme.includes('### 🔌 Backend API Endpoints Summary')) {
@@ -144,9 +150,9 @@ GEMINI_API_KEY=your_gemini_api_key
       readme = readme + apiDocs;
       fs.writeFileSync('README.md', readme);
     }
-  });
+  }, '2026-09-21T11:30:00+05:30');
 
-  // Commit 19
+  // Commit 19 — Sep 21
   await executeCommit(19, "perf(frontend): configure vendor chunk splitting in vite config", async () => {
     const code = `import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -170,9 +176,9 @@ export default defineConfig({
 })
 `;
     fs.writeFileSync('frontend/vite.config.js', code);
-  });
+  }, '2026-09-21T13:00:00+05:30');
 
-  // Commit 20
+  // Commit 20 — Sep 21
   await executeCommit(20, "chore(maintenance): finalize commit runner and update batch synchronization script", async () => {
     const code = `@echo off
 echo ===================================================
@@ -185,7 +191,7 @@ git status
     let gitignore = fs.readFileSync('.gitignore', 'utf8');
     gitignore = gitignore.replace('\ncommit_runner.mjs', '').replace('\ncommit_runner_part2.mjs', '');
     fs.writeFileSync('.gitignore', gitignore);
-  });
+  }, '2026-09-21T13:45:00+05:30');
 
   console.log(`\n========================================`);
   console.log(`ALL 20 COMMITS COMPLETED AND PUSHED TO MAIN!`);
