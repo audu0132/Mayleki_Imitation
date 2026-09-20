@@ -19,6 +19,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import { FAQS } from "../../data/mockData";
 
+// Accessible FAQ: uses aria-expanded, aria-controls, and role="region"
 export default function FAQ() {
   const [activeId, setActiveId] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
