@@ -134,7 +134,7 @@ export default function ContactPage() {
                   Send a Direct Message
                 </h3>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                <form aria-label="Contact Mayleki Support" onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="font-sans text-xs font-semibold uppercase tracking-widest text-[#1C1917] dark:text-[#FAF7F2] mb-1.5 block">Full Name *</label>
