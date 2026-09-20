@@ -55,7 +55,8 @@ export default function NotFoundPage() {
 
           {/* Back link */}
           <button
-            onClick={() => window.history.back()}
+            aria-label="Go back to previous page"
+              onClick={() => window.history.back()}
             className="mt-6 inline-flex items-center gap-2 font-poppins text-sm text-gray-400 hover:text-gold transition-colors"
           >
             <FiArrowLeft className="w-4 h-4" /> Go back

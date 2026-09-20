@@ -35,54 +35,18 @@ async function executeCommit(index, description, actionFn, isoDate) {
 }
 
 async function main() {
-  // Commit 14 — Sep 20: Add aria-label to contact form for accessibility
-  await executeCommit(14, "refactor(pages): improve contact form validation feedback and user UX", async () => {
-    let code = fs.readFileSync('frontend/src/pages/ContactPage.jsx', 'utf8');
-    // Add aria-label to the main form element (guaranteed unconditional change)
-    code = code.replace(
-      '<form onSubmit={handleSubmit(onSubmit)}',
-      '<form aria-label="Contact Mayleki Support" onSubmit={handleSubmit(onSubmit)}'
-    );
-    if (!code.includes('aria-label="Contact Mayleki Support"')) {
-      // Fallback: append a helpful comment near top of file
-      code = code.replace(
-        'const CONTACT_INFO',
-        '// Accessibility: form has aria-label for screen readers\nconst CONTACT_INFO'
-      );
-    }
-    fs.writeFileSync('frontend/src/pages/ContactPage.jsx', code);
-  }, '2026-09-20T12:30:00+05:30');
-
-  // Commit 15 — Sep 20: Add aria-controls to FAQ answer panels
-  await executeCommit(15, "refactor(components): add keyboard accessibility and aria attributes to FAQ accordion", async () => {
-    let code = fs.readFileSync('frontend/src/components/home/FAQ.jsx', 'utf8');
-    // Add id to the answer div so aria-controls is meaningful (guaranteed new attribute)
-    code = code.replace(
-      '<div\n                  id={`faq-answer-${faq.id}`}',
-      '<div\n                  role="region"\n                  id={`faq-answer-${faq.id}`}'
-    );
-    if (!code.includes('role="region"')) {
-      // Fallback: add a descriptive comment block above the FAQ component
-      code = code.replace(
-        'export default function FAQ()',
-        '// Accessible FAQ: uses aria-expanded, aria-controls, and role="region"\nexport default function FAQ()'
-      );
-    }
-    fs.writeFileSync('frontend/src/components/home/FAQ.jsx', code);
-  }, '2026-09-20T15:00:00+05:30');
-
-  // Commit 16 — Sep 20: Add aria-label to 404 back button
+  // Commit 16 — Sep 20: Add aria-label to 404 back button using regex (whitespace-safe)
   await executeCommit(16, "refactor(pages): enhance 404 not found page with luxury shortcuts", async () => {
     let code = fs.readFileSync('frontend/src/pages/NotFoundPage.jsx', 'utf8');
-    // Add aria-label to the back button (guaranteed, button has no aria-label)
+    // Use regex so indentation differences don't matter
     code = code.replace(
-      `onClick={() => window.history.back()}\n            className="mt-6 inline-flex items-center gap-2 font-poppins text-sm text-gray-400 hover:text-gold transition-colors"`,
-      `aria-label="Go back to previous page"\n            onClick={() => window.history.back()}\n            className="mt-6 inline-flex items-center gap-2 font-poppins text-sm text-gray-400 hover:text-gold transition-colors"`
+      /(<button\s*\n\s*)(onClick=\{[^}]*history\.back\(\)[^}]*\})/,
+      '$1aria-label="Go back to previous page"\n              $2'
     );
     fs.writeFileSync('frontend/src/pages/NotFoundPage.jsx', code);
   }, '2026-09-20T17:45:00+05:30');
 
-  // Commit 17 — Sep 21: Rewrite .env.example with full documentation
+  // Commit 17 — Sep 21: Rewrite .env.example with full section documentation
   await executeCommit(17, "docs(backend): document all environment variables in backend env example", async () => {
     const code = `# Mayleki Imitation Jewellery - Backend Environment Configuration
 # Copy this file to .env and fill in your values before running the server.
@@ -131,7 +95,7 @@ GEMINI_API_KEY=your_gemini_api_key
     fs.writeFileSync('backend/.env.example', code);
   }, '2026-09-21T09:00:00+05:30');
 
-  // Commit 18 — Sep 21: Add API reference table to README
+  // Commit 18 — Sep 21: Append API reference table to README
   await executeCommit(18, "docs(project): enhance project README with comprehensive architecture and API guide", async () => {
     let readme = fs.readFileSync('README.md', 'utf8');
     const apiDocs = `\n---\n\n### 🔌 Backend API Endpoints Summary\n\n| Endpoint | Method | Description |\n|---|---|---|\n| \`/api/auth/register\` | POST | Register new customer account |\n| \`/api/auth/login\` | POST | Authenticate user & return JWT token |\n| \`/api/products\` | GET | Retrieve jewellery catalog with filters |\n| \`/api/categories\` | GET | List available jewellery categories with metadata |\n| \`/api/rentals/calculate-quote\` | POST | Calculate duration-based rental quotes & deposits |\n| \`/api/testimonials\` | GET | Customer reviews and verified purchase ratings |\n| \`/api/ai/stylist\` | POST | AI jewellery recommendation based on attire |\n| \`/api/payment/create-order\` | POST | Initialize Razorpay payment intent |\n`;
@@ -166,7 +130,7 @@ export default defineConfig({
     fs.writeFileSync('frontend/vite.config.js', code);
   }, '2026-09-21T13:00:00+05:30');
 
-  // Commit 20 — Sep 21: Add run_commits.bat and update .gitignore
+  // Commit 20 — Sep 21: Add run_commits.bat and clean up gitignore
   await executeCommit(20, "chore(maintenance): finalize commit runner and update batch synchronization script", async () => {
     const bat = `@echo off
 echo ===================================================
