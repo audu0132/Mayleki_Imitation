@@ -286,3 +286,18 @@ This builds the frontend and copies the `dist/` output to the root `dist/` folde
 This project is developed for educational and commercial purposes.
 
 © 2026 **Audumbar More**. All Rights Reserved.
+
+---
+
+### 🔌 Backend API Endpoints Summary
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/auth/register` | POST | Register new customer account |
+| `/api/auth/login` | POST | Authenticate user & return JWT token |
+| `/api/products` | GET | Retrieve jewellery catalog with filters |
+| `/api/categories` | GET | List available jewellery categories with metadata |
+| `/api/rentals/calculate-quote` | POST | Calculate duration-based rental quotes & deposits |
+| `/api/testimonials` | GET | Customer reviews and verified purchase ratings |
+| `/api/ai/stylist` | POST | AI jewellery recommendation based on attire |
+| `/api/payment/create-order` | POST | Initialize Razorpay payment intent |
