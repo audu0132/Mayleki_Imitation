@@ -166,10 +166,19 @@ router.post("/stylist", async (req, res) => {
       catalog = FALLBACK_PRODUCTS;
     }
 
-    // Check Gemini API Key
+    // Check Gemini API Key — must be a valid AIza... key (39+ chars)
     const apiKey = process.env.GEMINI_API_KEY;
+    const isValidKey =
+      apiKey &&
+      apiKey.startsWith("AIza") &&
+      apiKey.length >= 39 &&
+      !apiKey.includes("YOUR_");
 
-    if (!apiKey || apiKey === "your_gemini_api_key_here") {
+    if (!isValidKey) {
+      console.warn(
+        "[AI Stylist] No valid Gemini API key found — using rule-based fallback. " +
+        "Set GEMINI_API_KEY (AIza...) in .env from https://aistudio.google.com/app/apikey "
+      );
       const fallbackResult = generateRuleBasedAdvice(req.body, catalog);
       return res.json(fallbackResult);
     }
