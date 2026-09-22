@@ -36,3 +36,10 @@ services:
         sync: false
       - key: GEMINI_API_KEY
         sync: false
+      # ─────────────────────────────────────────────────────────────────────
+      # Google Cloud Platform — Project: Maylekiimitation
+      # ─────────────────────────────────────────────────────────────────────
+      - key: GCP_PROJECT_ID
+        value: gen-lang-client-0321817472
+      - key: GCP_PROJECT_NUMBER
+        value: "3853536489"
